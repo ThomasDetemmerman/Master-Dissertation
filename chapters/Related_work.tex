@@ -1,0 +1,80 @@
+\chapter{Gerelateerd werk}
+\label{chap:rel_work}
+
+Aangezien resource allocatieschema's van clouds nog steeds worden onderzocht, bestaan er enkele werken die gerelateerd kunnen worden aan deze masterproef. In Sectie~\ref{sec:newcras} wordt nadien een overzicht gegeven van reeds ontwikkelde cloud resource allocatieschema's.
+
+\section{Relevant onderzoek}
+\label{sec:related_work}
+
+Een zeer gerelateerd werk van Maenhaut et al.~\cite{Maenhaut2017} beschrijft een Raspberry Pi cluster voor het valideren van cloud management strategieën. Dankzij een eenvoudige webinterface kan in deze demo alles eenvoudig geconfigureerd en getest worden. De Node.js-agent beschreven in Sectie~\ref{sec:nodejs-agent} heeft dan ook inspiratie gehaald uit deze demo mits enkele aanpassingen en verbeteringen omdat hier gebruik wordt gemaakt van fysieke servers in plaats van Raspberry Pi clusters.
+
+RT-OpenStack~\cite{Xi2015} plugt een CPU-resource management systeem in op een OpenStack omgeving. Het is een systeem bestaande uit 3 onderdelen, namelijk de integratie van een real-time hypervisor, een real-time scheduler en een VM-to-host mapping strategie wat dus vooral de nadruk legt op real-time VM's. Een belangrijke onderdeel van dat werk is de manier waarop RT-OpenStack werkt in combinatie met een normale OpenStack cloud-omgeving maar in deze thesis wordt er geen gebruik gemaakt van een aangepast management systeem noch van aangepaste hypervisors voor de evaluatie van allocatieschema's.
+
+Een ander voorbeeld van een inplugbaar framework in OpenStack is OpenStack Neat~\cite{Beloglazov2014}.  OpenStack Neat is eenvoudig inplugbaar in een bestaande OpenStack cloud-omgeving en gaat zorgen voor dynamische en energie-efficiënte algoritmen om VM's te consolideren. Daarbovenop biedt het ook de mogelijkheid om nieuwe VM consolidering algoritmen te evalueren en te vergelijken. De structuur van het framework en de werking ervan zijn zeer relevant doch ligt in deze thesis de focus meer op de correcte werking van het algoritme in plaats van de energie-efficiëntie.
+
+Daarnaast bestaan er ook verschillende simulators om nieuwe schema's te testen zoals bijvoorbeeld OpenStackEmu~\cite{Benet2017}. Hierbij wordt een OpenStack omgeving gesimuleerd samen met een \textit{Software Defined Networking (SDN)} controller en een large-scale network emulator CORE (\textit{Common Open Research Emulator}). Dergelijke oplossing benadert al iets meer een reëele cloud-omgeving en de gebruikte methode is gerelateerd aan de werking van deze thesis. Enkel wordt er hier getracht om een echte cloud-omgeving te gebruiken in plaats van te benaderen of te simuleren.
+
+Een ander voorbeeld van een simulatietool wordt beschreven door Maenhaut et al.~\cite{Maenhaut2016} waarbij verschillende nieuwe schema's worden getest met behulp van verschillende invoerparameters. Deze resultaten geven een goed oog op de mogelijk performantie maar opnieuw gaat het om een simulator waarbij mogelijke constanten van een echte cloud-omgeving verborgen blijven. Deze thesis probeert daarom deze verborgen constanten zichtbaar te maken door de evaluatie uit te voeren op een reëel cloud-testbed.
+
+Ten slotte bestaan er ook enkele interfaces om eenvoudig met OpenStack te communiceren zoals Apache Libcloud~\cite{Libcloud}, een python bibliotheek, of pkgcloud~\cite{pkgcloud}, een node.js-pakket. Via een eenvoudige interface bieden ze een mogelijkheid aan om met verschillende cloud-besturingssystemen, zoals onder andere OpenStack, Google Cloud Platform, CloudFlare, etc te communiceren en hierop commando's uit te voeren. Indien deze interfaces gebruikt kunnen worden bij bijvoorbeeld de evaluatie van zo'n nieuw schema kan dit de overstap naar een andere cloud-omgeving zeer eenvoudig maken aangezien de commando's dezelfde blijven en de interface deze automatisch zal omvormen naar de commando's typisch voor het gebruikte cloud-systeem. Deze bibliotheken bieden dus de mogelijkheid om gebruikte cloud-omgeving te besturen en niet om evaluaties uit te voeren.
+
+\section{Beknopt overzicht van cloud resource allocatieschema's}
+\label{sec:newcras}
+
+Globale planning van gevirtualiseerde resources beschrijft het systeemwijde perspectief van de allocatie van fysieke en virtuele resources in een cloud omgeving. De meeste van deze methoden zijn gecentraliseerd zodat ze volledige controle hebben over de allocatie van een verkregen set van resources. De hiervoor gebruikte technieken worden onderverdeeld in 4 groepen namelijk de initiële plaatsing van de VM's, dynamische plaatsing van VM's, VM-plaatsing rekening houdend met de netwerkbronnen en technieken om het energieverbuik te minderen.
+
+De initiële plaatsing van VM's op fysieke machine's is gerelateerd aan het \textit{vector bin packing} probleem, wat NP-hard is waardoor enkel heuristische methoden in aanmerking komen~\cite{Hochba1997}. Enkele voorbeelden hiervan zijn de \textit{First Fit Decreasing (FFD)} en \textit{Best Fit Decreasing} heuristieken die gebaseerd zijn op gulzige algoritmen~\cite{Panigrahy2011} of het \textit{Reordering Grouping Algorithm (RGGA)} gebaseerd op genetische algoritmen~\cite{Wilcox2011}. Daarnaast zijn er ook algoritmen om dynamisch een pool van resources te alloceren aan een set van concurrerende VM's en algoritmen die rekening houden met beperkingen opgelegd door de cloud-gebruikers.\\
+\textit{Live migration}~\cite{Clark2005} of dynamische plaatsing van virtuele machines is een zeer handige techniek waarbij een draaiende VM wordt gepauzeerd, geserialiseerd en verplaatst naar een andere fysieke machine. Gebruikte heuristieken hiervoor zijn bijvoorbeeld de \textit{first-fit} heuristiek~\cite{Bobroff2007} dat de verschillende VM's dynamisch hermapt op de fysieke machine's met als resultaat een minimaal gebruik van fysieke machines, of \textit{King-fisher}~\cite{Sharma2011}, een set van technieken voor VM-schaling, replicatie en migratie waarbij de problemen worden geformuleerd als ILP-model. Een ander voorbeeld is het live migration proces voorstellen als een roman zodat het probleem herleid wordt tot een \textit{Stable Marriage} probleem~\cite{Xu2011}.
+
+Er zijn ook algoritmen die rekening houden met de netwerktopologie vooraleer een VM wordt geplaatst op een fysieke machine. Een voorbeeld hiervan zijn heuristieken die VM's die data-intensief met elkaar moeten communiceren dicht bij elkaar trachten te plaatsen.
+
+Technieken om het energieverbuik te minderen zijn gebaseerd op \textit{right-sizing} van datacenters.\footnote{Het dynamisch herschalen van actieve fysieke nodes bij een veranderende werklast.}~\cite{Chase2001} Nieuwere methoden maken een combinatie van deze technieken om het energieverbuik te minderen samen met de mogelijkheid tot het aanpassen van de processorsnelheid van fysieke nodes met behulp van \textit{Dynamic Voltage Scaling} (DVS). Dit zorgt ervoor dat de kloksnelheid van een processor kan dalen (minder stroomverbruik) en een processor kan werken in een omgeving met hogere temperaturen (minder koeling) wat in beide gevallen zorgt voor een lagere energieconsumptie.
+
+Naast de globale planning van gevirtualiseerde resources moet er ook lokale planning van de gevirtualiseerde resources gebeuren. Lokaal resource management bepaalt hoe de fysieke resources worden gedeeld tussen de gevirtualiseerde resources die erop draaien. Recente onderzoeken proberen hiervoor een volledige automatische oplossing te vinden die constant de VM's monitort waarbij dynamisch extra resources voorzien worden, rekening houdend met de afgesloten SLA's. Technieken die hiervoor gebruikt worden zijn onder andere \textit{fuzzy-logic}~\cite{Xu2008} en \textit{reinforcement learning}~\cite{Rao2011}. Een voorbeeld van een systeem dat het delen van lokale fysieke resources tussen virtuele resources vergemakkelijkt is \textit{DeepDive}~\cite{Novakovic2013}, een systeem ontwikkeld om interferentie tussen verschillende VM's te identificeren en te verzachten.
+
+\begin{table}[tbp]
+	\centering
+	\captionsetup{justification=centering}
+	\caption[Overzicht resource-allocatieschema's]{Overzicht resource-allocatieschema's \\
+		A=Algoritme, P=Protocol, F=Framework S=Simulator, C=Cloud, ILP=Integer Linair Programming, GH = Greedy Heuristic, SBP=Stochastic Bin Packing, MINLP=Particle swarm, RR=Round-Robin, SA=Simulated Annealing, SMT=Satisfiabilty Module Theory, FFD=First Fit Decreasing, MI(N)=Mixed Integer (Non-), SPLE=Software Product Line Engineering, L=Lijst, G=Graaf, B=Boom, FN=Fysieke node, Mig=Migraties, (?)=Niet vermeld}
+	\label{tab:resallocschemes}
+	\resizebox{\textwidth}{!}{%
+	\begin{tabular}{L{4cm} l C{2cm} c c c c}
+		\toprule
+		Naam & Jaar & Type  & A | F | P  & Invoer & Uitvoer & Getest  \\ \midrule
+		Alicherry et al.~\cite{Alicherry2012} & 2012 & k-sneden & A & G & par\{G\} & S \\
+		MCRVMP~\cite{Biran2012} & 2012 & ILP \& GH & A & B\{netwerk\} & VM-plaatsing & C\\
+		Breitgand et al.~\cite{Breitgand2012} & 2012 & SBP & A & L\{VM\} & L\{VM\}/Bin & S \\
+		Snooze~\cite{Feller2012} & 2012 & Framework & F & - & - & C \\
+		Sequence planning~\cite{Ghorbani2012} & 2012 & Heuristiek & A & Net + S\{Mig\} & L\{VM/Mig\} & S \\
+		Giurgu et al.~\cite{Giurgiu2012} & 2012 & Beam seach & A &- & VNI-plaatsing & S \\
+		Seagull~\cite{Guo2012} & 2012 & Framework & F & - & - & C \\
+		v-Bundle~\cite{Hu2012} & 2012 & Novel & A & B\{Node\} & VM-plaatsing & S + C \\
+		VMPR~\cite{Jiang2012} & 2012 & Markov-ketens & A & L\{Jobs\} & Job-afhandeling & S (?) \\
+		TROPIC~\cite{Liu2012} & 2012 & Framework & F & - & - & C \\
+		Konstanteli et al.~\cite{Konstanteli2012} & 2012 & MINLP & A & - & Gealloceerde resources & C \\
+		CloudMap~\cite{Viswanathan2012} & 2012 & RR & A & Resource-verbruik & Servercluster & C \\
+		VirtualKnotter~\cite{Zou2014} & 2012 & SA & A & Verkeer & VM-plaatsing & S \\
+		P*~\cite{Wuhib2012a} & 2012 & Gossip protocol & P & - & - & S \\
+		Scattered~\cite{Zhang2016} & 2012 & Black- en Gray-box & A & L\{hosts\} & VM-plaatsing & C \\
+		VMM-Planner~\cite{Al-haj2013} & 2013 & SMT & A & VM-plaatsing + doel & L\{Mig\} & C \\
+		Shi et al.~\cite{Shi2013} & 2013 & ILP & A & L\{FN\} & VM-plaatsing & C \\
+		Shi et al.~\cite{Shi2013} & 2013 & FFD & A & L\{FN\} & VM-plaatsing & C \\
+		Omega~\cite{Schwarzkopf2013} & 2013 & Large scale & F & - & - & S \\
+		PACMan~\cite{Nath2013} & 2013 & - & A & VM interferentie & VM-plaatsing & C \\
+		Max-BRU~\cite{NguyenTrungHieu2014} & 2014 & - & A & Datacenter & VM-allocatie & C \\
+		RT-OpenStack~\cite{Xi2015} & 2015 & - & A & Budget VCPU's & CPU-resources & C \\
+		J.Bi et al.~\cite{Bi2015} & 2015 & SA, MINLP & A & Datacenter & VM-allocatie & S \\
+		F. Fakhfakh et al.~\cite{Fakhfakh2015} & 2015 & MILP & A & L\{Taken, deadl.\} & VM-allocatie & S \\
+		L. Li et al.~\cite{Li2015} & 2015 & Framework & F & - & - & (C) \\
+		A. Ruiz-Alvarez et al.~\cite{Ruiz-Alvarez2015} & 2015 & IPL & A & Max. duur & Optimale kost & C \\
+		Dohko~\cite{Leite2015} & 2015 & SPLE & A & Vereisten & Resource selectie & S \\
+		A.aral et al.~\cite{Aral2015} & 2015 & LAD & A & Gewenste topologie & Topologie & S \\
+		K. Metwally et al.~\cite{Metwally2015} & 2015 & MILP & A & Datacenter & VRP + resource allocatie & C \\
+		\bottomrule
+	\end{tabular}}
+\end{table}
+
+Tot slot zijn er nog tal van andere technieken om resources te alloceren rekening houdend met bijvoorbeeld het profiel van de vraag, de schaalbaarheid van de applicatie, etc. maar hier wordt niet dieper op ingegaan.
+
+In Tabel~\ref{tab:resallocschemes} wordt een overzicht weergegeven van een aantal ontwikkelde resource allocatieschema's tussen 2012 en 2015. De verschillende kolommen beschrijven respectievelijk de naam van het algoritme of de naam van de ontwikkelaar, het jaartal van de publicatie, het type waarop het schema is gebaseerd, of het een algoritme, framework of protocol is, wat de invoerparameters zijn, wat de uitvoerparameters zijn en op welke manier het getest is.

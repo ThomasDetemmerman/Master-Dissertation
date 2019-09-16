@@ -1,0 +1,319 @@
+\begin{appendices}
+\section*{Bijlage A - OpenStack's installatiehandleiding}
+\label{att:installation}
+
+Hier wordt een overzicht gegeven van de installatie van OpenStack met behulp van DevStack (commit 	713f17c1d29f097d7d65e243c97a026867bf9363\footnote{\url{https://git.openstack.org/cgit/openstack-dev/devstack/commit/?id=713f17c1d29f097d7d65e243c97a026867bf9363}}) op een controller node en twee compute nodes.~\cite{DevStack2017}~\cite{DevStack2017a}~\cite{AskUbuntu2011} De drie nodes zijn elk voorzien van 10 GB HDD, 8 GB vRAM en 2 vCPU's. Als standaard besturingssysteem wordt Ubuntu Server 16.04.02 LTS gebruikt.
+
+\subsubsection{Controller node}
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+$ sudo apt-get update
+$ cd /
+$ sudo git clone https://git.openstack.org/openstack-dev/devstack
+$ cd devstack/
+$ sudo cp samples/local.conf local.conf
+$ sudo vi local.conf
+\end{minted}
+\end{code}
+
+In local.conf plaatst men volgende gegevens:
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+[[local|localrc]]
+	HOST_IP=192.168.16.118
+	FLAT_INTERFACE=ens160
+	FIXED_RANGE=10.4.128.0/20
+	FIXED_NETWORK_SIZE=4096
+	FLOATING_RANGE=192.168.16.128/25
+	MULTI_HOST=1
+	ADMIN_PASSWORD=CaHiBaPa
+	DATABASE_PASSWORD=CaHiBaPa
+	RABBIT_PASSWORD=CaHiBaPa
+	SERVICE_PASSWORD=CaHiBaPa
+
+	enable_service placement-api
+	enable_service placement-client
+
+	disable_service n-net
+	enable_service q-svc
+	enable_service q-agt
+	enable_service q-dhcp
+	enable_service q-l3
+	enable_service q-meta
+	enable_service neutron
+	enable_service n-novnc #Automatisch geactiveerd sinds 13 maart 2017
+
+	enable_plugin heat https://git.openstack.org/openstack/heat
+
+	CEILOMETER_BACKEND=mongodb
+	enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer
+	enable_plugin aodh https://git.openstack.org/openstack/aodh
+	CEILOMETER_PIPELINE_INTERVAL=60
+	CEILOMETER_NOTIFCATION_TOPICS=notifications,profiler
+\end{minted}
+\end{code}
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+$ sudo vi stackrc
+	//Wijzig de GIT_BASE van git:// naar https://
+$ sudo /devstack/tools/create-stack-user.sh
+$ sudo chown -R stack:stack /devstack
+$ sudo su stack
+$ /devstack/stack.sh
+\end{minted}
+\end{code}
+
+De installatie zelf zal ongeveer een halfuur tot een uur in beslag nemen. Na de installatie geeft DevStack een overzicht van de gebruikers, de wachtwoorden en de URL's naar het dashboard en de identity service.
+\\
+Een belangrijke en goede eigenschap van DevStack is dat het de verschillende OpenStack services start en monitort in verschillende terminals. Bij het gebruik van een SSH-connectie naar de controller node is het interessant dat ook deze schermen beschikbaar zijn voor eventuele debuginformatie of het heropstarten van bepaalde services. Hiervoor moet volgend commando uitgevoerd worden:
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+$ sudo chown stack:stack `readlink /proc/sefl/fd/0`
+\end{minted}
+\end{code}
+
+Dit commando geeft de stack-gebruiker toegang tot de verschillende terminals waardoor er eenvoudig via onderstaand commando verwisselt kan worden tussen de verschillende schermen, ook wel \textit{screens} genaamd.
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+$ screen -x stack
+\end{minted}
+\end{code}
+
+\subsubsection{Compute nodes}
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+$ sudo apt-get update
+$ cd /
+$ sudo git clone https://git.openstack.org/openstack-dev/devstack
+$ cd devstack/
+$ sudo cp samples/local.conf local.conf
+$ sudo vi local.conf
+\end{minted}
+\end{code}
+
+In local.conf plaatst men volgende gegevens:
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+[[local|localrc]]
+	HOST_IP=192.168.16.117
+	FLAT_INTERFACE=ens160
+	FIXED_RANGE=10.4.128.0/20
+	FIXED_NETWORK_SIZE=4096
+	FLOATING_RANGE=192.168.16.128/25
+	MULTI_HOST=1
+	ADMIN_PASSWORD=CaHiBaPa
+	DATABASE_PASSWORD=CaHiBaPa
+	RABBIT_PASSWORD=CaHiBaPa
+	SERVICE_PASSWORD=CaHiBaPa
+	DATABASE_TYPE=mysql
+	SERVICE_HOST=192.168.16.118
+	SERVICE_HOST_NAME=jerico-03
+	MYSQL_HOST=$SERVICE_HOST
+	RABBIT_HOST=$SERVICE_HOST
+	GLANCE_HOSTPORT=$SERVICE_HOST:9292
+	ENABLED_SERVICES=n-cpu,c-vol,rabbit,neutron,q-agt
+	NOVA_VNC_ENABLED=True
+	NOVNCPROXY_URL=“http://$SERVICE_HOST:6080/vnc_auto.html”
+	VNCSERVER_LISTEN=$HOST_IP
+	VNCSERVER_PROXYCLIENT_ADDRESS=$VNCSERVER_LISTEN
+	enable_service placement-api
+
+	CEILOMETER_BACKEND=mongodb
+	enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer
+	enable_plugin aodh https://git.openstack.org/openstack/aodh
+	CEILOMETER_PIPELINE_INTERVAL=60
+	CEILOMETER_NOTIFICATION_TOPICS=notifications,profiler
+\end{minted}
+\end{code}
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+$ sudo vi stackrc
+	//Wijzig de GIT_BASE van git:// naar https://
+$ sudo /devstack/tools/create-stack-user.sh
+$ sudo chown -R stack:stack /devstack
+$ sudo su stack
+$ /devstack/stack.sh
+\end{minted}
+\end{code}
+
+Bij de compute nodes zal de installatie minder lang duren als bij de controller node. Op het einde van de installatie zal het IP-adres van de compute node weergegeven worden. Net zoals bij de controller node wordt hier ook gebruik gemaakt van de screens in Linux en deze kan men bereiken via:
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+$ sudo chown stack:stack `readlink /proc/self/fd/0`
+$ screen -x stack
+\end{minted}
+\end{code}
+
+Om de compute nodes instanties te laten hosten moet op de controller nog volgende twee commando's uitgevoerd worden:
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+$ nova-manage db sync
+$ nova-manage cell_v2 discover_hosts
+\end{minted}
+\end{code}
+
+De compute nodes zijn nu zichtbaar vanaf het OpenStack Dashboard en ondersteunen het hosten van instanties.
+
+\subsubsection{Problemen met Cinder}
+
+In sommige gevallen is het mogelijk dat Cinder niet naar behoren werkt waardoor nieuwe volumes falen bij het aanmaken. Om dit probleem op te lossen wordt er best eerst gekeken naar de logs van cinder op 1 van de 2 compute nodes. Hier bevindt zich een volledige \textit{stacktrace} van het probleem met een referentie naar het \textit{loopback}-apparaat waarbij het fout loopt. Meestal zal de fout van volgende vorm zijn:
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+Stderr: u' /dev/loop1: lseek 4096 failed: Invalid argument\n Failed to
+write VG stack-volumes-lvmdriver-1.\n'
+\end{minted}
+\end{code}
+
+Het probleem bestaat hier uit het feit dat er geen volume kan geschreven worden omdat er onder /dev/loop1 (in dit geval) geen bestandssysteem is. Dit kan eenvoudig opgelost worden door bijvoorbeeld een virtueel bestandssysteem aan te maken met volgende stappen:
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+$ sudo dd if=/dev/zero of=/devstack/filesyst bs=2G count=1
+$ sudo losetup /dev/loop1 ./filesyst
+$ sudo mkfs.ext3 /dev/loop1
+$ sudo pvcreate /dev/loop1 -ff
+$ sudo vgcreate stack-volumes-lvmdriver-1 /dev/loop1
+\end{minted}
+\end{code}
+
+Door het koppelen van een virtueel bestandssysteem van 2 GB (of groter) wordt bovenstaand probleem opgelost en kan cinder nieuwe volumes aanmaken.
+ 
+\subsubsection{Verwijderen van DevStack}
+ 
+Om DevStack volledig te verwijderen wordt best een back-up teruggeplaatst alvorens OpenStack via DevStack wordt geïnstalleerd omdat DevStack verschillende systeemaanpassingen doet die niet eenvoudig terugkeerbaar zijn. Indien er geen back-up beschikbaar is, kan DevStack grotendeels verwijderd worden via volgende stappen:
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+$ sudo su stack
+$ /devstack/unstack.sh
+$ /devstack/clean.sh
+$ sudo rm -rf /opt/stack
+\end{minted}
+\end{code}
+
+Een reboot van het systeem is nadien soms nodig om de loopback-apparaten terug correct te laten werken.
+
+\subsubsection{Rally}
+ 
+Om Rally te gebruiken als benchmarking tool, moet deze worden geactiveerd als plugin op de controller node. Voeg hiervoor volgende lijn toe in local.conf van de controller node:
+ 
+\begin{code}
+\begin{minted}[breaklines]{bash}
+[[local|localrc]]
+ # ... andere instellingen
+ enable_plugin rally https://github.com/openstack/rally master
+\end{minted}
+\end{code}
+
+\section*{Bijlage B - Overzicht van de verschillende DevStack screens}
+\label{att:openstack_services}
+ 
+\begin{table}[H]
+ 	\centering
+ 	\caption*{Overzicht van de verschillende DevStack screens (= OpenStack-services)~\cite{Kumar2017}}
+ 	\label{my-label}
+ 	\begin{tabular}{lll}
+ 		\hline
+ 		Service    & Onderdeel                  & Uitleg                                             \\ \hline
+ 		KeyStone   & key                        & Weergeven van /var/log/apache2/keystone.log        \\
+ 		& key-access                 & Weergeven van /var/log/apache2/keystone-access.log \\ \hline
+ 		Glance     & g-reg                      & Het Glance-register (o.a. lijst van images)        \\
+ 		& g-api                      & De API van Glance                                  \\ \hline
+ 		Nova       & n-api                      & De API van Nova                                    \\
+ 		& n-cond                     & Zorgt dat de compute-nodes geen DB nodig hebben    \\
+ 		& n-sch                      & De Nova-scheduler (waar komt nieuwe inst.?)        \\
+ 		& n-novnc                    & De NOVNC-server (toegang tot de instanties)        \\
+ 		& n-cauth                    & Console-auth: toegang tot de consoles van de inst. \\
+ 		& n-cpu                      & De eigenlijke compute-service (computing)          \\
+ 		& placement-api              & Zorgt voor de plaatsing van de instanties          \\ \hline
+ 		Neutron    & q-svc                      & De eigenlijke Neutron-service (netwerk)            \\
+ 		& q-agt                      & Beheert de virtuele switch van de instanties       \\
+ 		& q-dhcp                     & Zorgt voor DHCP-services                           \\
+ 		& q-l3                       & L3/NAT-forwarding tussen VM's en externe netw.     \\
+ 		& q-meta                     & Extra services voor Neutron                        \\ \hline
+ 		Cinder     & c-api                      & De API van Cinder                                  \\
+ 		& c-sch                      & Scheduler: waar wordt vol. geplaatst?              \\
+ 		& c-vol                      & De eigenlijke Cinder-service (opslag)              \\ \hline
+ 		Horizon    & horizon                    & Het dashboard                                      \\ \hline
+ 		Heat       & h-eng                      & De eigenlijke Heat-service (Orchestration)         \\
+ 		& heat-api                   & De API van Heat                                    \\
+ 		& heat-api-access            & Bepaalt wie toegang heeft tot de API               \\
+ 		& heat-api-cfn               & AWS-style query API                                \\
+ 		& heat-api-cfn-access        & Bepaalt wie toegang heeft de CNF-API               \\
+ 		& heat-api-cloudwatch        & De monitoring van de log-bestanden                 \\
+ 		& heat-api-cloudwatch-access & De monitoring van de log-bestanden                 \\ \hline
+ 		Ceilometer & ceilometer-acentral        & Plaatst de gegevens op een queue                   \\
+ 		& ceilometer-api             & De Ceilometer-API (Telemetry)                      \\
+ 		& ceilometer-anotification   & Waarschuwt Heat bij alarmen                        \\
+ 		& ceilometer-acompute        & Monitort de instanties op de compute-nodes         \\ \hline
+ 		Aodh       & aodh                       & De eigenlijke Aodh-service (Telemetry)             \\
+ 		& aodh-api                   & De Aodh-API                                        \\
+ 		& aodh-notifier              & Waarschuwt Heat bij alarmen                        \\
+ 		& aodh-evaluator             & Bepaalt of een alarm moet afgaan                   \\
+ 		& aodh-listener              & Monitort de instanties                             \\ \hline
+ 	\end{tabular}
+ \end{table}
+ 
+\section*{Bijlage C - Overzicht van de scripts in de FaaFo-template}
+\label{att:scripts}
+
+De FaaFo-template bevat twee scripts voor het initialiseren van de instanties: één voor de FaaFo-controller en één voor de FaaFo-workers die hier worden weergegeven.
+\\
+De FaaFo-controller zal volgende code uitvoeren na opstart:
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+#!/usr/bin/env bash
+cd ~
+git clone https://github.com/moeyerke/nodejs-agent.git
+cd nodejs-agent
+curl -L -s http://git.openstack.org/cgit/openstack/faafo/plain/contrib/install.sh | bash -s -- -i messaging -i faafo -r api
+sudo su
+rabbitmqctl add_user faafo guest
+rabbitmqctl set_user_tags faafo administrator
+rabbitmqctl set_permissions -p / faafo ".*" ".*" ".*"
+\end{minted}
+\end{code}
+
+Dit script zorgt ervoor dat FaaFo wordt geïnstalleerd als controller en lost het probleem van RabbitMQ op door het aanmaken (zie Sectie~\ref{sec:faafoproblems}) van nieuwe gebruiker.
+
+De FaaFo-workers zullen volgende code uitvoeren na opstart:
+
+\begin{code}
+\begin{minted}[breaklines]{bash}
+#!/usr/bin/env bash
+ip_addr1="$1"
+ip_addr2="$2"
+if [[ $ip_addr == 10* ]] then
+	ip_addr=$ip_addr1
+fi
+if [[ $ip_addr2 == 10* ]] then
+	ip_addr=$ip_addr2
+fi
+echo "Ip-adress is $ip_addr"
+cd ~
+git clone https://github.com/moeyerke/nodejs-agent.git
+cd nodejs-agent
+echo "Going to sleep for 2min so the controller is ready..."
+sleep 2m
+curl -L -s http://git.openstack.org/cgit/openstack/faafo/plain/contrib/install.sh | bash -s -- \
+	-i faafo -r worker -e "http://$ip_addr" -m "amqp://faafo:guest@$ip_addr:5672/"
+sleep 10s
+supervisorctl restart faafo_worker
+\end{minted}
+\end{code}
+
+De eerste stap controleert de meegegeven ip-adressen zodat het IPv4-adres wordt gebruikt voor de communicatie tussen controller en workers. De reden hiervoor is dat OpenStack nog geen IPv6-regels voorziet in de security groups. Vervolgens wordt de FaaFo-applicatie geïnstalleerd als worker zodat de instantie fractalen kan berekenen die zich in de queue bevinden.
+
+\end{appendices}
