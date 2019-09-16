@@ -1,63 +1,77 @@
-#####################################################################################################
-#                                                                                                   #
-# Makefile for the compilation of a Latex file                                                      #
-#                                                                                                   #
-# AUTHOR : Brecht Vermeulen (5-02-00)                                                               #
-#                                                                                                   #
-#####################################################################################################
+# The files to watch:
 
-# $Id: Makefile,v 1.1 2001/11/16 15:02:07 bvermeul Exp $
+# The master file of the document
+ROOTFILE            = lc-latex-cursus
 
-#############
-# {GENERAL} #
-#############
+# All the (other) .tex files
+SATELITFILES	    = *.tex
 
-LATEX_FILE = boek.tex
+# make a pdf
+.PHONY : pdf
+pdf : $(ROOTFILE).pdf
 
-CLASS_FILE = 
+# make rootfile.pdf
+$(ROOTFILE).pdf : $(SATELITFILES)
+	pdflatex $(ROOTFILE).tex
 
-LATEX = /usr/bin/latex
-DVIPS = /usr/bin/dvips
-PS2PDF = /usr/bin/ps2pdf
-LATEXPDF = /usr/bin/pdflatex
+# make bibliogrphy
+.PHONY : bib
+bib :	
+	bibtex $(ROOTFILE)
 
-DVI_FILE = $(LATEX_FILE:.tex=.dvi)
-PS_FILE = $(LATEX_FILE:.tex=.ps)
-PDF_FILE = $(LATEX_FILE:.tex=.pdf)
+# make index
+.PHONY : index
+index :	
+	makeindex $(ROOTFILE)
 
-#############
-# {TARGETS} #
-#############
+# make the full document
+.PHONY : full
+full : 
+	make clean
+	pdflatex $(ROOTFILE).tex
+	bibtex $(ROOTFILE)
+	pdflatex $(ROOTFILE).tex
+	pdflatex $(ROOTFILE).tex
+	pdflatex $(ROOTFILE).tex
+	makeindex $(ROOTFILE)
+	pdflatex $(ROOTFILE).tex
+	pdflatex $(ROOTFILE).tex
+	pdflatex $(ROOTFILE).tex
 
-all: $(PS_FILE) $(PDF_FILE)
+# remove the temporary files
+.PHONY : clean
+clean :
+	rm -f *.aux
+	rm -f *.log
+	rm -f *~
+	rm -f *.toc
+	rm -f *.bbl
+	rm -f *.blg
+	rm -f *.bak
+	rm -f .*.swp
+	rm -f *.idx
+	rm -f *.ilg
+	rm -f *.ind
+	rm -f *.out
+	
+# remove everything but the sourcefiles
+.PHONY : cleanfull
+cleanfull :
+	make clean
+	rm -f *.pdf
+	rm -f *.ps
+	rm -f *.dvi
 
-dvi: $(DVI_FILE)
 
-ps: $(PS_FILE)
 
-pdf: $(PDF_FILE)
+# Rommel:
 
-#################
-# {COMPILATION} #
-#################
+# Niet gebruiken: een ps maken
+$(ROOTFILE).ps : $(ROOTFILE).dvi
+	dvips $(ROOTFILE).dvi -o $(ROOTFILE).ps
 
-$(DVI_FILE) : $(LATEX_FILE) $(CLASS_FILE)
-	$(LATEX) ${LATEX_FILE} && $(LATEX) ${LATEX_FILE} 
+# Niet gebruiken: een dvi maken
+$(ROOTFILE).dvi : $(SATELITFILES)
+	latex $(ROOTFILE).tex
 
-$(PS_FILE) : $(DVI_FILE)
-	$(DVIPS) $< -o $@
-
-$(PDF_FILE) : $(LATEX_FILE) $(CLASS_FILE)
-	$(LATEXPDF) $(LATEX_FILE) && $(LATEXPDF) $(LATEX_FILE)
-
-print: $(PS_FILE)
-	lpr $(PS_FILE)
-
-clean:
-	$(RM) $(DVI_FILE) $(PS_FILE) $(PDF_FILE) 
-	$(RM) *.aux $(LATEX_FILE:.tex=.log)
-	$(RM) $(LATEX_FILE:.tex=.toc) 
-	$(RM) *~ core
-
-########################################################################################################################
 
