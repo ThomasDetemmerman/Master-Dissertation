@@ -1,5 +1,5 @@
 
-declare -a artefacts=("aux" "log" "lol" "out" "lof" "lot")
+declare -a artefacts=("aux" "log" "lol" "out" "lof" "lot" "toc")
 IFS='
 '
 for artefact in "${artefacts[@]}"; do
