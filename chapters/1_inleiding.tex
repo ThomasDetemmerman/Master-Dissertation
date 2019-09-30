@@ -11,24 +11,25 @@
 \section{Outline of the issue}
 \label{sec:issue}
 
-Society is constantly getting more and more dependent on electronic communication. On any given moment in any given location, an electronic device
-can request to connect a bigger wireless medium. More devices need to be connected like IOT devices starting from small sensors up to self driving cars.
+Society is constantly getting more dependent on electronic communication. On any given moment in any given location, an electronic device
+can request to connect to a bigger wireless medium. More and more devices need to be connected like IOT devices starting from small sensors up to self-driving cars.
 
-Once again it becomes clear why we're on the eve of new generation of cellular communication named 5G. 
+Once again it becomes clear why we're on the eve of a new generation of cellular communication named 5G. 
 This new technology is capable of handling millions of connections every square meter %to do: klopt deze hoeveelheid want lijkt wel heel veel.
-while satisfying only a microsecond delay and a connection up to 10Gbps \cite{bioeffects}.
+while satisfying only a few microseconds of a delay and providing connections up to 10Gbps \cite{bioeffects}.
 
-Also in exceptional and possibly life-threatening situations we rely on the cellular network. For example during the terrorist attacks in Zaventem, a Belgian city.
+Also in exceptional and possibly life-threatening situations, we rely on the cellular network. For example during the terrorist attacks in Zaventem, a Belgian city.
 Mobile network operators saw all telecommunications drastically increasing causing moments of contention. Some operators decided to temporarily exceed the limited exposure in
-order to handel all connections.. \cite{baseZaventem}
+order to handle all connections.. \cite{baseZaventem}
 
-Electromagnetic exposure can however not be threaded lightly. Research show how electromagnetic radiation can cause diverse biological side effects. \cite{bio-effects}
-
+Electromagnetic exposure can however not be threaded lightly. Research shows how electromagnetic radiation can cause diverse biological side effects \cite{bio-effects} and human exposure to these electromagnetic waves should be limited. The ICNIRP suggests a limitation of 61 V/m.  The Brussels limitation is however more restrictive with 6 V/m for all sources.
 \section{Objective}
 \label{sec:objective}
 
-In order to provide a network, even if the existing network is damaged, a deployment tool has been developed by the UGent. The idea is to 
-attach femtocells to UAV's. Such a device is called a \gls{UABS}. The tool calculates where drones need to be positioned in order to connect an active user to the backbone network.
+In order to provide a network, even if the existing network is damaged, a deployment tool has been developed by the UGent. The idea is to attach base stations to unmanned aircraft. Such a device is called an \gls{UABS}. The tool calculates where drones need to be positioned to connect an active user to the backbone network. 
 
+This tool requires two input files. Firstly, a so-called shapefile of the disaster area describing the location of different buildings and their design. Secondly, the time period of the disaster is provided. The tool generates random users in different locations requiring certain bitrates.
 
-todo: wat ga je zelf aanvullen
+Hereafter, the optimal locations for the different \gls{UABS} are calculated. It is assumed that the entire existing network infrastructure down is and all active users, therefore, need to be reconnected.
+
+The tool does not take human exposure into account while generating the network.
