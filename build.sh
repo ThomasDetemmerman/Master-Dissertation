@@ -1,0 +1,23 @@
+
+# init build
+xelatex -shell-escape main
+
+# build bibtex
+bibtex main
+
+# build again
+xelatex -shell-escape main
+
+# just to be sure
+xelatex -shell-escape main
+
+# clean
+declare -a artefacts=("aux" "log" "lol" "out" "lof" "lot" "toc")
+IFS='
+'
+for artefact in "${artefacts[@]}"; do
+    for x in `find . -name "*.${artefact}"`; do rm -r $x; done
+done;
+
+# Open pdf
+open main.pdf
