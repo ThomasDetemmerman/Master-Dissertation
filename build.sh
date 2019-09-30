@@ -3,7 +3,7 @@
 xelatex -shell-escape main
 
 # build bibtex
-bibtex main
+makeglossaries main
 
 # build again
 xelatex -shell-escape main
@@ -12,7 +12,7 @@ xelatex -shell-escape main
 xelatex -shell-escape main
 
 # clean
-declare -a artefacts=("aux" "log" "lol" "out" "lof" "lot" "toc")
+declare -a artefacts=("aux" "log" "lol" "out" "lof" "lot" "toc" "acn" "acr" "alg" "glg" "glo" "gls" "glsdef" "ist")
 IFS='
 '
 for artefact in "${artefacts[@]}"; do
