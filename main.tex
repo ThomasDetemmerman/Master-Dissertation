@@ -103,11 +103,11 @@
 
 
 
-\includepdf{voorblad.pdf}             % Front matter
-\newpage\thispagestyle{empty}\mbox{}  % White page
-\include{chapters/Dankwoord}          % Word of thanks
-\newpage\thispagestyle{empty}\mbox{}  % White page
-\includepdf[pages={-}]{abstract.pdf}  % Extended Abstract
+%\includepdf{voorblad.pdf}             % Front matter
+%\newpage\thispagestyle{empty}\mbox{}  % White page
+%\include{chapters/Dankwoord}          % Word of thanks
+%\newpage\thispagestyle{empty}\mbox{}  % White page
+%\includepdf[pages={-}]{abstract.pdf}  % Extended Abstract
 \tableofcontents                      % Table of Contents
 \listoffigures                        % List of figures
 \listoftables                         % List of tables
@@ -116,14 +116,14 @@
 %
 % Include the main chapters of the thesis below
 %
-\include{chapters/Literatuurstudie}
-\include{chapters/Ra_openstack}
-\include{chapters/Related_work}
-\include{chapters/Overzicht_testomgeving}
-\include{chapters/Monitoring_tools}
-\include{chapters/Evaluation_of_schemes}
-\include{chapters/Conclusion}
+\include{chapters/1_inleiding}
+\include{chapters/2_stateoftheart}
+\include{chapters/3_gerelateerdwerk}
+%\include{chapters/Overzicht_testomgeving}
+%\include{chapters/Monitoring_tools}
+%\include{chapters/Evaluation_of_schemes}
+%\include{chapters/Conclusion}
 \include{chapters/Bibliografie}
-\include{chapters/Bijlagen}
+%\include{chapters/Bijlagen}
 
 \end{document}
