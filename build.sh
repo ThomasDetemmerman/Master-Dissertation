@@ -5,6 +5,9 @@ xelatex -shell-escape main
 # build bibtex
 makeglossaries main
 
+# build bibliography (requires a main.aux which is produced in stap 1)
+bibtex main
+
 # build again
 xelatex -shell-escape main
 
