@@ -21,7 +21,7 @@ EIRP = P_t + G_t - L_t
 \label{eq:eirp}
 \end{equation}
 
-This value is expressed in dBM and requires tree values. $P_t$ is the transmit power (dBm), $G_t$ is the gain (dBi) of the transmitting antenna and $L_t$ stands for it's cable loss (dB) \cite{howToCalculateEIRP}.
+This value is expressed in dBm and requires tree values. $P_t$ is the transmit power (dBm), $G_t$ is the gain (dBi) of the transmitting antenna and $L_t$ stands for it's cable loss (dB) \cite{howToCalculateEIRP}.
 
 \subsection{PL}
 \label{subsec:pl}
@@ -29,6 +29,7 @@ At last, formula \ref{eq:eirp} requires the path loss (dB). In order calculate t
 This is because the Walfish-Ikegami model performs well for femtocell networks in urban areas. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
 The chosen propagation model consists of two formulas depending on whether a free line of sight between the user and the basestation exist or not. Both formulas expect a distance in kilometer. %bron?
 
+input power hangt af van bs tot bs.
 
 \section{Combining exposure}
 \label{sec:combiningexposure}
@@ -44,4 +45,25 @@ E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 \section{Radiation Patterns}
 \label{sec:radiationpatterns}
 
-waarom een ronde en waarom directional?
+When approaching an antenna as an \gls{isotropicradiator}, gain is distributed equally in all directions. This is however only a theoretical antenna. In real life, an antenna's gain is restricted to a limited area.
+
+Therefore, a negative attenuation value should be added to the formula in order to compensate for the generalization of equal distributed gain \cite{AttenuationSectorizationForHSPA, AttenuationSystemLevelanalyssis}.
+
+Am=25dB 
+\begin{equation}
+A(\varphi)=-\min\left[12\left({\varphi\over \varphi_{3dB}}\right),A_{m}\right]
+\end{equation}
+
+SLA=20dB
+\begin{equation}
+ A(\theta)=-\min\left[12\left({\theta\over \theta_{3dB}}\right),SLA_{v}\right]
+\end{equation}
+
+\begin{equation}
+A(\phi, \theta) = -\min\{-[A_{H}(\phi) + A_{V}(\theta)], A_{m}\}
+\end{equation}
+
+The antenna gain is defined as: 
+\begin{equation}
+G(\phi, \theta) = A(\phi, \theta) + G_{ant}
+\end{equation}
