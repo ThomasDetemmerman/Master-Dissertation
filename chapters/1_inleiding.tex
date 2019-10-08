@@ -16,21 +16,30 @@ can request to connect to a bigger wireless medium. More and more devices need t
 
 Once again it becomes clear why we're on the eve of a new generation of cellular communication named 5G. 
 This new technology is capable of handling millions of connections every square meter %to do: klopt deze hoeveelheid want lijkt wel heel veel.
-while satisfying only a few microseconds of a delay and providing connections up to 10Gbps \cite{bioeffects}.
+while satisfying only a few microseconds of a delay and providing connections up to 10Gbps \cite{5GFeatures}.
 
 Also in exceptional and possibly life-threatening situations, we rely on the cellular network. For example during the terrorist attacks in Zaventem, a Belgian city.
 Mobile network operators saw all telecommunications drastically increasing causing moments of contention. Some operators decided to temporarily exceed the limited exposure in
-order to handle all connections.. \cite{baseZaventem}
+order to handle all connections. \cite{baseZaventem}
 
-Electromagnetic exposure can however not be neglected. Research shows how electromagnetic radiation can cause diverse biological side effects \cite{bioeffects} and human exposure to these electromagnetic waves should be limited. The ICNIRP %\gls{ICNIRP} 
+Electromagnetic exposure can however not be neglected. Research shows how electromagnetic radiation can cause diverse biological side effects \cite{bioeffects} and human exposure to these electromagnetic waves should be limited. The \gls{ICNIRP} 
 suggests a limitation of 61 V/m. Also on national levels restrictions have been enforced but differ from location to location. In Brussels for example is a far more restrictive limitation enforced of 6 V/m for all sources \cite{J1, J5}.
 \section{Objective}
 \label{sec:objective}
 
 In order to provide a network, even if the existing network is damaged, a deployment tool has been developed by the UGent. The idea is to attach base stations to unmanned aircraft. Such a device is called an \gls{UABS}. The tool calculates where drones need to be positioned to connect an active user to the backbone network. 
 
+todo: several files, namelijk 4.
 This tool requires two input files. Firstly, a so-called shapefile of the disaster area describing the location of different buildings and their design. Secondly, the time period of the disaster is provided. The tool generates random users in different locations requiring certain bitrates.
 
 Hereafter, the optimal locations for the different \gls{UABS} are calculated. It is assumed that the entire existing network infrastructure down is and all active users, therefore, need to be reconnected.
 
-The tool does not take human exposure into account while generating the network.
+The deployment tool does not calculate the electromagnetic exposure of the different active users in the area.
+
+\section{Structure}
+\label{sec:structure}
+
+The following chapter \ref{chap:stateoftheart} exists of several succesive sections explaining how the electromagnetic exposure of a single human being is calculated. The first section \ref{sec:calculatingexposure}
+explains how the exposure is calculated between a user and a single femtocell. Section \ref{sec:combiningexposure}  defines how to combine all exposures from the different femtocells towards a single users.
+Finaly, section \ref{sec:radiationpatterns} explains how directional antenna's are taken into account.
+

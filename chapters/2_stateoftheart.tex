@@ -1,17 +1,33 @@
 \chapter{State of the art}
-\label{sec:stateoftheart}
+\label{chap:stateoftheart}
  
 \section{Calculating exposure}
 \label{sec:calculatingexposure}
-reeds uitgevoerd onderzoek naar exposure
+To determine the total exposure of a single human being or even of the entire network, the electric-field $\vec{E}$ of a single femtocell $i$ should be calculated.
+The formula to determine this electromagnetic value $E$ (expressed in V/m) for a specific location is given in equation \ref{eq:singleExposure}.
 \begin{equation}
 E_i = 10^{\frac{EIRP - 43.15 + 20*\log(f)- PL}{20}}
-
+\label{eq:singleExposure}
 \end{equation}
-Formula: \cite{J6_originalExposureFormula, J1}
+This formula requires several values to be known. The frequency $f$ on which the tranmitting antenna is operating is expressed in MHz. The other values are explained in \ref{subsec:eirp} and \ref{subsec:pl}.
 
+\subsection{EIRP}
+\label{subsec:eirp}
+A directional antenna can achieve gain by focussing it's input power into certain directions. By doing this, some areas experience a decreased radiation power in order to gain radiation power 
+in the other privileged areas. If a theorical \gls{isotropicradiator} existed, the \gls{EIRP} is the power it would require to achieve the same power level as the actual antenna's main lob. The main lob is the area of the directional antenna experiencing the most gain.
+This \gls{EIRP} value can be calulated as described in eq \ref{eq:eirp}.
+\begin{equation}
+EIRP = P_t + G_t - L_t
+\label{eq:eirp}
+\end{equation}
 
+This value is expressed in dBM and requires tree values. $P_t$ is the transmit power (dBm), $G_t$ is the gain (dBi) of the transmitting antenna and $L_t$ stands for it's cable loss (dB) \cite{howToCalculateEIRP}.
 
+\subsection{PL}
+\label{subsec:pl}
+At last, formula \ref{eq:eirp} requires the path loss (dB). In order calculate the path loss, an appropiate propagation model is required. Several propagation models exists and the tool already uses the Walfish-Ikegami model \cite{J2}.
+This is because the Walfish-Ikegami model performs well for femtocell networks in urban areas. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
+The chosen propagation model consists of two formulas depending on whether a free line of sight between the user and the basestation exist or not. Both formulas expect a distance in kilometer. %bron?
 
 
 \section{Combining exposure}
@@ -21,7 +37,7 @@ manets -> exosure combineren
 E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 \end{equation}
 
-
+test
 
 
 
