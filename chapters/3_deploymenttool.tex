@@ -16,7 +16,7 @@ In the last place, equation \ref{eq:singleexposure} is used and the exposure is 
      \hspace*{\algorithmicindent} \textbf{Input} user, basestation\\
      \hspace*{\algorithmicindent} \textbf{Output} exposure of a user towards a single basestation
 	\begin{algorithmic}[1]
-        \State $PL \gets$ pathloss between user and basestaion
+        \State $PL \gets$ pathloss between user and basestation
         \State $gain \gets$ getBSantennagain + basestation.getInputPower - getBSFeederLoss
 		\State $exposure \gets 10^{( gain -43.15 +  20 * log10(getFrequency - PL) / 20 )}$\\
     \Return $exposure$ 
