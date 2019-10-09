@@ -4,3 +4,59 @@
 Schrijf over hoe die exposure nu toegevoegd is aan de tool. 
 -Wat deed de tool al? Users en femtocell's uniform verdelen op publiek transport, uabs etc
 - dat de exposure pas op het einde wordt berekend nadat het netwerk gemodeleerd is.
+
+Algorithm \ref{alg:getexposure} describes the implementation on how to calculate the exposure of a user towards a single base station as described in formula \ref{eq:singleexposure}.
+Several values need to be known for this to work. In the first place, the path loss is calculated.  However, the different path loss values are already calculated during the network initialization phase and can, therefore, be reused on the condition they were saved. By only calculating the path loss once,  the time complexity of the tool decreases drastically. 
+Afther this, the gain is calculated by adding the antenna gain to the  current input power of the antenna and by substracting the feeder loss as already stated in equation \ref{eq:eirp}.
+In the last place, equation \ref{eq:singleexposure} is used and the exposure is returned.
+
+\begin{algorithm}
+	\caption{getExposure} 
+	\label{alg:getexposure}
+     \hspace*{\algorithmicindent} \textbf{Input} user, basestation\\
+     \hspace*{\algorithmicindent} \textbf{Output} exposure of a user towards a single basestation
+	\begin{algorithmic}[1]
+        \State $PL \gets$ pathloss between user and basestaion
+        \State $gain \gets$ getBSantennagain + basestation.getInputPower - getBSFeederLoss
+		\State $exposure \gets 10^{( gain -43.15 +  20 * log10(getFrequency - PL) / 20 )}$\\
+    \Return $exposure$ 
+	\end{algorithmic} 
+\end{algorithm}
+
+To combine all exposures for a specific user, equation \ref{eq:totalexposure} is translated into algortim \ref{alg:gettotalexposure}.
+Finaly, this needs to be repeaded for every users. Algorithm \ref{alg:main} is used to iterate over each user and each simulation and saves the computed value
+into the appropriate attribute.
+
+\begin{algorithm}
+	\caption{getTotalExposure} 
+	\label{alg:gettotalexposure}
+     \hspace*{\algorithmicindent} \textbf{Input} user, basestations[]\\
+     \hspace*{\algorithmicindent} \textbf{Output} combine all exposures for the given user
+	\begin{algorithmic}[1]
+        \State $E_{tot}\gets 0.0$
+		\ForAll {basestation  in  basestations}
+            \State $E \gets$ getExposure(user, basestation)
+            \State $E_{tot}\gets E_{tot} + E^2$	
+		\EndFor
+        \State $E_{tot}\gets sqrt(E_{tot})$\\
+    \Return $E_{tot}$ 
+	\end{algorithmic} 
+\end{algorithm}
+
+\begin{algorithm}
+	\caption{Calculate and save the total exposure for each user in each simulation} 
+	\label{alg:main}
+     \hspace*{\algorithmicindent} \textbf{Input} users[][], basestations[][]\\
+     \hspace*{\algorithmicindent} \textbf{Output} /
+	\begin{algorithmic}[1]
+		\For {$simulation=1,2,\ldots basestations$}
+			\ForAll {user  in  users[simulation]}
+				\State $E_{tot} \gets $ getTotalExposure(user,basestations[simulation])
+                \State user.totalExposure $\gets E_{tot}$
+			\EndFor
+		\EndFor
+	\end{algorithmic} 
+\end{algorithm}
+
+
+

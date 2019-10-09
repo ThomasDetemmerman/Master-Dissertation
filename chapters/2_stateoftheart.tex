@@ -4,10 +4,10 @@
 \section{Calculating exposure}
 \label{sec:calculatingexposure}
 To determine the total exposure of a single human being or even of the entire network, the electric-field $\vec{E}$ of a single femtocell $i$ should be calculated.
-The formula to determine this electromagnetic value $E$ (expressed in V/m) for a specific location is given in equation \ref{eq:singleExposure}.
+The formula to determine this electromagnetic value $E$ (expressed in V/m) for a specific location is given in equation \ref{eq:singleexposure}.
 \begin{equation}
 E_i = 10^{\frac{EIRP - 43.15 + 20*\log(f)- PL}{20}}
-\label{eq:singleExposure}
+\label{eq:singleexposure}
 \end{equation}
 This formula requires several values to be known. The frequency $f$ on which the tranmitting antenna is operating is expressed in MHz. The other values are explained in \ref{subsec:eirp} and \ref{subsec:pl}.
 
@@ -36,34 +36,37 @@ input power hangt af van bs tot bs.
 manets -> exosure combineren
 \begin{equation}
 E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
+\label{eq:totalexposure}
 \end{equation}
 
 
 
 
 
-\section{Radiation Patterns}
-\label{sec:radiationpatterns}
+%\section{Radiation Patterns}
+%\label{sec:radiationpatterns}
+%When approaching an antenna as an \gls{isotropicradiator}, gain is distributed equally in all directions. This is however only a theoretical antenna. In real life, an antenna's gain is restricted to a limited area.
+%Therefore, a negative attenuation value should be added to the formula in order to compensate for the generalization of equal distributed gain \cite{AttenuationSectorizationForHSPA, AttenuationSystemLevelanalyssis}.
+%Am=25dB 
+%\begin{equation}
+%A(\varphi)=-\min\left[12\left({\varphi\over \varphi_{3dB}}\right),A_{m}\right]
+%\end{equation}
 
-When approaching an antenna as an \gls{isotropicradiator}, gain is distributed equally in all directions. This is however only a theoretical antenna. In real life, an antenna's gain is restricted to a limited area.
+%SLA=20dB
+%\begin{equation}
+% A(\theta)=-\min\left[12\left({\theta\over \theta_{3dB}}\right),SLA_{v}\right]
+%\end{equation}
 
-Therefore, a negative attenuation value should be added to the formula in order to compensate for the generalization of equal distributed gain \cite{AttenuationSectorizationForHSPA, AttenuationSystemLevelanalyssis}.
+%\begin{equation}
+%A(\phi, \theta) = -\min\{-[A_{H}(\phi) + A_{V}(\theta)], A_{m}\}
+%\end{equation}
 
-Am=25dB 
-\begin{equation}
-A(\varphi)=-\min\left[12\left({\varphi\over \varphi_{3dB}}\right),A_{m}\right]
-\end{equation}
+%The antenna gain is defined as: 
+%\begin{equation}
+%G(\phi, \theta) = A(\phi, \theta) + G_{ant}
+%\end{equation}
 
-SLA=20dB
-\begin{equation}
- A(\theta)=-\min\left[12\left({\theta\over \theta_{3dB}}\right),SLA_{v}\right]
-\end{equation}
-
-\begin{equation}
-A(\phi, \theta) = -\min\{-[A_{H}(\phi) + A_{V}(\theta)], A_{m}\}
-\end{equation}
-
-The antenna gain is defined as: 
-\begin{equation}
-G(\phi, \theta) = A(\phi, \theta) + G_{ant}
-\end{equation}
+%$\omega(i,k)= \arctan \left({h(i)\over d(i,k)}\right)$
+%\begin{equation}
+%\phi(i,k)=\omega(i,k)-\varphi(i)}
+%\end{equation}
