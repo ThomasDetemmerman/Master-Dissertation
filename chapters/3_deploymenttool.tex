@@ -58,5 +58,36 @@ into the appropriate attribute.
 	\end{algorithmic} 
 \end{algorithm}
 
+To provide a summary of how the network is performing on electromagnetic exposure, a weighted average is calculated. This is implemented in algorithm \ref{alg:getglobaluserexposure} which
+takes all users for a specified simulation and two weighting factors $w_1$ and $w_2$. They respectively correspond to the 50th percentile and 95th of the ordered users' exposure. The two weights get equal importance of 0.5. This is because also higher values should be taken into account and not compensated with very low values. The formula will only use electric field strengths where users are active as opposed to \cite{J1} where the area is divided into grids and the exposure is calculated for every gridpoint. The reasoning behind this is that the goal of this master dissertation is to calculate the average exposure of the user and not of the entire area.
+
+The formula first calculates the index where the mean value and the 95th percentile should be located. Afterwards, the exposure is calculated using interpolation if necessary.
 
 
+
+\begin{algorithm}
+	\caption{Weighted average of the median  and the $95th$ percentile electric-field strenght} 
+	\label{alg:getglobaluserexposure}
+     \hspace*{\algorithmicindent} \textbf{Input} users[], $w_1$, $w_2$\\
+     \hspace*{\algorithmicindent} \textbf{Output} globalUserExpsoure
+	\begin{algorithmic}[1]
+		\State Sort users by pathloss
+		
+ 		\Comment{E50}
+		\State $meanIndex \gets \frac{users.length}{2}$
+		\If{users.length \% 2 == 0}
+			\State $E_{50} \gets users[meanIndex].getExposure$ 
+		\Else
+			\State $E_{50} \gets \frac{users[ \left \lceil{meanIndex}\right \rceil ] + users[ \left \lfloor{meanIndex}\right \rfloor ]}{2}$ 
+		\EndIf
+
+		\Comment{E95 with interpolation}
+		\State $ X \gets users.length * 0.95$ 
+		\State $ X_1 \gets \left \lfloor{x}\right \rfloor $ 
+		\State $ X_2 \gets \left \lceil{x}\right \rceil $ 
+		\State $ Y_1 \gets users[X1].getExposure$ 
+		\State $ Y_2 \gets users[Y2].getExposure$ 
+		\State $E_{95} \gets  Y_1 + \left(\frac{(X - X_1)}{(X_2 - X_1)}* (Y_2 - Y_1)\right)$\\
+		\Return $\frac{(w_1* E_{50})+ (w_2 * E_{95})}{w_1 + w_2}$
+	\end{algorithmic} 
+\end{algorithm}
