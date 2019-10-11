@@ -18,7 +18,7 @@ In the last place, equation \ref{eq:singleexposure} is used and the exposure is 
 	\begin{algorithmic}[1]
         \State $PL \gets$ pathloss between user and basestation
         \State $gain \gets$ getBSantennagain + basestation.getInputPower - getBSFeederLoss
-		\State $exposure \gets 10^{( gain -43.15 +  20 * log10(getFrequency - PL) / 20 )}$\\
+		\State $exposure \gets 10^{\frac{EIRP - 43.15 + 20*\log(f)- PL}{20}}$\\
     \Return $exposure$ 
 	\end{algorithmic} 
 \end{algorithm}
@@ -31,7 +31,7 @@ into the appropriate attribute.
 	\caption{getTotalExposure} 
 	\label{alg:gettotalexposure}
      \hspace*{\algorithmicindent} \textbf{Input} user, basestations[]\\
-     \hspace*{\algorithmicindent} \textbf{Output} combine all exposures for the given user
+     \hspace*{\algorithmicindent} \textbf{Output} combined exposures from each basestation for a given user
 	\begin{algorithmic}[1]
         \State $E_{tot}\gets 0.0$
 		\ForAll {basestation  in  basestations}
@@ -63,15 +63,13 @@ takes all users for a specified simulation and two weighting factors $w_1$ and $
 
 The formula first calculates the index where the mean value and the 95th percentile should be located. Afterwards, the exposure is calculated using interpolation if necessary.
 
-
-
 \begin{algorithm}
-	\caption{Weighted average of the median  and the $95th$ percentile electric-field strenght} 
+	\caption{globalUserExpsoure} 
 	\label{alg:getglobaluserexposure}
      \hspace*{\algorithmicindent} \textbf{Input} users[], $w_1$, $w_2$\\
-     \hspace*{\algorithmicindent} \textbf{Output} globalUserExpsoure
+     \hspace*{\algorithmicindent} \textbf{Output} Weighted average of the median  and the $95th$ percentile electric-field strenght
 	\begin{algorithmic}[1]
-		\State Sort users by pathloss
+		\State Sort users by $E_{tot}$
 		
  		\Comment{E50}
 		\State $meanIndex \gets \frac{users.length}{2}$
@@ -85,8 +83,8 @@ The formula first calculates the index where the mean value and the 95th percent
 		\State $ X \gets users.length * 0.95$ 
 		\State $ X_1 \gets \left \lfloor{x}\right \rfloor $ 
 		\State $ X_2 \gets \left \lceil{x}\right \rceil $ 
-		\State $ Y_1 \gets users[X1].getExposure$ 
-		\State $ Y_2 \gets users[Y2].getExposure$ 
+		\State $ Y_1 \gets users[X_1].getExposure$ 
+		\State $ Y_2 \gets users[X_2].getExposure$ 
 		\State $E_{95} \gets  Y_1 + \left(\frac{(X - X_1)}{(X_2 - X_1)}* (Y_2 - Y_1)\right)$\\
 		\Return $\frac{(w_1* E_{50})+ (w_2 * E_{95})}{w_1 + w_2}$
 	\end{algorithmic} 
