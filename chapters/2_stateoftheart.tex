@@ -1,7 +1,8 @@
 \chapter{State of the art}
 \label{chap:stateoftheart}
  
-\section{Calculating exposure}
+\section{Calculating downlink exposure}
+\subsection{Calculating exposure towards a single femtocell}
 \label{sec:calculatingexposure}
 To determine the total exposure of a single human being or even of the entire network, the electric-field $\vec{E}$ of a single femtocell $i$ should be calculated.
 The formula to determine this electromagnetic value $E$ (expressed in V/m) for a specific location is given in equation \ref{eq:singleexposure}.
@@ -11,7 +12,7 @@ E_i = 10^{\frac{EIRP - 43.15 + 20*\log(f)- PL}{20}}
 \end{equation}
 This formula requires several values to be known. The frequency $f$ on which the tranmitting antenna is operating is expressed in MHz. The other values are explained in \ref{subsec:eirp} and \ref{subsec:pl}.
 
-\subsection{EIRP}
+\subsubsection{EIRP}
 \label{subsec:eirp}
 A directional antenna can achieve gain by focussing it's input power into certain directions. By doing this, some areas experience a decreased radiation power in order to gain radiation power 
 in the other privileged areas. If a theorical \gls{isotropicradiator} existed, the \gls{EIRP} is the power it would require to achieve the same power level as the actual antenna's main lob. The main lob is the area of the directional antenna experiencing the most gain.
@@ -23,7 +24,7 @@ EIRP = P_t + G_t - L_t
 
 This value is expressed in dBm and requires tree values. $P_t$ is the transmit power (dBm), $G_t$ is the gain (dBi) of the transmitting antenna and $L_t$ stands for it's cable loss (dB) \cite{howToCalculateEIRP}.
 
-\subsection{PL}
+\subsubsection{PL}
 \label{subsec:pl}
 At last, formula \ref{eq:eirp} requires the path loss (dB). In order calculate the path loss, an appropiate propagation model is required. Several propagation models exists and the tool already uses the Walfish-Ikegami model \cite{J2}.
 This is because the Walfish-Ikegami model performs well for femtocell networks in urban areas. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
@@ -31,7 +32,7 @@ The chosen propagation model consists of two formulas depending on whether a fre
 
 input power hangt af van bs tot bs.
 
-\section{Combining exposure}
+\subsection{Combining exposure}
 \label{sec:combiningexposure}
 manets -> exosure combineren
 \begin{equation}
@@ -69,3 +70,77 @@ E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 %\begin{equation}
 %\phi(i,k)=\omega(i,k)-\varphi(i)}
 %\end{equation}
+
+
+\section{Calculating uplink exposure}
+\subsection{Specific absoption rate}
+
+todo: schrijf dat dit afhankelijk is van de possitie https://ieeexplore.ieee.org/abstract/document/1634754
+Downlink traffic is created by modulation of frequencies caused by a base station. However, telecommunications is not a one-way street. A user's mobile phone also creates uplink traffic and therefore also creating electromagnetic fields. A mobile device induces two types of exposure: local and whole-body. Whole-body exposure can be neglected compared to the much higher local exposure which will be indicated as $SAR_{10g}$ from now on \cite{j10.1.1_gati2010duality}. 
+
+The $SAR_{10g}$ values in datasheets of mobile devices are worst cases meaning that the value is measured when the phone is transmitting at maximum power. This is an understandable decision but won't result in a realistic scenario since modern cellular networks use power control preventing over radiation of a nearby device.
+
+ todo: as your mobile does not use more energy than is necessary to establish a connection with the network
+
+To compensate for the overestimation of $SAR^{max}_{10g}$, a realistic $SAR_{10g}$ is calculated based on the transmitting power of device. Equation \ref{eq:calculatesar} is used to calculate this value with $P_{tx}$ the actual used power to communicate to the connected base station and 
+$P^{max}_{tx}$ the power used by the mobile device to achieve ${SAR}^{max}_{10g}$.
+
+todo: possitionering van de gsm beinvloed sar daar is ook ugent paper over maar daar gaan we hier niet op in.
+todo: schrijf dat max 2 W/kg is.
+\begin{equation}
+{SAR}_{10g} = \frac{P_{tx}}{P^{max}_{tx}} * {SAR}^{max}_{10g}
+\label{eq:calculatesar}
+\end{equation}
+
+The SAR value is dependent from mobile device to mobile device. An average is calculated based on 3516 different phones from various brands using an up-to-date German database \cite{SARDatabase}.
+
+TODO: paper J10.1.1 schrijft over dat ze de mediaan gebruiken als data MAAR ze raporteren wel de avg. Wat is het verschil?
+
+When the phone is possitionned at the ear, an average of 0.7 $W/kg$ is found with a standard deviation of 0.25 $W/kg$ which are very similar results as in Ref. \cite{j10.1.1_gati2010duality}.
+%todo: schrijven dat het enigste verschil een std van 0.27 is?
+%todo: j10.1.1 schrijft door de std van 0.25 dat er een onzekerheid van 40% is.
+%todo: J10 en J10.1 rapoteert een sar max van 0.476. Update in het report is het een Nokia terwijl het bij ons voor de gemiddelde gsm is.
+
+\definecolor{hous}{HTML}{3065c1}
+\begin{tikzpicture}
+\begin{axis}[
+        ybar=-1cm,
+        axis x line*=bottom,
+        axis y line*=left,
+         bar width=1cm,
+        height=8cm, width=\textwidth,
+        ylabel={Percentage of mobile phones},
+        symbolic x coords={0.0--0.2,0.2--0.4,0.4--0.6,0.6--0.8,0.8--1.0,1.0--1.2,1.2--1.4,1.4--1.6,1.6--1.8,1.8--2.0},
+        x tick label style={rotate=45, anchor=east, align=left},
+        nodes near coords,
+        nodes near coords align={vertical}      
+        ]
+        \addplot[hous,fill]  coordinates {(0.0--0.2,2)};
+        \addplot[hous,fill]  coordinates {(0.2--0.4,16)};
+        \addplot[hous,fill]  coordinates {(0.4--0.6,23)};
+        \addplot[hous,fill]  coordinates {(0.6--0.8,24)};
+        \addplot[hous,fill]  coordinates {(0.8--1.0,19)};
+        \addplot[hous,fill]  coordinates {(1.0--1.2,8)};
+        \addplot[hous,fill]  coordinates {(1.2--1.4,5)};
+        \addplot[hous,fill]  coordinates {(1.4--1.6,2)};
+        \addplot[hous,fill]  coordinates {(1.6--1.8,1)};
+        \addplot[hous,fill]  coordinates {(1.8--2.0,0)};
+    \end{axis}
+\end{tikzpicture}
+todo: xlabel, zeggen dat bovengrens niet inbegrepen is en titel geven.
+
+
+The $P^{max}_{Tx}$ is for LTE and UMTS 23 Dbm \cite{J11_maxTpxUE, J10_RDP}.
+
+%todo: beslis of je mobile device of UE gaat gebruiken.
+To predict the effective transmitted power by the \gls{UE}, the folowing equation is used:
+
+\begin{equation}
+P_{Tx} = P_{sens} + PL
+\label{eq:calculatesar}
+\end{equation}
+
+\begin{equation}
+P_{sens} = P_{noise} + SNR - G + IL + NF + IF
+\label{eq:calculatepsens}
+\end{equation}
