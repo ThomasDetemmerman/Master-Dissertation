@@ -1,5 +1,7 @@
 \chapter{State of the art}
 \label{chap:stateoftheart}
+
+todo: Downlink traffic is created by modulation of frequencies caused by a base station. However, 
  
 \section{Calculating downlink exposure}
 \subsection{Calculating exposure towards a single femtocell}
@@ -75,28 +77,27 @@ E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 \section{Calculating uplink exposure}
 \subsection{Specific absoption rate}
 
-todo: schrijf dat dit afhankelijk is van de possitie https://ieeexplore.ieee.org/abstract/document/1634754
-Downlink traffic is created by modulation of frequencies caused by a base station. However, telecommunications is not a one-way street. A user's mobile phone also creates uplink traffic and therefore also creating electromagnetic fields. A mobile device induces two types of exposure: local and whole-body. Whole-body exposure can be neglected compared to the much higher local exposure which will be indicated as $SAR_{10g}$ from now on \cite{j10.1.1_gati2010duality}. 
+Human exposure caused by downlink traffic is a not negligible asset. However, telecommunications is not a one-way street. When connecting to a UMTS network, also uplink data caused by the \gls{UE} should be considered.
 
-The $SAR_{10g}$ values in datasheets of mobile devices are worst cases meaning that the value is measured when the phone is transmitting at maximum power. This is an understandable decision but won't result in a realistic scenario since modern cellular networks use power control preventing over radiation of a nearby device.
+\gls{UE} generates, just like femtocells, electromagnetic waves to which a user is exposed. A part of this radiation goes to the femtocell, another part enters the body of its user. How much electormagnic strenghts enters the body is measured with 10g biological tissue which represents the human skin and will be expressed as $SAR_{10g}$. 
 
- todo: as your mobile does not use more energy than is necessary to establish a connection with the network
+A mobile device induces two types of exposure: local and whole-body. Whole-body exposure can be neglected compared to the much higher local exposure\cite{j10.1.1_gati2010duality}.  From now on, $SAR_{10g}$ implicitly means local exposure.
 
-To compensate for the overestimation of $SAR^{max}_{10g}$, a realistic $SAR_{10g}$ is calculated based on the transmitting power of device. Equation \ref{eq:calculatesar} is used to calculate this value with $P_{tx}$ the actual used power to communicate to the connected base station and 
-$P^{max}_{tx}$ the power used by the mobile device to achieve ${SAR}^{max}_{10g}$.
+\gls{IEC} defines in IEC:62209-2 a maximum for a 10g tissue $SAR^{max}_{10g}$ as 2 W/kg and a maximum for a 1g tissue $SAR^{max}_{1g}$ as 1.6 W/kg. Most countries, including Belgium, enforce the 10g model and will, therefore, be the point of reference for this master dissertation.
 
-todo: possitionering van de gsm beinvloed sar daar is ook ugent paper over maar daar gaan we hier niet op in.
-todo: schrijf dat max 2 W/kg is.
+The $SAR_{10g}$ values are phone dependent. The reported values by companies of mobile devices are worst-case scenarios meaning that the values are measured when the phone is transmitting at maximum power. This is an understandable decision but won't result in a realistic scenario since modern cellular networks use power control mechanisms to prevent over radiation of a nearby device. \gls{UE} will therefore never use more energy than necessary to maintain a connection.
+
+To compensate for this overestimation, the actual $SAR_{10g}$ of each user will be predicted. These will, however, remain an estimation since the position of the phone related too the head differs from user to user. For example, by holding the phone differently, a hand can absorb more or less electromagnetic radiation. TODO: bron.
+
 \begin{equation}
 {SAR}_{10g} = \frac{P_{tx}}{P^{max}_{tx}} * {SAR}^{max}_{10g}
 \label{eq:calculatesar}
 \end{equation}
 
-The SAR value is dependent from mobile device to mobile device. An average is calculated based on 3516 different phones from various brands using an up-to-date German database \cite{SARDatabase}.
+Equation \ref{eq:calculatesar} is used to predict the actual $SAR_{10g}$  of a certain user. The SAR value is different for each mobile device. An average is calculated based on 3516 different phones from various brands using an up-to-date German database \cite{SARDatabase}.
+When the phone is positioned at the ear, an average of 0.7 $W/kg$ is found with a standard deviation of 0.25 $W/kg$ which are very similar results as in Ref. \cite{j10.1.1_gati2010duality}. The median of 0.67 is used.
 
-TODO: paper J10.1.1 schrijft over dat ze de mediaan gebruiken als data MAAR ze raporteren wel de avg. Wat is het verschil?
 
-When the phone is possitionned at the ear, an average of 0.7 $W/kg$ is found with a standard deviation of 0.25 $W/kg$ which are very similar results as in Ref. \cite{j10.1.1_gati2010duality}.
 %todo: schrijven dat het enigste verschil een std van 0.27 is?
 %todo: j10.1.1 schrijft door de std van 0.25 dat er een onzekerheid van 40% is.
 %todo: J10 en J10.1 rapoteert een sar max van 0.476. Update in het report is het een Nokia terwijl het bij ons voor de gemiddelde gsm is.
