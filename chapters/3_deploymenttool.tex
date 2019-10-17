@@ -1,6 +1,9 @@
 \chapter{Deployment tool}
 \label{chap:deploymenttool}
 
+\section{Implementation of downlink exposure}
+\label{sec:downlinkimplementation}
+
 Schrijf over hoe die exposure nu toegevoegd is aan de tool. 
 -Wat deed de tool al? Users en femtocell's uniform verdelen op publiek transport, uabs etc
 - dat de exposure pas op het einde wordt berekend nadat het netwerk gemodeleerd is.
@@ -86,5 +89,54 @@ The formula first calculates the index where the mean value and the 95th percent
 		\State $ Y_2 \gets users[X_2].exposure$ 
 		\State $E_{95} \gets  Y_1 + \left(\frac{(X - X_1)}{(X_2 - X_1)}* (Y_2 - Y_1)\right)$\\
 		\Return $\frac{(w_1* E_{50})+ (w_2 * E_{95})}{w_1 + w_2}$
+	\end{algorithmic} 
+\end{algorithm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% SECTIOIN %%%%%%%%%%%%%%%%%%%%%%%%
+\section{Implementation of uplink exposure}
+\label{sec:uplinkexposure}
+
+\begin{algorithm}
+	\caption{getSar} 
+	\label{alg:getsar}
+     \hspace*{\algorithmicindent} \textbf{Input} user \\
+     \hspace*{\algorithmicindent} \textbf{Output} $SAR_{10g}$
+	\begin{algorithmic}[1]
+		\State  const $SAR^{max} \gets 0.67$
+		\State  const $TX^{max}_{watt} \gets dBm2W(23)$
+		\vspace{4 mm}
+		\State $Tx_{watt} \gets dBm2W(getActualTransmitPower(user)) $		
+		\State $ SAR_{10g} \gets \frac{Tx_{watt}}{TX^{max}_{watt}} * SAR^{max}$
+		\Return $ SAR_{10g}$
+	\end{algorithmic} 
+\end{algorithm}
+
+\begin{algorithm}
+	\caption{getActualTransmitPower} 
+	\label{alg:getActualTransmitPower}
+     \hspace*{\algorithmicindent} \textbf{Input} user \\
+     \hspace*{\algorithmicindent} \textbf{Output} The actual used power for transmition in dBm.
+	\begin{algorithmic}[1]
+		\State const $Tx^{max}_{dBm} \gets 23$
+		\vspace{4 mm}
+		\State $ Tx_{dBm} \gets getFemtocellReceiverSensitivity(user) + user.getPathLoss()$ \\
+		\Return $min(Tx_{dBm}, Tx^{max}_{dBm})$ 
+	\end{algorithmic} 
+\end{algorithm}
+
+
+\begin{algorithm}
+	\caption{getFemtocellReceiverSensitivity} 
+	\label{alg:getFemtocellReceiverSensitivity}
+     \hspace*{\algorithmicindent} \textbf{Input} user \\
+     \hspace*{\algorithmicindent} \textbf{Output} The receiver sensitivity of the femtocell in dBm
+	\begin{algorithmic}[1]
+		\State $SNR \gets user.getRxSNR$
+		\State $gain \gets technology.getMSantennagain$
+		\State $implementationLoss \gets technology.getImplementationLoss$
+		\State $interferenceMargin \gets technology.getCellInterferenceMargin$
+		\State $noiseFigure \gets technology.getNoiseFigure$
+		\State $thermalNoise \gets -108.1$	\\
+		\Return  $thermalNoise + SNR - gain + implementationLoss + noiseFigure + interferenceMargin$
 	\end{algorithmic} 
 \end{algorithm}
