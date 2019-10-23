@@ -21,7 +21,7 @@ In the last place, equation \ref{eq:singleexposure} is used and the exposure is 
 	\begin{algorithmic}[1]
         \State $PL \gets$ path loss between user and basestation
         \State $gain \gets$ getBSantennagain + basestation.getInputPower - getBSFeederLoss
-		\State $exposure \gets 10^{\frac{EIRP - 43.15 + 20*\log(f)- PL}{20}}$\\
+		\State $exposure \gets 10^{\frac{EIRP - 43.15 + 20*\log(f)- PL}{20}}$ \\
     \Return $exposure$ 
 	\end{algorithmic} 
 \end{algorithm}
@@ -96,6 +96,16 @@ The formula first calculates the index where the mean value and the 95th percent
 \section{Implementation of uplink exposure}
 \label{sec:uplinkexposure}
 
+Analogously to the \ref{sec:downlinkimplementation}, the uplink calculator will determine the uplink exposure and save in the appropriate user object. The calculator starts with iterating over each user in each simulation and call's the getSar() function.
+
+\ref{eq:sar10g} is implemented in \ref{algo:getsar}. The function requires a user as input for which the uplink exposure should be calculated and two constant values which should be declared once. The maximal allowed $SAR_{10g}$ as discussed in \ref{sec:sar} and maximal permitted transmission power of 23 dbm.
+
+Also, the actual transmitting power of the \gls{UE} needs to be calculated using the getActualTransmitPower function. 
+
+Both $Tx_{watt}$ and $TX^{max}_{watt}$ are converted to watt. This is because the decibel variant can range from -57 dBm to 23 dBm \cite{J10_RDPgit}. Converting to Watt results in a solely positive fraction. 
+
+After having multiplied with the maximum allowable \gls{SAR}, the actual uplink exposure is returned.
+
 \begin{algorithm}
 	\caption{getSar} 
 	\label{alg:getsar}
@@ -106,10 +116,14 @@ The formula first calculates the index where the mean value and the 95th percent
 		\State  const $TX^{max}_{watt} \gets dBm2W(23)$
 		\vspace{4 mm}
 		\State $Tx_{watt} \gets dBm2W(getActualTransmitPower(user)) $		
-		\State $ SAR_{10g} \gets \frac{Tx_{watt}}{TX^{max}_{watt}} * SAR^{max}$
+		\State $ SAR_{10g} \gets \frac{Tx_{watt}}{TX^{max}_{watt}} * SAR^{max}$ \\
 		\Return $ SAR_{10g}$
 	\end{algorithmic} 
 \end{algorithm}
+
+
+The implementation for getActualTransmitPower is described in \ref{alg:getActualTransmitPower}. This function requires a user as a parameter and will calculate the real used power for transmission in dBm.
+Once again, a global constant value is defined describing the maximum allowable transmitting power $Tx^{max}_{dBm}$ expressed in dBm. The predicted transmitting power is achieved by subtracting the path loss between the user and the affective femtocell with the receiver sensitivity of the femtocell. However, this value can't be higher then  $Tx^{max}_{dBm}$ , if this is the case the maximum allowable transmitting power is returned instead.
 
 \begin{algorithm}
 	\caption{getActualTransmitPower} 
@@ -119,24 +133,7 @@ The formula first calculates the index where the mean value and the 95th percent
 	\begin{algorithmic}[1]
 		\State const $Tx^{max}_{dBm} \gets 23$
 		\vspace{4 mm}
-		\State $ Tx_{dBm} \gets getFemtocellReceiverSensitivity(user) + user.getPathLoss()$ \\
+		\State $ Tx_{dBm} \gets user.getPathLoss() - technology.getFemtocellReceiverSensitivity(user.getRxSNR)$ \\
 		\Return $min(Tx_{dBm}, Tx^{max}_{dBm})$ 
-	\end{algorithmic} 
-\end{algorithm}
-
-
-\begin{algorithm}
-	\caption{getFemtocellReceiverSensitivity} 
-	\label{alg:getFemtocellReceiverSensitivity}
-     \hspace*{\algorithmicindent} \textbf{Input} user \\
-     \hspace*{\algorithmicindent} \textbf{Output} The receiver sensitivity of the femtocell in dBm
-	\begin{algorithmic}[1]
-		\State $SNR \gets user.getRxSNR$
-		\State $gain \gets technology.getMSantennagain$
-		\State $implementationLoss \gets technology.getImplementationLoss$
-		\State $interferenceMargin \gets technology.getCellInterferenceMargin$
-		\State $noiseFigure \gets technology.getNoiseFigure$
-		\State $thermalNoise \gets -108.1$	\\
-		\Return  $thermalNoise + SNR - gain + implementationLoss + noiseFigure + interferenceMargin$
 	\end{algorithmic} 
 \end{algorithm}

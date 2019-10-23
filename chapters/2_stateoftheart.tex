@@ -76,10 +76,11 @@ E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 
 \section{Calculating uplink exposure}
 \subsection{Specific absoption rate}
+\label{sec:sar}
 
 Human exposure caused by downlink traffic is a not negligible asset. However, telecommunications is not a one-way street. When connecting to a UMTS network, also uplink data caused by the \gls{UE} should be considered.
 
-\gls{UE} generates, just like femtocells, electromagnetic waves to which a user is exposed. A part of this radiation goes to the femtocell, another part enters the body of its user. How much electormagnic strenghts enters the body is measured with 10g biological tissue which represents the human skin and will be expressed as $SAR_{10g}$. 
+\gls{UE} generates, just like femtocells, electromagnetic waves to which a user is exposed. A part of this radiation goes to the femtocell, another part enters the body of its user. How much electormagnic strenghts enters the body is defined as \gls{SAR} and is measured with 10g biological tissue which represents the human skin. This value will from now on be expressed as $SAR_{10g}$. 
 
 A mobile device induces two types of exposure: local and whole-body. Whole-body exposure can be neglected compared to the much higher local exposure\cite{j10.1.1_gati2010duality}.  From now on, $SAR_{10g}$ implicitly means local exposure.
 
@@ -94,7 +95,7 @@ To compensate for this overestimation, the actual $SAR_{10g}$ of each user will 
 \label{eq:calculatesar}
 \end{equation}
 
-Equation \ref{eq:calculatesar} is used to predict the actual $SAR_{10g}$  of a certain user. The SAR value is different for each mobile device. An average is calculated based on 3516 different phones from various brands using an up-to-date German database \cite{SARDatabase}.
+Equation \ref{eq:calculatesar} is used to predict the actual $SAR_{10g}$  of a certain user. The \gls{SAR} value is different for each mobile device. An average is calculated based on 3516 different phones from various brands using an up-to-date German database \cite{SARDatabase}.
 When the phone is positioned at the ear, an average of 0.7 $W/kg$ is found with a standard deviation of 0.25 $W/kg$ which are very similar results as in Ref. \cite{j10.1.1_gati2010duality}. The median of 0.67 is used.
 
 
