@@ -96,7 +96,7 @@ The formula first calculates the index where the mean value and the 95th percent
 \section{Implementation of uplink exposure}
 \label{sec:uplinkexposure}
 
-Analogously to the \ref{sec:downlinkimplementation}, the uplink calculator will determine the uplink exposure and save in the appropriate user object. The calculator starts with iterating over each user in each simulation and call's the getSar() function.
+Analogously to the \ref{sec:downlinkimplementation}, the uplink calculator will determine the uplink exposure and save in the appropriate user object. The calculator starts with iterating over each user in each simulation and calls the getSar() function.
 
 \ref{eq:sar10g} is implemented in \ref{algo:getsar}. The function requires a user as input for which the uplink exposure should be calculated and two constant values which should be declared once. The maximal allowed $SAR_{10g}$ as discussed in \ref{sec:sar} and maximal permitted transmission power of 23 dbm.
 
@@ -133,8 +133,7 @@ Once again, a global constant value is defined describing the maximum allowable 
 	\begin{algorithmic}[1]
 		\State const $Tx^{max}_{dBm} \gets 23$
 		\vspace{4 mm}
-<<<<<<< HEAD
-		\State $ Tx_{dBm} \gets user.getPathLoss() -  technology.getFemtocellReceiverSensitivity(user)$ \\
+		\State $ Tx_{dBm} \gets user.getPathLoss() - technology.getFemtocellReceiverSensitivity(user.getRxSNR)$ \\
 		\Return $min(Tx_{dBm}, Tx^{max}_{dBm})$ 
 	\end{algorithmic} 
 \end{algorithm}
@@ -155,9 +154,4 @@ Once again, a global constant value is defined describing the maximum allowable 
 %		\Return  $thermalNoise + SNR - gain + implementationLoss + noiseFigure + interferenceMargin$
 %	\end{algorithmic} 
 %\end{algorithm}
-=======
-		\State $ Tx_{dBm} \gets user.getPathLoss() - technology.getFemtocellReceiverSensitivity(user.getRxSNR)$ \\
-		\Return $min(Tx_{dBm}, Tx^{max}_{dBm})$ 
-	\end{algorithmic} 
-\end{algorithm}
->>>>>>> b8079ee160f4bba6151ab6d523edec2647e19ce4
+
