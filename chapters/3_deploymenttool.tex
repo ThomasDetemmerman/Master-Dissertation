@@ -113,30 +113,30 @@ The formula first calculates the index where the mean value and the 95th percent
 
 \begin{algorithm}
 	\caption{getActualTransmitPower} 
-	\label{alg:getActualTransmitPower}
+	\label{alg:getActualTransmitPowergit}
      \hspace*{\algorithmicindent} \textbf{Input} user \\
      \hspace*{\algorithmicindent} \textbf{Output} The actual used power for transmition in dBm.
 	\begin{algorithmic}[1]
 		\State const $Tx^{max}_{dBm} \gets 23$
 		\vspace{4 mm}
-		\State $ Tx_{dBm} \gets getFemtocellReceiverSensitivity(user) + user.getPathLoss()$ \\
+		\State $ Tx_{dBm} \gets user.getPathLoss() -  technology.getFemtocellReceiverSensitivity(user)$ \\
 		\Return $min(Tx_{dBm}, Tx^{max}_{dBm})$ 
 	\end{algorithmic} 
 \end{algorithm}
 
 
-\begin{algorithm}
-	\caption{getFemtocellReceiverSensitivity} 
-	\label{alg:getFemtocellReceiverSensitivity}
-     \hspace*{\algorithmicindent} \textbf{Input} user \\
-     \hspace*{\algorithmicindent} \textbf{Output} The receiver sensitivity of the femtocell in dBm
-	\begin{algorithmic}[1]
-		\State $SNR \gets user.getRxSNR$
-		\State $gain \gets technology.getMSantennagain$
-		\State $implementationLoss \gets technology.getImplementationLoss$
-		\State $interferenceMargin \gets technology.getCellInterferenceMargin$
-		\State $noiseFigure \gets technology.getNoiseFigure$
-		\State $thermalNoise \gets -108.1$	\\
-		\Return  $thermalNoise + SNR - gain + implementationLoss + noiseFigure + interferenceMargin$
-	\end{algorithmic} 
-\end{algorithm}
+%\begin{algorithm}
+%	\caption{getFemtocellReceiverSensitivity} 
+%	\label{alg:getFemtocellReceiverSensitivity}
+%     \hspace*{\algorithmicindent} \textbf{Input} user \\
+%     \hspace*{\algorithmicindent} \textbf{Output} The receiver sensitivity of the femtocell in dBm
+%	\begin{algorithmic}[1]
+%		\State $SNR \gets user.getRxSNR$
+%		\State $gain \gets technology.getMSantennagain$
+%		\State $implementationLoss \gets technology.getImplementationLoss$
+%		\State $interferenceMargin \gets technology.getCellInterferenceMargin$
+%		\State $noiseFigure \gets technology.getNoiseFigure$
+%		\State $thermalNoise \gets -108.1$	\\
+%		\Return  $thermalNoise + SNR - gain + implementationLoss + noiseFigure + interferenceMargin$
+%	\end{algorithmic} 
+%\end{algorithm}
