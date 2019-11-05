@@ -13,8 +13,8 @@
 
 % inspiratie kan je hier ook nog vinden:
 % PREDICTION AND COMPARISON OF DOWNLINK ELECTRICFIELDAND UPLINK LOCALISED SARVALUES FOR REALISTIC INDOORWIRELESS PLANNING
-Society is constantly getting more dependent on electronic communication. On any given moment in any given location, an electronic device
-can request to connect to a bigger wireless medium. More and more devices need to be connected like IOT devices starting from small sensors up to self-driving cars.
+Society is constantly getting more and more dependent on electronic communication. On any given moment in any given location, an electronic device
+can request to connect to a bigger wireless medium. Devices need more then ever to be connected starting from small IOT sensors up to self-driving cars.
 
 Once again it becomes clear why we're on the eve of a new generation of cellular communication named 5G. 
 This new technology is capable of handling millions of connections every square meter %to do: klopt deze hoeveelheid want lijkt wel heel veel.
@@ -24,21 +24,20 @@ Also in exceptional and possibly life-threatening situations, we rely on the cel
 Mobile network operators saw all telecommunications drastically increasing causing moments of contention. Some operators decided to temporarily exceed the limited exposure in
 order to handle all connections. \cite{baseZaventem}
 
-Electromagnetic exposure can however not be neglected. Research shows how electromagnetic radiation can cause diverse biological side effects \cite{bioeffects} and human exposure to these electromagnetic waves should be limited. The \gls{ICNIRP} 
+Electromagnetic exposure can however not be neglected. Research shows how exesive electromagnetic radiation can cause diverse biological side effects \cite{bioeffects} and human exposure towards these electromagnetic waves should be limited. The \gls{ICNIRP} 
 suggests a limitation of 61 V/m. Also on national levels restrictions have been enforced but differ from location to location. In Brussels for example is a far more restrictive limitation enforced of 6 V/m for all sources \cite{J1, J5}.
 \section{Objective}
 \label{sec:objective}
+The general goal is to temporarily take over the wireless communication in the event of a disaster causing the normal network infrastructure to malfunction.
 
-In order to provide a network, even if the existing network is damaged, a deployment tool has been developed by the UGent. The idea is to attach base stations to unmanned aircraft. Such a device is called an \gls{UABS}. The tool calculates where drones need to be positioned to connect an active user to the backbone network. 
+One way of generating such an ad-hoc network that is easily distributed over a given area is with the aid of a drone. By attaching femtocell on these UAV's, a mobile base station is achieved. Such a device is called an \gls{UABS}
 
-todo: several files, namelijk 4.
-This tool requires two input files. Firstly, a so-called shapefile of the disaster area describing the location of different buildings and their design. Secondly, the time period of the disaster is provided. The tool generates random users in different locations requiring certain bitrates.
-
-Hereafter, the optimal locations for the different \gls{UABS} are calculated. It is assumed that the entire existing network infrastructure down is and all active users, therefore, need to be reconnected.
+The optimal placement for each \gls{UABS} needs to be defined to make sure that as many users as possible are properly reconnected to the backbone network while satisfying certain restrictions. To make these calculations are as realistic as possible the architecture of the several buildings present in the area is described in a shapefile. 
+A deployment tool calculates the optimal position of the \gls{UABS} by taking the 3D models of the building into account along with some femtocell specifications and user distribution. This deployment tool is developed by the WAVES research group, a department within Ghent University.
 
 The deployment tool does not calculate the electromagnetic exposure of the different active users in the area.
 
-TODO: waarin differentieert mijn MP zich????
+TODO: waarin differentieert mijn MP zich????DS
 
 \section{Structure}
 \label{sec:structure}
