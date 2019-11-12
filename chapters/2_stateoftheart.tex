@@ -1,10 +1,45 @@
 \chapter{State of the art}
 \label{chap:stateoftheart}
 
-\section{Existing deployment tool}
+\section{Deployment tool for an UAV-aided emergency network}
+\label{chap:stateoftheart:deploymenttool}
+
+
+The paper \cite{J2} describes a deployment tool which designs an emergency network covering the necesairy users. 
+
+One way of creating such an ad-hoc network that is easily distributed over a given area is with the aid of a drone.
+By attaching femtocell on these UAV's, a mobile base station is achieved. Such a device is called an \gls{UABS}
+
+%The optimal placement for each \gls{UABS} needs to be defined to make sure that as many users as possible are properly reconnected to the backbone network while satisfying certain restrictions. 
+%To make these calculations as realistic as possible the architecture of the several buildings present in the area is described in a shapefile. 
+%A deployment tool calculates the optimal position of the \gls{UABS} by taking the 3D models of the building into account along with some femtocell specifications and user distribution. This deployment tool is developed by the WAVES research group, a department within Ghent University.
+
+A disaster area is given to the tool along with a time period and a configuration file containing specifications of the \gls{UABS}. The files of the disaster area contains tree dimensional 
+descriptions of the buildings present in the area. These are key values in approaching as realistic results as possible. The tool randomly distributes users over the area and assigns a certain bitrate that 
+the user requires. \\
+
+A second phase calculates the optimal possition for each \gls{UABS}. This is done by trying to locate a \gls{UABS} above each active user. Two options are possible.
+If a flighheigt is defined, all basestations are located above its user at the given height unless a building is abstructing it's location. Than no basestation will be located above the user.
+If no flighheigt is given to the tool, the basestation is located 4 meters above the outdoor user of 4 meters above the building where the indoor user resides. 
+The later is only allowed if the suggested heigt remains below the given maximum allowed height. \\
+
+The third phase the authors of \cite{J2} sorted each \gls{UABS} on wether they were active or not, followed by the increasing pathloss from each \gls{UABS} to that user.
+So the algirtm starts by checking for each active \gls{UABS} if it can cover the user. If this is the case, the user will be connected to this \gls{UABS}. If not,
+the second active basestation with a (slightly) worse pathloss is considered. If no active basestation is suitable, inactive \gls{UABS} are considered. The user remains uncovered if no \gls{UABS}
+is found. The reasoning behind first only considering basestations that are already active is the hight cost that comes allong with each drone.
+
+Up till now, the tool has only calculated some suggestions. The effective provisioning is done in the fourth phase where drones are sorted by the ammount of users it covers. As long as \gls{UABS}
+are available in the facility where they reside, \gls{UABS} are provisioned and its users are marked as covered.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Capacity based deployment tool}
-Several models have been published on how to calculate downlink electromagnetic field strengts. \ref{J1} describes on how to calculate the exposure for a single basestation.
+\label{chap:capbaseddeploymenttool}
+
+The described network in \ref{chap:stateoftheart:deploymenttool} tries to connect the user to the best basestation based on pathloss while provisioning as least basestations as possible.
+However, when developing a network it is also important to take electromagnetic field exposure and power consumption into 
+
+Several models have been published on how to calculate downlink electromagnetic field strengts. \cite{J1} describes on how to calculate the exposure for a single basestation.
 The paper also describes on how to combine the different exposures for multiple basestations. 
 
 - de paper gaat over pc en expsoure bij bs maar is ook van toepas voor drones met betperkte batterij. Mogelijke conslusie is dat optimaliseren naar 
@@ -23,6 +58,11 @@ as proposed by [22].
 
 - resultaten van deze paper?
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{whipp}
-research naar UL
+Users are not only exposed to electric fields originating from femtocells but also by their own devices. The authors of \cite{J10_RDP} make use of a \gls{whipp} tool. A collection
+of heuristic algorithms used for designing an optimal indoor network by placing femtocells on the ground plan of the considered building. The paper describes how to calculate localised SAR values originating from a \gls{UE} to an UMTS femtocell.
+The paper's model is validated using a Nokia N95. The uplink SAR10g depend on the maximum possible SAR10g and transmit power. The maximum SAR10g is device dependent. Since
+the deployment tool in this paper is designed voor outdoor usage connecting different unknown types of \gls{UE} a median of possible $SAR^{max}_{10g}$ phones should be calculated.
+The actual $SAR^{max}_{1g}$ can't be used since femtocell are short range. Therefor \gls{UE} will seldom achieve it's maximum possible radiation. Just like \cite{J10_RDP}, a real  $SAR_{10g}$ should be predicted.
