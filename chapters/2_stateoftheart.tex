@@ -9,7 +9,6 @@ The paper \cite{J2} describes a deployment tool which designs an emergency netwo
 
 One way of creating such an ad-hoc network that is easily distributed over a given area is with the aid of a drone.
 By attaching femtocell on these UAV's, a mobile base station is achieved. Such a device is called an \gls{UABS}
-
 %The optimal placement for each \gls{UABS} needs to be defined to make sure that as many users as possible are properly reconnected to the backbone network while satisfying certain restrictions. 
 %To make these calculations as realistic as possible the architecture of the several buildings present in the area is described in a shapefile. 
 %A deployment tool calculates the optimal position of the \gls{UABS} by taking the 3D models of the building into account along with some femtocell specifications and user distribution. This deployment tool is developed by the WAVES research group, a department within Ghent University.
@@ -37,26 +36,28 @@ are available in the facility where they reside, \gls{UABS} are provisioned and 
 \label{chap:capbaseddeploymenttool}
 
 The described network in \ref{chap:stateoftheart:deploymenttool} tries to connect the user to the best basestation based on pathloss while provisioning as least basestations as possible.
-However, when developing a network it is also important to take electromagnetic field exposure and power consumption into 
+However, when developing a network it is also important to take electromagnetic field exposure and power consumption into account. Several models have been published on how to calculate downlink electromagnetic field strengts. 
+The calculations in this paper are based on \cite{J1} which not only describes \gls{DL} exposure but also defines a fitness function describing on how the network is performing. 
+Grid points are distributed over the area seperated with a fixed distance. Firstly, the \gls{DL} exposure in a grid point fom each basestation is calculated and each value is combined resulting
+in the total exposure in that point. This is repeaded for every single gridpoint.
+Secondly, the electromagnetic exposure for each grid point is calculated and the $50^{th}$ and $95^{th}$ percentile are used to find the global network exposure. \\
 
-Several models have been published on how to calculate downlink electromagnetic field strengts. \cite{J1} describes on how to calculate the exposure for a single basestation.
-The paper also describes on how to combine the different exposures for multiple basestations. 
+Based on the formula described in equation \ref{eq:singleexposure} of section \ref{sec:calculatingexposure}, it will become clear that exposure increases exponentially compared to the input power
+of an antenna and optimizing towards powerconsumption should therefor also decrease it's exposure\\
 
-- de paper gaat over pc en expsoure bij bs maar is ook van toepas voor drones met betperkte batterij. Mogelijke conslusie is dat optimaliseren naar 
-energie belangrijker is. Exposure is toch weinig bij femtocells en een drone heeft maar een beperkte batterij
-- For evaluating the power consumption, the model of [1, 21] is used for the base station in operational
--while it is assumed
-that the base station consumes 45% of their maximal
-SISO (Single-Input Single-Output) power consumption
-(i.e., 45% of 1674 W = 753.3 W) during sleep mode
-as proposed by [22].
-- fitness functie, an algorithm was proposed to optimize either towards exposure of power consumption for a joint optimization of both values
-- max possible exposure
-- weighted average (but for each user instead of eatch grid point)
-- exposure single bs
-- combine exposure multiple bs
+However, when taking the electromagnetic exposure and powerconsumption of the entire network, both value's become inversely proportional. Take for instance two users with each their own nearby basestation.
+When optimizing towards exposure, both basestations will radiate just enough to cover the user near them. When optmizing towards power consumption, it will be better to shut down one of the basestations because
+each basestation requires a minimal ammount of power. The other basestation will rediate slightly more by using slightly more energy but less then keeping the other basestation alive. \\
 
-- resultaten van deze paper?
+This results in a fitness functions with waiting factors indicating the importance of eighter electromagnetic fields or powerconsumption for a joint optimization of both values.
+It is espected that this approach is also usefull in a UAV-aided network since drones have a limited battery capacity. \\
+
+
+%- de paper gaat over pc en expsoure bij bs maar is ook van toepas voor drones met betperkte batterij. Mogelijke conslusie is dat optimaliseren naar 
+%energie belangrijker is. Exposure is toch weinig bij femtocells en een drone heeft maar een beperkte batterij
+%- For evaluating the power consumption, the model of [1, 21] is used for the base station in operational
+%-while it is assumed that the base station consumes 45 percent of their maximal SISO (Single-Input Single-Output) power consumption (i.e., 45 percent of 1674 W = 753.3 W) during sleep mode as proposed by [22].
+%- resultaten van deze paper?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -13,7 +13,7 @@ E_i = 10^{\frac{EIRP - 43.15 + 20*\log(f)- PL}{20}}
 \end{equation}
 This formula requires several values to be known. The frequency $f$ on which the tranmitting antenna is operating is expressed in MHz. The other values are explained in \ref{subsec:eirp} and \ref{subsec:pl}.
 
-\subsubsection{EIRP}
+\subsubsection{Equivalent Isotropical Radiation Power}
 \label{subsec:eirp}
 
 A directional antenna can achieve gain by focussing it's input power into certain directions. By doing this, some areas experience a decreased radiation power in order to gain radiation power 
@@ -26,7 +26,7 @@ EIRP = P_t + G_t - L_t
 
 This value is expressed in dBm and requires tree values. $P_t$ is the transmit power (dBm), $G_t$ is the gain (dBi) of the transmitting antenna and $L_t$ stands for it's cable loss (dB) \cite{howToCalculateEIRP}.
 
-\subsubsection{PL}
+\subsubsection{Pathloss}
 \label{subsec:pl}
 At last, formula \ref{eq:eirp} requires the path loss (dB). In order calculate the path loss, an appropiate propagation model is required. Several propagation models exists and the tool already uses the Walfish-Ikegami model \cite{J2}.
 This is because the Walfish-Ikegami model performs well for femtocell networks in urban areas. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
@@ -36,6 +36,7 @@ input power hangt af van bs tot bs.
 
 \subsection{Combining exposure}
 \label{sec:combiningexposure}
+Since the user location in the UAV-aided network is known, the exposure is not calculated for gridpoints but for active users. compared to gridpoints in ref state of art
 manets -> exosure combineren
 \begin{equation}
 E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
@@ -152,6 +153,10 @@ P_{sens} = P_{noise} + SNR - G + IL + NF + IF
 
 
 \section{Decision Algorithm}
+
+fitnes function: ...
+- max possible exposure
+- weighted average (but for each user instead of eatch grid point)
 
 J1 zegt:
 
