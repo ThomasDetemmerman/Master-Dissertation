@@ -3,7 +3,31 @@
 
 \section{Downlink exposure versus power consumption}
 \label{sec:dlexpvspc}
-DL exposure vs drone kost?
+The authors of \cite{J2} proposed a fitness function for a joint optimization of the global network exposure and the overal power consumption.
+This idea works fine for high powered basestations capable of covering multiple users. For example when optimizing towards exposure, the algorithm will decide
+to activate multiple low powered basestations. This has a negative influence on the overal power consumption of the network
+because each basestations requires a minimal ammount of power to be active. Analogously whill the algorithm shut down basestations when optimizing
+towards power consumption. Active basestations will slighty increase their individual power consumption and therefor also increase electromagnic radiation to be able
+to cover more users. This power increase is ofcourse less then the activation of a new basestation.\\
+
+The deploymentool described in this paper makes uses of UAV's, equiped with femtocell base stations. These are low powered devices compared to basestations used in the terrestrial network 
+with a more limited range. Most users are therefor connected to the \gls{UABS} placed directly above them. By increasing eighter the ammount of users
+or the maximum input power. \color{red}The graph below show shows the amount of users compared to the ammount of users that are connected to their own basestations.
+
+
+It becomes clear that this fitness function will primarly optimize towards exposure (unless with a lot of users)\color{black}
+
+
+
+
+
+\section{Downlink exposure versus drone kost}
+\label{sec:dlexpvspc}
+
+- Optimizing towards exposure and kost might be a better idea
+- oorspronklijke code deed dit ook al door eerst drones te overwegen die reeds actief waren
+- zijn resultaten gelijkend?
+- ook deze functie wordt gelimiteerd door het maximum bereik van een femtocell
 
 \section{PL model versus exposure optimized model}
 \label{sec:modelcomparison}
