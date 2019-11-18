@@ -24,18 +24,32 @@ Also in exceptional and possibly life-threatening situations, we rely on the cel
 Mobile network operators saw all telecommunications drastically increasing causing moments of contention. Some operators decided to temporarily exceed the limited exposure in
 order to handle all connections. \cite{baseZaventem}
 
-Electromagnetic exposure can however not be neglected. Research shows how exesive electromagnetic radiation can cause diverse biological side effects \cite{bioeffects} and human exposure towards these electromagnetic waves should be limited. The \gls{ICNIRP} 
-suggests a limitation of 61 V/m. Also on national levels restrictions have been enforced but differ from location to location. In Brussels for example is a far more restrictive limitation enforced of 6 V/m for all sources \cite{J1, J5}.
+Electromagnetic exposure can however not be neglected. Research shows how exesive electromagnetic radiation can cause diverse biological side effects \cite{bioeffects}.
+Because of public concern, the World Health Organization had launched a large, multidisciplinary research effort which eventually concluded that there was no sufficient evidence that confirmed 
+that exposure to low level electromagnetic fields harmfull is \cite{WHO}. 
+
+To make sure that the public is not exposed to high level electromagnetic radiation, limits are defined but these restrictions can differ from location to location.
+The \gls{ICNIRP} suggests a limitation of 61 V/m. In Brussels, for example, is a far more restrictive limitation enforced of 6 V/m for all sources \cite{J1, J5}.
+
 \section{Objective}
 \label{sec:objective}
-The general goal is to temporarily take over the wireless telecommunication network in the event of a disaster causing the normal network infrastructure to malfunction.
+
+It is assumed that in case of a dissaster there is eighter a partial outage of the existing terrestrial infrastructure or the exising network can't cope all requests.
+The WAVES research group at UGent has therefore developed a deployment tool which distributes UAVs equiped with femtocell base stations to reconnect active users. These kind of UAVs will be called 
+a \gls{UABS}. How this tool works is further explained in \ref{chap:stateoftheart:deploymenttool}.
+
+The electromagnetic exposure of the different active users is currently unknown. The tool will therefore be extended so is capable of calculating exposure.
+Two types of exposure exists: \gls{DL} exposure and \gls{UL} exposure which is relativly caused by \gls{UABS} and \gls{UE}. These values should give insight in how
+to optimize the network accordingly.
+
+\textbf{research question 1:} How can a \gls{UABS} network be optimized to minimize global exposure and overal power consumption? What are the effects on the network?\\
+
+\textbf{research question 2:} What are the advantages and disadvantages of a model as described in research question 1 compared the the already existing pahtloss oriented model.\\
+
+\textbf{research question 3:} How does the \gls{UABS} fly height influence uplink and downlink exposure?
 
 
-The deployment tool does not calculate the electromagnetic exposure of the different active users in the area.
-
-TODO: waarin differentieert mijn MP zich????
-
-todo: onderstaande tekst (in commentaar) is een letterlijke copy van J10-RDP. Het is hier gezet als referentie. Moet nog correct verwoorden:
+%todo: onderstaande tekst (in commentaar) is een letterlijke copy van J10-RDP. Het is hier gezet als referentie. Moet nog correct verwoorden:
 %In this paper, prediction algorithms are created to
 %simulate and visualise electric-field strengths due to
 %downlink traffic and localised SARvalues due to uplink
@@ -48,6 +62,8 @@ todo: onderstaande tekst (in commentaar) is een letterlijke copy van J10-RDP. He
 
 \section{Structure}
 \label{sec:structure}
+
+TODO: update this section
 
 The following chapter \ref{chap:stateoftheart} exists of several succesive sections explaining how the electromagnetic exposure of a single human being is calculated. The first section \ref{sec:calculatingexposure}
 explains how the exposure is calculated between a user and a single femtocell. Section \ref{sec:combiningexposure}  defines how to combine all exposures from the different femtocells towards a single users.

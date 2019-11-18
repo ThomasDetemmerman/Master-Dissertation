@@ -29,14 +29,23 @@ It becomes clear that this fitness function will primarly optimize towards expos
 - zijn resultaten gelijkend?
 - ook deze functie wordt gelimiteerd door het maximum bereik van een femtocell
 
-\section{PL model versus exposure optimized model}
+\section{Pathloss model versus exposure optimized model}
 \label{sec:modelcomparison}
 
+The original model used in the tool will first consider basestations that are already active. The reasing behind this is the high costs that comes
+with the deployment of each drone. Therefor it might be beter to not optimize towards power consumption but rather towards cost.
+
+The fitness function will be changed so that the current cost of the network is a fraction of the total possible cost.
+
+waarom is de exposure is mijn model zoveel lager? ten koste van wat?
 
 \section{Uplink and downlink exposure versus fly height}
 \label{sec:expvsflyheight}
 
-\section{UL and downlink exposure vs horizontal distance}
+- expected that pathloss decreases
+- radiation will increase because of the heigt but since you loose less, the exposure might not increase that mutch and you may cover more users.
+
+\section{Uplink and downlink exposure versus horizontal distance}
 \label{sec:sarvsexp}
 
 \section{Amount of users versus exposure}
