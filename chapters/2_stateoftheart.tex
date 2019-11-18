@@ -5,28 +5,29 @@
 \label{chap:stateoftheart:deploymenttool}
 
 
-The paper \cite{J2} describes a deployment tool which designs an emergency network covering the necesairy users. 
+A deployment tool for an UAV-aided emergency network is described in \cite{J2}. The idea is that in case of a disaster, the existing network might be damaged and won't be able 
+to handle all users who are trying to reconnect to the backbone network. A fast deployable network is suggested in \cite{J2} by using \gls{UABS}s. These are UAVs equiped with femtocell base stations
+and will be distributed over the disaster area, orchestrated by the deployment tool. 
 
-One way of creating such an ad-hoc network that is easily distributed over a given area is with the aid of a drone.
-By attaching femtocell on these UAV's, a mobile base station is achieved. Such a device is called an \gls{UABS}
 %The optimal placement for each \gls{UABS} needs to be defined to make sure that as many users as possible are properly reconnected to the backbone network while satisfying certain restrictions. 
 %To make these calculations as realistic as possible the architecture of the several buildings present in the area is described in a shapefile. 
 %A deployment tool calculates the optimal position of the \gls{UABS} by taking the 3D models of the building into account along with some femtocell specifications and user distribution. This deployment tool is developed by the WAVES research group, a department within Ghent University.
 
-A disaster area is given to the tool along with a time period and a configuration file containing specifications of the \gls{UABS}. The files of the disaster area contains tree dimensional 
-descriptions of the buildings present in the area. These are key values in approaching as realistic results as possible. The tool randomly distributes users over the area and assigns a certain bitrate that 
-the user requires. \\
-
-A second phase calculates the optimal possition for each \gls{UABS}. This is done by trying to locate a \gls{UABS} above each active user. Two options are possible.
-If a flighheigt is defined, all basestations are located above its user at the given height unless a building is abstructing it's location. Than no basestation will be located above the user.
-If no flighheigt is given to the tool, the basestation is located 4 meters above the outdoor user of 4 meters above the building where the indoor user resides. 
+The deployment tool will try to calculate the optimal placement for each \gls{UABS} and requires therefore a description of the area where the UAV-aided network needs to 
+be deployed. This is done with the use of so-called shape files. Theses files contains tree dimensional descriptions of the buildings present in the area and are
+key values in approaching results as realistic as possible. Furthermore, the tool also requires a time period and a configuration file containing technical specifications of the type of \gls{UABS} that is being used. 
+The tool will thereafter randomly distribute users over the area and assigns a certain bitrate to them. \\
+\\
+In a second phase, the optimal possition for each \gls{UABS} is calculated. This is done by trying to locate a \gls{UABS} above each active user. Two options are possible.
+If a flighheigt is defined, a basestations is placed above each user at the given height, unless a building is abstructing it's location. Then, no basestation will be located above that user.
+If no flighheigt is given to the tool, the basestation is located 4 meters above the outdoor user or 4 meters above the building where the indoor user resides. 
 The later is only allowed if the suggested heigt remains below the given maximum allowed height. \\
-
-The third phase the authors of \cite{J2} sorted each \gls{UABS} on wether they were active or not, followed by the increasing pathloss from each \gls{UABS} to that user.
+\\
+Finally, all  \gls{UABS} are sorted on wether they were active or not, followed by the increasing pathloss from each \gls{UABS} to that user.
 So the algirtm starts by checking for each active \gls{UABS} if it can cover the user. If this is the case, the user will be connected to this \gls{UABS}. If not,
 the second active basestation with a (slightly) worse pathloss is considered. If no active basestation is suitable, inactive \gls{UABS} are considered. The user remains uncovered if no \gls{UABS}
-is found. The reasoning behind first only considering basestations that are already active is the hight cost that comes allong with each drone.
-
+is found. The reasoning behind first only considering basestations that are already active is the hight cost that comes allong with each drone. \\
+\\
 Up till now, the tool has only calculated some suggestions. The effective provisioning is done in the fourth phase where drones are sorted by the ammount of users it covers. As long as \gls{UABS}
 are available in the facility where they reside, \gls{UABS} are provisioned and its users are marked as covered.
 
