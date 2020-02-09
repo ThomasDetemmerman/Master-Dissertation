@@ -11,6 +11,7 @@ The formula to determine this electromagnetic value $E$ (expressed in V/m) for a
 E_i = 10^{\frac{EIRP - 43.15 + 20*\log(f)- PL}{20}}
 \label{eq:singleexposure}
 \end{equation}
+TODO: write EIRP - Attenuation (A t)\\
 This formula requires several values to be known. The frequency $f$ on which the tranmitting antenna is operating is expressed in MHz. The other values are explained in \ref{subsec:eirp} and \ref{subsec:pl}.
 
 \subsubsection{Equivalent Isotropical Radiation Power}
@@ -23,8 +24,6 @@ This \gls{EIRP} value can be calulated as described in eq \ref{eq:eirp}.
 EIRP = P_t + G_t - L_t
 \label{eq:eirp}
 \end{equation}
-
-This value is expressed in dBm and requires tree values. $P_t$ is the transmit power (dBm), $G_t$ is the gain (dBi) of the transmitting antenna and $L_t$ stands for it's cable loss (dB) \cite{howToCalculateEIRP}.
 
 \subsubsection{Pathloss}
 \label{subsec:pl}
@@ -179,6 +178,48 @@ The tool is extended with a alternative model which will connect users towards e
 
 \begin{figure}
   \includegraphics[width=5cm]{../images/decisionAlgoFlowChart.jpg}
+  \caption{Flow chart for the decision algorithm}
+  \label{fig:decisionAlgoFlowChart}
+\end{figure}
+
+
+\section~\ref{sec:}{Attenuation}
+\label{subsec:attenuation}
+Formula \ref{eq:singleexposure} uses EIRP values which assumes an omnidirection antenna which radiation is equal in each direction. These type of isotropic radiatiators are unrealistic since each antenna focusses his 
+energy to certain directions at the cost of decreased radiation at onder sectors. This decreased radiation will be called attenuation and is expressed in dbm.
+
+\subsection{Defining an antenna}
+A microstrip patch antenna is choses because it allowes easy production but more important it has a low weight and has a thin profile causing it to be very aerodynamic which is usefull when attaching it to an \gls{UABS} \ref{J13_microstripadvantages}.
+
+The dimentions of the antenna depend on the frequency it is operating which will be 2.6 Ghz.
+The formulas from \cite{J14_antennadesign} are \cite{J15_antennadesign} applied. 
+
+
+
+
+
+$$W = \frac{c}{2*f*\sqrt{\frac{\epsilon_r+1}{2}}}$$
+Which C the speed of light, $f$ being the center frequency of 2600 Hz and a dielectric contanst of $\epsilon_r$ = 4.4 a width of 3.51 mm is achieved.
+
+$$\epsilon_{reff} = \frac{\epsilon_r+1}{2}+  \frac{\epsilon_r-1}{2} * (1+12*\frac{h}{W})^{-\frac{1}{2}}$$
+The height of the dielectric is choses to be 2.87mm in order to keep the antenna smal and light\ref{J14_antennadesign}.
+$\epsilon_r$ is the permitivity constant of the substrate and depends of the used matieral. In this paper, a substrate like glass is chosen because of the high dielectric constant of $\epsilon_r = 4.4$ compared to other matierals like teflon with only a dielectric constant of $\epsilon_r = 2.2$
+This is because larger dielectric decreases the dimentions of the antenna patch \ref{J14_antennadesign} and therefore indirectly also decreases the dimentions of the entire antenna surface which comes in handy for the limited space on drones. When substituting these values, a $\epsilon_{reff}$ of 3.91 is determined.
+
+$$ L_{eff} = \frac{c}{2*f*\sqrt{\epsilon_{reff}}} $$
+
+Applying this formula with the known values of above the $L_{eff}$ results in 29.16 mm.
+
+$$\Delta L = 0.412*h*\frac{(\epsilon_{reff}+0.3)(\frac{W}{h}+0.264)}{(\epsilon_{reff}-0.258)(\frac{W}{h}+0.8)}$$
+
+By substituting the values from above, the length extension determines that $\Delta L$ equals 1.3071 mm.
+
+Finally can the lenght of the patch be calculated using the expression: $L = L_{eff} - 2 * \Delta L$
+which result in 26.55 mm
+
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{../images/MicrostripAntenna.jpg}
   \caption{Flow chart for the decision algorithm}
   \label{fig:decisionAlgoFlowChart}
 \end{figure}
