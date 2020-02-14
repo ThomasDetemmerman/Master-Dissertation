@@ -1,30 +1,10 @@
 \chapter{Methodology}
-\label{chap:methodology}
-
-
-\section{Tool}
-The goals 
-\section{Electromagnetic exposure}
-\subsection{Calculation of total whole body SAR10g} % (fold)
-\label{sub:Calculationwbsar}
-
-The overall $SAR^{head}_{10g}$ can be calculated by a simple sum of individual SAR values \cite{J17_kuehn2019modelling}. 
-The position of the phone is however unknown. This is because the tool assigns a bitrate to a user depending on the service he is using
-meaning that users in the network are not only calling but are able of browsing the web aswell. 
-Since calculating the $SAR^{head}_{10g}$ would imply the phone is being hold next to the head, this would result in incorrect conclusions.
-The induced electromagnetic radiation will therefore be expressed in function of the entire body.
-$$ SAR^{wb,total}_{10g} = SAR^{wb,ul}_{10g} +  SAR^{wb,dl}_{10g} + SAR^{wb,neighbours}_{10g} $$
-
-The first parameter, $SAR^{wb,ul}_{10g}$, will indicate the absorbed electromagnetic radiation in the whole body originating from the users own phone
-whereas the second parameter $SAR^{wb,dl}_{10g}$ will represent the absorbed electromagnetic radiation by all the basestations in the considered area.
-As last, $SAR^{wb,neighbours}_{10g} $ specifies the same as the previous but with electromagnetic radiation originating from other users their \gls{UE}.
-
-\subsection{Calculating downlink expsure} % (fold)
-\label{sub:Calculating downlink expsure}
-
-\subsubsection{Calculating exposure towards a single femtocell}
+\label{chap:deploymenttool}
+todo: Downlink traffic is created by modulation of frequencies caused by a base station. However, 
+ 
+\section{Calculating downlink exposure}
+\subsection{Calculating exposure towards a single femtocell}
 \label{sec:calculatingexposure}
-
 To determine the total exposure of a single human being or even of the entire network, the electric-field $\vec{E}$ of a single femtocell $i$ should be calculated.
 The formula to determine this electromagnetic value $E$ (expressed in V/m) for a specific location is given in equation \ref{eq:singleexposure}.
 \begin{equation}
@@ -33,7 +13,8 @@ E_i = 10^{\frac{EIRP - 43.15 + 20*\log(f)- PL}{20}}
 \end{equation}
 TODO: write EIRP - Attenuation (A t)\\
 This formula requires several values to be known. The frequency $f$ on which the tranmitting antenna is operating is expressed in MHz. The other values are explained in \ref{subsec:eirp} and \ref{subsec:pl}.
-\paragraph{Equivalent Isotropical Radiation Power}
+
+\subsubsection{Equivalent Isotropical Radiation Power}
 \label{subsec:eirp}
 
 A directional antenna can achieve gain by focussing it's input power into certain directions. By doing this, some areas experience a decreased radiation power in order to gain radiation power 
@@ -44,17 +25,15 @@ EIRP = P_t + G_t - L_t
 \label{eq:eirp}
 \end{equation}
 
-\paragraph{Pathloss}
+\subsubsection{Pathloss}
 \label{subsec:pl}
 At last, formula \ref{eq:eirp} requires the path loss (dB). In order calculate the path loss, an appropiate propagation model is required. Several propagation models exists and the tool already uses the Walfish-Ikegami model \cite{J2}.
 This is because the Walfish-Ikegami model performs well for femtocell networks in urban areas. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
 The chosen propagation model consists of two formulas depending on whether a free line of sight between the user and the basestation exist or not. Both formulas expect a distance in kilometer. %bron?
 
 input power hangt af van bs tot bs.
-\paragraph{Attenuation}
-todo
 
-\subsubsection{Combining exposure}
+\subsection{Combining exposure}
 \label{sec:combiningexposure}
 Since the user location in the UAV-aided network is known, the exposure is not calculated for gridpoints but for active users. compared to gridpoints in ref state of art
 manets -> exosure combineren
@@ -63,21 +42,43 @@ E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 \label{eq:totalexposure}
 \end{equation}
 
-\subsubsection{Converting downlink electromagnetic exposure to $SAR^{wb}_{10g}$}
-Only values for wifi are known but the frequency of LTE is very similar. \cite{J22_plets2015joint}
 
 
-\subsection{Uplink exposure} % (fold)
-\label{sub:Uplink exposure}
-\subsubsection{specific absorption rate into the head}
-todo: de 10g slaat al op localized, vandaar dat het maar 10g is, anders is het whole-body
-todo: we kunnen niet sar10gmax gebruiken want This means that the SAR calculations will be worst-case and possibly an overestimation of the real localised SAR. (herwoorden voor plagiaat)
 
-Human exposure caused by downlink traffic is a not negligible asset. However, telecommunications is not a one-way street. When connecting to a UMTS network, also uplink data caused by the \gls{UE} should be considered.
+%\section{Radiation Patterns}
+%\label{sec:radiationpatterns}
+%When approaching an antenna as an \gls{isotropicradiator}, gain is distributed equally in all directions. This is however only a theoretical antenna. In real life, an antenna's gain is restricted to a limited area.
+%Therefore, a negative attenuation value should be added to the formula in order to compensate for the generalization of equal distributed gain \cite{AttenuationSectorizationForHSPA, AttenuationSystemLevelanalyssis}.
+%Am=25dB 
+%\begin{equation}
+%A(\varphi)=-\min\left[12\left({\varphi\over \varphi_{3dB}}\right),A_{m}\right]
+%\end{equation}
 
-\gls{UE} generates, just like femtocells, electromagnetic waves to which a user is exposed. A part of this radiation goes to the femtocell, another part enters the body of its user. How much electormagnic strenghts enters the body is defined as \gls{SAR} and is measured with 10g biological tissue which represents the human skin. This value will from now on be expressed as $SAR_{10g}$. 
+%SLA=20dB
+%\begin{equation}
+% A(\theta)=-\min\left[12\left({\theta\over \theta_{3dB}}\right),SLA_{v}\right]
+%\end{equation}
 
-A mobile device induces two types of exposure: local and whole-body. Whole-body exposure can be neglected compared to the much higher local exposure\cite{j10.1.1_gati2010duality}.  From now on, $SAR_{10g}$ implicitly means local exposure.
+%\begin{equation}
+%A(\phi, \theta) = -\min\{-[A_{H}(\phi) + A_{V}(\theta)], A_{m}\}
+%\end{equation}
+
+%The antenna gain is defined as: 
+%\begin{equation}
+%G(\phi, \theta) = A(\phi, \theta) + G_{ant}
+%\end{equation}
+
+%$\omega(i,k)= \arctan \left({h(i)\over d(i,k)}\right)$
+%\begin{equation}
+%\phi(i,k)=\omega(i,k)-\varphi(i)}
+%\end{equation}
+
+
+\section{Calculating uplink exposure}
+\subsection{Specific absoption rate}
+\label{sec:sar}
+
+
 
 \gls{IEC} defines in IEC:62209-2 a maximum for a 10g tissue $SAR^{max}_{10g}$ as 2 W/kg and a maximum for a 1g tissue $SAR^{max}_{1g}$ as 1.6 W/kg. Most countries, including Belgium, enforce the 10g model and will, therefore, be the point of reference for this master dissertation.
 
@@ -137,13 +138,90 @@ P_{Tx} = P_{sens} + PL
 \label{eq:ptx}
 \end{equation}
 
-\subsubsection{Specific absorption rate for the whole body}
+\begin{equation}
+P_{sens} = P_{noise} + SNR - G + IL + NF + IF
+\label{eq:calculatepsens}
+\end{equation}
 
-\begin{minted}[linenos]{c}
-d = dielectric("Name",'glass',"Thickness",0.00287,"EpsilonR",4.4)
-p = patchMicrostripInsetfed("Width",0.0351,"Length",0.02655,
-    "GroundPlaneLength",0.06,"GroundPlaneWidth",0.06,"Substrate", d)
 
-pattern(p,2.6e9, 90, "CoordinateSystem", 'polar', "Normalize",true)
-pattern(p,2.6e9, 0, "CoordinateSystem", 'polar', "Normalize",true)
-\end{minted}
+\section{Decision Algorithm}
+
+fitnes function: ...
+- max possible exposure
+- weighted average (but for each user instead of eatch grid point)
+
+J1 zegt:
+
+The decision for allocating a user to a base sta-
+tion is changed. In [19], a base station was only
+
+switched on when there was no active base station
+to which the user could connect. This is no longer
+the case as discussed in Section 3.2 because this is
+
+not the appropriate decision when optimizing to-
+wards exposure.
+
+
+- prevous model between my "generator" class
+
+
+
+The tool is extended with a alternative model which will connect users towards exposure and power consumption.
+
+\begin{figure}
+  \includegraphics[width=5cm]{../images/decisionAlgoFlowChart.jpg}
+  \caption{Flow chart for the decision algorithm}
+  \label{fig:decisionAlgoFlowChart}
+\end{figure}
+
+
+\section{Attenuation}
+\label{subsec:attenuation}
+Formula \ref{eq:singleexposure} uses EIRP values which assumes an omnidirection antenna which radiation is equal in each direction. These type of isotropic radiatiators are unrealistic since each antenna focusses his 
+energy to certain directions at the cost of decreased radiation at onder sectors. This decreased radiation will be called attenuation and is expressed in dbm.
+
+\subsection{Defining an antenna}
+A microstrip patch antenna is choses because it allowes easy production but more important it has a low weight and has a thin profile causing it to be very aerodynamic which is usefull when attaching it to an \gls{UABS} \ref{J13_microstripadvantages}.
+
+The dimentions of the antenna depend on the frequency it is operating which will be 2.6 Ghz.
+The formulas from \cite{J14_antennadesign} are \cite{J15_antennadesign} applied. 
+
+
+
+
+
+$$W = \frac{c}{2*f*\sqrt{\frac{\epsilon_r+1}{2}}}$$
+Which C the speed of light, $f$ being the center frequency of 2600 Hz and a dielectric contanst of $\epsilon_r$ = 4.4 a width of 3.51 mm is achieved.
+
+$$\epsilon_{reff} = \frac{\epsilon_r+1}{2}+  \frac{\epsilon_r-1}{2} * \left(1+12*\frac{h}{W}\right)^{-\frac{1}{2}}$$
+The height of the dielectric is choses to be 2.87mm in order to keep the antenna smal and light\ref{J14_antennadesign}.
+$\epsilon_r$ is the permitivity constant of the substrate and depends of the used matieral. In this paper, a substrate like glass is chosen because of the high dielectric constant of $\epsilon_r = 4.4$ compared to other matierals like teflon with only a dielectric constant of $\epsilon_r = 2.2$
+This is because larger dielectric decreases the dimentions of the antenna patch \ref{J14_antennadesign} and therefore indirectly also decreases the dimentions of the entire antenna surface which comes in handy for the limited space on drones. When substituting these values, a $\epsilon_{reff}$ of 3.91 is determined.
+
+$$ L_{eff} = \frac{c}{2*f*\sqrt{\epsilon_{reff}}} $$
+
+Applying this formula with the known values of above the $L_{eff}$ results in 29.16 mm.
+
+$$\Delta L = 0.412*h*\frac{(\epsilon_{reff}+0.3)\left(\frac{W}{h}+0.264\right)}{\left(\epsilon_{reff}-0.258\right)\left(\frac{W}{h}+0.8\right)}$$
+
+By substituting the values from above, the length extension determines that $\Delta L$ equals 1.3071 mm.
+
+Finally can the lenght of the patch be calculated using the expression: $L = L_{eff} - 2 * \Delta L$
+which result in 26.55 mm which result in an antenna like \ref{fig:antennadesign}.
+
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{../images/MicrostripAntenna.jpg}
+  \caption{Design of the microstrip patch antenna.}
+  \label{fig:antennadesign}
+\end{figure}
+
+\subsection{Radiation pattern}
+Mathlab is able to generate a radiation pattern 
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{../images/radiationPattern3D.jpg}
+  \caption{3D image of the radiation pattern caused by the microstir}
+  \label{fig:antennadesign}
+\end{figure}
