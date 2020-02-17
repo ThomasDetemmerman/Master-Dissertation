@@ -104,9 +104,9 @@
 %\newpage\thispagestyle{empty}\mbox{}  % White page
 %\includepdf[pages={-}]{abstract.pdf}  % Extended Abstract
 \tableofcontents                      % Table of Contents
-%\listoffigures                        % List of figures
-%\listoftables                         % List of tables
-%\listoflistings                       % List of listings (code fragments)
+\listoffigures                        % List of figures
+\listoftables                         % List of tables
+\listoflistings                       % List of listings (code fragments)
 \include{woordenlijst}
 \printglossaries
 
@@ -115,11 +115,12 @@
 %
 \include{chapters/1_inleiding}
 \include{chapters/2_stateoftheart}
-\include{chapters/3_deploymenttool}
+\include{chapters/scenarios}
+\include{chapters/deploymenttool}
 \include{chapters/implementation}
-\include{chapters/4_scenarios}
 \include{chapters/5_conclusions}
 \include{chapters/Bibliografie}
-\include{chapters/6_appendix}
-
+\begin{appendices}
+\include{chapters/datasheet}
+\end{appendices}
 \end{document}
