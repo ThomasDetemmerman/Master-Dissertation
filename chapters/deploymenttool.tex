@@ -6,7 +6,7 @@
 The goals 
 \section{Electromagnetic exposure}
 \subsection{Calculation of total whole body SAR10g} % (fold)
-\label{sub:Calculationwbsar}
+\label{sub:Calculationexposure}
 
 The overall $SAR^{head}_{10g}$ can be calculated by a simple sum of individual SAR values \cite{J17_kuehn2019modelling}. 
 The position of the phone is however unknown. This is because the tool assigns a bitrate to a user depending on the service he is using
@@ -63,8 +63,7 @@ E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 \label{eq:totalexposure}
 \end{equation}
 
-\subsubsection{Converting downlink electromagnetic exposure to $SAR^{wb}_{10g}$}
-Only values for wifi are known but the frequency of LTE is very similar. \cite{J22_plets2015joint}
+
 
 
 \subsection{Uplink exposure} % (fold)
@@ -137,8 +136,23 @@ P_{Tx} = P_{sens} + PL
 \label{eq:ptx}
 \end{equation}
 
-\subsubsection{Specific absorption rate for the whole body}
+\subsection{Converting downlink electromagnetic exposure to $SAR^{wb}_{10g}$}
+The \gls{DL} electromagnetic exposure and the power emitted by the \gls{UE} needs to be converted in an overall $SAR^{whole body}_{10g}$
+The conversion constant are based on Duke from the Virtual Family. Duke is a 34-year old with  a weight of 72 kg, an height of 1.74 m and body
+mass index of 23.1 kg/m.  Paper  \cite{J22_plets2015joint} states that WiFi has $SAR^{DL}_WBref$ equals $0.0028 /fraq{W/kg}{W/m^2}$ and a 
+ $SAR^{UL}_WBref$ that equals $0.0070 /fraq{W/kg}{W}$. Since WiFi at a frequency of 2400 Mhz is very close to LTE at 2600 Mhz, it is assumed 
+ in \ref{J22_plets2015joint} that these WiFi-values are also applicable for LTE.
 
+ $SAR^{DL}_WBref$ are expressed in power flux density $S$ (with units $/fraq{W/kg}{W/m^2}$). The \gls{DL} exposure from \ref{sub:Calculationexposure} are
+ expressed in $V/m$ and should therefore first be converted.
+
+ $$ S  = \fraq{E^2}{337} $$
+
+ $$ SAR^{wb,dl}_{10g} = S * 0.0028 $$
+
+ $$ SAR^{wb,ul}_{10g} = S * 0.0070 $$
+ todo:units
+todo: migreer sar wb ul naar zijn aparte sectie beetje verder
 
 
 \subsection{Defining an antenna}
