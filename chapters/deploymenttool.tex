@@ -13,7 +13,12 @@ The position of the phone is however unknown. This is because the tool assigns a
 meaning that users in the network are not only calling but are able of browsing the web aswell. 
 Since calculating the $SAR^{head}_{10g}$ would imply the phone is being hold next to the head, this would result in incorrect conclusions.
 The induced electromagnetic radiation will therefore be expressed in function of the entire body.
-$$ SAR^{wb,total}_{10g} = SAR^{wb,ul}_{10g} +  SAR^{wb,dl}_{10g} + SAR^{wb,neighbours}_{10g} $$
+
+
+\begin{equation} 
+SAR^{wb,total}_{10g} = SAR^{wb,ul}_{10g} +  SAR^{wb,dl}_{10g} + SAR^{wb,neighbours}_{10g}
+\label{eq:overallSARwb}
+\end{equation}
 
 The first parameter, $SAR^{wb,ul}_{10g}$, will indicate the absorbed electromagnetic radiation in the whole body originating from the users own phone
 whereas the second parameter $SAR^{wb,dl}_{10g}$ will represent the absorbed electromagnetic radiation by all the basestations in the considered area.
@@ -63,6 +68,19 @@ E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 \label{eq:totalexposure}
 \end{equation}
 
+\subsubsection{Converting downlink electromagnetic exposure to $SAR^{wb}_{10g}$}
+\label{sub:convertDLtosarwb}
+Formula \ref{eq:overallSARwb} expects that the \gls{DL} electromagnetic radiation is converted into $SAR^{wb,dl}_{10g}$.
+The conversion constant is based on Duke from the Virtual Family. Duke is a 34-year old with  a weight of 72 kg, an height of 1.74 m and body
+mass index of 23.1 kg/m \cite{J22_plets2015joint}.  This conversion factor $SAR^{DL}_WBref$ for WiFi is $0.0028 \frac{W/kg}{W/m^2}$. Since WiFi at a frequency of 2400 Mhz 
+is very close to LTE at 2600 Mhz, it is assumed in \ref{J22_plets2015joint} that these values are also applicable for LTE.
+
+ $SAR^{DL}_WBref$ are expressed in power flux density $S$ (with units $\frac{W/kg}{W/m^2}$). The \gls{DL} exposure from \ref{sub:Calculationexposure} are
+ expressed in $V/m$ and should therefore first be converted.
+
+ $$ S  = \frac{E^2}{337} $$
+ $$ SAR^{wb,dl}_{10g} = S * 0.0028 $$
+
 
 
 
@@ -73,15 +91,10 @@ todo: de 10g slaat al op localized, vandaar dat het maar 10g is, anders is het w
 todo: we kunnen niet sar10gmax gebruiken want This means that the SAR calculations will be worst-case and possibly an overestimation of the real localised SAR. (herwoorden voor plagiaat)
 
 Human exposure caused by downlink traffic is a not negligible asset. However, telecommunications is not a one-way street. When connecting to a UMTS network, also uplink data caused by the \gls{UE} should be considered.
-
 \gls{UE} generates, just like femtocells, electromagnetic waves to which a user is exposed. A part of this radiation goes to the femtocell, another part enters the body of its user. How much electormagnic strenghts enters the body is defined as \gls{SAR} and is measured with 10g biological tissue which represents the human skin. This value will from now on be expressed as $SAR_{10g}$. 
-
 A mobile device induces two types of exposure: local and whole-body. Whole-body exposure can be neglected compared to the much higher local exposure\cite{j10.1.1_gati2010duality}.  From now on, $SAR_{10g}$ implicitly means local exposure.
-
 \gls{IEC} defines in IEC:62209-2 a maximum for a 10g tissue $SAR^{max}_{10g}$ as 2 W/kg and a maximum for a 1g tissue $SAR^{max}_{1g}$ as 1.6 W/kg. Most countries, including Belgium, enforce the 10g model and will, therefore, be the point of reference for this master dissertation.
-
 The $SAR_{10g}$ values are phone dependent. The reported values by companies of mobile devices are worst-case scenarios meaning that the values are measured when the phone is transmitting at maximum power. This is an understandable decision but won't result in a realistic scenario since modern cellular networks use power control mechanisms to prevent over radiation of a nearby device. \gls{UE} will therefore never use more energy than necessary to maintain a connection.
-
 To compensate for this overestimation, the actual $SAR_{10g}$ of each user will be predicted. These will, however, remain an estimation since the position of the phone related too the head differs from user to user. For example, by holding the phone differently, a hand can absorb more or less electromagnetic radiation. TODO: bron.
 
 \begin{equation}
@@ -136,23 +149,15 @@ P_{Tx} = P_{sens} + PL
 \label{eq:ptx}
 \end{equation}
 
-\subsection{Converting downlink electromagnetic exposure to $SAR^{wb}_{10g}$}
-The \gls{DL} electromagnetic exposure and the power emitted by the \gls{UE} needs to be converted in an overall $SAR^{whole body}_{10g}$
-The conversion constant are based on Duke from the Virtual Family. Duke is a 34-year old with  a weight of 72 kg, an height of 1.74 m and body
-mass index of 23.1 kg/m.  Paper  \cite{J22_plets2015joint} states that WiFi has $SAR^{DL}_WBref$ equals $0.0028 /fraq{W/kg}{W/m^2}$ and a 
- $SAR^{UL}_WBref$ that equals $0.0070 /fraq{W/kg}{W}$. Since WiFi at a frequency of 2400 Mhz is very close to LTE at 2600 Mhz, it is assumed 
- in \ref{J22_plets2015joint} that these WiFi-values are also applicable for LTE.
+\subsubsection{Converting uplink electromagnetic exposure to $SAR^{wb}_{10g}$}
+Just like the \gls{DL} radiation expects formula \ref{eq:overallSARwb} the \gls{UL} radiation to be expressed as $SAR^{wb}_{10g}$.
+Therefore, the conversion factor from \cite{J22_plets2015joint} for WiFi is reused as explained in \ref{sub:convertDLtosarwb}.
 
- $SAR^{DL}_WBref$ are expressed in power flux density $S$ (with units $/fraq{W/kg}{W/m^2}$). The \gls{DL} exposure from \ref{sub:Calculationexposure} are
- expressed in $V/m$ and should therefore first be converted.
+\begin{equation} 
+SAR^{wb,ul}_{10g} \left(\frac{W}{kg}\right) = 0.0070 \left(\frac{W/kg}{W}\right) * P_{tx} (W)
+\label{eq:solve}
+\end{equation}
 
- $$ S  = \fraq{E^2}{337} $$
-
- $$ SAR^{wb,dl}_{10g} = S * 0.0028 $$
-
- $$ SAR^{wb,ul}_{10g} = S * 0.0070 $$
- todo:units
-todo: migreer sar wb ul naar zijn aparte sectie beetje verder
 
 
 \subsection{Defining an antenna}
@@ -176,7 +181,9 @@ The formulas from \cite{J14_antennadesign} are \cite{J15_antennadesign} applied.
 \caption{Overview of configuration parameters}
 \end{table}
 
-$$W = \frac{c}{2*f*\sqrt{\frac{\epsilon_r+1}{2}}}$$
+\begin{equation} 
+W = \frac{c}{2*f*\sqrt{\frac{\epsilon_r+1}{2}}}
+\end{equation}
 Which C the speed of light, $f$ being the center frequency of 2600 Hz and a dielectric contanst of $\epsilon_r$ = 4.4 a width of 3.51 mm is achieved.
 
 $$\epsilon_{reff} = \frac{\epsilon_r+1}{2}+  \frac{\epsilon_r-1}{2} * \left(1+12*\frac{h}{W}\right)^{-\frac{1}{2}}$$
@@ -184,12 +191,14 @@ The height of the dielectric is choses to be 2.87mm in order to keep the antenna
 $\epsilon_r$ is the permitivity constant of the substrate and depends of the used matieral. In this paper, a substrate like glass is chosen because of the high dielectric constant of $\epsilon_r = 4.4$ compared to other matierals like teflon with only a dielectric constant of $\epsilon_r = 2.2$
 This is because larger dielectric decreases the dimentions of the antenna patch \ref{J14_antennadesign} and therefore indirectly also decreases the dimentions of the entire antenna surface which comes in handy for the limited space on drones. When substituting these values, a $\epsilon_{reff}$ of 3.91 is determined.
 
-$$ L_{eff} = \frac{c}{2*f*\sqrt{\epsilon_{reff}}} $$
-
+\begin{equation} 
+L_{eff} = \frac{c}{2*f*\sqrt{\epsilon_{reff}}}
+\end{equation}
 Applying this formula with the known values of above the $L_{eff}$ results in 29.16 mm.
 
-$$\Delta L = 0.412*h*\frac{(\epsilon_{reff}+0.3)\left(\frac{W}{h}+0.264\right)}{\left(\epsilon_{reff}-0.258\right)\left(\frac{W}{h}+0.8\right)}$$
-
+\begin{equation} 
+\Delta L = 0.412*h*\frac{(\epsilon_{reff}+0.3)\left(\frac{W}{h}+0.264\right)}{\left(\epsilon_{reff}-0.258\right)\left(\frac{W}{h}+0.8\right)}
+\end{equation}
 By substituting the values from above, the length extension determines that $\Delta L$ equals 1.3071 mm.
 
 Finally can the lenght of the patch be calculated using the expression: $L = L_{eff} - 2 * \Delta L$
@@ -198,8 +207,12 @@ which result in 26.55 mm which result in an antenna like \ref{fig:antennadesign}
 The transmission line model is in fact only applicable for an infinite ground plane but it has been proven that similar results
 can be achieved if the groundplane's dimentions are bigger then the patch of approximatly 6 times the height of the dielectric substrate \cite{J14_antennadesign,J15_antennadesign}.
 
-$$ L_{g} = 6 * h + L $$
-$$ W_{g} = 6 * h + W $$
+\begin{equation} 
+L_{g} = 6 * h + L
+\end{equation}
+\begin{equation} 
+W_{g} = 6 * h + W
+\end{equation}
 
 Therefore should the lengt of the groundplane $L_{g}$ be at least 0.0438m and a width of $W_{g}$ 0.0524m.
 
@@ -272,3 +285,31 @@ found in appendix \ref{ch:radpattern}.
  \label{radpattern1}
 \end{figure}
 
+\section{Optimizing the network}
+The network as originally defined in the deployment tool tried to minimize power consumption by connecting the user to a basestations which
+experienced the lowest path loss. A second optimization strategy is introduced, based on the fitness function described in \cite{J1}.
+
+\begin{equation} 
+f = w * \left(1 - \frac{E_m}{E_{max}}\right) + (1 - w)*\left(1 - \frac{P}{P_{max}}\right) * 100
+\label{eq:fitnessfunction}
+\end{equation}
+
+Forumla \ref{eq:fitnessfunction} retuns a fitness value. Users are connected to different \gls{UABS}s and each time the fitness value is 
+calculated. The user will eventually be connected to the drone which resulted in the highest fitness value. This process is repeated for each user.
+$w$ is the importance factor of electromagnetic exposure ranging from 0 to 1 with boundaries included. A $w$ set to zero means that electromagnetic 
+exposure is not important and therefore be called an power consumption optimized network. Likewise, a $w$ set to one will be called an exposure optimized 
+network. $P_max$ is the power consumption if all \gls{UABS}s are active and would be radiating at the highest possible level and $P$ the used power by the current network. 
+This will be the power required for the flying drones themselves and there antenae.
+$E_m$ will be the exposure for the current designed network and $E_{max}$ the electromagnetic exposure when all antenae are at their highest power level.
+
+The weighted average $E_m$ can be found by inserting the median and 95 percentile from all exposures into formula \ref{eq:em}. Since the location of all users in 
+the deployment tool are known, it is sufficient to calculate exposure only in those possitions. 
+
+\begin{equation} 
+E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
+\label{eq:em}
+\end{equation}
+
+$w_1$ and $w_2$ in \ref{eq:em} being the weighting factors. Not only the median exposure is important but also limiting higher exposure is important. 
+Just like \cite{J1} is with that reason $w_1$ and $w_2$ chosen to both have an equal importance of 50 \%.
+\textcolor{red}{todo: in J1 is dit gedetailleerder uitgeschreven. Mogelijk om hier wat extra over te schrijven.}

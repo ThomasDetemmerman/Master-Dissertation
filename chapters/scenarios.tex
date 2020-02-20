@@ -1,6 +1,7 @@
 \chapter{Scenarios}
 \label{chap:scenarios}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 1
 \section{A single user}
 
 A first scenario will investigate how $SAR_{10g}$ is influenced in an isolated environment meaning there is nor influence 
@@ -19,13 +20,111 @@ The set investigates the influence of a variable flyheight with a constant maxim
 
 Both series will also be investigated with a realistic radiation pattern. The user coverage will be compared. 
 
+The user gets a fixed possition. The exact location doesn't matter as long as it is outside. Doing so will force the \gls{UE} 
+to always be at the same height of 1.5 meters. The conclusions will be based $SAR_{10g}$, power consumption and transmission power.
+These output values depend on fly height and type of antenna. An overview can be found in table \ref{table:confOverviewScenario1}
+
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+      \centering
+        \begin{tabular}{|l|c|l|}
+        \hline
+        x possition user               & 3.7331139698609683        \\    
+        y possition user               & 51.05992485238353           \\ 
+        height of the \gls{UE}         & 1.5m                      \\ 
+        frequency                      & 2600Hz                   \\ 
+        \hline
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+            \begin{tabular}{|l|l|}
+            \hline
+            Input variables                & Output variables          \\   \hline 
+            type of antenna                & $SAR_{10g}$               \\ 
+            fly height                     & power consumption             \\ 
+                                           & transmission power            \\ 
+            \hline
+            \end{tabular}
+    \end{minipage} 
+        \caption{Overview of the configuration.}
+        \label{table:confOverviewScenario1}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 2
 
 
 \section{Increasing traffic with only one drone available}
 The previous scenario will be extended for an increasing amount of users. 
 
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+      \centering
+        \begin{tabular}{|l|c|l|}
+        \hline
+        todo               & todo        \\    
+        todo               & todo\\ 
+        todo               & todo                     \\ 
+        frequency                      & 2600Hz                   \\ 
+        \hline
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+            \begin{tabular}{|l|l|}
+            \hline
+            Input variables                & Output variables          \\   \hline 
+            type of antenna                & $SAR_{10g}$               \\ 
+            fly height                     & power consumption             \\ 
+            number of users                & user coverage            \\ 
+            \hline
+            \end{tabular}
+    \end{minipage} 
+        \caption{Overview of the configuration.}
+        \label{table:confOverviewScenario2}
+\end{table}
+
+The $SAR_{10g}$, power consumption and user coverage will be investigated for an increasing amount of users ranging from 50 to 650 in steps of 50.
+The only available drone will be positioned at the fly height of 100 m as recommended in \cite{J2}. For the second case, the same output variables are investigated 
+for a varying fly height but with a fixed number of 224 users. This case will be applied in the city center of Ghent, assuming it is an average 
+day at 5 p.m. which means it is rush hour resulting in the highest number of simmulatanious users for the day\cite{J2}. 
+Both cases will be investigated for the two types of antennae: the fictional \gls{isotropicradiator} and the microstrip patch antenna.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 3
+
 
 \section{Increasing traffic with an undifend amount of drones}
+
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+      \centering
+        \begin{tabular}{|l|c|l|}
+        \hline
+        todo               & todo        \\    
+        todo               & todo\\ 
+        todo               & todo                     \\ 
+        frequency                      & 2600Hz                   \\ 
+        \hline
+        \end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+            \begin{tabular}{|l|l|}
+            \hline
+            Input variables                & Output variables          \\   \hline 
+            type of antenna                & $SAR_{10g}$               \\ 
+            fly height                     & power consumption             \\ 
+            number of users                & number of drones            \\ 
+            \hline
+            \end{tabular}
+    \end{minipage} 
+        \caption{Overview of the configuration.}
+        \label{table:confOverviewScenario2}
+\end{table}
+
+
 When more drones are available, an optimization strategy can be applied. The tool checks the capacity of the basestations and decides thereafter
 wich basestation the user should be connected to. The original algorithm checks all pahts between the user that need to be connected with 
 all drones. Thereafter, the drones which path experience the least pathloss and still has the capacity to cover an addition user will be selected.

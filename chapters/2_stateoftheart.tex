@@ -2,7 +2,7 @@
 \label{chap:stateoftheart}
 
 \section{Deployment tool for an UAV network}
-\label{chap:stateoftheart:deploymenttool}
+\label{sec:stateoftheart:deploymenttool}
 
 The tool is also able to calculate a more precisly pathloss since 
 
@@ -87,13 +87,43 @@ howevery only for the user's own device.
 In a realistic network like the used deployment tool, some users are calling while annother part is using other type of telecommunication services like browsing the web.
 Therefore, all absorbed electromagnetic exposure should be expressend in whole body SAR while still covering all sources.
 
-
 \section{Optimizing towards electromagnetic exposure and power consumption}
-todo: leg uit Dat de twee omgekeerd evenredig zijn.
+\gls{UABS}s are drones with femtocell base stations attached to it. Drones can remain in the air for only a limited time, which is certainly 
+the  case when also an antenna needs to be connected to the battery of the its carrier. It is therefore
+interessting to not only considering electromagnetic exposure of the user but also the power consumption that comes with it. 
+However an increasing transmission powers of an antenna comes with an increasing electromagnetic exposure, this is not the case considering
+both values for an entire network. In fact, the autors from \cite{J1}  prove that both become inversely equivelent.
 
+If a network is optimized towards power consumption, less drones be provisioned radiating at higher power levels. This is because not only 
+the transmission power is considered but also the power needed to keep the drone in the air. Therefore, it is cheaper to cover a user by 
+increasing the antennas transmission power of an already activated drone nearby and prevents therefore prevets the power cost of a new drone.
+By increasing the transmission power, also the electomagnetic exposure will increase for users closer to that drone. An exposure optimized
+network will therefore faster decide to power up a new drone.
 
+todo: geen grid maar per user
 
 \section{Technologies}
+\subsection{Type of drone}
+
+Section \ref{sec:stateoftheart:deploymenttool} describes how femtocell antennae will be connected to helicopter drones. Two types of 
+drones are considered in \cite{J2}: an off-the-shelf drone affordable by the generic public and a more expensive drone. The results in \cite{J2}
+show that the second type will require less drones to cover the same number of users and will last longer in the air. The research in this paper
+will therefore be done with the usage of the second type. A technical overview of this drone is given in table \ref{table:dronespecs}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|c|l|}
+\hline
+ parameter          & value         \\    \hline
+ Carrier power      & 13.0 A \\
+ average carrier speed           & 12.0 m/s       \\ 
+ Average carrier power usage    & 17.33 Ah      \\ 
+ Carrier battery voltage        & 22.2 V \\ \hline
+\end{tabular}
+\caption{specifications for the used drone.}
+\label{table:dronespecs}
+\end{table}
+
 \subsection{LTE}
 The tool make usage of \gls{LTE} which is by the general public better known as 4G which allowes better \gls{UL} and \gls{DL} dataspeeds 
 compared to its predecessors and is based on an all IP architecture. LTE can cover macrocells supporting cell sizes ranging from 5 km up to 100 km. 
@@ -126,14 +156,11 @@ a radiating patch which are seperated with a dielectric substrate. Several const
 has all similar characteristics. They are all thin, support dual frequency operation and they all have the dissadvatage of \gls{spuriousradiation}.The microstrip patch and slot antenna support both linear
 and circular polarization while the printed dipole only support linear polarization. Further is the fabrication of a microstrip patch antenna considered to be the easiest of its competitors. 
 
-
-
 \begin{figure}[H]
   \includegraphics[width=\textwidth/2]{../images/patchantenna.png}
   \caption{General design of a microstrip antenna}
   \label{fig:basicpatchantenna}
 \end{figure}
-
 
 The microstrip antenna requires besides the groundplane, dielectric substrate and the radiation pach also a feed line. Several feeding techiques exists of which the most popular are: coaxial probe feeding, microstrip line and apeture coupling. %and Microstrip Patch Antenna
 (todo: more refs? gebruik nummer twee van J13 (p2))
@@ -152,4 +179,3 @@ then a cirle or a rectangle will require large nummerical computation \cite{J14_
 Further is also the dielectric constant of the substrate important which typially varies between 2.2 and 12. Finding a good dielectric depends how the antenna will be deployed and it's usage. According to  \cite{J15_antennadesign} will a lower
 dielectric constant with a thic substrate result in better performance, better efficiency and larger bandwiths. On the other hand will according to \cite{J14_antennadesign} a larger dielectric constant reduce de dimensions of the antenna which is also usefull when attaching the 
 antenna to a limited surface. Therefore is opted for a glass as dielectric substrate with a constant of 4.4.
-
