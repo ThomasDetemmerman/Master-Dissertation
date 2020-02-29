@@ -328,13 +328,37 @@ The deployment tool originally only supported EIRP antennas. The tool thus has b
 orientation using the XML-file describing the femtocell. The configuration descripted in this file applies to all \gls{UABS}s. 
 
 The orientation is done using two values called 'downtilt' and 'north offset'. The first value
-defines the angle under wich the antenna is pointing. An angle of 0 degrees is perfectly horizontal and pointing straight to the ground is done with an angle of \ang{90}.
+defines the downtilt angle under wich the antenna is pointing. An angle of 0 degrees is perfectly horizontal and pointing straight to the ground is done with an angle of \ang{90}.
 This parameter only supports postive values ranging from zero to 360 (upper boundary not included). An antenna pointing to the sky would therefore require a value of \ang{270}.
 The second value, the north offset, difines the azimuth orientation of the drone. The value given to this parameter indicates the offset between the north
 and the horizontal direction the antenna should be pointing. The value should once again range from \ang{0} to \ang{360} with the upper boundary not included. The
 angle is calculated in counter clock wise orientation. For instance, a north offset of \ang{270} will let the \gls{UABS} point to the east.  
 
+Thereafter, the normalized radiation pattern is supplied to the tool. The actual pattern is three dimensional. To simplefy this,
+slices perpendicular to the az-axis are extracted. These are indicated at figure \ref{fig:slicesOfPattern} with azimuth cut. whith
+an angle of of \ang{90}, four slices are achieved, easch consisting out of elevation cuts. The intersection of an elevation and azimuth plane 
+corresponds with a certain attenuation which is fed to the tool. Figure \ref{fig:slicesOfPattern} show only 3 elevation planes. The radiation pattern used in the tool 
+has an attenuation every \ang{10}. In other words, a slice consist of 19 values raning from \ang{0} to \ang{180} (boundaries included).
 
+\begin{figure}[H]
+  \includegraphics[width=\textwidth]{../images/3Dimages/slicesOfPattern.jpg}
+  \caption{Schematic example of slices in a radiation pattern.}
+  \label{fig:slicesOfPattern}
+\end{figure}
+TODO: more slices and elevations. the more slices, the higher the precision. Hoe ondersteund?
+
+When the attenuation of a certain user to that \gls{UABS} needs to be calculated, the angle needs to be calculated
+TODO: schrijf hierover.
+
+The change is very little that the angle for which the attenation is requested is known. The attenuation should therefore be esitmated
+using bilinear interpollation.
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=\textwidth/2]{../images/3Dimages/globe.jpg}
+  \caption{Schematic example of how bilinear interpollation works.}
+  \label{fig:globe}
+\end{figure}
 
 \subsection{Performance improvement}
 \subsubsection{Calculating pathloss}
