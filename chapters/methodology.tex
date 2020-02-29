@@ -319,26 +319,24 @@ Just like \cite{J1} is with that reason $w_1$ and $w_2$ chosen to both have an e
 
 \subsection{Network planning}
 
-Multithreaded pathloss
-
-The user needs to be connected to the 'best' basestation. To indentify this best \gls{UABS}, the user should be connected 
-to each basestation and the fitness value \ref{eq:fitnessfunction} of the network should be evaluated. The connection which resulted in the best fitness function
-will be added in the solution. This process is repeaded for each user but can further be improved. A user will likly be connected to either 
-\gls{UABS} directly above him or to a \gls{UABS} in the direct neighbourhood. Timecomplexity can thus be improved by not considering drones 
-outside a certain radius.
-An ideal datastructure for neighbourhood-search is a KD-tree. This datastructure is based on a binary tree and optimal for objects with 
-multiple keys. Objects are thus positioned in K dimensions, each node split the hyperplane over exact one dimension. The dimension that need 
-to be splitted depends on the level of the KD-tree where that node is situated.
-In this case, the x and y coordinate will be used in a 2D-tree (k=2).
-
+TODO
 Thereafter, all inactive users are deleted and only the x best bs are kept with x equal to facilityCapacity.
 Eventually, exposure is one last time calulcated and objects are initilized with the correct exposure values.
 
 \subsection{Implementation of the radiation pattern}
-kdtree, multithread, limited radius in bs search.
+The deployment tool originally only supported EIRP antennas. The tool thus has been exteded and is fully configurable allowing any possible antenna in any possible 
+orientation using the XML-file describing the femtocell. The configuration descripted in this file applies to all \gls{UABS}s. 
+
+The orientation is done using two values called 'downtilt' and 'north offset'. The first value
+defines the angle under wich the antenna is pointing. An angle of 0 degrees is perfectly horizontal and pointing straight to the ground is done with an angle of \ang{90}.
+This parameter only supports postive values ranging from zero to 360 (upper boundary not included). An antenna pointing to the sky would therefore require a value of \ang{270}.
+The second value, the north offset, difines the azimuth orientation of the drone. The value given to this parameter indicates the offset between the north
+and the horizontal direction the antenna should be pointing. The value should once again range from \ang{0} to \ang{360} with the upper boundary not included. The
+angle is calculated in counter clock wise orientation. For instance, a north offset of \ang{270} will let the \gls{UABS} point to the east.  
 
 
-\subsection{Performance improvment}
+
+\subsection{Performance improvement}
 \subsubsection{Calculating pathloss}
 The pathloss is required for several formulas. For instance, each user decides whether a \gls{UABS} is feasable based 
 the pathloss but also the calculations for the downlink electromagnetic 
@@ -354,6 +352,25 @@ When a certain user calculates the pathloss to another user, this pathloss also 
 once and stores the pathloss with both users. It is therefore sufficient that a given user only calculates pathlosses to users left of him, since the other will 
 be calculated by the users right to him. This results in a time complexity of only $n(\frac{n}{2})$. When the last user finishes his thread, all users know the pathloss to all other users causing 
 a space complexity of $n(n-1)$.
+% eventueel nog over concurrent hashmap
 
 \subsubsection{Limiting antenna searching}
-\subsubsection{Calculating pathloss}
+The user needs to be connected to the 'best' basestation. To indentify this best \gls{UABS}, the user should be connected 
+to each basestation and the fitness value \ref{eq:fitnessfunction} of the network should be evaluated. The connection which resulted in the best fitness function
+will be added in the solution. This process is repeaded for each user but can further be improved. A user will likly be connected to either 
+\gls{UABS} directly above him or to a \gls{UABS} in the direct neighbourhood. Time complexity can thus be improved by not considering drones 
+outside a certain radius.
+An ideal datastructure for neighbourhood-search is a KD-tree. This datastructure is based on a binary tree and optimal for objects with 
+multiple keys. Objects are thus positioned in K dimensions, each node split the hyperplane over exact one dimension. The dimension that need 
+to be splitted depends on the level of the KD-tree where that node is situated.
+In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in figure \ref{fig:exampleKDtree}.
+
+\begin{figure}[H]
+  \includegraphics[width=\textwidth]{../images/Example-of-a-2D-k-d-tree.png}
+  \caption{Example of a KD-three in two dimensions}
+  \label{fig:exampleKDtree}
+\end{figure}
+
+
+Here, is chosen to consider only \gls{UABS}s whithin a radius of half a kilometer. In a scenario of 500 \gls{UABS}s, 60 possible \gls{UABS}s are verified.
+TODO: schrijf ook voor 200 users.
