@@ -313,3 +313,26 @@ E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 $w_1$ and $w_2$ in \ref{eq:em} being the weighting factors. Not only the median exposure is important but also limiting higher exposure is important. 
 Just like \cite{J1} is with that reason $w_1$ and $w_2$ chosen to both have an equal importance of 50 \%.
 \textcolor{red}{todo: in J1 is dit gedetailleerder uitgeschreven. Mogelijk om hier wat extra over te schrijven.}
+
+
+\section{Implementation}
+
+\subsection{Network planning}
+
+Multithreaded pathloss
+
+The user needs to be connected to the 'best' basestation. To indentify this best \gls{UABS}, the user should be connected 
+to each basestation and the fitness value \ref{eq:fitnessfunction} of the network should be evaluated. The connection which resulted in the best fitness function
+will be added in the solution. This process is repeaded for each user but can further be improved. A user will likly be connected to either 
+\gls{UABS} directly above him or to a \gls{UABS} in the direct neighbourhood. Timecomplexity can thus be improved by not considering drones 
+outside a certain radius.
+An ideal datastructure for neighbourhood-search is a KD-tree. This datastructure is based on a binary tree and optimal for objects with 
+multiple keys. Objects are thus positioned in K dimensions, each node split the hyperplane over exact one dimension. The dimension that need 
+to be splitted depends on the level of the KD-tree where that node is situated.
+In this case, the x and y coordinate will be used in a 2D-tree (k=2).
+
+Thereafter, all inactive users are deleted and only the x best bs are kept with x equal to facilityCapacity.
+Eventually, exposure is one last time calulcated and objects are initilized with the correct exposure values.
+
+\subsection{Performance improvment}
+kdtree, multithread, limited radius in bs search.

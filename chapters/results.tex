@@ -1,4 +1,47 @@
 \chapter{Results and discussion}
+\section{Number of simulations}
+
+The  algorithm makes usage of randomly distributed users causing each simulation to be difference. The results are based on average 
+values over multiple simulations. It is therefore important knowing how mush simulations is required in order to become a converged average.
+This is done by using an example scenario which details can be found in table \ref{table:configForNumberOfUsers}. The most important parameters
+investigated in the different scenarios are $SAR_{10g}$, power consumption and user coverage. Therefore, the cummulative avarage of each investigated 
+value is plotted in function of number of simulations.
+
+\begin{table}[!htb]
+\centering
+  \begin{tabular}{|l|l|}
+  \hline
+  Parameter               & value          \\   \hline 
+  number of users               & 40            \\ 
+  facilityCapacity                    & 20           \\ 
+  fixedFlyHeight               & 100           \\ 
+  optimization strategy               & power consumption optimized           \\ 
+  \hline
+  \end{tabular}
+  \caption{Overview of the configuration.}
+  \label{table:confOverviewScenario2}
+\end{table}
+
+The number of simulations has a direct influence on the runtime. Certain configurations take a considerable amount of runtime (expessed in hours). This is because of the
+exponential time complexity. The deployment tool with $n$ users, will need to calculate $n$ times the pathloss between $n$ drones and $n$ users and thereafter $n/2$ times between
+each user. Thereafter, each user will have to be connected to the best possible \gls{UABS} and each user is therefore required to consider multiple \gls{UABS}s.
+
+\begin{figure}[th!]
+  \includegraphics[width=\textwidth]{../results/numberOfSim/sarvssim.png}
+  \caption{General design of a microstrip antenna}
+  \label{fig:fhsar}
+\end{figure}
+\begin{figure}[th!]
+  \includegraphics[width=\textwidth]{../results/numberOfSim/pcvssim.png}
+  \caption{General design of a microstrip antenna}
+  \label{fig:fhsar}
+\end{figure}
+\begin{figure}[th!]
+  \includegraphics[width=\textwidth]{../results/numberOfSim/sarvssim.png}
+  \caption{General design of a microstrip antenna}
+  \label{fig:fhsar}
+\end{figure}
+
 \section{Scenario 1: one user and one basestation}
 
 
@@ -13,6 +56,12 @@ This behavior has been examined for the two types of antennae which are the fict
 The reasoning behind this is that the tool will possition the \gls{UABS} just above the user. An \gls{isotropicradiator} doesn't experience attenuation while a microstrip
 patch antenna does. The later is however pointing to the ground meaning the user is in the perfect center of the main beam and therefore also
 not experiencing any attenuation from the normalized radiation pattern.
+
+The deployment tool will only place a drone if the possition is feasable meaning that if the user is inside a building which is higher then
+the fly height of the drone, no \gls{UABS} would be place. In normal circumstances, with more \gls{UABS}s, annother nearby drone would try to 
+take over the responsibility. However, since only one drone is available in this scenario, the user would remain uncovered. To make sure only covered users
+are considered in this scenario, the user in question will always be located in the same outdoor location. The location chosen for this situation is longitude 3.73311°E and 
+latitude  51.05992°N.
 
 \begin{figure}[th!]
   \includegraphics[width=\textwidth]{../results/s1/flyheight-sar.png}
@@ -45,5 +94,9 @@ the tool in this scenario, it is not usefull to repeat this test with different 
   \label{fig:ptxfh}
 \end{figure}
 
-\section{Scenario 2:}
+\section{Scenario 2: increased traffic}
+
+\subsection{Influence of the flight altitude}
+The first case of this scenario investigates the influ
+
 \section{Scenario 3:}
