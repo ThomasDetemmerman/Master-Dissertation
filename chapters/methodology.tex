@@ -334,5 +334,26 @@ In this case, the x and y coordinate will be used in a 2D-tree (k=2).
 Thereafter, all inactive users are deleted and only the x best bs are kept with x equal to facilityCapacity.
 Eventually, exposure is one last time calulcated and objects are initilized with the correct exposure values.
 
-\subsection{Performance improvment}
+\subsection{Implementation of the radiation pattern}
 kdtree, multithread, limited radius in bs search.
+
+
+\subsection{Performance improvment}
+\subsubsection{Calculating pathloss}
+The pathloss is required for several formulas. For instance, each user decides whether a \gls{UABS} is feasable based 
+the pathloss but also the calculations for the downlink electromagnetic 
+exposure require this value to be known. The formulas for the whole body $SAR_{10g}$ require not only the pathloss between the user
+and all \gls{UABS}s but even the pathloss between users themselves. These pathloss calculations are based and the Walfisch-Ikegami 
+Model and makes a distiction between line-of-sight and non-line-of-sight situations causing a high computational load. The caculation between two points stands completly free from
+any other calculation between any other point and is therefore a suitable candidate to be multithreaded. The deployment tool creates two thread pools.
+The first pool creates a thread for each user where each thread calculates the pathloss between the user assigned to him and all possible \gls{UABS}s causing a time complexity of $n^2$.
+Each user stores all pathlosses between himself and any other \gls{UABS} and result therefore in a total space complexity of $n^2$.
+When all users are finished, the pool is shut down and a second one is created for the same calculations but between users.
+The pool will, just like the previous, create threads for each user but has an important difference.
+When a certain user calculates the pathloss to another user, this pathloss also applies for the other direction. The tool saves time by calculating the pathloss only 
+once and stores the pathloss with both users. It is therefore sufficient that a given user only calculates pathlosses to users left of him, since the other will 
+be calculated by the users right to him. This results in a time complexity of only $n(\frac{n}{2})$. When the last user finishes his thread, all users know the pathloss to all other users causing 
+a space complexity of $n(n-1)$.
+
+\subsubsection{Limiting antenna searching}
+\subsubsection{Calculating pathloss}
