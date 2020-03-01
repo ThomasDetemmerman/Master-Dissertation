@@ -352,14 +352,14 @@ When the attenuation of a user to a certain \gls{UABS} needs to be known, the el
 will be calculated. This user is indicated in figure \ref{fig:globe} with a black dot. The small black lines represent azimuth and elevation planes. 
 The tool knows the exact attenuation only at the intersection of those lines. 
 The change that the user is positioned at such an intersection is very small. The attenuation for the requested point can be estimated using bilinear interpollation.
-Figure \ref{globe} indicates the user's angle with the black dot. 
 First, the attenuation is estimated for the intersection of the red-orange line using linear interpollation on the horizontal axis using the known values
- at the end of the red line. The same is done for the orange-green intersection using the known values at the end of the green line. Finally, linear interpollation is used in the y direction using the estimated values at the end of 
+ at the end of the red line. The same is done for the orange-green intersection using the known values at the end of the green line. Finally, linear interpollation is used in the y-git status
+ direction using the estimated values at the end of 
 the orange line.
 
 \begin{figure}[H]
 \centering
-  \includegraphics[width=\textwidth/2]{../images/3Dimages/globe.jpg}
+  \includegraphics[width=\textwidth/3*2]{../images/3Dimages/globev2.jpg}
   \caption{Schematic example of how bilinear interpollation works.}
   \label{fig:globe}
 \end{figure}
