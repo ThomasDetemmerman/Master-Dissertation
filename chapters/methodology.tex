@@ -315,7 +315,6 @@ Just like \cite{J1} is with that reason $w_1$ and $w_2$ chosen to both have an e
 \section{Implementation}
 
 \subsection{Network planning}
-
 TODO
 Thereafter, all inactive users are deleted and only the x best bs are kept with x equal to facilityCapacity.
 Eventually, exposure is one last time calulcated and objects are initilized with the correct exposure values.
@@ -326,16 +325,16 @@ orientation using the XML-file describing the femtocell. The configuration descr
 
 The orientation is done using two values called 'downtilt' and 'north offset'. The first value
 defines the downtilt angle under wich the antenna is pointing. An angle of 0 degrees is perfectly horizontal and pointing straight to the ground is done with an angle of \ang{90}.
-This parameter only supports postive values ranging from zero to 360 (upper boundary not included). An antenna pointing to the sky would therefore require a value of \ang{270}.
+This parameter only supports postive values ranging from \ang{0} to \ang{360} (upper boundary not included). An antenna pointing to the sky would therefore require a value of \ang{270}.
 The second value, the north offset, difines the azimuth orientation of the drone. The value given to this parameter indicates the offset between the north
-and the horizontal direction the antenna should be pointing. The value should once again range from \ang{0} to \ang{360} with the upper boundary not included. The
+and the horizontal direction the antenna should be pointing to. The value should once again range from \ang{0} to \ang{360} with the upper boundary not included. The
 angle is calculated in counter clock wise orientation. For instance, a north offset of \ang{270} will let the \gls{UABS} point to the east.  
 
-Thereafter, the normalized radiation pattern is supplied to the tool. The actual pattern is three dimensional. To simplefy this,
+Thereafter, the normalized radiation pattern is supplied to the tool. The actual pattern is three dimensional. To simplify this,
 slices perpendicular to the az-axis are extracted. These are indicated at figure \ref{fig:slicesOfPattern} with azimuth cut. whith
-an angle of of \ang{90}, four slices are achieved, easch consisting out of elevation cuts. The intersection of an elevation and azimuth plane 
+an angle of \ang{90}, four slices are achieved, each consisting out of elevation cuts. The intersection of an elevation and azimuth plane 
 corresponds with a certain attenuation which is fed to the tool. Figure \ref{fig:slicesOfPattern} show only 3 elevation planes. The radiation pattern used in the tool 
-has an attenuation every \ang{10}. In other words, a slice consist of 19 values raning from \ang{0} to \ang{180} (boundaries included).
+has an attenuation every \ang{10}. In other words, a slice consist of 19 values ranging from \ang{0} to \ang{180} (boundaries included).
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{../images/3Dimages/slicesOfPattern.jpg}
@@ -344,16 +343,19 @@ has an attenuation every \ang{10}. In other words, a slice consist of 19 values 
 \end{figure}
 
 The number of required sliced depend on the complexity of the radiation pattern. For symetrical radiation patterns like 
-in figure \ref{radpattern2} and  \ref{radpattern1}, two cuts perpendicular to each other deviding the radiation pattern in 4 slices 
-is defently sufficient. However, this might not be sufficient for radiation patterns with a more complex structure containg several  
-side lobs. To tackle this issue, as mutch azimuth-slices as desired can be defined. Each slice should however contain an equal ammount 
-of elevation slices.  A concrete example can be found in appendix X
+in figure \ref{radpattern2} and  \ref{radpattern1}, two cuts perpendicular to each other deviding the radiation pattern in 4 azimuth-slices 
+is defently sufficient. However, this might not be the case for radiation patterns with a more complex structure containg several  
+side lobs. To tackle this issue, more azimuth-slices can be defined for increased precision. Each slice should however contain an equal ammount 
+of elevation slices.  A concrete example of a configuration file can be found in appendix \ref{ch:radpatexampleconfig}.
 
-When the attenuation of a certain user to that \gls{UABS} needs to be calculated, the angle needs to be calculated
-TODO: schrijf hierover.
-
-The change is very little that the angle for which the attenation is requested is known. The attenuation should therefore be esitmated
-using bilinear interpollation.
+When the attenuation of a user to a certain \gls{UABS} needs to be known, the elevation and azimuth angles between the user and the antenna's direction 
+will be calculated. This user is indicated in figure \ref{fig:globe} with a black dot. The small black lines represent azimuth and elevation planes. 
+The tool knows the exact attenuation only at the intersection of those lines. 
+The change that the user is positioned at such an intersection is very small. The attenuation for the requested point can be estimated using bilinear interpollation.
+Figure \ref{globe} indicates the user's angle with the black dot. 
+First, the attenuation is estimated for the intersection of the red-orange line using linear interpollation on the horizontal axis using the known values
+ at the end of the red line. The same is done for the orange-green intersection using the known values at the end of the green line. Finally, linear interpollation is used in the y direction using the estimated values at the end of 
+the orange line.
 
 \begin{figure}[H]
 \centering
