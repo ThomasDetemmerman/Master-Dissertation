@@ -1,4 +1,4 @@
-\chapter{Datasheet: radiation patterns}
+\chapter{Radiation patterns: datasheet}
 \label{ch:radpattern}
 Table \ref{tab:datasheetRadiation} gives an overview of the attenuation in the E and H plane. The first radiation pattern 
 is with a square groundplane with an edge of 0.060 meter while the second pattern is more of a rectangular shape with a width of 0.0524m and a lenght of 0.0438m.
@@ -50,3 +50,67 @@ angle & E & H & E & H \\ \hline
 \end{tabular}
 \label{tab:datasheetRadiation}
 \end{table*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Radiation patterns: example configuration}
+
+In listing \ref{c:exampleRadiationConfig} is a possible configuration described for a radiation pattern.
+It is important to notice that this example configuration does not represent the used configuration in this master dissertation.
+The \verb|radiatoinPattern|-tag consist of a \verb|slices|-tag. This tag can contain as much slices as desired.
+In this example, 3 slices are defined indicated with the \verb|attenuation|-tag. This tag contains a mandatory attribute \verb|az| 
+which defines the azimuth angle to which all underlying attenuation values belong.
+Inside the \verb|attenuation|-tag are all attenuation values written in a \verb|value|-tag.
+
+The tool distributes all values equally over the \ang{180} of that slice. In the example below, each \verb|attenuation|-tag contains 10 values
+meaning that the exact attenuation is known every \ang{20}.
+
+The highlighted value of -14,42 is therefore measured at an azimuth angle of \ang{0} and an elevation angle of \ang{120} (counterclockwise).
+
+\begin{listing}[h!]
+\begin{minted}[frame=single,framesep=10pt,xleftmargin=20pt,linenos,highlightlines={10}]{xml}
+<radiationPattern>
+    <slices>
+        <attenuation az="0">
+            <value>0</value>
+            <value>-0.5797</value>
+            <value>-2.193</value>
+            <value>-4.741</value>
+            <value>-8.136</value>
+            <value>-12.14</value>
+            <value>-14.42</value>
+            <value>-12.41</value>
+            <value>-10.21</value>
+            <value>-9.596</value>
+        </attenuation>
+        <attenuation az="90">
+            <value>0</value>
+            <value>-0.6257</value>
+            <value>-2.412</value>
+            <value>-5.099</value>
+            <value>-8.278</value>
+            <value>-11.34</value>
+            <value>-13.00</value>
+            <value>-12.08</value>
+            <value>-10.33</value>
+            <value>-9.596</value>
+        </attenuation>
+        <attenuation az="180">
+            <value>0</value>
+            <value>-0.4963</value>
+            <value>-2.029</value>
+            <value>-4.502</value>
+            <value>-7.859</value>
+            <value>-12.11</value>
+            <value>-15.65</value>
+            <value>-13.71</value>
+            <value>-10.79</value>
+            <value>-9.596</value>
+        </attenuation>
+    </slices>
+</radiationPattern>
+\end{minted}
+\caption{Example configuration of a radiation pattern.}
+\label{c:exampleRadiationConfig}
+\end{listing}

@@ -96,12 +96,10 @@ A mobile device induces two types of exposure: local and whole-body. Whole-body 
 \gls{IEC} defines in IEC:62209-2 a maximum for a 10g tissue $SAR^{max}_{10g}$ as 2 W/kg and a maximum for a 1g tissue $SAR^{max}_{1g}$ as 1.6 W/kg. Most countries, including Belgium, enforce the 10g model and will, therefore, be the point of reference for this master dissertation.
 The $SAR_{10g}$ values are phone dependent. The reported values by companies of mobile devices are worst-case scenarios meaning that the values are measured when the phone is transmitting at maximum power. This is an understandable decision but won't result in a realistic scenario since modern cellular networks use power control mechanisms to prevent over radiation of a nearby device. \gls{UE} will therefore never use more energy than necessary to maintain a connection.
 To compensate for this overestimation, the actual $SAR_{10g}$ of each user will be predicted. These will, however, remain an estimation since the position of the phone related too the head differs from user to user. For example, by holding the phone differently, a hand can absorb more or less electromagnetic radiation. TODO: bron.
-
 \begin{equation}
 {SAR}_{10g} = \frac{P_{tx}}{P^{max}_{tx}} * {SAR}^{max}_{10g}
 \label{eq:calculatesar}
 \end{equation}
-
 Equation \ref{eq:calculatesar} is used to predict the actual $SAR_{10g}$  of a certain user. The \gls{SAR} value is different for each mobile device. An average is calculated based on 3516 different phones from various brands using an up-to-date German database \cite{SARDatabase}.
 When the phone is positioned at the ear, an average of 0.7 $W/kg$ is found with a standard deviation of 0.25 $W/kg$ which are very similar results as in Ref. \cite{j10.1.1_gati2010duality}. The median of 0.67 is used.
 
@@ -215,7 +213,6 @@ W_{g} = 6 * h + W
 \end{equation}
 
 Therefore should the lengt of the groundplane $L_{g}$ be at least 0.0438m and a width of $W_{g}$ 0.0524m.
-
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../images/MicrostripAntenna.jpg}
@@ -345,7 +342,12 @@ has an attenuation every \ang{10}. In other words, a slice consist of 19 values 
   \caption{Schematic example of slices in a radiation pattern.}
   \label{fig:slicesOfPattern}
 \end{figure}
-TODO: more slices and elevations. the more slices, the higher the precision. Hoe ondersteund?
+
+The number of required sliced depend on the complexity of the radiation pattern. For symetrical radiation patterns like 
+in figure \ref{radpattern2} and  \ref{radpattern1}, two cuts perpendicular to each other deviding the radiation pattern in 4 slices 
+is defently sufficient. However, this might not be sufficient for radiation patterns with a more complex structure containg several  
+side lobs. To tackle this issue, as mutch azimuth-slices as desired can be defined. Each slice should however contain an equal ammount 
+of elevation slices.  A concrete example can be found in appendix X
 
 When the attenuation of a certain user to that \gls{UABS} needs to be calculated, the angle needs to be calculated
 TODO: schrijf hierover.
