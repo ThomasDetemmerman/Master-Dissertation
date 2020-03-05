@@ -45,23 +45,23 @@ each user. Thereafter, each user will have to be connected to the best possible 
 \section{Scenario 1: one user and one basestation}
 
 
-\subsection{The influence of the fly height on $SAR_{10g}$}
+\subsection{Influence of the flying height}
 \label{sub:senario1_influenceOfFlyHeight}
 
 This section investigates how the fly height of the \gls{UABS} influence $SAR_{10g}$ and power consumption. In figure \ref{fig:fhsar}
-becomes clear that with an increasing flyheight, the specific absorption rate grows exponentially which is also the case for the power consumption (fig. \ref{fig:pcsar})  
+becomes clear that with an increasing flying height, the specific absorption rate grows exponentially 
+which is also the case for the power consumption (fig. \ref{fig:pcsar})  
 
 This behavior has been examined for the two types of antennae which are the fictional \gls{isotropicradiator} and the microstrip patch antenna. In figures 
 \ref{fig:fhsar} and \ref{fig:pcsar} becomes clear that the type of antenna does not influence the power consumption nor the specific absorption rate in this  scenario.
-The reasoning behind this is that the tool will possition the \gls{UABS} just above the user. An \gls{isotropicradiator} doesn't experience attenuation while a microstrip
+The reasoning behind this is that the tool will position the \gls{UABS} just above the user. An \gls{isotropicradiator} doesn't experience attenuation while a microstrip
 patch antenna does. The later is however pointing to the ground meaning the user is in the perfect center of the main beam and therefore also
 not experiencing any attenuation from the normalized radiation pattern.
 
-The deployment tool will only place a drone if the possition is feasable meaning that if the user is inside a building which is higher then
-the fly height of the drone, no \gls{UABS} would be place. In normal circumstances, with more \gls{UABS}s, annother nearby drone would try to 
-take over the responsibility. However, since only one drone is available in this scenario, the user would remain uncovered. To make sure only covered users
-are considered in this scenario, the user in question will always be located in the same outdoor location. The location chosen for this situation is longitude 3.73311°E and 
-latitude  51.05992°N.
+%The deployment tool will only place a drone if the position is feasible meaning that if the user is inside a building which is higher then
+%the fly height of the drone, no \gls{UABS} would be place. In normal circumstances, with more \gls{UABS}s, another nearby drone would try to 
+%take over the responsibility. However, since only one drone is available in this scenario, the user would remain uncovered. To make sure only covered users
+%are considered in this scenario, the user in question will always be located in the same outdoor location. The location chosen for this situation is 
 
 \begin{figure}[th!]
   \includegraphics[width=\textwidth]{../results/s1/flyheight-sar.png}
@@ -94,9 +94,142 @@ the tool in this scenario, it is not usefull to repeat this test with different 
   \label{fig:ptxfh}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scenario 2: increased traffic}
 
 \subsection{Influence of the flight altitude}
-The first case of this scenario investigates the influ
+This scenario investigates how the network consisting of one \gls{UABS} behaves when applied on an ordinary day during rush hour. 
+On average, 224 active users are distributed uniformly over the city center of Ghent. 
+Chart \ref{fig:s2fhvsdl} shows how the downlink exposure is influenced by flying height of the \gls{UABS}. 
+Increasing the flying height has a direct influence on the total downlink exposure of an individual user. 
+This is because if a drone flies higher, there is less penetration loss from obstructing buildings.
 
+A power consumption optimized network with an \gls{EIRP} antenna (yellow) has the highest exposure. 
+This is logical when comparing with an EIRP antenna in an exposure optimized network (red). 
+However, when looking at chart \ref{fig:s2fhvspc}, the power consumption in a power consumption optimized network is worse 
+than in an exposure optimized network. To understand this, the behavior of the deployment tool needs to be understood first. 
+We know that a power consumption optimized network will result in few high powered \gls{UABS}s while an exposure optimized network 
+generates a lot of low powered \gls{UABS}s. When only limited amount of \gls{UABS}s are available, 
+like only one in this scenario, the tool will only keep \gls{UABS}s which cover most of the users. 
+Therefore, is the power consumption in a power consumption optimized network way higher. 
+
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s2/fhvsdl.png}
+  \caption{The influence of the flying height on the weighted average downlink exposure of users in the network.}
+  \label{fig:s2fhvsdl}
+\end{figure}
+
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s2/fhvsdl.png}
+  \caption{The influence of the flying height on the total power consumption of the network.}
+  \label{fig:s2fhvspc}
+\end{figure}
+
+
+Chart  \ref{fig:s2fhvscov} shows that the flying height has a positive influence on the user coverage. 
+When a \gls{UABS} flies higher, there is less pathloss between the user and the drone caused by buildings. 
+As mentioned before, a power consumption optimized network will result in few high powered \gls{UABS}s. 
+The tool removes all \gls{UABS}s except the one with most users. 
+The network therefore exist out of one high powered \gls{UABS} compared to the exposure optimized network with one drone which 
+will be less powered. Since yellow has a higher power level, also more users will be covered.
+
+When replacing the fictional \gls{EIRP} antenna with a microstrip patch antenna, the percentage of covered users drops for both 
+optimization strategies. This is because users who have a higher horizontal distance between themselves and the \gls{UABS}, 
+experience a higher attenuation. Also, when a microstrip patch antenna is positioned higher, the range of the antenna increases 
+since the angle between the user and the \gls{UABS}s main lob decreases. The user will therefore experience less attenuation.
+
+It becomes also clear that this advantage is limited. For a scenario of 224 users and one drone, the user coverage won’t increase
+ significantly anymore around an altitude of 120m.
+
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s2/fhvscov.png}
+  \caption{This graph shows the percentage of covered users by one drone for different flying heights.}
+  \label{fig:s2fhvscov}
+\end{figure}
+
+Chart \ref{fig:s2fhvssar} shows the whole body SAR10g, deducted from all electromagnetic sources. This being exposure of all \gls{UABS}s,
+ the uplink exposure from the user’s own device and the exposure of the devices from all other users. 
+ Thereafter, the weighted average of all whole body SAR10g values in the network is calculated with the 50th and 95th percentile 
+ being the most important values. This is because not only the mean values are important but also users who experience higher 
+ levels of whole body SAR10g.
+
+
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s2/fhvssar.png}
+  \caption{The influence of the flying height on the weighted average $SAR_{10g}$ of users in the network.}
+  \label{fig:s2fhvssar}
+\end{figure}
+
+
+\subsection{Influence of the number of users}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scenario 3:}
+\subsection{Influence of the flight altitude}
+Figure shows the required power to maintain the network at a given altitude
+
+
+This scenario examines the same cases as scenario 2 but there is no restriction on the number of \gls{UABS}s. 
+Unlike the charts in scenario 2, chart \ref{fig:s3fhvsdl} and \ref{fig:s3fhvspc} show a clearer view on how the decision algorithms
+ works. Antennas in an exposure optimized network cause less downlink exposure (chart \ref{fig:s3fhvsdl}). On the other hand, 
+ a network generated for optimal power consumption requires indeed less energy as proven in chart \ref{fig:s3fhvspc}. 
+ It also becomes clear that the type of antenna barley influence the power consumption.
+
+Chart \ref{fig:s3fhvsdl} shows how a power consumption optimized network decreases up to 80 meters. Thereafter, 
+the downlink exposure starts increasing again. When investigating the downlink exposure in an exposure 
+optimized network, solely a linear relationship is achieved. 
+
+
+\begin{figure}[]
+  \includegraphics[width=\textwidth]{../results/s3/fhvsdl.png}
+  \caption{The influence of the flying height on the weighted average downlink exposure of users in the network.}
+  \label{fig:s3fhvsdl}
+\end{figure}
+
+\begin{figure}[]
+  \includegraphics[width=\textwidth]{../results/s3/fhvsdl.png}
+  \caption{The influence of the flying height on the total power consumption of the network.}
+  \label{fig:s3fhvspc}
+\end{figure}
+
+Scenario 2 shows in chart \ref{fig:s2fhvspc} that the power consumption increases when the flying height increases. 
+When more drones are available like in chart 13 below, power consumption decreases at higher flying altitudes. 
+The type of antenna makes almost no difference.
+
+\begin{figure}[]
+  \includegraphics[width=\textwidth]{../results/s3/fhvscov.png}
+  \caption{This graph shows the percentage of covered users by one drone for different flying heights.}
+  \label{fig:s3fhvscov}
+\end{figure}
+
+\begin{figure}[]
+  \includegraphics[width=\textwidth]{../results/s3/fhvsnumdrones.png}
+  \caption{This graph shows how much drones are required for different flying heights while trying to achieve a 100\% coverage.}
+  \label{fig:s3fhvscov}
+\end{figure}
+
+Chart \ref(fig:s3fhvsnumdrones) shows the number of drones required when applying different antenna types 
+and different optimization strategies at varying flying heights. It becomes clear that a power consumption optimized network 
+requires less drones. Chart 14 also shows that the type of antenna has almost no influence on the number of drones. 
+TODO: See section ‘questions and problems’ of semester 2, week 4 for a possible reason.
+
+Chart \ref{fig:s3fhvssar} shows the relationship between the flying height and the number of users. 
+It is clear that the optimization strategy and antenna type has no influence. This is because of the unlimited drones available. 
+If a user cannot be covered because an \gls{UABS}s is too far away or is saturated with other users, 
+the tool can simply add another \gls{UABS}. The only remaining reason that a user can’t be covered is because the position of 
+the drone is obstructed by a building. The higher drones fly, the less change the position is obstructed by a building. 
+In gent is this chance is zero when flying higher then 119 meters. Since the `Artevelde Tower' is the highest building in Ghent.
+
+\begin{figure}[]
+  \includegraphics[width=\textwidth]{../results/s3/fhvssar.png}
+  \caption{The influence of the flying height on the weighted average $SAR_{10g}$ of users in the network.}
+  \label{fig:s3fhvssar}
+\end{figure}
+
+Chart \ref{fig:s3fhvssar} shows how the average whole body SAR10g is influenced by the fly altitude of the \gls{UABS}.
+ The chart has a similar structure as chart \ref{fig:s3fhvsdl} . This was also the case in scenario 2.
+
+
+\subsection{Influence of the number of users}
+todo

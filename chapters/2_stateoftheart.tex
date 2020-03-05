@@ -49,12 +49,15 @@ Each european country needs to decide for themselves which limitations to enforc
 The used deployment tool is applied in Ghent, a Flemish city in Belgium. The standards defined by the Flemish government is therefore applicable.
 They state that in the 2.6 Ghz frequency band, an individual antenna can't exceed 4.5 V/m and the cumulative sum of all fixed sources 31 V/m \cite{S13_normenBelgie}.
 
-\subsection{Specific absorption rate}
+\subsection{Specific Absorption Rate}
 
 \gls{SAR} represents the rate that electromagnetic energy is absorbed by human tissue with the thermal effect as it's most important health consequence.
-Different type of \gls{SAR}-values exist like whole body \gls{SAR} which is the average absorbed radiation over the entire 
-body. Also more precise \gls{SAR}-values exist which go under the name of localized \gls{SAR}-values and only cover a part of the human body like the head.
-The \gls{ICNIRP} has concluded that the threshold effect is at 4 W/kg meaning that any higher absorption rate would overwhelm the thermoregulatory capacity of the human body.
+The volume of this tissue is typically 1g or 10g. The Federal Communications Commission of the United States defines regulations based on 1g tissue (indicated as $SAR_{1g}$) 
+while the European Union handles the 
+10g model ($SAR_{10g}$). $SAR$ values can further be categorized based on the area it covers. 
+A first one is whole body \gls{SAR} ($SAR^{wb}$) which is the average absorbed radiation over the entire 
+body. The second type is more precisely. Localized \gls{SAR}-values cover only  a part of the human body like the head.
+The \gls{ICNIRP} has concluded that the threshold effect for $SAR^{wb}_{10g}$ is at 4 W/kg meaning that any higher absorption rate would overwhelm the thermoregulatory capacity of the human body.
 Whole body values between 1 and 4 W/kg increases the temperature of human body less then 1°C which is proven not to be harmful for a healthy human being\cite{J24}.
 Thereafter, a safety margin is introduced to tackle unknown variables like experimental errors, increased sensitivity for certain population groups and so on. 
 This results in a whole body $SAR_{10g}$ of $0.8 W/kg$ and $2 W/kg$ for localized $SAR_{10g}$ at head and torso area \cite{J23}.
@@ -64,8 +67,6 @@ This results in a whole body $SAR_{10g}$ of $0.8 W/kg$ and $2 W/kg$ for localize
 %Human exposure caused by downlink traffic is a not negligible asset. However, telecommunications is not a one-way street. When connecting to a UMTS network, also uplink data caused by the \gls{UE} should be considered.
 %\gls{UE} generates, just like femtocells, electromagnetic waves to which a user is exposed. A part of this radiation goes to the femtocell, another part enters the body of its user. How much electormagnic strenghts enters the body is defined as \gls{SAR} and is measured with 10g biological tissue which represents the human skin. This value will from now on be expressed as $SAR_{10g}$. 
 %A mobile device induces two types of exposure: local and whole-body. 
-
-
 
 \subsection{Related work} % (fold)
 \label{sub:general}
@@ -139,7 +140,6 @@ to both data streams. A small guardband is used between \gls{UL} and \gls{DL} di
 alternately (in time) use the frequency spectrum. A small time interval is used to prevent interference in case of a slightly bad timed synchronization.
 
 This master dissertation will make usage of \gls{FDD}.
-
 
 \subsection{Type of antenna} % (fold)
 
