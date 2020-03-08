@@ -42,8 +42,37 @@ each user. Thereafter, each user will have to be connected to the best possible 
   \label{fig:fhsar}
 \end{figure}
 
-\section{Scenario 1: one user and one basestation}
+\section{Scenario 1: one user and one base station}
 
+\subsection{The influence from the maximum transmission power}
+\gls{LTE} makes usages of power control meaning that no more power will be used then strictly necessary. The actual 
+transmit power $P_{tx}$ therefore ranges between 0 and the maximum input power. $P_{tx}$ is zero when either no user is 
+present or the user is so far away that the actual transmit power would exceed the maximum transmission power.
+Increasing the maximum transmission power won't influence the power consumption or $SAR_{10g}$ because the \gls{UABS} won't use more
+then strictly required. It is therefore more useful to match the transmission power against a variable fly height. Figure \ref{fig:ptxfh}
+shows a logarithmic  relationship showing that $P_{tx}$ increases fast at low altitude but slows down at lower altitudes. 
+
+Figure \ref{fig:ptxfh} shows the minimal required energy by an \gls{isotropicradiator} in other to reach the user just below him.
+As already discussed in \ref{sec:s1}, the user is outdoor and just below the \gls{UABS}. There is thus a free line-of-sight between both
+radiators. It is clear that a step function is achieved from this. This is because multiple flying heights correspond to the same flying height.
+When the flying height increases, so does the pathloss. \gls{LTE} tries to counteract this by increasing the power level. Each time 
+the pathloss becomes to high, the power level of the antenna increases with one dBm. Doing so, decreases pathloss allowing the antenna to reach
+the user again. When the flying height immediately after increases again, the pathloss also increases but not enough to force the drone to 
+increase his power level again. This explains the discontinue step function. If the tool would make usage of smaller step size, a more continuous 
+logarithmic function would be achieve. This would however worsen the time complexity because increasing the power level to exceed the pathloss
+ happens in smaller steps. The red line indicates the default maximum transmission power used during simulations. 
+In a free line-of-sight scenario with only one user, a \gls{UABS} can fly up to 387 meters before losing connection.
+
+This scenario is investigated with a microstrip patch antenna using power consumption optimization. However, these parameters does not matter.
+While an \gls{isotropicradiator} no attenuation, a microstrip patch antenna does but since the user positioend in the perfect center of the main beam there
+won't be any attenuation in eighter cases. Also the optimization wont' make a difference. The goal of the  strategy is to decide wich drone is most suitable for which
+users. Since there is only one user and one possible position for the drone, both optimization strategies behave identical.
+
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s1/ptx-fh2.png}
+  \caption{Minimal required transmission power by the antenna to reach the ground just below him.}
+  \label{fig:ptxfh}
+\end{figure}
 
 \subsection{Influence of the flying height}
 \label{sub:senario1_influenceOfFlyHeight}
@@ -52,21 +81,21 @@ This section investigates how the fly height of the \gls{UABS} influence $SAR_{1
 becomes clear that with an increasing flying height, the specific absorption rate grows exponentially 
 which is also the case for the power consumption (fig. \ref{fig:pcsar})  
 
-This behavior has been examined for the two types of antennae which are the fictional \gls{isotropicradiator} and the microstrip patch antenna. In figures 
-\ref{fig:fhsar} and \ref{fig:pcsar} becomes clear that the type of antenna does not influence the power consumption nor the specific absorption rate in this  scenario.
-The reasoning behind this is that the tool will position the \gls{UABS} just above the user. An \gls{isotropicradiator} doesn't experience attenuation while a microstrip
-patch antenna does. The later is however pointing to the ground meaning the user is in the perfect center of the main beam and therefore also
-not experiencing any attenuation from the normalized radiation pattern.
+Figure \ref{fig:s1_fhsar} shows the induced electromagnetic radiation for our user. The red line shows the $SAR^{own device}_{10g}$. This radiation very low when the \gls{UABS}
+is close to the ground but increases exponentially at higher flying altitudes. The green line represent the $SAR^{basestation}_{10g}$ which shows the same discontinue 
+behavior from in figure \ref{fig:ptxfh}. As explained before, \gls{LTE} makes usage of power control. Meaning that the power transmission only increases when pahtloss 
+increases up to the point where the power level exceeds its maximum after which connection is lost completely and exposure drops to zero. 
+This behavour causes the electromagnetic radiation experienced by the user to be almost constant. The slightly visible variation is just an extention of the reason 
+why figure \ref{fig:ptxfh} forms a step function. When the power level increases with $1 dBm$, it is more then strictly required causing the electromagnetic radiation to 
+slightly increase. Just before an energy jump, pathloss and power level are perfectly balanced generating the lowest possible electromagnetic radiation possible.
 
-%The deployment tool will only place a drone if the position is feasible meaning that if the user is inside a building which is higher then
-%the fly height of the drone, no \gls{UABS} would be place. In normal circumstances, with more \gls{UABS}s, another nearby drone would try to 
-%take over the responsibility. However, since only one drone is available in this scenario, the user would remain uncovered. To make sure only covered users
-%are considered in this scenario, the user in question will always be located in the same outdoor location. The location chosen for this situation is 
+Figure \ref{fig:s1_fhsar} doesn't show radiation from neighbours, because there are non present in this scenario. Finally, all these values are added as explained in formula
+\ref{eq:overallSARwb}.
 
 \begin{figure}[th!]
-  \includegraphics[width=\textwidth]{../results/s1/flyheight-sar.png}
+  \includegraphics[width=\textwidth]{../results/s1/fhvssar2.png}
   \caption{General design of a microstrip antenna}
-  \label{fig:fhsar}
+  \label{fig:s1_fhsar}
 \end{figure}
 
 \begin{figure}[bh!]
@@ -75,24 +104,7 @@ not experiencing any attenuation from the normalized radiation pattern.
   \label{fig:pcsar}
 \end{figure}
 
-\subsection{The influence from the maximum transmission power}
-\gls{LTE} makes usages of power control meaning that no more power will be used then strictly necessary. The actual 
-transmit power $P_{tx}$ therefore ranges between 0 and the maximum input power. $P_{tx}$ is zero when either no user is 
-present or the user is so far away that the actual tranmit power would exceed the maximum transmission power.
 
-Increasing the maximum tranmission power won't influence the power consumption or $SAR_{10g}$ because the \gls{UABS} won't use more
-then strictly required. It is therefore more usefull to match the transmission power against a variable fly height. Figure \ref{fig:ptxfh}
-shows a logarithmic  relationship showing that $P_{tx}$ increases fast at low altitude but slows down at lower altitudes. 
-
-Since it became clear from section \ref{sub:senario1_influenceOfFlyHeight} that the type of antenna won't make a difference when applying
-the tool in this scenario, it is not usefull to repeat this test with different types of antennae.
-
-
-\begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s1/ptx-fh.png}
-  \caption{General design of a microstrip antenna}
-  \label{fig:ptxfh}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scenario 2: increased traffic}
