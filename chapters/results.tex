@@ -90,7 +90,12 @@ why figure \ref{fig:ptxfh} forms a step function. When the power level increases
 slightly increase. Just before an energy jump, pathloss and power level are perfectly balanced generating the lowest possible electromagnetic radiation possible.
 
 Figure \ref{fig:s1_fhsar} doesn't show radiation from neighbours, because there are non present in this scenario. Finally, all these values are added as explained in formula
-\ref{eq:overallSARwb}.
+\ref{eq:overallSARwb}. 
+
+The figure shows that for low flying drones, \gls{UABS}s are the main source of electromagnetic radiation.
+This changes around 80 meters where \gls{UL} electromagnetic radiation of the \gls{UE}
+exceeds \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s.
+
 
 \begin{figure}[th!]
   \includegraphics[width=\textwidth]{../results/s1/fhvssar2.png}
@@ -177,37 +182,34 @@ Chart \ref{fig:s2fhvssar} shows the whole body SAR10g, deducted from all electro
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \section{Scenario 3:}
 \subsection{Influence of the flight altitude}
-Figure shows the required power to maintain the network at a given altitude
-
 
 This scenario examines the same cases as scenario 2 but there is no restriction on the number of \gls{UABS}s. 
-Unlike the charts in scenario 2, chart \ref{fig:s3fhvsdl} and \ref{fig:s3fhvspc} show a clearer view on how the decision algorithms
- works. Antennas in an exposure optimized network cause less downlink exposure (chart \ref{fig:s3fhvsdl}). On the other hand, 
- a network generated for optimal power consumption requires indeed less energy as proven in chart \ref{fig:s3fhvspc}. 
- It also becomes clear that the type of antenna barley influence the power consumption.
+Unlike in scenario 2, fig. \ref{fig:s3fhvsdl} and \ref{fig:s3fhvspc} show a clearer view on how the decision algorithms
+works. Antennae in an exposure optimized network cause less downlink exposure (fig. \ref{fig:s3fhvsdl}). On the other hand, 
+a network generated for optimal power consumption requires indeed less energy as proven in figure \ref{fig:s3fhvspc}. 
 
-Chart \ref{fig:s3fhvsdl} shows how a power consumption optimized network decreases up to 80 meters. Thereafter, 
-the downlink exposure starts increasing again. When investigating the downlink exposure in an exposure 
-optimized network, solely a linear relationship is achieved. 
+Figure \ref{fig:s3fhvsdl} shows how an \gls{isotropicradiator} in and powerconsumption optimized network has the highest exposure when 
+the \gls{UABS}  is close to the ground. An power consumption optimized network results in less number of drones which can also be seen 
+on figure \gls{fig:s3:fhvsnumdrones}. The network is still trying to cover as much users as possible as visible on figure 
+\gls{fig:s3fhvscov} (whith in this case less resources). Low flying drones need to account for increased pathloss by obstructing buildings.
+When the flying altitude increases, there is less pathloss and the electromagnetic exposure stabalizes. The same is applicable when replacing
+the \gls{isotropicradiator} with a microstrip patch antenna but users will experience less electromagnetic radiation 
+because of antenna aperture. Because the algorithm still tries to cover as much users as possible, the tool will react to this by 
+introducing more drones (fig \ref{fig:s3fhvsnumdrones}).
+
+When changing the optimization strategy towards an exposure optimized network, the lowest possible electromagnetic radiation is recorded
+with low flying drones at 20 m height with microstrip patch antennae. Using an \gls{isotropicradiator} automatically increases electromagnetic 
+radiation because of the absence of attenuation. This behaviour results in an higher necessity of antenna carriers \ref{fig:s3fhvsnumdrones}.
 
 
-\begin{figure}[]
+\begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/fhvsdl.png}
-  \caption{The influence of the flying height on the weighted average downlink exposure of users in the network.}
+  \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user.}
   \label{fig:s3fhvsdl}
 \end{figure}
-
-\begin{figure}[]
-  \includegraphics[width=\textwidth]{../results/s3/fhvsdl.png}
-  \caption{The influence of the flying height on the total power consumption of the network.}
-  \label{fig:s3fhvspc}
-\end{figure}
-
-Scenario 2 shows in chart \ref{fig:s2fhvspc} that the power consumption increases when the flying height increases. 
-When more drones are available like in chart 13 below, power consumption decreases at higher flying altitudes. 
-The type of antenna makes almost no difference.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhvscov.png}
@@ -221,27 +223,28 @@ The type of antenna makes almost no difference.
   \label{fig:s3fhvscov}
 \end{figure}
 
-Chart \ref(fig:s3fhvsnumdrones) shows the number of drones required when applying different antenna types 
-and different optimization strategies at varying flying heights. It becomes clear that a power consumption optimized network 
-requires less drones. Chart 14 also shows that the type of antenna has almost no influence on the number of drones. 
-TODO: See section ‘questions and problems’ of semester 2, week 4 for a possible reason.
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s3/fhvspc.png}
+  \caption{The influence of the flying height on the total power consumption of the network.}
+  \label{fig:s3fhvspc}
+\end{figure}
 
-Chart \ref{fig:s3fhvssar} shows the relationship between the flying height and the number of users. 
-It is clear that the optimization strategy and antenna type has no influence. This is because of the unlimited drones available. 
+Both \ref{fig:s3fhvsnumdrones} and \ref{fig:s3fhvspc} show that the network profit from increasing the flying altitude. 
+Not only less drones are needed but also the power consumption is lower. Both can be explained by the lower pathloss when \gls{UABS}s fly higher.
 If a user cannot be covered because an \gls{UABS}s is too far away or is saturated with other users, 
 the tool can simply add another \gls{UABS}. The only remaining reason that a user can’t be covered is because the position of 
 the drone is obstructed by a building. The higher drones fly, the less change the position is obstructed by a building. 
 In gent is this chance is zero when flying higher then 119 meters. Since the `Artevelde Tower' is the highest building in Ghent.
+
+Scenario 1 already proved that with low flying drones, the main source of electromagnetic radiation are \gls{UABS}. 
+This changes around 80 meters where \gls{UL} electromagnetic radiation of the \gls{UE}
+ exceeds \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhvssar.png}
   \caption{The influence of the flying height on the weighted average $SAR_{10g}$ of users in the network.}
   \label{fig:s3fhvssar}
 \end{figure}
-
-Chart \ref{fig:s3fhvssar} shows how the average whole body SAR10g is influenced by the fly altitude of the \gls{UABS}.
- The chart has a similar structure as chart \ref{fig:s3fhvsdl} . This was also the case in scenario 2.
-
 
 \subsection{Influence of the number of users}
 todo
