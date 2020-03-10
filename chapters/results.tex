@@ -42,8 +42,38 @@ each user. Thereafter, each user will have to be connected to the best possible 
   \label{fig:fhsar}
 \end{figure}
 
-\section{Scenario 1: one user and one basestation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Scenario 1: one user and one base station}
 
+\subsection{The influence from the maximum transmission power}
+\gls{LTE} makes usages of power control meaning that no more power will be used then strictly necessary. The actual 
+transmit power $P_{tx}$ therefore ranges between 0 and the maximum input power. $P_{tx}$ is zero when either no user is 
+present or the user is so far away that the actual transmit power would exceed the maximum transmission power.
+Increasing the maximum transmission power won't influence the power consumption or $SAR_{10g}$ because the \gls{UABS} won't use more
+then strictly required. It is therefore more useful to match the transmission power against a variable fly height. Figure \ref{fig:ptxfh}
+shows a logarithmic  relationship showing that $P_{tx}$ increases fast at low altitude but slows down at lower altitudes. 
+
+Figure \ref{fig:ptxfh} shows the minimal required energy by an \gls{isotropicradiator} in other to reach the user just below him.
+As already discussed in \ref{sec:s1}, the user is outdoor and just below the \gls{UABS}. There is thus a free line-of-sight between both
+radiators. It is clear that a step function is achieved from this. This is because multiple flying heights correspond to the same flying height.
+When the flying height increases, so does the pathloss. \gls{LTE} tries to counteract this by increasing the power level. Each time 
+the pathloss becomes to high, the power level of the antenna increases with one dBm. Doing so, decreases pathloss allowing the antenna to reach
+the user again. When the flying height immediately after increases again, the pathloss also increases but not enough to force the drone to 
+increase his power level again. This explains the discontinue step function. If the tool would make usage of smaller step size, a more continuous 
+logarithmic function would be achieve. This would however worsen the time complexity because increasing the power level to exceed the pathloss
+ happens in smaller steps. The red line indicates the default maximum transmission power used during simulations. 
+In a free line-of-sight scenario with only one user, a \gls{UABS} can fly up to 387 meters before losing connection.
+
+This scenario is investigated with a microstrip patch antenna using power consumption optimization. However, these parameters does not matter.
+While an \gls{isotropicradiator} no attenuation, a microstrip patch antenna does but since the user positioend in the perfect center of the main beam there
+won't be any attenuation in eighter cases. Also the optimization wont' make a difference. The goal of the  strategy is to decide wich drone is most suitable for which
+users. Since there is only one user and one possible position for the drone, both optimization strategies behave identical.
+
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s1/ptx-fh2.png}
+  \caption{Minimal required transmission power by the antenna to reach the ground just below him.}
+  \label{fig:ptxfh}
+\end{figure}
 
 \subsection{Influence of the flying height}
 \label{sub:senario1_influenceOfFlyHeight}
@@ -52,21 +82,26 @@ This section investigates how the fly height of the \gls{UABS} influence $SAR_{1
 becomes clear that with an increasing flying height, the specific absorption rate grows exponentially 
 which is also the case for the power consumption (fig. \ref{fig:pcsar})  
 
-This behavior has been examined for the two types of antennae which are the fictional \gls{isotropicradiator} and the microstrip patch antenna. In figures 
-\ref{fig:fhsar} and \ref{fig:pcsar} becomes clear that the type of antenna does not influence the power consumption nor the specific absorption rate in this  scenario.
-The reasoning behind this is that the tool will position the \gls{UABS} just above the user. An \gls{isotropicradiator} doesn't experience attenuation while a microstrip
-patch antenna does. The later is however pointing to the ground meaning the user is in the perfect center of the main beam and therefore also
-not experiencing any attenuation from the normalized radiation pattern.
+Figure \ref{fig:s1_fhsar} shows the induced electromagnetic radiation for our user. The red line shows the $SAR^{own device}_{10g}$. This radiation very low when the \gls{UABS}
+is close to the ground but increases exponentially at higher flying altitudes. The green line represent the $SAR^{basestation}_{10g}$ which shows the same discontinue 
+behavior from in figure \ref{fig:ptxfh}. As explained before, \gls{LTE} makes usage of power control. Meaning that the power transmission only increases when pahtloss 
+increases up to the point where the power level exceeds its maximum after which connection is lost completely and exposure drops to zero. 
+This behavour causes the electromagnetic radiation experienced by the user to be almost constant. The slightly visible variation is just an extention of the reason 
+why figure \ref{fig:ptxfh} forms a step function. When the power level increases with $1 dBm$, it is more then strictly required causing the electromagnetic radiation to 
+slightly increase. Just before an energy jump, pathloss and power level are perfectly balanced generating the lowest possible electromagnetic radiation possible.
 
-%The deployment tool will only place a drone if the position is feasible meaning that if the user is inside a building which is higher then
-%the fly height of the drone, no \gls{UABS} would be place. In normal circumstances, with more \gls{UABS}s, another nearby drone would try to 
-%take over the responsibility. However, since only one drone is available in this scenario, the user would remain uncovered. To make sure only covered users
-%are considered in this scenario, the user in question will always be located in the same outdoor location. The location chosen for this situation is 
+Figure \ref{fig:s1_fhsar} doesn't show radiation from neighbours, because there are non present in this scenario. Finally, all these values are added as explained in formula
+\ref{eq:overallSARwb}. 
+
+The figure shows that for low flying drones, \gls{UABS}s are the main source of electromagnetic radiation.
+This changes around 80 meters where \gls{UL} electromagnetic radiation of the \gls{UE}
+exceeds \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s.
+
 
 \begin{figure}[th!]
-  \includegraphics[width=\textwidth]{../results/s1/flyheight-sar.png}
+  \includegraphics[width=\textwidth]{../results/s1/fhvssar2.png}
   \caption{General design of a microstrip antenna}
-  \label{fig:fhsar}
+  \label{fig:s1_fhsar}
 \end{figure}
 
 \begin{figure}[bh!]
@@ -75,24 +110,7 @@ not experiencing any attenuation from the normalized radiation pattern.
   \label{fig:pcsar}
 \end{figure}
 
-\subsection{The influence from the maximum transmission power}
-\gls{LTE} makes usages of power control meaning that no more power will be used then strictly necessary. The actual 
-transmit power $P_{tx}$ therefore ranges between 0 and the maximum input power. $P_{tx}$ is zero when either no user is 
-present or the user is so far away that the actual tranmit power would exceed the maximum transmission power.
 
-Increasing the maximum tranmission power won't influence the power consumption or $SAR_{10g}$ because the \gls{UABS} won't use more
-then strictly required. It is therefore more usefull to match the transmission power against a variable fly height. Figure \ref{fig:ptxfh}
-shows a logarithmic  relationship showing that $P_{tx}$ increases fast at low altitude but slows down at lower altitudes. 
-
-Since it became clear from section \ref{sub:senario1_influenceOfFlyHeight} that the type of antenna won't make a difference when applying
-the tool in this scenario, it is not usefull to repeat this test with different types of antennae.
-
-
-\begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s1/ptx-fh.png}
-  \caption{General design of a microstrip antenna}
-  \label{fig:ptxfh}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scenario 2: increased traffic}
@@ -165,37 +183,34 @@ Chart \ref{fig:s2fhvssar} shows the whole body SAR10g, deducted from all electro
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \section{Scenario 3:}
 \subsection{Influence of the flight altitude}
-Figure shows the required power to maintain the network at a given altitude
-
 
 This scenario examines the same cases as scenario 2 but there is no restriction on the number of \gls{UABS}s. 
-Unlike the charts in scenario 2, chart \ref{fig:s3fhvsdl} and \ref{fig:s3fhvspc} show a clearer view on how the decision algorithms
- works. Antennas in an exposure optimized network cause less downlink exposure (chart \ref{fig:s3fhvsdl}). On the other hand, 
- a network generated for optimal power consumption requires indeed less energy as proven in chart \ref{fig:s3fhvspc}. 
- It also becomes clear that the type of antenna barley influence the power consumption.
+Unlike in scenario 2, fig. \ref{fig:s3fhvsdl} and \ref{fig:s3fhvspc} show a clearer view on how the decision algorithms
+works. Antennae in an exposure optimized network cause less downlink exposure (fig. \ref{fig:s3fhvsdl}). On the other hand, 
+a network generated for optimal power consumption requires indeed less energy as proven in figure \ref{fig:s3fhvspc}. 
 
-Chart \ref{fig:s3fhvsdl} shows how a power consumption optimized network decreases up to 80 meters. Thereafter, 
-the downlink exposure starts increasing again. When investigating the downlink exposure in an exposure 
-optimized network, solely a linear relationship is achieved. 
+Figure \ref{fig:s3fhvsdl} shows how an \gls{isotropicradiator} in and power consumption optimized network has the highest exposure when 
+the \gls{UABS}  is close to the ground. An power consumption optimized network results in less number of drones which can also be seen 
+on figure \ref{fig:s3:fhvsnumdrones}. The network is still trying to cover as much users as possible as visible on figure 
+\ref{fig:s3fhvscov} (with in this case less resources). Low flying drones need to account for increased pathloss by obstructing buildings.
+When the flying altitude increases, there is less pathloss and the electromagnetic exposure stabilizes. The same is applicable when replacing
+the \gls{isotropicradiator} with a microstrip patch antenna but users will experience less electromagnetic radiation 
+because of antenna aperture. Because the algorithm still tries to cover as much users as possible, the tool will react to this by 
+introducing more drones (fig \ref{fig:s3fhvsnumdrones}).
+
+When changing the optimization strategy towards an exposure optimized network, the lowest possible electromagnetic radiation is recorded
+with low flying drones at 20 m height with microstrip patch antennae. Using an \gls{isotropicradiator} automatically increases electromagnetic 
+radiation because of the absence of attenuation. This behavior results in an higher necessity of antenna carriers \ref{fig:s3fhvsnumdrones}.
 
 
-\begin{figure}[]
+\begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/fhvsdl.png}
-  \caption{The influence of the flying height on the weighted average downlink exposure of users in the network.}
+  \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user.}
   \label{fig:s3fhvsdl}
 \end{figure}
-
-\begin{figure}[]
-  \includegraphics[width=\textwidth]{../results/s3/fhvsdl.png}
-  \caption{The influence of the flying height on the total power consumption of the network.}
-  \label{fig:s3fhvspc}
-\end{figure}
-
-Scenario 2 shows in chart \ref{fig:s2fhvspc} that the power consumption increases when the flying height increases. 
-When more drones are available like in chart 13 below, power consumption decreases at higher flying altitudes. 
-The type of antenna makes almost no difference.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhvscov.png}
@@ -209,27 +224,28 @@ The type of antenna makes almost no difference.
   \label{fig:s3fhvscov}
 \end{figure}
 
-Chart \ref(fig:s3fhvsnumdrones) shows the number of drones required when applying different antenna types 
-and different optimization strategies at varying flying heights. It becomes clear that a power consumption optimized network 
-requires less drones. Chart 14 also shows that the type of antenna has almost no influence on the number of drones. 
-TODO: See section ‘questions and problems’ of semester 2, week 4 for a possible reason.
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s3/fhvspc.png}
+  \caption{The influence of the flying height on the total power consumption of the network.}
+  \label{fig:s3fhvspc}
+\end{figure}
 
-Chart \ref{fig:s3fhvssar} shows the relationship between the flying height and the number of users. 
-It is clear that the optimization strategy and antenna type has no influence. This is because of the unlimited drones available. 
+Both \ref{fig:s3fhvsnumdrones} and \ref{fig:s3fhvspc} show that the network profit from increasing the flying altitude. 
+Not only less drones are needed but also the power consumption is lower. Both can be explained by the lower pathloss when \gls{UABS}s fly higher.
 If a user cannot be covered because an \gls{UABS}s is too far away or is saturated with other users, 
 the tool can simply add another \gls{UABS}. The only remaining reason that a user can’t be covered is because the position of 
 the drone is obstructed by a building. The higher drones fly, the less change the position is obstructed by a building. 
 In gent is this chance is zero when flying higher then 119 meters. Since the `Artevelde Tower' is the highest building in Ghent.
+
+Scenario 1 already proved that with low flying drones, the main source of electromagnetic radiation are \gls{UABS}. 
+This changes around 80 meters where \gls{UL} electromagnetic radiation of the \gls{UE}
+ exceeds \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhvssar.png}
   \caption{The influence of the flying height on the weighted average $SAR_{10g}$ of users in the network.}
   \label{fig:s3fhvssar}
 \end{figure}
-
-Chart \ref{fig:s3fhvssar} shows how the average whole body SAR10g is influenced by the fly altitude of the \gls{UABS}.
- The chart has a similar structure as chart \ref{fig:s3fhvsdl} . This was also the case in scenario 2.
-
 
 \subsection{Influence of the number of users}
 todo
