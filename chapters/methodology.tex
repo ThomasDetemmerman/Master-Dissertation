@@ -92,9 +92,6 @@ E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 \label{eq:totalexposure}
 \end{equation}
 
-\subsubsection{Weighted avg}
-write about weighter average of hoort dit bij decistion algo?
-
 \subsubsection{Converting far-field electromagnetic exposure to $SAR^{wb}_{10g}$}
 \label{sub:convertDLtosarwb}
 
@@ -109,7 +106,7 @@ mass index of 23.1 kg/m \cite{J22_plets2015joint}. Research shows that the conve
 is very close to LTE, at 2600 Mhz, it is assumed in \cite{J22_plets2015joint} that this value is also applicable for \gls{LTE}.
 This constant converts converts the \gls{power flux density} $S$ (with units $\frac{W}{m^2}$) to the required $SAR^{ff,wb}_{10g}$.
 To make this possible, the electromagnetic radiation
-from formula \ref{eq:totalexposure} (expressed in  $V/m$) should first be converted to the  \gls{power flux density} wich formula 
+from formula \ref{eq:totalexposure} (expressed in  $V/m$) should first be converted to the  \gls{power flux density} which formula 
 \ref{eq:flux} before formula \ref{eq:convertion} can be applied.
 
 \begin{equation}
@@ -147,7 +144,7 @@ electromagnetic radiation. TODO: bron.
 Equation \ref{eq:calculatesar} will be used to predict the actual $SAR^{head}_{10g}$  of a certain user with 
 $P^{max}_{Tx}$ being the maximum transmission power for a phone which is in \gls{LTE} and UMTS 23 Dbm \cite{J11_maxTpxUE, J10_RDP}.
 The actual transmitted power ($P_{tx}$), is calculated with equation \ref{eq:ptx} where $P_{sens}$
-stands for the receiver sensitivity and $PL$ the pathloss between sender and receiver.
+stands for the receiver sensitivity and $PL$ the path loss between sender and receiver.
 \begin{equation}
 P_{tx} = P_{sens} + PL
 \label{eq:ptx}
@@ -371,45 +368,45 @@ f = w * \left(1 - \frac{E_m}{E_{max}}\right) + (1 - w)*\left(1 - \frac{P}{P_{max
 Formula \ref{eq:fitnessfunction} returns a fitness value. Users are connected to different \gls{UABS}s and each time the fitness value is 
 calculated. The user will eventually be connected to the drone which resulted in the highest fitness value. This process is repeated for each user.
 $w$ is the importance factor of electromagnetic exposure ranging from 0 to 1 with boundaries included. A $w$ set to zero means that electromagnetic 
-exposure is not important and therefore be called an power consumption optimized network. Likewise, a $w$ set to one will be called an exposure optimized 
-network. $P_max$ is the power consumption if all \gls{UABS}s are active and would be radiating at the highest possible level and $P$ the used power by the current network. 
-This will be the power required for the flying drones themselves and there antennae.
-$E_m$ will be the exposure for the current designed network and $E_{max}$ the electromagnetic exposure when all antennae are at their highest power level.
+exposure is not important. Such a network will therefore be called a power consumption optimized network. 
+Likewise, a $w$ set to one means that minimizing exposurer is top priority and will result in an exposure optimized 
+network. $P_{max}$ is the power consumption of all \gls{UABS}s, both active and non active, when radiating at the highest possible level 
+while $P$ is the effective used power by the current designed network. 
+This will be the power required for the flying drones themselves and their antenna.
+$E_m$ will be the weighted exposure of the average user for the current designed network and $E_{max}$ the electromagnetic exposure when all antennae are at their highest power level.
 
-The weighted average $E_m$ can be found by inserting the median and 95 percentile from all exposures into formula \ref{eq:em}. Since the location of all users in 
-the deployment tool are known, it is sufficient to calculate exposure only in those positions. 
+When optimizing the network, it is not only important to consider the mean exposure of all users but also limit high extrema  \cite{J1}. A weighted average 
+will be  used not only considering the median but also the  95 percentile from all users their \gls{DL} exposure using formula \ref{eq:em}. 
+Since both values are considered to have equal importance, the weighing factors $w_1$ and $w_2$ will both have an equal importance of 50 \%. 
 
 \begin{equation} 
 E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 \label{eq:em}
 \end{equation}
-
-$w_1$ and $w_2$ in \ref{eq:em} being the weighting factors. Not only the median exposure is important but also limiting higher exposure is important. 
-Just like \cite{J1} is with that reason $w_1$ and $w_2$ chosen to both have an equal importance of 50 \%.
 \textcolor{red}{todo: in J1 is dit gedetailleerder uitgeschreven. Mogelijk om hier wat extra over te schrijven.}
 
 
 \section{Implementation}
 
 \subsection{Network planning}
-TODO
-Thereafter, all inactive users are deleted and only the x best bs are kept with x equal to facilityCapacity.
-Eventually, exposure is one last time calculated and objects are initialized with the correct exposure values.
+\textcolor{red}{todo: Thereafter, all inactive users are deleted and only the x best bs are kept with x equal to facilityCapacity. Eventually, exposure is one last time calculated and objects are initialized with the correct exposure values.}
 
 \subsection{Implementation of the radiation pattern}
 \label{subsec:implementationradpat}
-The deployment tool originally only supported EIRP antennae. The tool thus has been extended and is fully configurable allowing any possible antenna in any possible 
-orientation using the XML-file describing the femtocell. The configuration described in this file applies to all \gls{UABS}s. 
+The deployment tool originally only supported \gls{isotropicradiator}'s. The tool has thus been extended and is fully configurable allowing any possible antenna 
+in any possible 
+orientation with the usage of a XML-file. The configuration described in this file will apply to all \gls{UABS}s. 
 
 The orientation is done using two values called `downtilt' and `north offset'. The first value
-defines the downtilt angle under wich the antenna is pointing. An angle of 0 degrees is perfectly horizontal and pointing straight to the ground is done with an angle of \ang{90}.
+defines the downtilt angle under wich the antenna is pointing. An downtilt angle of zero degrees is perfectly horizontal and 
+an antenna with a downtilt angle of \ang{90} will be pointing straight to the ground.
 This parameter only supports positive values ranging from \ang{0} to \ang{360} (upper boundary not included). An antenna pointing to the sky would therefore require a value of \ang{270}.
 The second value, the north offset, defines the azimuth orientation of the drone. The value given to this parameter indicates the offset between the north
-and the horizontal direction the antenna should be pointing to. The value should once again range from \ang{0} to \ang{360} with the upper boundary not included. The
+and the horizontal direction to which the antenna should be pointing to. The value once again ranges from \ang{0} to \ang{360} with the upper boundary not included. The
 angle is calculated in counter clock wise orientation. For instance, a north offset of \ang{270} will let the \gls{UABS} point to the east.  
 
 Thereafter, the normalized radiation pattern is supplied to the tool. The actual pattern is three dimensional. To simplify this,
-slices perpendicular to the az-axis are extracted. These are indicated at figure \ref{fig:slicesOfPattern} with azimuth cut. With
+slices perpendicular to the az-axis are extracted. These are indicated at figure \ref{fig:slicesOfPattern} with azimuth cuts. With
 an angle of \ang{90}, four slices are achieved, each consisting out of elevation cuts. The intersection of an elevation and azimuth plane 
 corresponds with a certain attenuation which is fed to the tool. Figure \ref{fig:slicesOfPattern} show only 3 elevation planes. The radiation pattern used in the tool 
 has an attenuation every \ang{10}. In other words, a slice consist of 19 values ranging from \ang{0} to \ang{180} (boundaries included).
@@ -421,20 +418,20 @@ has an attenuation every \ang{10}. In other words, a slice consist of 19 values 
 \end{figure}
 
 The number of required sliced depend on the complexity of the radiation pattern. For symmetrical radiation patterns like 
-in figure \ref{radpattern2} and  \ref{radpattern1}, two cuts perpendicular to each other dividing the radiation pattern in 4 azimuth-slices 
-is definitely sufficient. However, this might not be the case for radiation patterns with a more complex structure contains several  
+in figure \ref{radpattern2} and  \ref{radpattern1}, two azimuth cuts perpendicular to each other dividing the radiation pattern in 4 azimuth-slices 
+is definitely sufficient. However, this might not be the case for radiation patterns with a more complex structure containing several  
 side lobs. To tackle this issue, more azimuth-slices can be defined for increased precision. Each slice should however contain an equal amount 
 of elevation slices.  A concrete example of a configuration file can be found in appendix \ref{ch:radpatexampleconfig}.
 
-TODO: maak onderstaande tekst samenhandend. Hij begint altijd met "the"
-
-When the attenuation of a user to a certain \gls{UABS} needs to be known, the elevation and azimuth angles between the user and the antenna's direction 
-will be calculated. This user is indicated in figure \ref{fig:globe} with a black dot. The small black lines represent azimuth and elevation planes. 
+When the attenuation of a user from a certain \gls{UABS} needs to be known, the elevation and azimuth angles between the user and the antenna's direction 
+should be calculated. 
+Figure \ref{fig:globe} represents a radiation pattern with the black dot indicating the user for which the attenuation needs to be calculated.
+ The small black lines represent azimuth and elevation planes. 
 The tool knows the exact attenuation only at the intersection of those lines. 
-The change that the user is positioned at such an intersection is very small. The attenuation for the requested point can be estimated using bilinear interpolation.
+The change that the user is positioned at such an intersection is very small. Therefore, the attenuation for the requested point has be estimated using bilinear interpolation.
 First, the attenuation is estimated for the intersection of the red-orange line using linear interpolation on the horizontal axis using the known values
  at the end of the red line. The same is done for the orange-green intersection using the known values at the end of the green line. Finally, linear interpolation
-is used in the y-git status direction using the estimated values at the end of the orange line.
+is applied to the y-axis for the black dot on the orange line using the estimated values at the end of the orange line.
 
 \begin{figure}[H]
 \centering
@@ -449,26 +446,27 @@ The path loss is required for several formulas. For instance, each user decides 
 the path loss but also the calculations for the downlink electromagnetic 
 exposure require this value to be known. The formulas for the whole body $SAR_{10g}$ require not only the path loss between the user
 and all \gls{UABS}s but even the path loss between users themselves. These path loss calculations are based and the Walfisch-Ikegami 
-Model and makes a distinction between line-of-sight and non-line-of-sight situations causing a high computational load. The calculation between two points stands completely free from
+model that causes a high computational load. The calculation between two points stands completely free from
 any other calculation between any other point and is therefore a suitable candidate to be multithreaded. The deployment tool creates two thread pools.
-The first pool creates a thread for each user where each thread calculates the path loss between the user assigned to him and all possible \gls{UABS}s causing a time complexity of $n^2$.
+The first pool creates a thread for each user where each thread calculates the path loss between the user assigned to him and all possible \gls{UABS}s,
+ causing a time complexity of $n^2$.
 Each user stores all path losses between himself and any other \gls{UABS} and result therefore in a total space complexity of $n^2$.
-When all users are finished, the pool is shut down and a second one is created for the same calculations but between users.
+When all users are finished, the thread pool is shut down and the second one is created for the same calculations but between users.
 The pool will, just like the previous, create threads for each user but has an important difference.
 When a certain user calculates the path loss to another user, this path loss also applies for the other direction. The tool saves time by calculating the path loss only 
-once and stores the path loss with both users. It is therefore sufficient that a given user only calculates path losses to users left of him, since the other will 
-be calculated by the users right to him. This results in a time complexity of only $n(\frac{n}{2})$. When the last user finishes his thread, all users know the path loss to all other users causing 
+once and stores the path loss by both users. It is therefore sufficient that a given user only calculates path losses to users right of him, since the other will 
+be calculated by the users left to him. This results in a time complexity of only $n(\frac{n}{2})$. When the last user finishes his thread, all users know the path loss to all other users causing 
 a space complexity of $n(n-1)$.
 % eventueel nog over concurrent hashmap
 
 \subsubsection{Limiting antenna searching}
-The user needs to be connected to the 'best' base station. To identify this best \gls{UABS}, the user should be connected 
-to each base station and the fitness value \ref{eq:fitnessfunction} of the network should be evaluated. The connection which resulted in the best fitness function
-will be added in the solution. This process is repeated for each user but can further be improved. A user will likely be connected to either 
+The user needs to be connected to the `best' base station. To identify this best \gls{UABS}, the user should be connected 
+to each base station and the fitness value \ref{eq:fitnessfunction} of the network should be evaluated. The connection that resulted in the best fitness function
+will be added to the solution. This process is repeated for each user but can further be improved. A user will likely be connected to either 
 \gls{UABS} directly above him or to a \gls{UABS} in the direct neighborhood. Time complexity can thus be improved by not considering drones 
 outside a certain radius.
 An ideal data structure for neighborhood-search is a KD-tree. This data structure is based on a binary tree and optimal for objects with 
-multiple keys. Objects are thus positioned in K dimensions, each node split the hyperplane over exact one dimension. The dimension that need 
+multiple keys. Objects are thus positioned in K dimensions where each node split the hyperplane over exact one dimension. The dimension that need 
 to be split depends on the level of the KD-tree where that node is situated.
 In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in figure \ref{fig:exampleKDtree}.
 
@@ -477,7 +475,4 @@ In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in fig
   \caption{Example of a KD-three in two dimensions}
   \label{fig:exampleKDtree}
 \end{figure}
-
-
-Here, is chosen to consider only \gls{UABS}s within a radius of half a kilometer. In a scenario of 500 \gls{UABS}s, 60 possible \gls{UABS}s are verified.
-TODO: schrijf ook voor 200 users.
+\textcolor{red}{TODO: schrijf ook voor 200 users.Here, is chosen to consider only \gls{UABS}s within a radius of half a kilometer. In a scenario of 500 \gls{UABS}s, 60 possible \gls{UABS}s are verified.
