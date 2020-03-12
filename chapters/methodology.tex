@@ -213,12 +213,20 @@ SAR^{wb,ul}_{10g} \left(\frac{W}{kg}\right) = 0.0070 \left(\frac{W/kg}{W}\right)
 
 \subsection{Defining an antenna}
 \label{sub:definingAntenna}
-A microstrip patch antenna is chosen because it allows easy production but more important it has a low weight and has a thin profile causing it to be very aerodynamic which is useful when attaching it to an \gls{UABS} \cite{J13_microstripadvantages}.
+A microstrip patch antenna is chosen because it allows easy production but more important it has a low weight 
+and has a thin profile causing it to be very aerodynamic which is useful when attaching it to an \gls{UABS} \cite{J13_microstripadvantages}.
 
 The dimensions of the antenna depend on the frequency it is operating and the characteristics of the used substrate.
-The antennae will be radiating at a center frequency $f_0$ of 2.6Ghz. A substrate with a higher dielectric constant and low height reduces the dimensions of the antenna
-and a lower dielectric constant with a high height improves antenna performance. The used substrate will therefore be glass with a dielectric constant of 4.4. The height of the antenna is also limited to 2.87 mm in order to keep the antenna light and compact \cite{J14_antennadesign}.
-
+The antennae will be radiating at a center frequency $f_0$ of 2.6Ghz. Each substrate has a dielectric constant $\epsilon_r$ representing 
+the permittivity of the substrate and depends on the used material.
+Substrates with a high dielectric constant and low height 
+reduces the dimensions of the antenna
+while a lower dielectric constant with a high height improves antenna performance. 
+In this paper, a substrate like glass 
+is chosen because of the higher dielectric constant of $\epsilon_r = 4.4$ compared to materials like teflon with only a dielectric 
+constant of $\epsilon_r = 2.2$ \ref{J14_antennadesign}. 
+Doing this in combination with an antenna height of 2.87 mm will decreases the dimensions of the entire antenna surface which comes in handy for the limited space on 
+drones.
 
 \begin{table}[h!]
 \centering
@@ -233,38 +241,44 @@ and a lower dielectric constant with a high height improves antenna performance.
 \label{table:antennaparas}
 \end{table}
 
-The dimensions of the antenna can be calculated with the formulas from \cite{J14_antennadesign} and \cite{J15_antennadesign}
-using the defined values in table \ref{table:antennaparas}. The width $W$ is calculated using formula \ref{eq:antennawidth}.
+The dimensions of the radiating patch can be calculated with the formulas from \cite{J14_antennadesign} and \cite{J15_antennadesign}
+using the defined values in table \ref{table:antennaparas}. In that way, the width $W$ is calculated using formula \ref{eq:antennawidth}.
 
 \begin{equation} 
-W = \frac{c}{2*f*\sqrt{\frac{\epsilon_r+1}{2}}}
+W = \frac{c}{2*f_0*\sqrt{\frac{\epsilon_r+1}{2}}}
 \label{eq:antennawidth}
 \end{equation}
-Which C the speed of light, $f$ being the center frequency of 2600 Hz and a dielectric constant of $\epsilon_r$ = 4.4 a width of 3.51 mm is achieved.
+With $C$ being the speed of light, $f_0$ the center frequency of 2600 MHz and a dielectric constant $\epsilon_r$ of 4.4. This results 
+in a width of 3.51 mm.
 
-$$\epsilon_{reff} = \frac{\epsilon_r+1}{2}+  \frac{\epsilon_r-1}{2} * \left(1+12*\frac{h}{W}\right)^{-\frac{1}{2}}$$
-The height of the dielectric is choses to be 2.87mm in order to keep the antenna small and light\ref{J14_antennadesign}.
-$\epsilon_r$ is the permittivity constant of the substrate and depends of the used material. In this paper, a substrate like glass 
-is chosen because of the high dielectric constant of $\epsilon_r = 4.4$ compared to other materials like teflon with only a dielectric 
-constant of $\epsilon_r = 2.2$. This is because larger dielectric decreases the dimensions of the antenna patch \ref{J14_antennadesign} 
-and therefore indirectly also decreases the dimensions of the entire antenna surface which comes in handy for the limited space on 
-drones. When substituting these values, a $\epsilon_{reff}$ of 3.91 is determined.
+In order to find the length off the radiating patch, some other values need to be determined first. Formula \ref{eq:epsilonreff} will
+calculate the effective dielectric constant ($\epsilon_{reff}$).
+\begin{equation} 
+\epsilon_{reff} = \frac{\epsilon_r+1}{2}+  \frac{\epsilon_r-1}{2} * \left(1+12*\frac{h}{W}\right)^{-\frac{1}{2}}
+\label{eq:epsilonreff}
+\end{equation}
+This formula requires the width found in the previous formula along with the dielectric constant and substrate height from table \ref{table:antennaparas}.
+This will result in a $\epsilon_{reff}$ of 3.91.
 
 \begin{equation} 
 L_{eff} = \frac{c}{2*f*\sqrt{\epsilon_{reff}}}
+\label{eq:leff}
 \end{equation}
-Applying this formula with the known values of above the $L_{eff}$ results in 29.16 mm.
+Now formula \ref{eq:leff} is used to calculate effective length ($L_{eff}$) which result in 29.16 mm.
 
 \begin{equation} 
 \Delta L = 0.412*h*\frac{(\epsilon_{reff}+0.3)\left(\frac{W}{h}+0.264\right)}{\left(\epsilon_{reff}-0.258\right)\left(\frac{W}{h}+0.8\right)}
+\label{eq:lenghtextension}
 \end{equation}
-By substituting the values from above, the length extension determines that $\Delta L$ equals 1.3071 mm.
+Eventually, the lenght extension is found with formula \ref{eq:lenghtextension} by substituting the values from above.
+Doing so determines that the $\Delta L$ equals 1.3071 mm.
 
 Finally can the length of the patch be calculated using the expression: $L = L_{eff} - 2 * \Delta L$
-which result in 26.55 mm which result in an antenna like \ref{fig:antennadesign}.
+which result in 26.55 mm.
 
-The transmission line model is in fact only applicable for an infinite ground plane but it has been proven that similar results
-can be achieved if the ground plane's dimensions are bigger then the patch of approximately 6 times the height of the dielectric substrate \cite{J14_antennadesign,J15_antennadesign}.
+The dimensions of the radiation patch are now known. The only remaining question are the dimensions of the ground plane and dielectric substrate to which the 
+radiation patch is attached. The transmission line model is in fact only applicable for an infinite ground plane but it has been proven that similar results
+can be achieved if the ground plane's dimensions are bigger then the patch by approximately 6 times the height of the dielectric substrate \cite{J14_antennadesign,J15_antennadesign}.
 
 \begin{equation} 
 L_{g} = 6 * h + L
@@ -272,8 +286,8 @@ L_{g} = 6 * h + L
 \begin{equation} 
 W_{g} = 6 * h + W
 \end{equation}
-Therefore should the length of the ground plane $L_{g}$ be at least 0.0438m and a width of $W_{g}$ 0.0524m.
-
+Therefore, should the length of the ground plane $L_{g}$ be at least 0.0438m and a width of $W_{g}$ 0.0524m.
+A schematic overview of how the antnena will look like is given in figure \ref{fig:antennadesign}.
 \begin{figure}[h!]
 \centering
   \includegraphics[width=\textwidth]{../images/MicrostripAntenna.png}
@@ -283,15 +297,15 @@ Therefore should the length of the ground plane $L_{g}$ be at least 0.0438m and 
 
 \subsection{Radiation pattern}
 Mathlab is able to generate the radiation pattern for the this microstrip patch antenna.
-The code in  \ref{c:mathlabradpattern} starts with defining the dielectric substrate which will be glass with a dielectric constant
-of 4.4 and a height of 0.00287m. Thereafter is the microstrip patch antenna generated with the width and length being the dimensions
+The code in  listing \ref{c:mathlabradpattern} starts with defining the dielectric substrate which will be glass with a dielectric constant
+of 4.4 and a height of 0.00287m. Thereafter, is the microstrip patch antenna generated with the \verb|width| and \verb|length| being the dimensions
 of the radiation patch and the \verb|GroundPlaneLength| and \verb|GroundPlaneWidth| the dimensions of the ground plane and dielectric substrate.
-The \verb|FeedOffset| is the relative offset from the center where the radio frequency power is fed to the radiating patch which here wil be
-at the edge which is in figure \ref{fig:antennadesign} is indicated with the yellow dot. At last is the dielectric object given to the 
+The \verb|FeedOffset| is the relative offset from the center where the radio frequency power is fed to the radiating patch which will here be
+at the edge. This  is in figure \ref{fig:antennadesign} indicated with the yellow dot. At last, the \verb|dielectric|-object is substituted into the 
 \verb|patchMicrostripInsetfed|-object.
 
 Generating the pattern is done with the \verb|pattern|-command. The first value is the \verb|patchMicrostripInsetfed| object followed by the frequency
-in which the antenna will be operating. Optionally can a azimuth value be parsed like in line 7 and 8 where 90 and 0 stand for relatively the H-plane and E-plane.
+in which the antenna will be operating. Optionally, an azimuth value can be parsed like in line 7 and 8 where 90 and 0 stand for relatively the H-plane and E-plane.
 
 \begin{listing}[h!]
 \begin{minted}[frame=single,framesep=10pt,xleftmargin=20pt,linenos]{c}
@@ -308,11 +322,12 @@ pattern(p,2.6e9, 0, "CoordinateSystem", 'polar', "Normalize",true)
 \label{c:mathlabradpattern}
 \end{listing}
 
-Running the configuration from \ref{c:mathlabradpattern} will generate the radiation pattern from figure \ref{radpattern2}.
-When running the same configuration for a slightly bigger square antenna with an edge of 0.060m, the radiation pattern from \ref{radpattern1} is
+Running the configuration from Listing \ref{c:mathlabradpattern} will generate the radiation pattern from figure \ref{radpattern2}.
+When running the same configuration for a slightly bigger square ground plane with an edge of 0.060m, the radiation pattern from \ref{radpattern1} is
 achieved. It becomes clear that the radiation pattern from figure \ref{radpattern2} has a higher attenuation in de direction it is not facing compared to
-the radiation pattern of figure figure \ref{radpattern1}. If it is assumed that drones fly lower then users are positioned in some buildings, the pattern of \ref{radpattern2}
-would be a better approach. However, for the continuation in this master dissertation, the radiation pattern from figure \ref{radpattern2} is assumed since the antenna is the smallest
+the radiation pattern of figure figure \ref{radpattern1}. If it is assumed that drones fly lower then users are positioned in some buildings, the pattern of 
+\ref{radpattern1} would be a better approach. However, for the continuation in this master dissertation, the radiation pattern from figure \ref{radpattern2} 
+is assumed since the antenna is the smallest
 and therefore more suitable to attach to the limited space available under the drone. A data sheet of the exact values from both radiation patterns can be
 found in appendix \ref{ch:radpattern}.
 
