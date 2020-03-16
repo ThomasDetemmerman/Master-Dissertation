@@ -24,8 +24,9 @@ key values in approaching results as realistic as possible. Furthermore, the too
 The tool will thereafter randomly distribute users over the area and assigns a certain bitrate to them. \\
 \\
 In a second phase, the optimal position for each \gls{UABS} is calculated. This is done by trying to locate a \gls{UABS} above each active user. Two options are possible.
-If a flying height is defined, a base stations is placed above each user at the given height, unless a building is obstructing it's location. Then, no base station will be located above that user.
-If no flying height is given to the tool, the base station is located 4 meters above the outdoor user or 4 meters above the building where the indoor user resides. 
+If a fixed flying height is defined, a base stations is placed above each user at the given height, unless a building is obstructing it's location. Then, no base station will be located above that user.
+Alternatively to the fixed flying height, a flying margin can be defined which represents the distance between the outdoor user and  the drone.
+If the user is inside, this margin will be measured between the drone and the rooftop of that building.
 The latter is only allowed if the suggested height remains below the given maximum allowed height. \\
 \\
 Finally, all \gls{UABS} are sorted on wether they were active or not, followed by the increasing pathloss from each \gls{UABS} to that user.
@@ -33,7 +34,7 @@ So the algorithm starts by checking for each active \gls{UABS} if it can cover t
 the second active base station with a (slightly) worse pathloss is considered. If no active base station is suitable, inactive \gls{UABS} are considered. The user remains uncovered if no \gls{UABS}
 is found. The reason behind first only considering base stations that are already active, is the hight cost that comes along with each drone. \\
 \\
-Up till now, the tool has only calculated some suggestions. The effective provisioning is done in the fourth phase where drones are sorted by the amount of users it cover. As long as \gls{UABS}
+Up till now, the tool has only calculated some suggestions. The effective provisioning is done in the fourth phase where drones are sorted by the amount of users they cover. As long as \gls{UABS}
 are available in the facility where they reside, \gls{UABS} are provisioned and its users are marked as covered.
 
 

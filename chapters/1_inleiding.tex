@@ -12,16 +12,17 @@
 \label{sec:issue}
 
 % inspiratie kan je hier ook nog vinden:
-% PREDICTION AND COMPARISON OF DOWNLINK ELECTRICFIELDAND UPLINK LOCALISED SARVALUES FOR REALISTIC INDOORWIRELESS PLANNING
+% PREDICTION AND COMPARISON OF DOWNLINK ELECTRICFIELDAND UPLINK LOCALISED SARVALUES FOR REALISTIC INDOOR WIRELESS PLANNING
 Society is constantly getting more and more dependent on wireless communication. On any given moment, in any given location, an electronic device
 can request to connect to the bigger network. Devices need more then ever to be connected, starting from small IOT sensors up to self-driving cars
-which all need to be supported by the existing infrastructure. Once again it becomes clear why we're on the eve of a new generation of cellular communication named 5G. 
-This new technology is capable of handling millions of connections every square meter %to do: klopt deze hoeveelheid want lijkt wel heel veel.
-while satisfying only a few microseconds of a delay and providing connections up to 10Gbps \cite{5GFeatures}.
+which all need to be supported by the existing infrastructure. The city center of Ghent has not for nothing an average coverage of 97\% of 4G 
+over all telecom operators\cite{testaankoop}. Once again it becomes clear why we're on the eve of a new generation of cellular communication named 5G. 
+%This new technology is capable of handling millions of connections every square meter %to do: klopt deze hoeveelheid want lijkt wel heel veel.
+%while satisfying only a few microseconds of a delay and providing connections up to 10Gbps \cite{5GFeatures}.
 
 Also in exceptional and possibly life-threatening situations, the public relies on the cellular network. For example during the terrorist attacks in Zaventem, a Belgian city,
 mobile network operators saw all telecommunications drastically increasing causing moments of contention. Some operators decided to temporarily exceed the exposure limits in
-order to handle all connections. \cite{baseZaventem}
+order to handle all connections \cite{baseZaventem}.
 
 Electromagnetic exposure can however not be neglected. Research shows how excessive electromagnetic radiation can cause diverse biological side effects \cite{bioeffects}.
 Because of public concern, the World Health Organization had launched a large, multidisciplinary research effort which eventually concluded that there was no sufficient evidence that confirmed 
@@ -29,18 +30,14 @@ that exposure to low level electromagnetic fields is harmful \cite{WHO}. A large
 
 \section{Objective}
 \label{sec:objective}
-
-It becomes clear that electromagnetic exposure is an important asset when designing a network. This master dissertation will investigate the electromagnetic 
-exposure of the citizen of Ghent which has a 97\% coverage of 4G on average over all telecom operators\cite{testaankoop}.
-
-People are constantly getting exposed to several sources of electromagnetic radiation. For this research, three prominent sources of radiation in a telecommunication
+People are constantly getting exposed to several sources of electromagnetic radiation and it important to consider this when designing a network. For this research, three prominent sources of radiation in a telecommunication
 network are investigated, being: the user his own phone, all base stations and all devices from other users in the network. In order to calculate electromagnetic 
 exposure from all these sources, various parameters need to be known. Not only the used technology but also the position of the users and base stations 
-need to be known. There are several publications discussing how the electromagnetic exposure originating from base stations can be calculated. 
+are required. There are several publications discussing how the electromagnetic exposure originating from base stations can be calculated. 
 Papers who cover electromagnetic exposure from all these different sources and convert it into a single value are rather limited.
 
 To make this research possible, an existing planning tool is used which gives insight in user and base station distributions.
-The tool also provides information about pathloss between radiators, power usage of the different electrical devices and which base stations handle which users. The tool describes in other words a fully configured network.
+The tool also provides information about path loss between radiators, power usage of the different electrical devices and which base stations handle which users. The tool describes in other words a fully configured network.
 In this way, all needed parameters will be known.
 
 The electromagnetic behavior of the network will be analysed by applying the tool in different scenarios to give insight which variables influence the exposure and how
@@ -48,7 +45,7 @@ the network can be optimized accordingly.
 
 \textbf{research question 1:} How can a \gls{UABS} network be optimized to minimize global exposure and overall power consumption? What are the effects on the network?\\
 
-\textbf{research question 2:} What are the advantages and disadvantages of a model as described in research question 1 compared the the already existing pathloss oriented model.\\
+\textbf{research question 2:} What are the advantages and disadvantages of a model as described in research question 1 compared the the already existing path loss oriented model.\\
 
 \textbf{research question 3:} How does the \gls{UABS} fly height influence uplink and downlink exposure?
 
