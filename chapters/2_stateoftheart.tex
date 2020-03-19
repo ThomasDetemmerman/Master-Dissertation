@@ -24,8 +24,9 @@ key values in approaching results as realistic as possible. Furthermore, the too
 The tool will thereafter randomly distribute users over the area and assigns a certain bitrate to them. \\
 \\
 In a second phase, the optimal position for each \gls{UABS} is calculated. This is done by trying to locate a \gls{UABS} above each active user. Two options are possible.
-If a flying height is defined, a base stations is placed above each user at the given height, unless a building is obstructing it's location. Then, no base station will be located above that user.
-If no flying height is given to the tool, the base station is located 4 meters above the outdoor user or 4 meters above the building where the indoor user resides. 
+If a fixed flying height is defined, a base stations is placed above each user at the given height, unless a building is obstructing it's location. Then, no base station will be located above that user.
+Alternatively to the fixed flying height, a flying margin can be defined which represents the distance between the outdoor user and  the drone.
+If the user is inside, this margin will be measured between the drone and the rooftop of that building.
 The latter is only allowed if the suggested height remains below the given maximum allowed height. \\
 \\
 Finally, all \gls{UABS} are sorted on wether they were active or not, followed by the increasing pathloss from each \gls{UABS} to that user.
@@ -33,7 +34,7 @@ So the algorithm starts by checking for each active \gls{UABS} if it can cover t
 the second active base station with a (slightly) worse pathloss is considered. If no active base station is suitable, inactive \gls{UABS} are considered. The user remains uncovered if no \gls{UABS}
 is found. The reason behind first only considering base stations that are already active, is the hight cost that comes along with each drone. \\
 \\
-Up till now, the tool has only calculated some suggestions. The effective provisioning is done in the fourth phase where drones are sorted by the amount of users it cover. As long as \gls{UABS}
+Up till now, the tool has only calculated some suggestions. The effective provisioning is done in the fourth phase where drones are sorted by the amount of users they cover. As long as \gls{UABS}
 are available in the facility where they reside, \gls{UABS} are provisioned and its users are marked as covered.
 
 
@@ -57,7 +58,7 @@ while the European Union handles the
 10g model ($SAR_{10g}$). $SAR$ values can further be categorized based on the area it covers. 
 A first one is whole body \gls{SAR} ($SAR^{wb}$) which is the average absorbed radiation over the entire 
 body. The second type is more precisely. Localized \gls{SAR}-values cover only  a part of the human body like the head.
-The \gls{ICNIRP} has concluded that the threshold effect for $SAR^{wb}_{10g}$ is at 4 W/kg meaning that any higher absorption rate would overwhelm the thermoregulatoy capacity of the human body.
+The \gls{ICNIRP} has concluded that the threshold effect for $SAR^{wb}_{10g}$ is at 4 W/kg meaning that any higher absorption rate would overwhelm the \gls{thermoregulatory capacity} of the human body.
 Whole body values between 1 and 4 W/kg increase the temperature of human body less than 1°C, which is proven not to be harmful for a healthy human being\cite{J24}.
 Thereafter, a safety margin is introduced to tackle unknown variables like experimental errors, increased sensitivity for certain population groups and so on. 
 This results in a whole body $SAR_{10g}$ of $0.8 W/kg$ and $2 W/kg$ for localized $SAR_{10g}$ at head and torso area \cite{J23}.
@@ -71,7 +72,7 @@ This results in a whole body $SAR_{10g}$ of $0.8 W/kg$ and $2 W/kg$ for localize
 \subsection{Related work} % (fold)
 \label{sub:general}
 The goals of this master dissertation is the investigation of electromagnetic exposure considering all sources. Three types of sources are considered: electromagnetic radiation 
-caused by basestations, near field radiation from the users own device and far field radiation originating from other users their equipment. This electromagnetic radiation is thereafter
+caused by basestations, near field radiation from the user's own device and far field radiation originating from other users their equipment. This electromagnetic radiation is thereafter
 absorbed by the human body which will be expressed in \gls{SAR} values.
 
 Several papers exist calculating exposure originating from certain sources, but very limited research has been done covering the whole picture.
@@ -80,7 +81,7 @@ to investigate electromagnetic exposure originating from basestations in a more 
 also \gls{UL} traffic from the user's device should be considered. They therefore investigated indoor exposure. They did not only consider the electromagnetic radiation
 but also how much is absorbed by the body which will be expressed as specific absorption rate. Since the authors only covered voice calls,
 uplink SAR was expressed in localized SAR values while the downlink traffic is expressed in whole body SAR. With the advent of 5G, paper \cite{J17_kuehn2019modelling} has been 
-published describing how localized SAR values are achieved from all sources. More precisely: all mobile phones and all basestations in the network after which they converted the electromagnetic 
+published, describing how localized SAR values are achieved from all sources. More precisely: all mobile phones and all basestations in the network after which they converted the electromagnetic 
 exposure to localized SAR values.
 Finally, \cite{J22_plets2015joint} describes how both \gls{UL} and \gls{DL} traffic can be converted in whole body SAR values making it possible to achieve an overall picture. They applied this formula 
 however only for the user's own device.
@@ -101,12 +102,10 @@ increasing the antennae transmission power of an already activated drone nearby 
 By increasing the transmission power, also the electomagnetic exposure will increase for users closer to that drone. An exposure optimized
 network will therefore faster decide to power up a new drone.
 
-todo: geen grid maar per user--> methodology
-
 \section{Technologies}
 \subsection{Type of drone}
 
-Section \ref{sec:stateoftheart:deploymenttool} describes how femtocell antennae will be connected to helicopter drones. Two types of 
+Section \ref{sec:stateoftheart:deploymenttool} described how femtocell antennae will be connected to helicopter drones. Two types of 
 drones are considered in \cite{J2}: an off-the-shelf drone affordable by the general public and a more expensive drone. The results in \cite{J2}
 show that the second type will require less drones to cover the same number of users and will last longer in the air. The research in this paper
 will therefore be done with the usage of the second type. A technical overview of this drone is given in table \ref{table:dronespecs}.
@@ -121,23 +120,23 @@ will therefore be done with the usage of the second type. A technical overview o
  Average carrier power usage    & 17.33 Ah      \\ 
  Carrier battery voltage        & 22.2 V \\ \hline
 \end{tabular}
-\caption{specifications for the used drone.}
+\caption{Specifications of the used drone.}
 \label{table:dronespecs}
 \end{table}
 
 \subsection{LTE}
-The tool makes usage of \gls{LTE} which is by the general public better known as 4G which allows better \gls{UL} and \gls{DL} data speeds 
-compared to its predecessors and is based on an all IP architecture. LTE can cover macrocells supporting cell sizes ranging from 5 km up to 100 km. 
+The tool makes usage of \gls{LTE}, by the general public better known as 4G.  \gls{LTE} allows better \gls{UL} and \gls{DL} data speeds 
+compared to its predecessors and is based on an all IP architecture. This technology can cover macrocells supporting cell sizes ranging from 5 km up to 100 km. 
 These types of antennae are usually attached to transmission towers along highways or on top of buildings. LTE supports however also smaller cells like
 femtocells covering only a few hundred meters. They are therefore more portable, require less energy and won't require a telecommunication operator because
 of their simplicity. Femtocell base stations are therefore used by the deployment tool.
 Further, \gls{LTE} also support both \gls{FDD} and \gls{TDD}.
 
 \gls{FDD} makes simultaneous \gls{UL} and \gls{DL} traffic possible by assigning different frequencies within the frequency range 
-to both data streams. A small guard band is used between \gls{UL} and \gls{DL} directions in other to prevent interference.
+to both data streams. A small guard band is used between the \gls{UL} and \gls{DL} direction in other to prevent interference.
 
-\gls{TDD} allows  \gls{UL} and \gls{DL} by splitting the time domain. Meaning that both traffic directions use the same frequency and therefore
-alternately (in time) use the frequency spectrum. A small time interval is used to prevent interference in case of a slightly bad timed synchronization.
+\gls{TDD} allows  \gls{UL} and \gls{DL} traffic by splitting the time domain. Meaning that both traffic directions use the same frequency and therefore
+alternately (in time) use the same frequency. A small time interval is used to prevent interference in case of a slightly bad timed synchronization.
 
 This master dissertation will make usage of \gls{FDD}.
 
@@ -157,7 +156,7 @@ a radiating patch, both separated with a dielectric substrate. Several variation
 all have similar characteristics. They are all thin, support dual frequency operation and they all have the disadvantage that they 
 will transmit at frequencies outside the aimed band which is also known as
 \gls{spuriousradiation}. The microstrip patch and slot antenna support both linear
-and circular polarization while the printed dipole only supports linear polarization. Further is the fabrication of a microstrip patch antenna considered to be the easiest of its competitors. 
+and circular polarization while the printed dipole only supports linear polarization. Further is the fabrication of a microstrip patch antenna considered to be the easiest of its competitors \cite{J13_singh2011micro}. 
 
 \begin{figure}[H]
 \centering
@@ -167,14 +166,14 @@ and circular polarization while the printed dipole only supports linear polariza
 \end{figure}
 
 The microstrip antenna requires besides the groundplane, dielectric substrate and the radiation patch also a feed line. Several feeding techniques exist of which the most popular are: coaxial probe feeding, microstrip line and aperture coupling. %and Microstrip Patch Antenna
-(todo: more refs? gebruik nummer twee van J13 (p2))
+%(todo: more refs? gebruik nummer twee van J13 (p2))
 
 A first feeding method is with the usage of a coaxial cable where the outer conductor is attached to the ground plane and the inner conductor to the radiations patch. Modelling is however difficult, especially for thick substrates as will be used in this master dissertation.
 A second option is the usage of a microstrip line. This type of feeding is much easier to model since the microstrip line can be seen as en extension of the radiating patch.
 A disadvantage is the increased \gls{spuriousradiation} which limits bandwith.
 A third is proximity coupling which has the largest bandwidth and low \gls{spuriousradiation}. It consist however of two dielectric substrates causing the overall thickness
 of the antenna to increase as well as it's fabrication difficulty.
-(todo: tekst te weinig, bespreek ook apperture coupled attenna (zelfde paper als de rest))
+%(todo: tekst te weinig, bespreek ook apperture coupled attenna (zelfde paper als de rest))
 
 The increasing usage of the microstrip patch antennae can be explained by it's easy fabrication and lightweightness and therefore knows a widespread application in the millitary, global possitioning systems, telemedicine, WiMax applications and so on.
 The authors of \cite{J13_microstripadvantages} also state that some of the disadvantages like lower gain and power handling can be solved with the usage of an array configuration.
@@ -186,4 +185,4 @@ Further is also the dielectric constant of the substrate important which typical
 dielectric constant with a thick substrate will result in better performance, better efficiency and larger bandwidths  \cite{J15_antennadesign}.
 On the other hand, a larger dielectric constant reduce de dimensions of the antenna \cite{J14_antennadesign}
 which is also useful when attaching the 
-antenna to a limited surface. Glass as a dielectric substrate with a constant of 4.4 will therefore be used.
+antenna to a limited surface. Glass as a dielectric substrate with a constant of 4.4 will be used.

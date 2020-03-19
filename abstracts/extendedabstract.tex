@@ -1,0 +1,112 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%  phdsymp_sample2e.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% changes for phdsymp.cls marked with !PN
+%% except all occ. of phdsymp.sty changed phdsymp.cls
+%%%%%%%%%%                                                       %%%%%%%%%%%%%
+%%%%%%%%%%    More information: see the header of phdsymp.cls   %%%%%%%%%%%%%
+%%%%%%%%%%                                                       %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\documentclass[10pt]{phdsymp} %!PN
+\documentclass[twocolumn]{phdsymp} %!PN
+%\documentclass[12pt,draft]{phdsymp} %!PN
+%\documentstyle[twocolumn]{phdsymp}
+%\documentstyle[12pt,twoside,draft]{phdsymp}
+%\documentstyle[9pt,twocolumn,technote,twoside]{phdsymp}
+
+\usepackage[english]{babel}       % Voor nederlandstalige hyphenatie (woordsplitsing)
+
+\usepackage{graphicx}                   % Om figuren te kunnen verwerken
+\usepackage{graphics}			% Om figuren te verwerken.
+\graphicspath{{figuren/}}               % De plaats waar latex zijn figuren gaat halen.
+
+\usepackage{times}
+
+\hyphenation{si-mu-la-ted re-a-lis-tic packets really in-clu-ding}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\title{Evaluatie van de totale electromagnetische blootstelling van de mens in een netwerk van drones}
+
+\author{Thomas Detemmerman}
+
+\supervisor{Wout Joseph, Luc Martens, Luc Martens, German Dario Castellanos Tache}
+
+\maketitle
+
+\begin{abstract}
+TODO: abstract in Dutch
+\end{abstract}
+
+\begin{keywords}
+LTE, electromagnetische blootstelling, energieverbruik, drone, femtocell, microstrip patch antenna, radiation pattern
+\end{keywords}
+
+\section{Introductie}
+\PARstart{T}{he} 
+Introduction in Dutch
+
+\section{Section}
+
+\subsection{Gerelateerd werk}
+TODO
+
+\subsection{Scenario's}
+todo 
+
+\subsection{Electromagnetische blootstelling}
+todo
+
+\section{Resultaten}
+todo
+
+\section{Conclusie}
+todo
+
+\subsection{Referencies}
+todo
+
+
+\nocite{*}
+\bibliographystyle{phdsymp}
+%%%%%\bibliography{bib-file}  % commented if *.bbl file included, as
+%%%%%see below
+
+
+%%%%%%%%%%%%%%%%% BIBLIOGRAPHY IN THE LaTeX file !!!!! %%%%%%%%%%%%%%%%%%%%%%%%
+%% This is nothing else than the phdsymp_sample2e.bbl file that you would%%
+%% obtain with BibTeX: you do not need to send around the *.bbl file        
+%%
+%%---------------------------------------------------------------------------%%
+%
+\begin{thebibliography}{1}
+\bibitem{paper}
+Bart Lannoo, Didier Colle, Mario Pickavet, Piet Demeester,
+\newblock {\em Optical Switching Architecture to Implement Moveable Cells in a Multimedia Train Environment},
+\newblock Proc. of ECOC 2004, 30th European Conf. on Optical Communication, vol. 3, pp. 344-345, Stockholm, Sweden, 5-9 Sep. 2004.
+
+\bibitem{ns-click}
+Michael Neufeld, Ashish Jain, Dirk Grunwald,
+\newblock {\em Nsclick:: bridging network simulation and deployment},
+\newblock http://systems.cs.colorado.edu/Networking/nsclick/
+
+\bibitem{click}
+\newblock {\em The Click Modular Router Project},
+\newblock http://www.read.cs.ucla.edu/click/
+
+\bibitem{ns}
+\newblock {\em {NS} -- {N}etwork {S}imulator},
+\newblock http://nsnam.isi.edu/nsnam/
+
+\end{thebibliography}
+%
+%%---------------------------------------------------------------------------%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%  End of phdsymp_sample2e.tex  %%%%%%%%%%%%%%%%%%%%%%%%%%%
