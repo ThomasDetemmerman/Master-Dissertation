@@ -1,10 +1,10 @@
-\chapter{State of the art}
+\chapter{State of the Art}
 \label{chap:stateoftheart}
 
-\section{Deployment tool for an UAV network}
+\section{Deployment Tool for an UAV Network}
 \label{sec:stateoftheart:deploymenttool}
 
-Calculating electromagnetic exposure requires knowledge about the area. The position of base stations need to be known,
+Calculating electromagnetic exposure requires knowledge about the area. The position of base stations needs to be known,
  the transmission power used by the antenna and how far the user is separated from this base stations are only a few parameters
  that have to be considered.
 
@@ -24,35 +24,35 @@ key values in approaching results as realistic as possible. Furthermore, the too
 The tool will thereafter randomly distribute users over the area and assigns a certain bitrate to them. \\
 \\
 In a second phase, the optimal position for each \gls{UABS} is calculated. This is done by trying to locate a \gls{UABS} above each active user. Two options are possible.
-If a fixed flying height is defined, a base stations is placed above each user at the given height, unless a building is obstructing it's location. Then, no base station will be located above that user.
+If a fixed flying height is defined, a base station is placed above each user at the given height, unless a building is obstructing its location. Then, no base station will be located above that user.
 Alternatively to the fixed flying height, a flying margin can be defined which represents the distance between the outdoor user and  the drone.
 If the user is inside, this margin will be measured between the drone and the rooftop of that building.
 The latter is only allowed if the suggested height remains below the given maximum allowed height. \\
 \\
-Finally, all \gls{UABS} are sorted on wether they were active or not, followed by the increasing pathloss from each \gls{UABS} to that user.
+Finally, all \gls{UABS}s are sorted on whether they were active or not, followed by the increasing path loss from each \gls{UABS} to that user.
 So the algorithm starts by checking for each active \gls{UABS} if it can cover the user. If this is the case, the user will be connected to this \gls{UABS}. If not,
-the second active base station with a (slightly) worse pathloss is considered. If no active base station is suitable, inactive \gls{UABS} are considered. The user remains uncovered if no \gls{UABS}
-is found. The reason behind first only considering base stations that are already active, is the hight cost that comes along with each drone. \\
+the second active base station with a (slightly) worse path loss is considered. If no active base station is suitable, inactive \gls{UABS}s are considered. 
+The user remains uncovered if no \gls{UABS}
+is found. The reason behind only considering already active base stations at first, is the high cost that comes along with each drone.
 \\
-Up till now, the tool has only calculated some suggestions. The effective provisioning is done in the fourth phase where drones are sorted by the amount of users they cover. As long as \gls{UABS}
-are available in the facility where they reside, \gls{UABS} are provisioned and its users are marked as covered.
+Up till now, the tool has only calculated some suggestions. The actual provisioning is done in the fourth phase where drones are sorted by the amount of users they cover. As long as \gls{UABS}s
+are available in the facility where they reside, \gls{UABS}s are provisioned and its users are marked as covered.
 
 
-\section{Electromagnetic exposure}
+\section{Electromagnetic Exposure}
 
-\subsection{Electromagnetic field radiation} % (fold)
+\subsection{Electromagnetic Field Radiation} % (fold)
 \label{sub:emf}
 People in a telecommunication network are exposed to far field electromagnetic radiation originating from base stations and other \gls{UE}. 
 Network planners need to make sure that the electromagnetic fields (expressed in V/m) do not exceed limitations enforced 
-by the government. These limits are location dependent. The European Union recommend the guidelines as defined by the \gls{ICNIRP} which limits electromagnetic exposure to 61 V/m.
-Each european country needs to decide for themselves which limitations to enforce. Belgium for example delegated this responsibility to Flanders, Brussels and Wallonia \cite{J23}.
+by the government. These limits are location dependent. The European Union recommends the guidelines as defined by the \gls{ICNIRP} which limits electromagnetic exposure to 61 V/m.
+Each European country needs to decide for themselves which limitations to enforce. Belgium for example delegated this responsibility to Flanders, Brussels and Wallonia \cite{J23}.
 
 The used deployment tool is applied in Ghent, a Flemish city in Belgium. The standards defined by the Flemish government are therefore applicable.
-They state that in the 2.6 Ghz frequency band, an individual antenna can't exceed 4.5 V/m and the cumulative sum of all fixed sources 31 V/m \cite{S13_normenBelgie}.
+They state that in the 2.6 Ghz frequency band, an individual antenna can't exceed 4.5 V/m and the cumulative sum of all fixed sources has its maximum at 31 V/m.
 
 \subsection{Specific Absorption Rate}
-
-\gls{SAR} represents the rate that electromagnetic energy is absorbed by human tissue with the thermal effect as it's most important health consequence.
+\gls{SAR} represents the rate at which electromagnetic energy is absorbed by human tissue with the thermal effect as its most important health consequence.
 The volume of this tissue is typically 1g or 10g. The Federal Communications Commission of the United States defines regulations based on 1g tissue (indicated as $SAR_{1g}$) 
 while the European Union handles the 
 10g model ($SAR_{10g}$). $SAR$ values can further be categorized based on the area it covers. 
@@ -69,24 +69,24 @@ This results in a whole body $SAR_{10g}$ of $0.8 W/kg$ and $2 W/kg$ for localize
 %\gls{UE} generates, just like femtocells, electromagnetic waves to which a user is exposed. A part of this radiation goes to the femtocell, another part enters the body of its user. How much electormagnic strenghts enters the body is defined as \gls{SAR} and is measured with 10g biological tissue which represents the human skin. This value will from now on be expressed as $SAR_{10g}$. 
 %A mobile device induces two types of exposure: local and whole-body. 
 
-\subsection{Related work} % (fold)
+\subsection{Related Work} % (fold)
 \label{sub:general}
-The goals of this master dissertation is the investigation of electromagnetic exposure considering all sources. Three types of sources are considered: electromagnetic radiation 
-caused by basestations, near field radiation from the user's own device and far field radiation originating from other users their equipment. This electromagnetic radiation is thereafter
+The goal of this master dissertation is the investigation of electromagnetic exposure considering all sources. Three types of sources are considered: electromagnetic radiation 
+caused by base stations, near field radiation from the user's own device and far field radiation originating from other users' equipment. This electromagnetic radiation is thereafter
 absorbed by the human body which will be expressed in \gls{SAR} values.
 
-Several papers exist calculating exposure originating from certain sources, but very limited research has been done covering the whole picture.
+Several papers calculate exposure originating from certain sources, but very  limited research has been done covering the whole picture.
 In \cite{J6_originalExposureFormula} is described how electromagnetic radiation of several WiFi access points is being calculated. The authors of \cite{J1} used this knowledge 
-to investigate electromagnetic exposure originating from basestations in a more outdoor environment. \cite{J10_RDP, J10.1} addresses the fact that 
+to investigate electromagnetic exposure originating from base stations in a more outdoor environment. \cite{J10_RDP, J10.1} addresses the fact that 
 also \gls{UL} traffic from the user's device should be considered. They therefore investigated indoor exposure. They did not only consider the electromagnetic radiation
-but also how much is absorbed by the body which will be expressed as specific absorption rate. Since the authors only covered voice calls,
+but also how much is absorbed by the body, which will be expressed as specific absorption rate. Since the authors only covered voice calls,
 uplink SAR was expressed in localized SAR values while the downlink traffic is expressed in whole body SAR. With the advent of 5G, paper \cite{J17_kuehn2019modelling} has been 
-published, describing how localized SAR values are achieved from all sources. More precisely: all mobile phones and all basestations in the network after which they converted the electromagnetic 
+published, describing how localized SAR values are achieved from all sources. More precisely: all mobile phones and all base stations in the network after which they converted the electromagnetic 
 exposure to localized SAR values.
 Finally, \cite{J22_plets2015joint} describes how both \gls{UL} and \gls{DL} traffic can be converted in whole body SAR values making it possible to achieve an overall picture. They applied this formula 
 however only for the user's own device.
 
-In a realistic network like the used deployment tool, some users are calling while another part is using other types of telecommunication services like browsing the web.
+In a realistic network like the used deployment tool, some users are calling while others are using other types of telecommunication services like browsing the web.
 Therefore, all absorbed electromagnetic exposure should be expressed in whole body SAR while still covering all sources.
 
 \section{Optimizing towards electromagnetic exposure and power consumption}
@@ -94,12 +94,12 @@ Therefore, all absorbed electromagnetic exposure should be expressed in whole bo
 the case when also an antenna needs to be connected to the battery of his carrier. It is therefore
 interesting to not only consider electromagnetic exposure of the user but also the power consumption that comes with it. 
 However an increasing transmission power of an antenna comes with an increasing electromagnetic exposure. This is not the case considering
-both values for an entire network. In fact, the autors from \cite{J1}  prove that both become inversely equivalent.
+both values for an entire network. In fact, the authors from \cite{J1}  prove that both become inversely equivalent.
 
 If a network is optimized towards power consumption, less drones will be provisioned radiating at higher power levels. This is because not only 
 the transmission power is considered but also the power needed to keep the drone in the air. Therefore, it is cheaper to cover a user by 
-increasing the antennae transmission power of an already activated drone nearby as it therefore prevents the power cost of a new drone.
-By increasing the transmission power, also the electomagnetic exposure will increase for users closer to that drone. An exposure optimized
+increasing the antenna's transmission power of an already activated drone nearby as it therefore prevents the power cost of a new drone.
+By increasing the transmission power, also the electromagnetic exposure will increase for users closer to that drone. An exposure optimized
 network will therefore faster decide to power up a new drone.
 
 \section{Technologies}
@@ -133,25 +133,25 @@ of their simplicity. Femtocell base stations are therefore used by the deploymen
 Further, \gls{LTE} also support both \gls{FDD} and \gls{TDD}.
 
 \gls{FDD} makes simultaneous \gls{UL} and \gls{DL} traffic possible by assigning different frequencies within the frequency range 
-to both data streams. A small guard band is used between the \gls{UL} and \gls{DL} direction in other to prevent interference.
+to both data streams. A small guard band is used between the \gls{UL} and \gls{DL} direction in order to prevent interference.
 
 \gls{TDD} allows  \gls{UL} and \gls{DL} traffic by splitting the time domain. Meaning that both traffic directions use the same frequency and therefore
 alternately (in time) use the same frequency. A small time interval is used to prevent interference in case of a slightly bad timed synchronization.
 
 This master dissertation will make usage of \gls{FDD}.
 
-\subsection{Type of antenna} % (fold)
+\subsection{Type of Antenna} % (fold)
 
 An important part of this master dissertation is the type of antenna that will be used by the femtocell base stations. The deployment tool makes use
 of drones that will position the femtocell base stations in the right position.  Using conventional 
-sector antennae, as used by traditional terrestrial transmission towers, would be to complicated for a simple drone. 
+sector antennae, as used by traditional terrestrial transmission towers, would be too complicated for a simple drone. 
 The characteristics of microstrip antennae will therefore be investigated.
 
 Microstrip antennae provide several advantages compared to traditional antennae \cite{J13_singh2011micro, J14_antennadesign}. Microstrip antennae
 are lightweight, low in cost and thin causing them to be more aerodynamic which is a useful feature since the antennae will be attached
 to flying drones.
 
-A basic microstrip antenna like figure \ref{fig:basicpatchantenna} consists out of a ground plane and
+A basic microstrip antenna like figure \ref{fig:basicpatchantenna} consists of a ground plane and
 a radiating patch, both separated with a dielectric substrate. Several variations exist like microstrip patch antenna, microstrip slot antenna and printed dipole antenna which
 all have similar characteristics. They are all thin, support dual frequency operation and they all have the disadvantage that they 
 will transmit at frequencies outside the aimed band which is also known as
@@ -170,19 +170,20 @@ The microstrip antenna requires besides the groundplane, dielectric substrate an
 
 A first feeding method is with the usage of a coaxial cable where the outer conductor is attached to the ground plane and the inner conductor to the radiations patch. Modelling is however difficult, especially for thick substrates as will be used in this master dissertation.
 A second option is the usage of a microstrip line. This type of feeding is much easier to model since the microstrip line can be seen as en extension of the radiating patch.
-A disadvantage is the increased \gls{spuriousradiation} which limits bandwith.
-A third is proximity coupling which has the largest bandwidth and low \gls{spuriousradiation}. It consist however of two dielectric substrates causing the overall thickness
-of the antenna to increase as well as it's fabrication difficulty.
+A disadvantage is the increased \gls{spuriousradiation} which limits bandwidth.
+A third is proximity coupling which has the largest bandwidth and low \gls{spuriousradiation}. It consists however of two dielectric substrates causing the overall thickness
+of the antenna to increase as well as its fabrication difficulty.
 %(todo: tekst te weinig, bespreek ook apperture coupled attenna (zelfde paper als de rest))
 
 The increasing usage of the microstrip patch antennae can be explained by it's easy fabrication and lightweightness and therefore knows a widespread application in the millitary, global possitioning systems, telemedicine, WiMax applications and so on.
 The authors of \cite{J13_microstripadvantages} also state that some of the disadvantages like lower gain and power handling can be solved with the usage of an array configuration.
 
 The radiating patch is usually made of a thin layer of either gold or copper \cite{J14_antennadesign,J15_antennadesign}
-and can be any form. However, shapes besides a circle or rectangle would require large numerical computation \cite{J14_antennadesign}.
+and can have any form. However, shapes other then circles or rectangles would require large numerical computation \cite{J14_antennadesign}.
 A simple rectangular shape will thus be used.
-Further is also the dielectric constant of the substrate important which typically varies between 2.2 and 12. Finding a good dielectric depends on how the antenna will used. A lower
+Further, also the dielectric constant of the substrate is important. It typically varies between 2.2 and 12.
+Finding a good dielectric depends on how the antenna will used. A lower
 dielectric constant with a thick substrate will result in better performance, better efficiency and larger bandwidths  \cite{J15_antennadesign}.
-On the other hand, a larger dielectric constant reduce de dimensions of the antenna \cite{J14_antennadesign}
+On the other hand, a larger dielectric constant reduces de dimensions of the antenna \cite{J14_antennadesign}
 which is also useful when attaching the 
 antenna to a limited surface. Glass as a dielectric substrate with a constant of 4.4 will be used.

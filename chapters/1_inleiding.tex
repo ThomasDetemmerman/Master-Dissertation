@@ -1,26 +1,20 @@
-% Inspirerende caption 
-%
-%\begin{savequote}[0.55\linewidth]
-%	``If you think you've seen this movie before, you are right. Cloud computing is based on the time-sharing model we leveraged years ago before we could afford our own computers. The idea is to share computing power among many companies and people, thereby reducing the cost of that computing power to those who leverage it. The value of time share and the core value of cloud computing are pretty much the same, only the resources these days are much better and more cost effective.''
-%	\qauthor{\textasciitilde David Linthicum, author of Cloud Computing and SOA Convergence in Your Enterprise: A Step-by-Step Guide}
-%\end{savequote}
-
 \chapter{Introduction}
 \label{chap:intro}
 
-\section{Outline of the issue} %1p
+\section{Outline of the Issue} %1p
 \label{sec:issue}
 
 % inspiratie kan je hier ook nog vinden:
 % PREDICTION AND COMPARISON OF DOWNLINK ELECTRICFIELDAND UPLINK LOCALISED SARVALUES FOR REALISTIC INDOOR WIRELESS PLANNING
 Society is constantly getting more and more dependent on wireless communication. On any given moment, in any given location, an electronic device
-can request to connect to the bigger network. Devices need more then ever to be connected, starting from small IOT sensors up to self-driving cars
-which all need to be supported by the existing infrastructure. The city center of Ghent has not for nothing an average coverage of 97\% of 4G 
-over all telecom operators\cite{testaankoop}. Once again it becomes clear why we're on the eve of a new generation of cellular communication named 5G. 
+can request to connect to the bigger network. Devices need more than ever to be connected, starting from small IOT sensors up to self-driving cars
+which all need to be supported by the existing infrastructure. 
+Not surprisingly, the city center of Ghent has an average coverage of 97\% of 4G over all telecom operators.
+\cite{testaankoop}. Once again it becomes clear why we're on the eve of a new generation of cellular communication named 5G. 
 %This new technology is capable of handling millions of connections every square meter %to do: klopt deze hoeveelheid want lijkt wel heel veel.
 %while satisfying only a few microseconds of a delay and providing connections up to 10Gbps \cite{5GFeatures}.
 
-Also in exceptional and possibly life-threatening situations, the public relies on the cellular network. For example during the terrorist attacks in Zaventem, a Belgian city,
+Also in exceptional and possibly life-threatening situations, the public relies on the cellular network. For example during the terrorist attacks at Brussels Airport,
 mobile network operators saw all telecommunications drastically increasing causing moments of contention. Some operators decided to temporarily exceed the exposure limits in
 order to handle all connections \cite{baseZaventem}.
 
@@ -30,43 +24,34 @@ that exposure to low level electromagnetic fields is harmful \cite{WHO}. A large
 
 \section{Objective}
 \label{sec:objective}
-People are constantly getting exposed to several sources of electromagnetic radiation and it important to consider this when designing a network. For this research, three prominent sources of radiation in a telecommunication
-network are investigated, being: the user his own phone, all base stations and all devices from other users in the network. In order to calculate electromagnetic 
+People are constantly getting exposed to several sources of electromagnetic radiation and it is important to consider this when designing a network. For this research, three prominent sources of radiation in a telecommunication
+network are investigated, being: the user's own phone, all base stations and all devices from other users in the network. In order to calculate electromagnetic 
 exposure from all these sources, various parameters need to be known. Not only the used technology but also the position of the users and base stations 
 are required. There are several publications discussing how the electromagnetic exposure originating from base stations can be calculated. 
 Papers who cover electromagnetic exposure from all these different sources and convert it into a single value are rather limited.
 
 To make this research possible, an existing planning tool is used which gives insight in user and base station distributions.
-The tool also provides information about path loss between radiators, power usage of the different electrical devices and which base stations handle which users. The tool describes in other words a fully configured network.
+The tool also provides information about path loss between radiators, power usage of the different electrical devices and which base station serve which user. In other words, the tool describes 
+a fully configured network.
 In this way, all needed parameters will be known.
 
-The electromagnetic behavior of the network will be analysed by applying the tool in different scenarios to give insight which variables influence the exposure and how
+The electromagnetic behaviour of the network will be analysed by applying the tool in different scenarios to give insight which variables influence the exposure and how
 the network can be optimized accordingly. 
 
 \textbf{research question 1:} How can a \gls{UABS} network be optimized to minimize global exposure and overall power consumption? What are the effects on the network?\\
 
-\textbf{research question 2:} What are the advantages and disadvantages of a model as described in research question 1 compared the the already existing path loss oriented model.\\
+\textbf{research question 2:} What are the advantages and disadvantages of a model as described in research question 1 compared to the already existing path loss oriented model.\\
 
 \textbf{research question 3:} How does the \gls{UABS} fly height influence uplink and downlink exposure?
 
-
-%todo: onderstaande tekst (in commentaar) is een letterlijke copy van J10-RDP. Het is hier gezet als referentie. Moet nog correct verwoorden:
-%In this paper, prediction algorithms are created to
-%simulate and visualise electric-field strengths due to
-%downlink traffic and localised SARvalues due to uplink
-%traffic. Downlink exposure are expressed in terms of
-%whole-body exposure due to the electric-fields E originating
-%from the base stations or APs, whereas uplink
-%exposure are expressed in terms of localised SAR10g
-%[SAR in 10 g of tissue(8)] values due to the mobile
-%device’s transmitted signal. To
-
 \section{Structure}
 \label{sec:structure}
-
-TODO: update this section
-
-%The following chapter \ref{chap:stateoftheart} exists of several succesive sections explaining how the electromagnetic exposure of a single human being is calculated. The first section \ref{sec:calculatingexposure}
-%explains how the exposure is calculated between a user and a single femtocell. Section \ref{sec:combiningexposure}  defines how to combine all exposures from the different femtocells towards a single users.
-%Finaly, section \ref{sec:radiationpatterns} explains how directional antenna's are taken into account.
+Related research to the subject is discussed in chapter \ref{chap:stateoftheart}: State of the Art, explaining
+electromagnetic exposure and its absorption into the body. Also the used technology such as type of antenna, type of base station and 
+which infrastructure will be examined. The chapter also discusses why this master dissertation differs from other papers.
+Thereafter, chapter \ref{chap:scenarios} talks about the different scenarios that will be investigated. 
+Eventually, the methodology covers in chapter \ref{chap:methodology} the calculations and implementation of the different aspects excerpted in State of the Art.
+Chapter \ref{chap:results} shows the results of this 
+implementation for the scenarios described in chapter \ref{chap:scenarios}. 
+Finally, a conclusion of these results is formed in chapter \ref{chap:conclusions}.
 
