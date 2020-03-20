@@ -213,18 +213,18 @@ SAR^{wb,ul}_{10g} \left(\frac{W}{kg}\right) = 0.0070 \left(\frac{W/kg}{W}\right)
 
 \subsection{Defining an antenna}
 \label{sub:definingAntenna}
-A microstrip patch antenna is chosen because it allows easy production but more important it has a low weight 
-and has a thin profile causing it to be very aerodynamic which is useful when attaching it to an \gls{UABS} \cite{J13_microstripadvantages}.
+A microstrip patch antenna is chosen because it allows easy production but more important, it has a low weight 
+and has a thin profile causing it to be very aerodynamic which is useful when attaching it to a drone \cite{J13_microstripadvantages}.
 
 The dimensions of the antenna depend on the frequency it is operating and the characteristics of the used substrate.
-The antennae will be radiating at a center frequency $f_0$ of 2.6Ghz. Each substrate has a dielectric constant $\epsilon_r$ representing 
+The antenna will be radiating at a center frequency $f_0$ of 2.6 Ghz. Each substrate has a dielectric constant $\epsilon_r$ representing 
 the permittivity of the substrate and depends on the used material.
 Substrates with a high dielectric constant and low height 
 reduce the dimensions of the antenna
 while a lower dielectric constant with a high height improves antenna performance. 
 In this paper, a substrate like glass 
 is chosen because of the higher dielectric constant of $\epsilon_r = 4.4$ compared to materials like teflon with only a dielectric 
-constant of $\epsilon_r = 2.2$ \ref{J14_antennadesign}. 
+constant of $\epsilon_r = 2.2$ \cite{J14_antennadesign}. 
 Doing this in combination with an antenna height of 2.87 mm will decrease the dimensions of the entire antenna surface which comes in handy for the limited space on 
 drones.
 
@@ -235,17 +235,17 @@ drones.
  description            & symbol          & value         \\    \hline
  center frequency       & $f_0$           & 2600 Hz       \\ 
  dielectric constant    & $\epsilon_r$    & 4.4         \\ 
- heigt of the substrate & $h$             & 0.00287m    \\ \hline
+ heigt of the substrate & $h$             & 0.00287 m    \\ \hline
 \end{tabular}
 \caption{Overview of configuration parameters}
 \label{table:antennaparas}
 \end{table}
 
 The dimensions of the radiating patch can be calculated with the formulas from \cite{J14_antennadesign} and \cite{J15_antennadesign}
-using the defined values in table \ref{table:antennaparas}. In that way, the width $W$ is calculated using formula \ref{eq:antennawidth}.
+using the defined values from table \ref{table:antennaparas}. In that way, the width $W$ is calculated using formula \ref{eq:antennawidth}.
 
 \begin{equation} 
-W = \frac{c}{2*f_0*\sqrt{\frac{\epsilon_r+1}{2}}}
+W = \frac{C}{2*f_0*\sqrt{\frac{\epsilon_r+1}{2}}}
 \label{eq:antennawidth}
 \end{equation}
 With $C$ being the speed of light, $f_0$ the center frequency of 2600 MHz and a dielectric constant $\epsilon_r$ of 4.4. This results 
@@ -264,7 +264,7 @@ This will result in a $\epsilon_{reff}$ of 3.91.
 L_{eff} = \frac{c}{2*f*\sqrt{\epsilon_{reff}}}
 \label{eq:leff}
 \end{equation}
-Now formula \ref{eq:leff} is used to calculate effective length ($L_{eff}$) which results in 29.16 mm.
+Now formula \ref{eq:leff} can be used to calculate effective length ($L_{eff}$) which results in 29.16 mm.
 
 \begin{equation} 
 \Delta L = 0.412*h*\frac{(\epsilon_{reff}+0.3)\left(\frac{W}{h}+0.264\right)}{\left(\epsilon_{reff}-0.258\right)\left(\frac{W}{h}+0.8\right)}
@@ -286,7 +286,7 @@ L_{g} = 6 * h + L
 \begin{equation} 
 W_{g} = 6 * h + W
 \end{equation}
-Therefore, should the length of the ground plane $L_{g}$ be at least 0.0438m and a width of $W_{g}$ 0.0524m.
+Therefore, should the length of the ground plane $L_{g}$ be at least 0.0438 m and a width $W_{g}$ at least 0.0524 m.
 A schematic overview of how the antenna will look like is given in figure \ref{fig:antennadesign}.
 \begin{figure}[h!]
 \centering
@@ -298,13 +298,13 @@ A schematic overview of how the antenna will look like is given in figure \ref{f
 \subsection{Radiation pattern}
 Mathlab is able to generate the radiation pattern for this microstrip patch antenna.
 The code in  listing \ref{c:mathlabradpattern} starts with defining the dielectric substrate which will be glass with a dielectric constant
-of 4.4 and a height of 0.00287m. Thereafter, the microstrip patch antenna is generated with the \verb|width| and \verb|length| being the dimensions
+of 4.4 and a height of 0.00287 m. Thereafter, the microstrip patch antenna is generated with the \verb|width| and \verb|length| being the dimensions
 of the radiation patch and the \verb|GroundPlaneLength| and \verb|GroundPlaneWidth| the dimensions of the ground plane and dielectric substrate.
 The \verb|FeedOffset| is the relative offset from the center where the radio frequency power is fed to the radiating patch which will here be
 at the edge. This is in figure \ref{fig:antennadesign} indicated with the yellow dot. At last, the \verb|dielectric|-object is substituted into the 
 \verb|patchMicrostripInsetfed|-object.
 
-Generating the pattern is done with the \verb|pattern|-command. The first value is the \verb|patchMicrostripInsetfed| object followed by the frequency
+Generating the pattern is done with the \verb|pattern|-command. The first value is the \\ \verb|patchMicrostripInsetfed| object followed by the frequency
 in which the antenna will be operating. Optionally, an azimuth value can be parsed like in line 7 and 8 where 90 and 0 stand for relatively the H-plane and E-plane.
 
 \begin{listing}[h!]
@@ -323,12 +323,12 @@ pattern(p,2.6e9, 0, "CoordinateSystem", 'polar', "Normalize",true)
 \end{listing}
 
 Running the configuration from listing \ref{c:mathlabradpattern} will generate the radiation pattern from figure \ref{radpattern2}.
-When running the same configuration for a slightly bigger square ground plane with an edge of 0.060m, the radiation pattern from \ref{radpattern1} is
+When running the same configuration for a slightly bigger square ground plane with an edge of 0.060 m, the radiation pattern from \ref{radpattern1} is
 achieved. Both radiation patterns show an aperture angle of approximately 90°. It becomes clear that the radiation pattern from figure \ref{radpattern2} has a higher attenuation in the direction it is not facing compared to
 the radiation pattern of figure \ref{radpattern1}. If it is assumed that drones fly lower than some users are positioned in some buildings, the pattern of 
 \ref{radpattern1} would be a better approach. However, for the continuation in this master dissertation, the radiation pattern from figure \ref{radpattern2} 
 is assumed since the antenna is the smallest
-and therefore more suitable to attach to the limited space available under the drone.  A data sheet of the exact values from both radiation patterns can be
+and therefore more suitable to attach to the limited space available under a drone.  A data sheet of the exact values from both radiation patterns can be
 found in appendix \ref{ch:radpattern}.
 
 \begin{figure}[!htb]
@@ -381,7 +381,7 @@ $E_m$ will be the weighted exposure of the average user for the current designed
 
 When optimizing the network, it is not only important to consider the average exposure of all users, but also to limit high extremes \cite{J1}. A weighted average 
 will be used not only considering the median but also the 95 percentile from all users their \gls{DL} exposure using formula \ref{eq:em}. 
-Since both values are considered to have equal importance, the weight factors $w_1$ and $w_2$ will both have an equal importance of 50 \%. 
+Since both values are considered to have equal importance, the weight factors $w_1$ and $w_2$ will both have an equal importance of 50\%. 
 
 \begin{equation} 
 E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
@@ -398,17 +398,18 @@ The existing algorithm as described section \ref{sec:stateoftheart:deploymenttoo
 using the formulas from section \ref{sec:methodology:optimizingTheNetwork}.
 As explained in State of the Art, the program starts with the preparation of the network by distributing the users over the network and assigns a bitrate that each user will require.
 Thereafter, the tool tries to solve  this network by assigning a UABS above each user. This master dissertation will only cover fixed flying heights meaning that a 
-certain position is infeasible if it is obstructed by a building.
+certain position is only infeasible if it is obstructed by a building.
 
-To make this possible, the path loss between each all users and between users and \gls{UABS}s are calculated.
+Solving the network is done by calculating the path loss between all users and between users and \gls{UABS}s.
 Thereafter, the tool iterates over each user and tries to connect that user to each \gls{UABS}. This connection is not always possible. A \gls{UABS} might be saturated with users and 
 won't be able to cover yet another user or maybe the user is so far away that in order to cover that user, the \gls{UABS} would exceed its maximum allowed input power.
-If however a connection is possible the user will be connected to that \gls{UABS} and the fitness function from section \ref{sec:methodology:optimizingTheNetwork} is calculated. 
+If however a connection is possible, the user will be connected to that \gls{UABS} and the fitness function from section \ref{sec:methodology:optimizingTheNetwork} is calculated. 
 Only the connection which results in the best fitness value for the entire network will be used. Thereafter, the tool shifts to the next user. 
 
 Up till now, the tool assumed an unlimited number of drones but this is an unrealistic scenario. Certainly when high number of users are present in the network.
 The number of available drones can be limited by defining the capacity of the facility where the drones are stored. If such a capacity is defined and the number
-of active drones exceed this limitation, the tool will delete the necessary drones starting by those who cover the least number of users.
+of active drones exceed this limitation, the tool will delete the necessary drones starting by those who cover the least number of users. These users will now become 
+uncovered.
 
 \subsection{Implementation of the radiation pattern}
 \label{subsec:implementationradpat}
@@ -473,15 +474,15 @@ Each user stores all path losses between himself and any other \gls{UABS} and re
 When all users are finished, the thread pool is shut down and the second one is created for the same calculations but between users.
 The pool will, just like the previous, create threads for each user but has an important difference.
 When a certain user calculates the path loss to another user, this path loss also applies for the other direction. The tool saves time by calculating the path loss only 
-once and stores the path loss by both users. It is therefore sufficient that a given user only calculates path losses to users right of him, since the other will 
+once and stores the path loss at both users. It is therefore sufficient that a given user only calculates path losses to users right of him, since the other path losses will 
 be calculated by the users left to him. This results in a time complexity of only $n(\frac{n}{2})$. When the last user finishes his thread, all users know the path loss to all other users causing 
 a space complexity of $n(n-1)$.
 % eventueel nog over concurrent hashmap
 
 \subsubsection{Limiting antenna searching}
 The user needs to be connected to the `best' base station. To identify this best \gls{UABS}, the user should be connected 
-to each base station and the fitness value \ref{eq:fitnessfunction} of the network should be evaluated. The connection that resulted in the best fitness function
-will be added to the solution. This process is repeated for each user but can further be improved. A user will likely be connected to either 
+to each base station and the fitness value \ref{eq:fitnessfunction} of the network has to be evaluated. The connection that resulted in the best fitness function
+will be added to the solution. This process is repeated for each user but can further be improved. A user will likely be connected to either the
 \gls{UABS} directly above him or to a \gls{UABS} in the direct neighbourhood. Time complexity can thus be improved by not considering drones 
 outside a certain radius.
 An ideal data structure for neighbousrhood-search is a KD-tree. This data structure is based on a binary tree and optimal for objects with 
