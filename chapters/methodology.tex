@@ -442,7 +442,7 @@ in figure \ref{radpattern2} and  \ref{radpattern1}, two azimuth cuts perpendicu
 are definitely sufficient. However, this might not be the case for radiation patterns with a more complex structure containing several  
 side lobs. To tackle this issue, more azimuth-slices can be defined for increased precision. Each slice should however contain an equal amount 
 of elevation slices.  A concrete example of a configuration file can be found in appendix \ref{ch:radpatexampleconfig}.
-
+ 
 When the attenuation of a user from a certain \gls{UABS} needs to be known, the elevation and azimuth angles between the user and the antenna's direction 
 should be calculated. 
 Figure \ref{fig:globe} represents a radiation pattern with the black dot indicating the user for which the attenuation needs to be calculated.
@@ -462,31 +462,31 @@ is applied to the y-axis for the black dot on the orange line using the estimate
 
 \subsection{Performance improvement}
 \subsubsection{Calculating path loss}
-The path loss is required for several formulas. For instance, each user decides whether a \gls{UABS} is feasible based 
+The path loss is required for several formulas. For instance, each user decides whether a \gls{UABS} is feasible based on
 the path loss but also the calculations for the downlink electromagnetic 
 exposure require this value to be known. The formulas for the whole body $SAR_{10g}$ require not only the path loss between the user
-and all \gls{UABS}s but even the path loss between users themselves. These path loss calculations are based and the Walfisch-Ikegami 
+and all \gls{UABS}s but even the path loss between users themselves. These path loss calculations are based on the Walfisch-Ikegami 
 model that causes a high computational load. The calculation between two points stands completely free from
 any other calculation between any other point and is therefore a suitable candidate to be multithreaded. The deployment tool creates two thread pools.
 The first pool creates a thread for each user where each thread calculates the path loss between the user assigned to him and all possible \gls{UABS}s,
- causing a time complexity of $n^2$.
+causing a time complexity of $n^2$.
 Each user stores all path losses between himself and any other \gls{UABS} and result therefore in a total space complexity of $n^2$.
 When all users are finished, the thread pool is shut down and the second one is created for the same calculations but between users.
 The pool will, just like the previous, create threads for each user but has an important difference.
 When a certain user calculates the path loss to another user, this path loss also applies for the other direction. The tool saves time by calculating the path loss only 
-once and stores the path loss at both users. It is therefore sufficient that a given user only calculates path losses to users right of him, since the other path losses will 
-be calculated by the users left to him. This results in a time complexity of only $n(\frac{n}{2})$. When the last user finishes his thread, all users know the path loss to all other users causing 
+once and stores the path loss at both users. It is therefore sufficient that a given user only calculates path losses of users at his right side, since the other path losses will 
+be calculated by the users on his left. This results in a time complexity of only $n(\frac{n}{2})$. When the last user finishes his thread, all users know the path loss of all other users causing 
 a space complexity of $n(n-1)$.
 % eventueel nog over concurrent hashmap
 
 \subsubsection{Limiting antenna searching}
 The user needs to be connected to the `best' base station. To identify this best \gls{UABS}, the user should be connected 
 to each base station and the fitness value \ref{eq:fitnessfunction} of the network has to be evaluated. The connection that resulted in the best fitness function
-will be added to the solution. This process is repeated for each user but can further be improved. A user will likely be connected to either the
+will be added to the solution. This process is repeated for each user but can further be improved. A user will like to be connected to either the
 \gls{UABS} directly above him or to a \gls{UABS} in the direct neighbourhood. Time complexity can thus be improved by not considering drones 
 outside a certain radius.
-An ideal data structure for neighbousrhood-search is a KD-tree. This data structure is based on a binary tree and optimal for objects with 
-multiple keys. Objects are thus positioned in K dimensions where each node split the hyperplane over exact one dimension. The dimension that need 
+An ideal data structure for neighbourhood-search is a KD-tree. This data structure is based on a binary tree and is optimal for objects with 
+multiple keys. Objects are thus positioned in K dimensions where each node splits the hyperplane over exact one dimension. The dimension that needs 
 to be split depends on the level of the KD-tree where that node is situated.
 In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in figure \ref{fig:exampleKDtree}.
 
@@ -496,5 +496,5 @@ In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in fig
   \label{fig:exampleKDtree}
 \end{figure}
 
-Here is chosen to only consider \gls{UABS}s within a radius of half a kilometre. 
+In this case the choice was made to only consider \gls{UABS}s within a radius of half a kilometer. 
 This will result in 23 \gls{UABS}s on average when applied to a default scenario of 224 \gls{UABS}s at a flying altitude of 100 m.
