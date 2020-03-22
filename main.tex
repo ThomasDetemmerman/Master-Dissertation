@@ -17,10 +17,9 @@
 %    2014         Doctoral Thesis of Bruno Volckaert
 %    2017         Adapted to master thesis by Jerico Moeyersons
 %    2018         Cleanup by Merlijn Sebrechts
+%    2020         Improved table of content and appendix formatting by Thomas Detemmerman
 %
-%  Latest version
-%    https://github.com/galgalesh/masterproef-template
-%
+
 \documentclass[11pt,a4paper,twoside, openany]{book}
 \usepackage[a4paper,includeheadfoot,margin=2.50cm]{geometry}
 
@@ -54,6 +53,11 @@
 %\usepackage[nottoc]{tocbibind}     % Put Bibliography in ToC
 
 %
+% Page numbers and auto generate headers
+%
+\usepackage{fancyhdr}   
+
+%
 % pseudocode
 %
 \usepackage{amsmath}
@@ -68,6 +72,8 @@
 % Glossaries
 %
 \usepackage[acronym,toc,shortcuts]{glossaries}
+\setglossarystyle{super}
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
 \makeglossaries
 
 %
@@ -98,21 +104,27 @@
 %
 \begin{document}
 
-\includepdf{voorblad.pdf}             % Front matter
-\newpage\thispagestyle{empty}\mbox{}  % White page
-\include{chapters/Dankwoord}          % Word of thanks
-%\newpage\thispagestyle{empty}\mbox{}  % White page
-%\includepdf[pages={-}]{abstract.pdf}  % Extended Abstract
-\tableofcontents                      % Table of Contents
-\listoffigures                        % List of figures
-\listoftables                         % List of tables
-\listoflistings                       % List of listings (code fragments)
+\frontmatter                                            % latin page numbers
+\pagestyle{plain}                                       % page numbers in center of footer
+\includepdf{voorblad.pdf}                               % Front matter
+\newpage\thispagestyle{empty}\mbox{}                    % White page
+\include{chapters/Dankwoord}                            % Word of thanks
+%\includepdf[pages=-]{abstracts/extendedabstract.pdf}   % Extended Abstract
+\tableofcontents                                        % Table of Contents
+\listoffigures                                          % List of figures
+\addcontentsline{toc}{chapter}{List of Figures}         %list "list of figures" in 'table of contents"
+\listoftables                                           % List of tables
+\addcontentsline{toc}{chapter}{List of Tables}          %list "list of tables" in "table of contents"
+\listoflistings                                         % List of listings (code fragments)
+\addcontentsline{toc}{chapter}{List of Listings}        %list "list of listings" in "table of contents"
 \include{woordenlijst}
 \printglossaries
 
 %
 % Include the main chapters of the thesis below
 %
+\mainmatter                                             % arabic page numbers
+\pagestyle{headings}                                    % page numbers and subtitle in header
 \include{chapters/1_inleiding}
 \include{chapters/2_stateoftheart}
 \include{chapters/scenarios}
@@ -121,7 +133,12 @@
 \include{chapters/results}
 \include{chapters/conclusions}
 \include{chapters/Bibliografie}
-\begin{appendices}
+
+%
+% Include the appendix chapters of the thesis below
+%
+\appendix                                               % use alphabet for chapter numbering
+\begin{appendices}                                      % makes a white page with "appendices" in the center
 \include{chapters/datasheet}
 \end{appendices}
 \end{document}

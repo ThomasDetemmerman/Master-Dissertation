@@ -1,6 +1,6 @@
 \chapter{Scenarios}
 \label{chap:scenarios}
-The tool supports multiple configurations and the behavior will be different for most these configurations. Three main scenarios 
+The tool supports multiple configurations and the behaviour will be different for most these configurations. Three main scenarios 
 will be investigated, order based on the network complexity. Within each scenario, different configurations will be applied.
 For the first scenario, only one user with one drone will be present in the network. The network will thereafter be expanded
 for multiple users but with still only one drone available. Eventually, that last restriction will be dropped meaning 
@@ -14,14 +14,14 @@ Table \ref{table:defaultconf} show the default configuration which values are al
         \multicolumn{2}{l}{\textbf{Broadband cellular network}} \\
         \hline
         \hspace{3mm}  technology        & LTE     \\
-        \hspace{3mm}  frequency         & @ 2.6 GHz \\
+        \hspace{3mm}  frequency         & 2.6 GHz \\
         \hline
         \multicolumn{2}{l}{\textbf{Carrier}} \\
         \hline  
-        \hspace{3mm}  Carrier power        & 13.0 A   \\
+        \hspace{3mm}  carrier power        & 13.0 A   \\
         \hspace{3mm}  average carrier speed        & 12.0 m/s \\
-        \hspace{3mm}  Average carrier power usage      & 17.33 Ah    \\
-        \hspace{3mm}  Carrier battery voltage       & 22.2 V \\
+        \hspace{3mm}  average carrier power usage      & 17.33 Ah    \\
+        \hspace{3mm}  carrier battery voltage       & 22.2 V \\
         \hline
         \multicolumn{2}{l}{\textbf{Femtocell antenna}} \\
         \hline  
@@ -30,16 +30,16 @@ Table \ref{table:defaultconf} show the default configuration which values are al
         \hspace{3mm}  gain                      & 4 dBm   \\ 
         \hspace{3mm}  feeder loss               & 2 dBm   \\ 
         \hspace{3mm}  implementation loss       & 0 dBm   \\
-        \hspace{3mm}  radiation pattern         & \acs{EIRP} or \\ microstrip patch antenna\\
+        \hspace{3mm}  radiation pattern         & \acs{EIRP} or microstrip patch antenna\\
         \hspace{3mm}  height                    & 100m  \\
         \hline
         \multicolumn{2}{l}{\textbf{\acs{UE} Antenna}} \\
         \hline 
         \hspace{3mm} height                     & 1.5m from the floor       \\ 
-        \hspace{3mm}  gain                      & 0 dBm   \\ 
-        \hspace{3mm}  feeder loss               & 0 dBm   \\ 
-        \hspace{3mm}  radiation pattern         & \acs{EIRP}  \\
-        \hspace{3mm}  number present in the network         & 224 m  \\
+        \hspace{3mm} gain                      & 0 dBm   \\ 
+        \hspace{3mm} feeder loss               & 0 dBm   \\ 
+        \hspace{3mm} radiation pattern         & \acs{EIRP}  \\
+        \hspace{3mm} number present in the network         & 224  \\
         \toprule
 \end{tabular}
 \caption{Overview of default configuration values.}
@@ -179,9 +179,9 @@ Both cases will be investigated for the two types of antennae: the fictional \gl
 \end{table}
 
 
-When more drones are available, an optimization strategy can be applied. The tool checks the capacity of the basestations and decides thereafter
-wich basestation the user should be connected to. The original algorithm checks all pahts between the user that need to be connected with 
-all drones. Thereafter, the drones which path experience the least pathloss and still has the capacity to cover an addition user will be selected.
+When more drones are available, an optimization strategy can be applied. The tool checks the capacity of the base stations and decides thereafter
+wich base station the user should be connected to. The original algorithm checks all pahts between the user that need to be connected with 
+all drones. Thereafter, the drones which path experience the least path loss and still has the capacity to cover an addition user will be selected.
 The authors from \cite{J1} proposed however annother optimization strategy which tries to minimize electromagnetic exposure and 
 power consumption.
 
