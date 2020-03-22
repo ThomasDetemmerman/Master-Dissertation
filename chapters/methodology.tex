@@ -81,7 +81,7 @@ When assuming that $attenuation(u)$ returns positive values, the attenuation can
 \label{subsec:pl}
 At last, formula \ref{eq:eirp} requires the path loss (in dB). In order to calculate this, an appropriate propagation model is required of which several exist.
 The tool uses the Walfish-Ikegami model because it performs well for femtocell networks in urban areas \cite{J2}. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
-The chosen propagation model consists of two formulas depending on whether a free line-of-sight between the user and the base station exists or not. Both formulas expect a distance in kilometre. %bron?
+The chosen propagation model consists of two formulas depending on whether a free \gls{LOS} between the user and the base station exists or not. Both formulas expect a distance in kilometre. %bron?
 
 \subsubsection{Combining exposure}
 The electromagnetic exposure for a given location originating from different sources can be calculated with formula \ref{eq:totalexposure} (in V/m). $E_i$ stands for 
@@ -465,7 +465,7 @@ is applied to the y-axis for the black dot on the orange line using the estimate
 The path loss is required for several formulas. For instance, each user decides whether a \gls{UABS} is feasible based on
 the path loss but also the calculations for the downlink electromagnetic 
 exposure require this value to be known. The formulas for the whole body $SAR_{10g}$ require not only the path loss between the user
-and all \gls{UABS}s but even the path loss between users themselves. These path loss calculations are based on the Walfisch-Ikegami 
+and all \gls{UABS}s but even the path loss between users themselves. These path loss calculations are based on the Walfish-Ikegami 
 model that causes a high computational load. The calculation between two points stands completely free from
 any other calculation between any other point and is therefore a suitable candidate to be multithreaded. The deployment tool creates two thread pools.
 The first pool creates a thread for each user where each thread calculates the path loss between the user assigned to him and all possible \gls{UABS}s,
