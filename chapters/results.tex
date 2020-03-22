@@ -1,13 +1,12 @@
 \chapter{Results and discussion}
 \label{chap:results}
-\section{Number of simulations}
 
-The  algorithm makes usage of randomly distributed users causing each simulation to be difference. The results are based on average 
-values over multiple simulations. It is therefore important knowing how mush simulations is required in order to become a converged average.
-This is done by using an example scenario which details can be found in table \ref{table:configForNumberOfUsers}. The most important parameters
-investigated in the different scenarios are $SAR_{10g}$, power consumption and user coverage. Therefore, the cummulative avarage of each investigated 
-value is plotted in function of number of simulations.
+%\section{Number of simulations}
 
+%The  algorithm makes usage of randomly distributed users causing each simulation to be difference. The results are based on average values over multiple simulations. It is therefore important knowing how mush simulations is required in order to become a converged average. This is done by using an example scenario which details can be found in table \ref{table:configForNumberOfUsers}. The most important parameters
+%investigated in the different scenarios are $SAR_{10g}$, power consumption and user coverage. Therefore, the cummulative avarage of each investigated value is plotted in function of number of simulations.
+
+\iffalse %remove to reanable section (dont forget fi little further)
 \begin{table}[!htb]
 \centering
   \begin{tabular}{|l|l|}
@@ -42,7 +41,7 @@ each user. Thereafter, each user will have to be connected to the best possible 
   \caption{General design of a microstrip antenna}
   \label{fig:fhsar}
 \end{figure}
-
+\fi %remove to reanable section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scenario 1: one user and one base station}
 
@@ -71,7 +70,7 @@ won't be any attenuation in eighter cases. Also the optimization wont' make a di
 users. Since there is only one user and one possible position for the drone, both optimization strategies behave identical.
 
 \begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s1/ptx-fh2.png}
+  \includegraphics[width=\textwidth]{../results/s1/ptx.png}
   \caption{Minimal required transmission power by the antenna to reach the ground just below him.}
   \label{fig:ptxfh}
 \end{figure}
@@ -105,14 +104,6 @@ exceeds \gls{DL} radiation in order to still be able to reach the high flying \g
   \label{fig:s1_fhsar}
 \end{figure}
 
-\begin{figure}[bh!]
-  \includegraphics[width=\textwidth]{../results/s1/flyheight-pc.png}
-  \caption{General design of a microstrip antenna}
-  \label{fig:pcsar}
-\end{figure}
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scenario 2: increased traffic}
 
@@ -137,6 +128,38 @@ Therefore, is the power consumption in a power consumption optimized network way
   \caption{The influence of the flying height on the weighted average downlink exposure of users in the network.}
   \label{fig:s2fhvsdl}
 \end{figure}
+
+\begin{figure}[bh!]
+  \includegraphics[width=\textwidth]{../results/s1/prove.png}
+  \caption{Scenario 2 with only 2 users}
+  \label{fig:pcsar}
+\end{figure}
+
+TODO: tekening van twee gebruikes met drone
+
+To prove the correctness of figure \ref{fig:s2fhvsdl}, the scenario has been investigated for two users called the red and blue user who 
+are 90 metres separated from each other. The path between both is obstructed by a building.
+Scenario 1 already explained that the charts can be simplified and the blue line is in fact constant between the zero and 130 metres.
+The chart shows thus that the \gls{UABS} is positioned above the blue user. The orange user is in \gls{NLOS} as long as the \gls{UABS} remains below 20 metres.
+
+Once the \gls{UABS} increases, the user becomes into \gls{LOS} but still remains uncovered. This is because the tool initally locate a possible 
+\gls{UABS} above each user and thereafter performs a  fitness function. The applied fitness function must have decided that it is better to connect 
+each user to the \gls{UABS} above him. At a final state, the tool check whether the number of online drones does not exceed the capacity of the facilityCapacity
+which is here the case. The tool therefore deactivates one \gls{UABS} causing the orange user to be uncovered. One could argue that the 
+the orange user should be connected to the online drone who is only 90 metres away. This would however require the online drone to increase his power consumption which 
+would make the decisions made by the optimization strategy obsolete.
+
+When a drone flies higher, the difference in distance between both users and the base station decreases. In other words, the Pythagorean theorem shows that when the flying height of the 
+\gls{UABS} increases, the distance with the blue user increases faster compared to the distance between that same \gls{UABS} and the orange user.
+
+At 130 metres, the tool decides to connect both users to the same UABS. Therefore, it increases it's power consumption so the orange user would  have the minimal 
+required electromagnetic exposure. This has of course a negative influence for the blue user who is way closer and experience a much higher exposure level.
+
+Around 180 metres, the  orange and blue line switch. This is because the drone switches position. As explained before, the tool assignes two possible drones, one above 
+each user. The tool must have decided that connecting both users to the other drones improves the fitness function of the entire network even though that difference might be 
+very little.
+
+
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s2/fhvsdl.png}
