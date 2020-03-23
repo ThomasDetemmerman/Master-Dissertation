@@ -104,6 +104,16 @@ exceeds \gls{DL} radiation in order to still be able to reach the high flying \g
   \label{fig:s1_fhsar}
 \end{figure}
 
+Figure \ref{fig:s1_fhsar} shows that the \gls{SAR} of the user originating from the \gls{UABS} remain constant. This means that 
+the electromagnetic radiation before it was converted into  \gls{UABS} using the formulas from section \ref{sub:convertDLtosarwb} was 
+also constant. This is normal behaviour since \gls{LTE} makes usage of power control meaning that the antenna won't use more then strictly necessary
+to reach the user. The exposure is in other words a constant fraction of power and distance like shown in equation \ref{eq:exposureBasicFormula}.
+
+\begin{equation}
+\vec{E} (V/m) = \frac{\Delta U (V) }{\Delta x (m)}
+\label{eq:exposureBasicFormula}
+\end{equation}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scenario 2: increased traffic}
 
@@ -122,6 +132,9 @@ We know that a power consumption optimized network will result in few high power
 generates a lot of low powered \gls{UABS}s. When only limited amount of \gls{UABS}s are available, 
 like only one in this scenario, the tool will only keep \gls{UABS}s which cover most of the users. 
 Therefore, is the power consumption in a power consumption optimized network way higher. 
+Since the exposure has to remain constant the the distance between the drone and orange user does not increase 
+as fast as the blue user, the exposure will increase. Equation \ref{eq:exposureBasicFormula}.
+
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s2/fhvsdl.png}
@@ -130,12 +143,18 @@ Therefore, is the power consumption in a power consumption optimized network way
 \end{figure}
 
 \begin{figure}[bh!]
-  \includegraphics[width=\textwidth]{../results/s1/prove.png}
+  \includegraphics[width=\textwidth]{../results/s2/prove.png}
   \caption{Scenario 2 with only 2 users}
   \label{fig:pcsar}
 \end{figure}
 
-TODO: tekening van twee gebruikes met drone
+
+\begin{wrapfigure}{r}{0.49\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{../results/s2/proveScenario.png}
+  \end{center}
+  \caption{Scenario 2 with only 2 users}
+\end{wrapfigure}
 
 To prove the correctness of figure \ref{fig:s2fhvsdl}, the scenario has been investigated for two users called the red and blue user who 
 are 90 metres separated from each other. The path between both is obstructed by a building.
