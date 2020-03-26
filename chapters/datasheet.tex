@@ -1,11 +1,11 @@
 \chapter{Radiation patterns: datasheet}
 \label{ch:radpattern}
 Table \ref{tab:datasheetRadiation} gives an overview of the attenuation in the E and H plane. The first radiation pattern 
-is with a square groundplane with an edge of 0.060 meter while the second pattern is more of a rectangular shape with a width of 0.0524m and a lenght of 0.0438m.
+ has a square groundplane with an edge of 0.060 meter while the second pattern is more of a rectangular shape with a width of 0.0524m and a length of 0.0438m.
 All other settings are equal as defined in \ref{sub:definingAntenna}
 \begin{table*}[!ht]
 \centering
-\caption{Overview of attenuation in dBm}
+\caption{Overview of attenuation in dBm.}
 \begin{tabular}{|l|l|l|l|l|}
 \hline
  & \multicolumn{2}{c|}{pattern 1} & \multicolumn{2}{|c|}{pattern 2}\\\hline
@@ -57,12 +57,12 @@ angle & E & H & E & H \\ \hline
 \chapter{Radiation patterns: example configuration}
 \label{ch:radpatexampleconfig}
 
-In listing \ref{c:exampleRadiationConfig} is a possible configuration described for a radiation pattern.
+In listing \ref{c:exampleRadiationConfig}, a possible configuration for a radiation pattern is described.
 It is important to notice that this example configuration does not represent the used configuration in this master dissertation.
-The \verb|radiatoinPattern|-tag consist of a \verb|slices|-tag. This tag can contain as much slices as desired.
+The \verb|radiatoinPattern|-tag consists of a \verb|slices|-tag. This tag can contain as much slices as desired.
 In this example, 3 slices are defined indicated with the \verb|attenuation|-tag. This tag contains a mandatory attribute \verb|az| 
 which defines the azimuth angle to which all underlying attenuation values belong.
-Inside the \verb|attenuation|-tag are all attenuation values written in a \verb|value|-tag.
+Inside the \verb|attenuation|-tag, all attenuation values are written in a \verb|value|-tag.
 
 The tool distributes all values equally over the \ang{180} of that slice. In the example below, each \verb|attenuation|-tag contains 10 values
 meaning that the exact attenuation is known every \ang{20}.
