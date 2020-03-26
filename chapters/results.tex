@@ -25,27 +25,27 @@ each user. Thereafter, each user will have to be connected to the best possible 
 
 \begin{figure}[th!]
   \includegraphics[width=\textwidth]{../results/numberOfSim/sarvssim.png}
-  \caption{General design of a microstrip antenna}
+  \caption{Total SAR versus.}
   \label{fig:fhsar}
 \end{figure}
 \begin{figure}[th!]
   \includegraphics[width=\textwidth]{../results/numberOfSim/pcvssim.png}
-  \caption{General design of a microstrip antenna}
+  \caption{General design of a microstrip antenna.}
   \label{fig:fhsar}
 \end{figure}
 \begin{figure}[th!]
   \includegraphics[width=\textwidth]{../results/numberOfSim/sarvssim.png}
-  \caption{General design of a microstrip antenna}
+  \caption{General design of a microstrip antenna.}
   \label{fig:fhsar}
 \end{figure}
 \fi %remove to reanable section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Scenario 1: one user and one base station}
+\section{Scenario 1: One User and One Drone}
 The network contains only one user for this scenario. This means that there is only one location possible for the drone which is just above 
 the user. This section will investigate minimal required transmission power and SAR values from different sources.
 \textcolor{red}{power consumption te doen}
 
-\subsection{The influence from the maximum transmission power}
+\subsection{The influence of the maximum transmission power}
 \gls{LTE} makes usages of power control meaning that no more power will be used then strictly necessary. The actual 
 transmit power $P_{tx}$ therefore ranges between 0 and the maximum input power. $P_{tx}$ is zero when the \gls{UABS} doesn't cover anybody.
 Increasing the maximum transmission power won't influence the power consumption or $SAR_{10g}$ because the \gls{UABS} won't use more
@@ -111,13 +111,13 @@ Figure \ref{fig:s1_fhsar} doesn't show radiation from neighbours, because there 
 \ref{eq:overallSARwb} and indicated with the blue line. 
 \begin{figure}[th!]
   \includegraphics[width=\textwidth]{../results/s1/fhvssar2.png}
-  \caption{How SAR values from different sources are influenced by different flying altitudes}
+  \caption{How SAR values from different sources are influenced by different flying altitudes.}
   \label{fig:s1_fhsar}
 \end{figure}
 
 \textcolor{red}{power consumption te doen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Scenario 2: increased traffic}
+\section{Scenario 2: Increased Traffic}
 
 This scenario has just like the previous scenario only one drone. However, more users will be present in the network.
 First, a variable flying altitude is investigated for a fixed number of 224 users. 
@@ -240,7 +240,7 @@ that the radiation from all different \gls{UABS}s is the main factor followed by
 The far field radiation from other \gls{UE} has barely influence. It looks like it is zero but it is just very low compared to the other two values. 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s2/fhSARMatrix.png}
-  \caption{This figure shows how different sources are influenced by an increasing flying height. }
+  \caption{This figure shows how different sources are influenced by an increasing flying height.}
   \label{fig:s2shfourSourcesMatrix}
 \end{figure}
 
@@ -255,7 +255,7 @@ and covers the least number of users.
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s2/uvsnumcovusers.png}
-  \caption{The influence of increasing traffic on user coverage}
+  \caption{The influence of increasing traffic on user coverage.}
   \label{fig:s2uvsnumcovusers}
 \end{figure}
 
@@ -278,23 +278,23 @@ So in other words, the  percentage of covered users for a sparsely populated net
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s2/uvscov.png}
-  \caption{The influence of increasing traffic on user coverage}
+  \caption{The influence of increasing traffic on user coverage.}
   \label{fig:s2uvscov}
 \end{figure}
 
 The downlink exposure is directly influenced by the number of covered users (figure \ref{fig:s2uvsdl}). 
 The electromagnetic exposure increases when more users are covered and since an \gls{isotropicradiator} in a power consumption optimized network (green)
-will have the highest coverage, also the \gls{DL} electromagnetic radiation from \gls{UABS}s will be highter.
+will have the highest coverage, also the \gls{DL} electromagnetic radiation from \gls{UABS}s will be higher.
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s2/uvsdl.png}
-  \caption{The influence of increasing traffic on downlink exposure}
+  \caption{The influence of increasing traffic on downlink exposure.}
   \label{fig:s2uvsdl}
 \end{figure}
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s2/uvspc.png}
-  \caption{The influence of increasing traffic on the total power consumption}
+  \caption{The influence of increasing traffic on the total power consumption.}
   \label{fig:s2uvspc}
 \end{figure}
 
@@ -328,7 +328,7 @@ neighbouring devices is not zero as it looks from figure \ref{fig:s2fourSourcesM
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%s
-\section{Scenario 3:}
+\section{Scenario 3: Unlimited Drones}
 \subsection{Influence of the flying altitude}
 
 This scenario examines the same cases as scenario 2 but there is no restriction on the number of \gls{UABS}s. 

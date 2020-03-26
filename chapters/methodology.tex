@@ -4,12 +4,12 @@
 
 %\section{Tool}
 %The goals 
-\begin{figure}[h!]
-\centering
-  \includegraphics[width=\textwidth]{../images/generalIdeaIllustration.png}
-  \caption{Design of the microstrip patch antenna.}
-  \label{fig:antennadesign}
-\end{figure}
+%\begin{figure}[h!]
+%\centering
+ % \includegraphics[width=\textwidth]{../images/generalIdeaIllustration.png}
+ % \caption{Design of the microstrip patch antenna.}
+ % \label{fig:antennadesign}
+%\end{figure}
 
 
 \section{Electromagnetic exposure}
@@ -57,7 +57,7 @@ E_i(u) = 10^{\frac{RRP(u) - 43.15 + 20*\log(f)- PL(u)}{20}}
 \end{equation}
 
 \paragraph{frequency}
-The used frequency in the formula above is denoted as $f$ and is expressed in Mhz. Since LTE is used, this value will be 2600 Mhz.
+The used frequency in the formula above is denoted as $f$ and is expressed in MHz. Since LTE is used, this value will be 2600 MHz.
 
 \paragraph{Real Radiation Power and EIRP}
 In formula \ref{eq:singleexposure}, as it was described in \cite{J6_originalExposureFormula, J1}, 
@@ -79,7 +79,7 @@ The attenuation for a user $u$ is given based on the angle between the main beam
 When assuming that $attenuation(u)$ returns positive values, the attenuation can simply be subtracted from the EIRP-value.
 \paragraph{path loss}
 \label{subsec:pl}
-At last, formula \ref{eq:eirp} requires the path loss (in dB). In order to calculate this, an appropriate propagation model is required of which several exist.
+At last, formula \ref{eq:eirp} requires the path loss (in dB). In order to calculate this, an appropriate propagation model -of which several exist- is required .
 The tool uses the Walfish-Ikegami model because it performs well for femtocell networks in urban areas \cite{J2}. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
 The chosen propagation model consists of two formulas depending on whether a free \gls{LOS} between the user and the base station exists or not. Both formulas expect a distance in kilometre. %bron?
 
@@ -98,17 +98,17 @@ E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 \label{sub:convertDLtosarwb}
 
 Formula \ref{eq:overallSARwb} expects that the electromagnetic radiation is expressed into $SAR^{wb,dl}_{10g}$ and $SAR^{wb,neighbours}_{10g}$. The 
-calculation for both values is in fact identical. The only difference is the sources where the first one is for \gls{UABS}s and the second one for \gls{UE}.
+calculation for both values is in fact identical. The only difference is the source; where the first one is for \gls{UABS}s, the second one for \gls{UE}.
 Physically seen, they are both whole body SAR values induced by far-field radiation ($SAR^{ff,wb}_{10g}$).
 
 The electromagnetic radiation needs to be converted into $SAR^{ff,wb}_{10g}$. 
 This conversion factor is based on Duke from the Virtual Family. Duke is a 34-year old male with a weight of 72 kg, a height of 1.74 m and body
 mass index of 23.1 kg/m \cite{J22_plets2015joint}. Research shows that the conversion factor for WiFi is $0.0028 \frac{W/kg}{W/m^2}$.
- Since WiFi, at a frequency of 2400 Mhz,
-is very close to LTE, at 2600 Mhz, it is assumed in \cite{J22_plets2015joint} that this value is also applicable for \gls{LTE}.
+ Since WiFi, at a frequency of 2400 MHz,
+is very close to LTE, at 2600 MHz, it is assumed in \cite{J22_plets2015joint} that this value is also applicable for \gls{LTE}.
 This constant converts the \gls{power flux density} $S$ (with units $\frac{W}{m^2}$) to the required $SAR^{ff,wb}_{10g}$.
 To make this possible, the electromagnetic radiation
-from formula \ref{eq:totalexposure} (expressed in  $V/m$) should first be converted to the  \gls{power flux density} which formula 
+from formula \ref{eq:totalexposure} (expressed in  $V/m$) should first be converted to the  \gls{power flux density} with formula 
 \ref{eq:flux} before formula \ref{eq:convertion} can be applied.
 
 \begin{equation}
@@ -134,7 +134,7 @@ When assuming that all users hold their device next to their ear, a localized SA
 Most countries, including Belgium, enforce the 10g model and will, therefore, be the point of reference for this master dissertation.
 The $SAR^{head}_{10g}$ values are phone dependent. The values reported by mobile manufactures are worst-case scenarios meaning that the 
 values are measured when the phone is transmitting at maximum power. This is an understandable decision but won't result in a realistic scenario since 
-modern cellular networks use power control mechanisms to prevent over radiation of a nearby device. \gls{UE} will therefore never use more energy than 
+modern cellular networks use power control mechanisms to prevent excessive radiation of a nearby device. \gls{UE} will therefore never use more energy than 
 necessary to maintain a connection.
 To compensate for this overestimation, the actual $SAR^{head}_{10g}$ of each user will be predicted. These will, however, remain an estimation since the 
 position of the phone relative to the head differs from user to user. For example, by holding the phone differently, a hand can absorb more or less 
@@ -193,7 +193,7 @@ results as in ref. \cite{j10.1.1}. The median of 0.67 is used.
           \addplot[hous,fill]  coordinates {(1.8--2.0,0)};
       \end{axis}
   \end{tikzpicture}
-  \caption{Distribution of how many phones belong to a certain SAR interval. Upper boundary not included}
+  \caption{Distribution of how many phones belong to a certain SAR interval. Upper boundary not included.}
   \label{chart:germanDatabase}
 \end{figure}
 
@@ -201,8 +201,8 @@ results as in ref. \cite{j10.1.1}. The median of 0.67 is used.
 \subsubsection{Whole body specific absorption rate}
 The position of the phone relative to the user's body is however unknown. The tool assigns different bitrates to different phones implying 
 that some users are calling and therefore probably holding their phone next to their ear while another part is using other services like browsing the web.
-For this reason expects formula \ref{eq:overallSARwb} that the specific absorption rate is expressed for the entire body instead of localized $SAR^{head}_{10g}$.
-The conversion factors for Duke from the Virtual Family will be used again as which was already the case in \ref{sub:convertDLtosarwb}. 
+For this reason formula \ref{eq:overallSARwb} expects that the specific absorption rate is expressed for the entire body instead of localized $SAR^{head}_{10g}$.
+The conversion factors for Duke from the Virtual Family will be used again as it was already the case in \ref{sub:convertDLtosarwb}. 
 The constant to convert \gls{UL} exposure to $SAR^{wb,ul}_{10g}$
 for WiFi is defined to be 0.0070 $\left(\frac{W/kg}{W}\right)$ \cite{J22_plets2015joint} which leads to eq. \ref{eq:ulToSar}.
 
@@ -216,8 +216,8 @@ SAR^{wb,ul}_{10g} \left(\frac{W}{kg}\right) = 0.0070 \left(\frac{W/kg}{W}\right)
 A microstrip patch antenna is chosen because it allows easy production but more important, it has a low weight 
 and has a thin profile causing it to be very aerodynamic which is useful when attaching it to a drone \cite{J13_microstripadvantages}.
 
-The dimensions of the antenna depend on the frequency it is operating and the characteristics of the used substrate.
-The antenna will be radiating at a center frequency $f_0$ of 2.6 Ghz. Each substrate has a dielectric constant $\epsilon_r$ representing 
+The dimensions of the antenna depend on the frequency it is operating at and the characteristics of the used substrate.
+The antenna will be radiating at a center frequency $f_0$ of 2.6 GHz. Each substrate has a dielectric constant $\epsilon_r$ representing 
 the permittivity of the substrate and depends on the used material.
 Substrates with a high dielectric constant and low height 
 reduce the dimensions of the antenna
@@ -225,8 +225,8 @@ while a lower dielectric constant with a high height improves antenna performanc
 In this paper, a substrate like glass 
 is chosen because of the higher dielectric constant of $\epsilon_r = 4.4$ compared to materials like teflon with only a dielectric 
 constant of $\epsilon_r = 2.2$ \cite{J14_antennadesign}. 
-Doing this in combination with an antenna height of 2.87 mm will decrease the dimensions of the entire antenna surface which comes in handy for the limited space on 
-drones.
+Doing this in combination with an antenna height of 2.87 mm will decrease the dimensions of the entire antenna surface.
+This comes in handy since drones only have limited space available.
 
 \begin{table}[h!]
 \centering
@@ -237,7 +237,7 @@ drones.
  dielectric constant    & $\epsilon_r$    & 4.4         \\ 
  heigt of the substrate & $h$             & 0.00287 m    \\ \hline
 \end{tabular}
-\caption{Overview of configuration parameters}
+\caption{Overview of configuration parameters.}
 \label{table:antennaparas}
 \end{table}
 
@@ -286,7 +286,7 @@ L_{g} = 6 * h + L
 \begin{equation} 
 W_{g} = 6 * h + W
 \end{equation}
-Therefore, should the length of the ground plane $L_{g}$ be at least 0.0438 m and a width $W_{g}$ at least 0.0524 m.
+Therefore, the length of the ground plane $L_{g}$ should be at least 0.0438 m and a width $W_{g}$ at least 0.0524 m.
 A schematic overview of how the antenna will look like is given in figure \ref{fig:antennadesign}.
 \begin{figure}[h!]
 \centering
@@ -297,7 +297,7 @@ A schematic overview of how the antenna will look like is given in figure \ref{f
 
 \subsection{Radiation pattern}
 Mathlab is able to generate the radiation pattern for this microstrip patch antenna.
-The code in  listing \ref{c:mathlabradpattern} starts with defining the dielectric substrate which will be glass with a dielectric constant
+The code in  listing \ref{c:mathlabradpattern} starts by defining the dielectric substrate which will be glass with a dielectric constant
 of 4.4 and a height of 0.00287 m. Thereafter, the microstrip patch antenna is generated with the \verb|width| and \verb|length| being the dimensions
 of the radiation patch and the \verb|GroundPlaneLength| and \verb|GroundPlaneWidth| the dimensions of the ground plane and dielectric substrate.
 The \verb|FeedOffset| is the relative offset from the center where the radio frequency power is fed to the radiating patch which will here be
@@ -305,7 +305,7 @@ at the edge. This is in figure \ref{fig:antennadesign} indicated with the yellow
 \verb|patchMicrostripInsetfed|-object.
 
 Generating the pattern is done with the \verb|pattern|-command. The first value is the \\ \verb|patchMicrostripInsetfed| object followed by the frequency
-in which the antenna will be operating. Optionally, an azimuth value can be parsed like in line 7 and 8 where 90 and 0 stand for relatively the H-plane and E-plane.
+at which the antenna will be operating. Optionally, an azimuth value can be parsed like in line 7 and 8 where 90 and 0 relatively stand for the H-plane and E-plane.
 
 \begin{listing}[h!]
 \begin{minted}[frame=single,framesep=10pt,xleftmargin=20pt,linenos]{c}
@@ -318,7 +318,7 @@ pattern(p,2.6e9, "CoordinateSystem", 'polar', "Normalize",true)
 pattern(p,2.6e9, 90, "CoordinateSystem", 'polar', "Normalize",true)
 pattern(p,2.6e9, 0, "CoordinateSystem", 'polar', "Normalize",true)
 \end{minted}
-\caption{Mathlab code to generate radiation pattern for a microstrip patch antenna}
+\caption{Mathlab code to generate radiation pattern for a microstrip patch antenna.}
 \label{c:mathlabradpattern}
 \end{listing}
 
@@ -326,8 +326,8 @@ Running the configuration from listing \ref{c:mathlabradpattern} will generate t
 When running the same configuration for a slightly bigger square ground plane with an edge of 0.060 m, the radiation pattern from \ref{radpattern1} is
 achieved. Both radiation patterns show an aperture angle of approximately 90°. It becomes clear that the radiation pattern from figure \ref{radpattern2} has a higher attenuation in the direction it is not facing compared to
 the radiation pattern of figure \ref{radpattern1}. If it is assumed that drones fly lower than some users are positioned in some buildings, the pattern of 
-\ref{radpattern1} would be a better approach. However, for the continuation in this master dissertation, the radiation pattern from figure \ref{radpattern2} 
-is assumed since the antenna is the smallest
+\ref{radpattern1} would be a better approach. However, for the continuation of this master dissertation, the radiation pattern from figure \ref{radpattern2} 
+is assumed since this antenna is the smallest
 and therefore more suitable to attach to the limited space available under a drone.  A data sheet of the exact values from both radiation patterns can be
 found in appendix \ref{ch:radpattern}.
 
@@ -359,7 +359,7 @@ found in appendix \ref{ch:radpattern}.
  \label{radpattern1}
 \end{figure}
 
-\section{Optimizing the network}
+\section{Optimixzing the network}
 \label{sec:methodology:optimizingTheNetwork}
 The network, as originally defined in the deployment tool, tried to minimize power consumption by connecting the user to a base station which
 experienced the lowest path loss. A second optimization strategy is introduced, based on the fitness function described in \cite{J1}.
@@ -370,17 +370,17 @@ f = w * \left(1 - \frac{E_m}{E_{max}}\right) + (1 - w)*\left(1 - \frac{P}{P_{max
 \end{equation}
 
 Formula \ref{eq:fitnessfunction} returns a fitness value. Users are connected to different \gls{UABS}s and each time the fitness value is 
-calculated. The user will eventually be connected to the drone which resulted in the highest fitness value. This process is repeated for each user.
+calculated. The user will eventually be connected to the drone resulting in the highest fitness value. This process is repeated for each user.
 $w$ is the importance factor of electromagnetic exposure ranging from 0 to 1, boundaries included. A $w$ set to zero means that electromagnetic 
 exposure is not important. Such a network will therefore be called a power consumption optimized network. 
 Likewise, a $w$ set to one means that minimizing exposure is top priority and will result in an exposure optimized 
 network. $P_{max}$ is the power consumption of all \gls{UABS}s, both active and inactive, when radiating at the highest possible level 
-while $P$ is the effective used power by the current designed network. 
+while $P$ is the effective power used by the current designed network. 
 This will be the power required for the flying drones themselves and their antenna.
 $E_m$ will be the weighted exposure of the average user for the current designed network and $E_{max}$ the electromagnetic exposure when all antennae are at their highest power level.
 
 When optimizing the network, it is not only important to consider the average exposure of all users, but also to limit high extremes \cite{J1}. A weighted average 
-will be used not only considering the median but also the 95 percentile from all users their \gls{DL} exposure using formula \ref{eq:em}. 
+will be used not only considering the median but also the 95 percentile from all users' \gls{DL} exposure using formula \ref{eq:em}. 
 Since both values are considered to have equal importance, the weight factors $w_1$ and $w_2$ will both have an equal importance of 50\%. 
 
 \begin{equation} 
@@ -392,12 +392,13 @@ E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 
 \section{Implementation}
 
-\subsection{Network planning, bringing it al together}
+\subsection{Network planning, bringing it all together}
 
-The existing algorithm as described section \ref{sec:stateoftheart:deploymenttool} is extended to support different optimization strategies by 
+The existing algorithm as described in section \ref{sec:stateoftheart:deploymenttool} is extended to support different optimization strategies by 
 using the formulas from section \ref{sec:methodology:optimizingTheNetwork}.
-As explained in State of the Art, the program starts with the preparation of the network by distributing the users over the network and assigns a bitrate that each user will require.
-Thereafter, the tool tries to solve  this network by assigning a UABS above each user. This master dissertation will only cover fixed flying heights meaning that a 
+As explained in State of the Art, the program starts with the preparation of the network by distributing the users over the network and assigns 
+the bitrate required for each user's cell phone activity.
+Thereafter, the tool tries to solve  this network by assigning a \gls{UABS} above each user. This master dissertation will only cover fixed flying heights meaning that a 
 certain position is only infeasible if it is obstructed by a building.
 
 Solving the network is done by calculating the path loss between all users and between users and \gls{UABS}s.
@@ -413,7 +414,7 @@ uncovered.
 
 \subsection{Implementation of the radiation pattern}
 \label{subsec:implementationradpat}
-The deployment tool originally only supported \gls{isotropicradiator}'s. The tool has thus been extended and is fully configurable allowing any possible antenna 
+The deployment tool originally only supported \gls{isotropicradiator}s. The tool has thus been extended and is fully configurable allowing any possible antenna 
 in any possible 
 orientation with the usage of a XML-file. The configuration described in this file will apply to all \gls{UABS}s. 
 
@@ -422,11 +423,11 @@ defines the downtilt angle under wich the antenna is pointing. A downtilt angle 
 an antenna with a downtilt angle of \ang{90} will be pointing straight to the ground.
 This parameter only supports positive values ranging from \ang{0} to \ang{360} (upper boundary not included). An antenna pointing to the sky would therefore require a value of \ang{270}.
 The second value, the north offset, defines the azimuth orientation of the drone. The value given to this parameter indicates the offset between the north
-and the horizontal direction to which the antenna should be pointing to. The value once again ranges from \ang{0} to \ang{360} with the upper boundary not included. The
-angle is calculated in counter clock wise orientation. For instance, a north offset of \ang{270} will let the \gls{UABS} point to the east.  
+and the horizontal direction to which the antenna should be pointing at. The value once again ranges from \ang{0} to \ang{360} with the upper boundary not included. The
+angle is calculated in counterclockwise orientation. For instance, a north offset of \ang{270} will let the \gls{UABS} point to the east.  
 
 Thereafter, the normalized radiation pattern is supplied to the tool. The actual pattern is three dimensional. To simplify this,
-slices perpendicular to the az-axis are extracted. These are indicated at figure \ref{fig:slicesOfPattern} with azimuth cuts. With
+slices perpendicular to the az-axis are extracted. These are indicated in figure \ref{fig:slicesOfPattern} with azimuth cuts. With
 an angle of \ang{90} four slices are achieved, each consisting out of elevation cuts. The intersection of an elevation and azimuth plane 
 corresponds with a certain attenuation which is fed to the tool. Figure \ref{fig:slicesOfPattern} shows only 3 elevation planes. The radiation pattern used in the tool 
 has an attenuation every \ang{10}. In other words, a slice consists of 19 values ranging from \ang{0} to \ang{180} (boundaries included).
@@ -437,15 +438,15 @@ has an attenuation every \ang{10}. In other words, a slice consists of 19 values
   \label{fig:slicesOfPattern}
 \end{figure}
 
-The number of required slices depends on the complexity of the radiation pattern. For symmetrical radiation patterns,  like 
-in figure \ref{radpattern2} and  \ref{radpattern1}, two azimuth cuts perpendicular to each other dividing the radiation pattern in 4 azimuth-slices 
+The number of required slices depends on the complexity of the radiation pattern. For symmetrical radiation patterns, like 
+in figure \ref{radpattern2} and \ref{radpattern1}, two azimuth cuts perpendicular to each other dividing the radiation pattern in 4 azimuth-slices 
 are definitely sufficient. However, this might not be the case for radiation patterns with a more complex structure containing several  
 side lobs. To tackle this issue, more azimuth-slices can be defined for increased precision. Each slice should however contain an equal amount 
 of elevation slices.  A concrete example of a configuration file can be found in appendix \ref{ch:radpatexampleconfig}.
  
 When the attenuation of a user from a certain \gls{UABS} needs to be known, the elevation and azimuth angles between the user and the antenna's direction 
 should be calculated. 
-Figure \ref{fig:globe} represents a radiation pattern with the black dot indicating the user for which the attenuation needs to be calculated.
+Figure \ref{fig:globe} represents a radiation pattern with the black dot indicating the user whose attenuation needs to be calculated.
 The small black lines represent azimuth and elevation planes. 
 The tool knows the exact attenuation only at the intersection of those lines. 
 The chance that a user is positioned at such an intersection is very small. Therefore, the attenuation for the requested point has to be estimated using bilinear interpolation.
@@ -466,13 +467,14 @@ The path loss is required for several formulas. For instance, each user decides 
 the path loss but also the calculations for the downlink electromagnetic 
 exposure require this value to be known. The formulas for the whole body $SAR_{10g}$ require not only the path loss between the user
 and all \gls{UABS}s but even the path loss between users themselves. These path loss calculations are based on the Walfish-Ikegami 
-model that causes a high computational load. The calculation between two points stands completely free from
-any other calculation between any other point and is therefore a suitable candidate to be multithreaded. The deployment tool creates two thread pools.
+model that causes a high computational load.  The calculation between two points is completely independent of any other calculation between any 
+other points and is therefore a suitable candidate to be multithreaded.
+ The deployment tool creates two thread pools.
 The first pool creates a thread for each user where each thread calculates the path loss between the user assigned to him and all possible \gls{UABS}s,
 causing a time complexity of $n^2$.
-Each user stores all path losses between himself and any other \gls{UABS} and result therefore in a total space complexity of $n^2$.
+Each user stores all path losses between himself and any other \gls{UABS}. This results therefore in a total space complexity of $n^2$.
 When all users are finished, the thread pool is shut down and the second one is created for the same calculations but between users.
-The pool will, just like the previous, create threads for each user but has an important difference.
+The pool will, just like the previous, create threads for each user but there is an important different an important difference.
 When a certain user calculates the path loss to another user, this path loss also applies for the other direction. The tool saves time by calculating the path loss only 
 once and stores the path loss at both users. It is therefore sufficient that a given user only calculates path losses of users at his right side, since the other path losses will 
 be calculated by the users on his left. This results in a time complexity of only $n(\frac{n}{2})$. When the last user finishes his thread, all users know the path loss of all other users causing 
@@ -487,14 +489,14 @@ will be added to the solution. This process is repeated for each user but can fu
 outside a certain radius.
 An ideal data structure for neighbourhood-search is a KD-tree. This data structure is based on a binary tree and is optimal for objects with 
 multiple keys. Objects are thus positioned in K dimensions where each node splits the hyperplane over exact one dimension. The dimension that needs 
-to be split depends on the level of the KD-tree where that node is situated.
+to be split depends on the level of the KD-tree in which that node is situated.
 In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in figure \ref{fig:exampleKDtree}.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{../images/Example-of-a-2D-k-d-tree.png}
-  \caption{Example of a KD-three in two dimensions}
+  \caption{Example of a KD-tree in two dimensions.}
   \label{fig:exampleKDtree}
 \end{figure}
 
-In this case the choice was made to only consider \gls{UABS}s within a radius of half a kilometer. 
+In this case the choice was made to only consider \gls{UABS}s within a radius of half a kilometre. 
 This will result in 23 \gls{UABS}s on average when applied to a default scenario of 224 \gls{UABS}s at a flying altitude of 100 m.
