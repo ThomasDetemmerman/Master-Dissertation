@@ -237,13 +237,21 @@ Chart \ref{fig:s2fhvssar} shows the whole body SAR10g, deducted from all electro
 
 When investigating the 3 different sources for the total \gls{SAR}-values from \ref{fig:s2fhvssar}, we see 
 that the radiation from all different \gls{UABS}s is the main factor followed by the near field radiation from the user's own device.
-The far field radiation from other \gls{UE} has barely influence. It looks like it is zero but it is just very low compared to the other two values. 
+The far field radiation from other \gls{UE} has barely influence. 
+It looks like it is zero but it is just very low compared to the other two values and increases when the flying height becomes larger (just like the two other lines).
+
+The $SAR^{own device}_{10g}$ is zero in an exposure optimized network with a microstrip patch antenna which is even lower that the $SAR^{neighbours}_{10g}$.
+This is because the coverage in this scenario is so low that the weighted average only consist of uncovered users. And an uncovered user has no power consumption.
 \begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s2/fhSARMatrix.png}
+  \includegraphics[width=\textwidth]{../results/s2/fhFourSources.png}
   \caption{This figure shows how different sources are influenced by an increasing flying height.}
   \label{fig:s2shfourSourcesMatrix}
 \end{figure}
 
+TODO: remove black line
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
 \subsection{Influence of the number of users}
 
@@ -322,7 +330,7 @@ neighbouring devices is not zero as it looks from figure \ref{fig:s2fourSourcesM
 \gls{SAR}-values from other sources.
 
 \begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s2/fourSourcesMatrix.png}
+  \includegraphics[width=\textwidth]{../results/s2/uFourSources.png}
   \caption{This figure shows how different sources are influenced by an increasing number of users. }
   \label{fig:s2fourSourcesMatrix}
 \end{figure}
