@@ -5,7 +5,7 @@
 \label{sec:stateoftheart:deploymenttool}
 
 Calculating electromagnetic exposure requires knowledge about the area. The position of base stations needs to be known,
- the transmission power used by the antenna and how far the user is separated from this base stations are only a few parameters
+ the transmission power used by the antenna and how far the user is separated from these base stations are only a few parameters
  that have to be considered.
 
 The WAVES research group at UGent has developed a deployment tool for disaster scenarios with the aid of UAVs \cite{J2}.
@@ -49,7 +49,7 @@ by the government. These limits are location dependent. The European Union recom
 Each European country needs to decide for themselves which limitations to enforce. Belgium for example delegated this responsibility to Flanders, Brussels and Wallonia \cite{J23}.
 
 The used deployment tool is applied in Ghent, a Flemish city in Belgium. The standards defined by the Flemish government are therefore applicable.
-They state that in the 2.6 Ghz frequency band, an individual antenna can't exceed 4.5 V/m and the cumulative sum of all fixed sources has its maximum at 31 V/m.
+They state that in the 2.6 GHz frequency band, an individual antenna can't exceed 4.5 V/m and the cumulative sum of all fixed sources has its maximum at 31 V/m \cite{J23}.
 
 \subsection{Specific Absorption Rate}
 \gls{SAR} represents the rate at which electromagnetic energy is absorbed by human tissue with the thermal effect as its most important health consequence.
@@ -132,7 +132,7 @@ femtocells covering only a few hundred meters. They are therefore more portable,
 of their simplicity. Femtocell base stations are therefore used by the deployment tool.
 Further, \gls{LTE} also support both \gls{FDD} and \gls{TDD}.
 
-\gls{FDD} makes simultaneous \gls{UL} and \gls{DL} traffic possible by assigning different frequencies within the frequency range 
+\gls{FDD} makes simultaneous \gls{UL} and \gls{DL} traffic possible by assigning different frequencies within the same frequency range 
 to both data streams. A small guard band is used between the \gls{UL} and \gls{DL} direction in order to prevent interference.
 
 \gls{TDD} allows  \gls{UL} and \gls{DL} traffic by splitting the time domain. Meaning that both traffic directions use the same frequency and therefore
@@ -172,7 +172,7 @@ A first feeding method is with the usage of a coaxial cable where the outer cond
 A second option is the usage of a microstrip line. This type of feeding is much easier to model since the microstrip line can be seen as en extension of the radiating patch.
 A disadvantage is the increased \gls{spuriousradiation} which limits bandwidth.
 A third is proximity coupling which has the largest bandwidth and low \gls{spuriousradiation}. It consists however of two dielectric substrates causing the overall thickness
-of the antenna to increase as well as its fabrication difficulty.
+of the antenna to increase as well as its fabrication difficulty \cite{J13_singh2011micro}.
 %(todo: tekst te weinig, bespreek ook apperture coupled attenna (zelfde paper als de rest))
 
 The increasing usage of the microstrip patch antennae can be explained by it's easy fabrication and lightweightness and therefore knows a widespread application in the millitary, global possitioning systems, telemedicine, WiMax applications and so on.
