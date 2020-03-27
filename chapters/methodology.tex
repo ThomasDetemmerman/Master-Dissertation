@@ -31,19 +31,18 @@ SAR^{wb,total}_{10g} = SAR^{wb,ul}_{10g} +  SAR^{wb,dl}_{10g} + SAR^{wb,neighbou
 \label{eq:overallSARwb}
 \end{equation}
 
-The first parameter, $SAR^{wb,ul}_{10g}$, will indicate the absorbed electromagnetic radiation by the whole body originating from the user's own device
-whereas the second parameter $SAR^{wb,dl}_{10g}$ will represent the absorbed electromagnetic radiation caused by all the femtocell base stations in the considered area.
+The first parameter, $SAR^{wb,ul}_{10g}$, will indicate the absorbed electromagnetic radiation by the whole body originating from the user's own device. However that the 
+radiation is destined for the serving \gls{UABS}, a portion of that radiation is directly absorbed by its user.
+The second parameter $SAR^{wb,dl}_{10g}$ will represent the absorbed electromagnetic radiation caused by all the femtocell base stations in the considered area.
 The last factor, $SAR^{wb,neighbours}_{10g}$, specifies the exposure of our user to \gls{UL} radiation from other mobile devices.
 An illustration is given in figure \ref{fig:networkIllustration} where red and yellow are types of far field radiation and green near field radiation. This is further 
-explained is subsequent chapters.
-The sections that follow will explain how each value in this formula can be calculated. This can be achieved by first calculating the electromagnetic exposure 
-from each source. 
+explained is subsequent chapters along with how each value in this formula can be calculated.
 
 \begin{figure}[h!]
 \centering
   \includegraphics[width=\textwidth/3*2]{../images/networkExampleWith3Sources.png}
-  \caption{Illustration of the network that shows how the average user in the center is influenced by different type of sources. We can only speak in terms of \gls{SAR}
-  when the electromagnetic radiation is absorbed by the user. This is however not shown in the illustration.}
+  \caption{Illustration of the network that shows how the average user (here shown in the center) is influenced by different type of sources. We can only speak in terms of \gls{SAR}
+  when the electromagnetic radiation is absorbed by the user. This last step is however not shown in the illustration.}
   \label{fig:networkIllustration}
 \end{figure}
 
