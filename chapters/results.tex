@@ -254,6 +254,7 @@ TODO: remove black line
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
 \subsection{Influence of the Number of Users}
+\label{s2b}
 
 The number of covered users increase linearly compared to the number of users present in the network.
 An \gls{isotropicradiator} has no attenuation and is therefore able to reach more users. On the other side, an power consumption 
@@ -262,7 +263,7 @@ cover more users. The complete opposite is a microstrip patch in an exposure opt
 and covers the least number of users.
 
 \begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s2/uvsnumcovusers.png}
+  \includegraphics[width=\textwidth]{../results/s2/uvsnumdronesAndCov.png}
   \caption{The influence of increasing traffic on user coverage.}
   \label{fig:s2uvsnumcovusers}
 \end{figure}
@@ -285,26 +286,14 @@ Figure \ref{fig:s2uvscov} shows a decreasing logarithmic behaviour because the r
 So in other words, the  percentage of covered users for a sparsely populated network is more compared to the percentage of users in high dense populations.
 
 \begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s2/uvscov.png}
-  \caption{The influence of increasing traffic on user coverage.}
-  \label{fig:s2uvscov}
+  \includegraphics[width=\textwidth]{../results/s2/uvsdlAndPc.png}
+  \caption{This figure shows how different sources are influenced by an increasing number of users. }
+  \label{fig:s2uvssar}
 \end{figure}
 
 The downlink exposure is directly influenced by the number of covered users (figure \ref{fig:s2uvsdl}). 
 The electromagnetic exposure increases when more users are covered and since an \gls{isotropicradiator} in a power consumption optimized network (green)
 will have the highest coverage, also the \gls{DL} electromagnetic radiation from \gls{UABS}s will be higher.
-
-\begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s2/uvsdl.png}
-  \caption{The influence of increasing traffic on downlink exposure.}
-  \label{fig:s2uvsdl}
-\end{figure}
-
-\begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s2/uvspc.png}
-  \caption{The influence of increasing traffic on the total power consumption.}
-  \label{fig:s2uvspc}
-\end{figure}
 
 The optimization strategies only consider \gls{DL} exposure and power consumption.
 However, how much radiation is absorbed by the users originating from all sources is shown in \ref{s2uvssar} and the relative position of 
@@ -416,19 +405,42 @@ This changes around 80 meters where \gls{UL} electromagnetic radiation of the \g
 The correct behaviour of the decision algorithm became already clear in the previous subsection (\ref{S3A}). Also this 
 case proves this.
 
-\begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s3/uvsdl.png}
-  \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user.}
-  \label{fig:s3fhvsdl}
-\end{figure}
+Figure \ref{s3b_numDronesAndCov} shows on the left how the tool tries to reach a 100\% coverage. The tool reaches this goal 
+better for larger populations. The difference is however very little. The tool requires however also more drones for these large 
+populations. The difference in optimization strategy is very little for small amounts of people but increases very fast. 
 
+In a scenario with 600 active users, a clear difference is noticeable between the four strategies. An EIRP power consumption optimized 
+network requires least amount of drones. This is logical when looking at \ref{s3b_dlAndPC} where such drones cause the highest amount of 
+electromagnetic radiation. This behaviour was also discussed in subsection \ref{s2b}. \textcolor{red}{<-Todo: dicuss ik dat wel?}.
+
+Subsection \ref{s2b} also showed how and wy a microstrip patch antennae in a low powered antenna with very little coverage. This 
+explains the behaviour of our blue line. This strategy prioritize the minimization of electromagnetic exposure. Therefore much more 
+drones are required in order to still reach 100\% coverage (Figure \ref{fig:s3b_numDronesAndCov}) and therefore requires much more energy 
+to power all the drones (Figure \ref{fig:s3b_numDronesAndCov} on the right).
+It becomes clear that more drones come with more users  and therefore result in more power consumption and electromagnetic exposure.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/uvsnumdronesAndCov.png}
   \caption{This graph shows how much drones are required for different flying heights while trying to achieve a 100\% coverage.}
-  \label{fig:s3fhvscov}
+  \label{fig:s3b_numDronesAndCov}
 \end{figure}
 
+
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s3/uvsdlAndPc.png}
+  \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user.}
+  \label{fig:s3b_dlAndPC}
+\end{figure}
+
+
+todo: pc and exp inverse linear stelling van margot bevestigen
+
+Figure \ref{fig:s3fhvspc} once again shows how the \gls{SAR} from other \gls{UE} can be neglected. It increases just like before but is very 
+low compared to the two other sources. Since more users result in more drones, the $SAR^{dl}_{10g}$ increases when the population 
+increases. Because all drones have the same flying height, all four scenarios show at first an almost constant $SAR^{ul}_{10g}$ becasue the average 
+distance between the user and the \gls{UABS} remain the same. However, for higher amount of users, a slightly decrease can be noticed.
+Users that don't have a \gls{UABS} assigned above them still need to radiate higher to reach another \gls{UABS} nearby. The average distance 
+decreases when more \gls{UABS}s are present.
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/uFourSources.png}
