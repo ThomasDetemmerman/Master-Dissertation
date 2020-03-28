@@ -12,8 +12,8 @@
 %\end{figure}
 
 
-\section{Electromagnetic exposure}
-\subsection{Calculation of the total specific absorption rate} % (fold)
+\section{Electromagnetic Exposure}
+\subsection{Calculation of the Total Specific Absorption Rate} % (fold)
 \label{sub:Calculationexposure}
 
 The total whole body \gls{SAR} ($SAR^{wb}_{10g}$) of a user can be calculated by a simple sum of individual SAR values from the different sources.
@@ -46,7 +46,7 @@ explained is subsequent chapters along with how each value in this formula can b
   \label{fig:networkIllustration}
 \end{figure}
 
-\subsection{Electromagnetic exposure caused by far-field radiation} % (fold)
+\subsection{Electromagnetic Exposure Caused by Far-Field Radiation} % (fold)
 \label{sub:Calculatingdownlinkexpsure}
 
 The electromagnetic exposure to which people are exposed can be categorized in two groups. One of them is near-field radiation which is caused 
@@ -54,7 +54,7 @@ by the user's own device and which will be discussed in \ref{sub:Uplinkexposure}
 The other type is far-field radiation and will be explained in this section. This kind of radiation is caused by radiators `far away'.
 Examples of these types of radiators are \gls{UE} which belong to other people and \gls{UABS}s. 
 
-\subsubsection{Electromagnetic radiation from a single source}
+\subsubsection{Electromagnetic Radiation from a Single Source}
 \label{sec:calculatingexposure}
 
 To determine the total exposure of a single human being or even of the entire network, the electric-field $\vec{E}$ from a single radiator $i$ should be calculated.
@@ -92,7 +92,7 @@ At last, formula \ref{eq:eirp} requires the path loss (in dB). In order to calcu
 The tool uses the Walfish-Ikegami model because it performs well for femtocell networks in urban areas \cite{J2}. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
 The chosen propagation model consists of two formulas depending on whether a free \gls{LOS} between the user and the base station exists or not. Both formulas expect a distance in kilometre. %bron?
 
-\subsubsection{Combining exposure}
+\subsubsection{Combining Exposure}
 The electromagnetic exposure for a given location originating from different sources can be calculated with formula \ref{eq:totalexposure} (in V/m). $E_i$ stands for 
 the electromagnetic exposure from source $i$ and
 $n$ stands for all far-field radiators of a certain category which will either be \gls{UABS}s or \gls{UE} from other people.
@@ -103,7 +103,7 @@ E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
 \label{eq:totalexposure}
 \end{equation}
 
-\subsubsection{Converting far-field electromagnetic exposure to $SAR^{wb}_{10g}$}
+\subsubsection{Converting Far-Field Electromagnetic Exposure to $SAR^{wb}_{10g}$}
 \label{sub:convertDLtosarwb}
 
 Formula \ref{eq:overallSARwb} expects that the electromagnetic radiation is expressed into $SAR^{wb,dl}_{10g}$ and $SAR^{wb,neighbours}_{10g}$. The 
@@ -129,7 +129,7 @@ SAR^{wb,ff}_{10g} = S * 0.0028
 \label{eq:convertion}
 \end{equation}
 
-\subsection{Electromagnetic exposure caused by near-field radiation}
+\subsection{Electromagnetic Exposure Caused by Near-Field Radiation}
 \label{sub:Uplinkexposure}
 When a user is operating his device, a part of the \gls{UL} radiation will enter his body despite the fact that the 
  traffic is destined for the serving \gls{UABS}. So the 
@@ -210,7 +210,7 @@ results as in ref. \cite{j10.1.1}. The median of 0.67  $W/kg$ is used.
 \end{figure}
 
 
-\subsubsection{Whole body specific absorption rate}
+\subsubsection{Whole body Specific Absorption Rate}
 The position of the phone relative to the user's body is however unknown. The tool assigns different bitrates to different phones implying 
 that some users are calling and therefore probably holding their phone next to their ear while another part is using other services like browsing the web.
 For this reason formula \ref{eq:overallSARwb} expects that the specific absorption rate is expressed for the entire body instead of localized $SAR^{head}_{10g}$.
@@ -223,7 +223,7 @@ SAR^{wb,ul}_{10g} \left(\frac{W}{kg}\right) = 0.0070 \left(\frac{W/kg}{W}\right)
 \label{eq:ulToSar}
 \end{equation}
 
-\subsection{Defining an antenna}
+\subsection{Defining an Antenna}
 \label{sub:definingAntenna}
 A microstrip patch antenna is chosen because it allows easy production but more important, it has a low weight 
 and has a thin profile causing it to be very aerodynamic which is useful when attaching it to a drone \cite{J13_microstripadvantages}.
@@ -307,7 +307,7 @@ A schematic overview of how the antenna will look like is given in figure \ref{f
   \label{fig:antennadesign}
 \end{figure}
 
-\subsection{Radiation pattern}
+\subsection{Radiation Pattern}
 Mathlab is able to generate the radiation pattern for this microstrip patch antenna.
 The code in  listing \ref{c:mathlabradpattern} starts by defining the dielectric substrate which will be glass with a dielectric constant
 of 4.4 and a height of 0.00287 m. Thereafter, the microstrip patch antenna is generated with the \verb|width| and \verb|length| being the dimensions
@@ -371,7 +371,7 @@ found in appendix \ref{ch:radpattern}.
  \label{radpattern1}
 \end{figure}
 
-\section{Optimixzing the network}
+\section{Optimizing the Network}
 \label{sec:methodology:optimizingTheNetwork}
 The network, as originally defined in the deployment tool, tried to minimize power consumption by connecting the user to a base station which
 experienced the lowest path loss. A second optimization strategy is introduced, based on the fitness function described in \cite{J1}.
@@ -424,7 +424,7 @@ The number of available drones can be limited by defining the capacity of the fa
 of active drones exceed this limitation, the tool will delete the necessary drones starting by those who cover the least number of users. These users will now become 
 uncovered.
 
-\subsection{Implementation of the radiation pattern}
+\subsection{Implementation of the Radiation Pattern}
 \label{subsec:implementationradpat}
 The deployment tool originally only supported \gls{isotropicradiator}s. The tool has thus been extended and is fully configurable allowing any possible antenna 
 in any possible 
@@ -473,8 +473,8 @@ is applied to the y-axis for the black dot on the orange line using the estimate
   \label{fig:globe}
 \end{figure}
 
-\subsection{Performance improvement}
-\subsubsection{Calculating path loss}
+\subsection{Performance Improvement}
+\subsubsection{Calculating Path Loss}
 The path loss is required by several formulas. For instance, the formula that decides whether a \gls{UABS} is feasible for a certain 
 user makes usage of this parameter but also the calculations for the downlink electromagnetic 
 exposure require this value to be known. The formulas for the whole body $SAR_{10g}$ require not only the path loss between the user
@@ -493,7 +493,7 @@ be calculated by the users on his left. This results in a time complexity of onl
 a space complexity of $n(n-1)$.
 % eventueel nog over concurrent hashmap
 
-\subsubsection{Limiting antenna searching}
+\subsubsection{Limiting Antenna Searching}
 The user needs to be connected to the `best' base station. To identify this best \gls{UABS}, the user should be connected 
 to each base station and the fitness value \ref{eq:fitnessfunction} of the network has to be evaluated. The connection that resulted in the best fitness function
 will be added to the solution. This process is repeated for each user but can further be improved. A user will likely be connected to either the
