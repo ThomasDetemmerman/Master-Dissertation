@@ -338,10 +338,13 @@ neighbouring devices is not zero as it looks from figure \ref{fig:s2fourSourcesM
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%s
 \section{Scenario 3: Unlimited Drones}
 \subsection{Influence of the Flying Altitude}
+\label{S3A}
 
 This scenario examines the same cases as scenario 2 but there is no restriction on the number of \gls{UABS}s. 
 Unlike in scenario 2, fig. \ref{fig:s3fhvsdl} and \ref{fig:s3fhvspc} show a clearer view on how the decision algorithms
-works. Antennae in an exposure optimized network cause less downlink exposure (fig. \ref{fig:s3fhvsdl}). On the other hand, 
+works. 
+The behaviour of the decision algorithm depends on the applied optimization strategy. 
+Antennae in an exposure optimized network cause less downlink exposure (fig. \ref{fig:s3fhvsdl}). On the other hand, 
 a network generated for optimal power consumption requires indeed less energy as proven in figure \ref{fig:s3fhvspc}. 
 
 Figure \ref{fig:s3fhvsdl} shows how an \gls{isotropicradiator} in and power consumption optimized network has the highest exposure when 
@@ -408,6 +411,10 @@ This changes around 80 meters where \gls{UL} electromagnetic radiation of the \g
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
 \subsection{Influence of the number of users}
+\label{S3B}
+
+The correct behaviour of the decision algorithm became already clear in the previous subsection (\ref{S3A}). Also this 
+case proves this.
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/uvsdl.png}
