@@ -1,4 +1,4 @@
-\chapter{Results and discussion}
+\chapter{Results and Discussion}
 \label{chap:results}
 %\section{Number of simulations}
 %The  algorithm makes usage of randomly distributed users causing each simulation to be difference. The results are based on average values over multiple simulations. It is therefore important knowing how mush simulations is required in order to become a converged average. This is done by using an example scenario which details can be found in table \ref{table:configForNumberOfUsers}. The most important parameters
@@ -45,7 +45,7 @@ The network contains only one user for this scenario. This means that there is o
 the user. This section will investigate minimal required transmission power and SAR values from different sources.
 \textcolor{red}{power consumption te doen}
 
-\subsection{The influence of the maximum transmission power}
+\subsection{The Influence of the Maximum Transmission Power}
 \gls{LTE} makes usages of power control meaning that no more power will be used then strictly necessary. The actual 
 transmit power $P_{tx}$ therefore ranges between 0 and the maximum input power. $P_{tx}$ is zero when the \gls{UABS} doesn't cover anybody.
 Increasing the maximum transmission power won't influence the power consumption or $SAR_{10g}$ because the \gls{UABS} won't use more
@@ -80,7 +80,7 @@ users. Since there is only one user and one possible position for the drone, bot
   \label{fig:ptxfh}
 \end{figure}
 
-\subsection{Influence of the flying height}
+\subsection{Influence of the Flying Height}
 \label{sub:senario1_influenceOfFlyHeight}
 
 This section investigates how the flying height of a \gls{UABS} influence $SAR_{10g}$ and power consumption. In figure \ref{fig:s1_fhsar}
@@ -125,7 +125,7 @@ Secondly, the flying height is set to 100 metres with a variable number of users
 When designing the network, there will be as much possible drone locations as there are users in the network and the tool
 will consider all of them. It's only when the programme is finished, that one drone remains.
 
-\subsection{Influence of the flying altitude}
+\subsection{Influence of the Flying Altitude}
 This scenario investigates how the network consisting of one \gls{UABS} behaves when applied on an ordinary day during rush hour. 
 On average, 224 active users are distributed uniformly over the city center of Ghent. 
 Chart \ref{fig:s2fhvsdl} shows how the downlink exposure is clearly influenced by the flying height of the \gls{UABS}. 
@@ -253,7 +253,7 @@ TODO: remove black line
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
-\subsection{Influence of the number of users}
+\subsection{Influence of the Number of Users}
 
 The number of covered users increase linearly compared to the number of users present in the network.
 An \gls{isotropicradiator} has no attenuation and is therefore able to reach more users. On the other side, an power consumption 
@@ -337,7 +337,7 @@ neighbouring devices is not zero as it looks from figure \ref{fig:s2fourSourcesM
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%s
 \section{Scenario 3: Unlimited Drones}
-\subsection{Influence of the flying altitude}
+\subsection{Influence of the Flying Altitude}
 
 This scenario examines the same cases as scenario 2 but there is no restriction on the number of \gls{UABS}s. 
 Unlike in scenario 2, fig. \ref{fig:s3fhvsdl} and \ref{fig:s3fhvspc} show a clearer view on how the decision algorithms
@@ -399,5 +399,32 @@ This changes around 80 meters where \gls{UL} electromagnetic radiation of the \g
   \label{fig:s3fhvssar}
 \end{figure}
 
+\begin{figure}[]
+  %\includegraphics[width=\textwidth]{../results/s3/fhFourSources.png}
+  \caption{Four Sources}
+  \label{fig:s3fhvssar}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FloatBarrier
 \subsection{Influence of the number of users}
-todo
+
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s3/uvsdl.png}
+  \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user.}
+  \label{fig:s3fhvsdl}
+\end{figure}
+
+
+\begin{figure}[]
+  \includegraphics[width=\textwidth]{../results/s3/uvsnumdronesAndCov.png}
+  \caption{This graph shows how much drones are required for different flying heights while trying to achieve a 100\% coverage.}
+  \label{fig:s3fhvscov}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s3/uFourSources.png}
+  \caption{The influence of the flying height on the total power consumption of the network.}
+  \label{fig:s3fhvspc}
+\end{figure}
