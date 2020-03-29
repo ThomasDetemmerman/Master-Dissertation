@@ -96,11 +96,19 @@
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{multirow}
+%
+% If an image happens to be the only thing shown on a page, it would be vertically centred. 
+% The command bellow forces the image to be on top.
+%
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
 
 %
 % Set the title and your name
 %
-\title{Evaluating the human exposure of a UAV-aided network}
+\title{Evaluating the Total Human Electromagnetic Exposure in a UAV-aided Network}
 \author{Thomas Detemmerman}
 
 %

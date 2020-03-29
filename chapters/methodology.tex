@@ -118,7 +118,7 @@ is very close to LTE, at 2600 MHz, it is assumed in \cite{J22_plets2015joint} th
 This constant converts the \gls{power flux density} $S$ (with units $\frac{W}{m^2}$) to the required $SAR^{ff,wb}_{10g}$.
 To make this possible, the electromagnetic radiation
 from formula \ref{eq:totalexposure} (expressed in  $V/m$) should first be converted to the  \gls{power flux density} with formula 
-\ref{eq:flux} before formula \ref{eq:convertion} can be applied.
+\ref{eq:flux} before formula \ref{eq:DLconvertion} can be applied.
 
 \begin{equation}
 S  = \frac{(E_{tot})^2}{337}
@@ -126,7 +126,7 @@ S  = \frac{(E_{tot})^2}{337}
 \end{equation}
 \begin{equation}
 SAR^{wb,ff}_{10g} = S * 0.0028
-\label{eq:convertion}
+\label{eq:DLconvertion}
 \end{equation}
 
 \subsection{Electromagnetic Exposure Caused by Near-Field Radiation}
@@ -445,7 +445,8 @@ corresponds with a certain attenuation which is fed to the tool. Figure \ref{fig
 has an attenuation every \ang{10}. In other words, a slice consists of 19 values ranging from \ang{0} to \ang{180} (boundaries included).
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{../images/3Dimages/slicesOfPattern.jpg}
+\centering
+  \includegraphics[width=\textwidth/3*2]{../images/3Dimages/slicesOfPattern.jpg}
   \caption{Schematic example of slices in a radiation pattern.}
   \label{fig:slicesOfPattern}
 \end{figure}
@@ -504,7 +505,8 @@ multiple keys. Objects are thus positioned in K dimensions where each node split
 to be split depends on the level of the KD-tree in which that node is situated.
 In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in figure \ref{fig:exampleKDtree}.
 
-\begin{figure}[H]
+\begin{figure}[]
+  \centering
   \includegraphics[width=\textwidth]{../images/Example-of-a-2D-k-d-tree.png}
   \caption{Example of a KD-tree in two dimensions.}
   \label{fig:exampleKDtree}
