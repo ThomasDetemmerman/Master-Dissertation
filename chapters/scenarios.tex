@@ -114,7 +114,7 @@ there can also be only one drone.
 
 \section{Increasing Traffic with only one Drone available}
 
-This scenario investigate the same behavior  as the previous. Still with one drone but for a higher number of users. The scenario can be divided into two groups. One for a variable 
+This scenario investigate the same behavior  as the previous. Still with one drone but for a higher number of users. The scenario can be divided into two cases. One for a variable 
 flying height but with a fixed number of 224 users which is the number of active users on an average day at 5 p.m. meaning
  which means it is rush hour resulting in the highest number of simmulatanious users for the day\cite{J2}. The other 
 scenario has a fixed flying height of 100 m as recommended by \cite{J2} but with a variable number of users. To enforce the tool to only use one drone, a facility capacity is set to one 
@@ -151,9 +151,9 @@ as there are users in the network. But when the optimization algorithm is done, 
 \end{table}
 
 Four possible configurations are possible because there are two antennae available (\gls{isotropicradiator} and a realistic antenna) which can both operate in an power consumption optimzed network or an exposure optimized 
-network. These four configurations are investigated for the two groups mentioned above.
-Both groups can further be divided in four series where 
-The $SAR_{10g}$, power consumption and user coverage will be investigated for both groups.
+network. These four configurations are investigated for the two cases mentioned above.
+Both cases can further be divided in four series where 
+The $SAR_{10g}$, power consumption and user coverage will be investigated for both cases.
 The only available drone will be positioned at the fly height of 100 m as recommended in \cite{J2}. For the second case, the same output variables are investigated 
 for a varying fly height but with a fixed number of 224 users.
 Both cases will be investigated for the two types of antennae: the fictional \gls{isotropicradiator} and the microstrip patch antenna.
@@ -201,5 +201,5 @@ as in scenario and therefore has only a limited coverage expressed in percentage
 \multicolumn{1}{|c|}{}                                  & equivalent istropic radiatior &                             &                                     \\ \cline{2-4} 
 \multicolumn{1}{|c|}{\multirow{-2}{*}{\rotatebox[origin=c]{90}{type of antenna}}} & microstrip patch antenna      &                             &                                     \\ \hline
 \end{tabular}
-\caption{Four possible configurations / optimization strategiess}
+\caption{Four possible configurations= (2 optimization strategies + 2 types of antenna) for the decision algorithm}
 \end{table}

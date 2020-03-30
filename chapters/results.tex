@@ -325,37 +325,35 @@ neighbouring devices is not zero as it looks from figure \ref{fig:s2fourSourcesM
 \label{s3}
 
 This scenario has just like the previous scenario much more users in the network 
-and investigates the same groups including the variable flying height and the variable number of  users.
+and investigates the same cases including the variable flying height and the variable number of  users.
 The only difference is that the restriction of only one \gls{UABS}s is dropped.
 
 \subsection{Influence of the Flying Altitude}
 \label{S3A}
 
-The first group of this scenario examines the how the network behaves for various flying heights and a fixed number of 224 users.
-Unlike in scenario 2, fig. \ref{fig:s3a_dlAndPc} show a clearer view on how the decision algorithms
-works. 
-The behaviour of the decision algorithm depends on the applied optimization strategy. 
-Antennae in an exposure optimized network cause less downlink exposure. On the other hand, 
-a network generated for optimal power consumption requires indeed less energy as proven in figure \ref{fig:s3a_dlAndPc}. 
+The first case of this scenario examines how the network behaves for various flying heights and a fixed number of 224 users.
+Scenario 2 already explained that when only one drone is available, a power consumption optimized network won’t result in a low 
+powered network. In this scenario, there is no limitation on the number of drones and the network remains thus unaltered after the decision 
+algorithm is done. Figure \ref{fig:s3a_dlAndPc} clearly proves that the different optimization strategies are correctly applied by 
+the decision algorithm and work as intended.
+Power consumption optimized networks have indeed a lower power consumption but therefore results in higher electromagnetic radiation.
+In contrast to an exposure optimized network that, as expected, will reduce the electromagnetic exposure by using more drones and thence also increasing the network's power consumption.
 
-Figure \ref{fig:s3a_dlAndPc} shows on the left how an \gls{isotropicradiator} in and power consumption optimized network has the highest exposure when 
-the \gls{UABS}  is close to the ground. An power consumption optimized network results in less number of drones which can also be seen 
-on figure \ref{fig:s3a_numDronesAndCov}. The network is still trying to cover as much users as possible as visible on figure 
-\ref{fig:s3a_numDronesAndCov} (with in this case less resources). Low flying drones need to account for increased path loss by obstructing buildings.
-When the flying altitude increases, there is less path loss and the electromagnetic exposure stabilizes. The same is applicable when replacing
-the \gls{isotropicradiator} with a microstrip patch antenna but users will experience less electromagnetic radiation 
-because of antenna aperture. Because the algorithm still tries to cover as much users as possible, the tool will react to this by 
-introducing more drones (fig \ref{fig:s3a_numDronesAndCov}).
-
-When changing the optimization strategy towards an exposure optimized network, the lowest possible electromagnetic radiation is recorded
-with low flying drones at 20 m height with microstrip patch antennae. Using an \gls{isotropicradiator} automatically increases electromagnetic 
-radiation because of the absence of attenuation. This behaviour results in an higher necessity of antenna carriers \ref{fig:s3a_numDronesAndCov}.
-
-\begin{figure}[]
+\begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/fhvsdlAndPc.png}
   \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user.. This graph shows the percentage of covered users by one drone for different flying heights.}
   \label{fig:s3a_dlAndPc}
 \end{figure}
+
+The difference in optimization strategy is clearly bigger for low flying drones. The exposure in a power consumption  optimized network starts high and 
+decreases while an exposure optimized network behaves the opposite. This can be explained when looking at figure \ref{fig:s3a_numDronesAndCov}.
+At a flying height of 20 metres, the exposure optimized network has on average 220 to 224 \gls{UABS}s. That is (almost) one \gls{UABS} for each user
+so it's logical that the electromagnetic exposure is very low.
+The number of drones in a power consumption optimized network is much less in order to save energy but the tool still tries to reach for a 100\% coverage. Since 
+there is a high path loss from obstructing buildings, \gls{UABS}s need to radiate much more to compensate for this. The exposure will thus be much higher for 
+users in \gls{LOS}. This path loss reduces when the \gls{UABS}s start to fly higher then the average  building and therefore decreases exposure.
+Also the exposure optimized network profits from the advantage of higher flying drones. Much less drones are required for only a little bit more 
+electromagnetic exposure.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhvsnumdronesAndCov.png}
@@ -365,25 +363,30 @@ radiation because of the absence of attenuation. This behaviour results in an hi
 
 Both \ref{fig:s3a_numDronesAndCov} and \ref{fig:s3a_dlAndPc} show that the network profit from increasing the flying altitude. 
 Not only less drones are needed but also the power consumption is lower. Both can be explained by the lower path loss when \gls{UABS}s fly higher.
-If a user cannot be covered because an \gls{UABS}s is too far away or is saturated with other users, 
-the tool can simply add another \gls{UABS}. The only remaining reason that a user can’t be covered is because the position of 
-the drone is obstructed by a building. The higher drones fly, the less change the position is obstructed by a building. 
-In gent is this chance is zero when flying higher then 119 meters. Since the `Artevelde Tower' is the highest building in Ghent.
 
 Scenario 1 already proved that with low flying drones, the main source of electromagnetic radiation are \gls{UABS}. 
-This changes around 80 meters where \gls{UL} electromagnetic radiation of the \gls{UE}
- exceeds \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s.
+This changed around 80 meters where \gls{UL} electromagnetic radiation of the \gls{UE}
+ exceeds \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s. We know from 
+ previous scenarios that the behaviour of the \gls{SAR} behave very similar to the downlink exposure \ref{fig:s3a_sar}.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhvssar.png}
   \caption{The influence of the flying height on the weighted average $SAR_{10g}$ of users in the network.}
-  \label{fig:s3fhvssar}
+  \label{fig:s3a_sar}
 \end{figure}
+
+When looking at the different individual sources in \ref{fig:s3a_fourSourcesMatrix}, we see 
+that $SAR_{10g}^{ul}$ is logarithmic increasing despite the fact that figure \ref{fig:s1_fhsar} showed that the $SAR_{10g}^{ul}$
+increases exponentially. This was however deducted when only one user is present in the network as opposed to this scenario 
+where 224 users are present. The covered users will still behave like in scenario 1 but fig. \ref{fig:s3a_numDronesAndCov} 
+shows also that less users will be covered when flying altitude increases. The average $SAR_{10g}^{ul}$ is thus somewhere in the middle.
+This theory is also supported by the fact that the $SAR_{10g}^{ul}$ in an microstrip patch antenna is less in figurer \ref{fig:s3a_fourSourcesMatrix} 
+and the percentage of covered users is also less \ref{fig:s3a_numDronesAndCov}
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhFourSources.png}
   \caption{Four Sources}
-  \label{fig:s3fhvssar}
+  \label{fig:s3a_fourSourcesMatrix}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -391,28 +394,30 @@ This changes around 80 meters where \gls{UL} electromagnetic radiation of the \g
 \subsection{Influence of the number of users}
 \label{S3B}
 
-The correct behaviour of the decision algorithm became already clear in the previous subsection (\ref{S3A}). Also this 
-case proves this.
+The last case of scenario 3 investigates variable number of users for a fixed flying height of 100 m. There is no 
+restriction on the number of available drones just like in the previous case meaning that there are at most 
+as much drones as users in the network. The correct behaviour of the decision algorithm became already clear in the previous subsection \ref{S3A}. 
+Also this case proves this.
 
-Figure \ref{s3b_numDronesAndCov} shows on the left how the tool tries to reach a 100\% coverage. The tool reaches this goal 
+Figure \ref{fig:s3b_numDronesAndCov} shows on the left how the tool tries to reach a 100\% coverage. The tool reaches this goal 
 better for larger populations. The difference is however very little. The tool requires however also more drones for these large 
 populations. The difference in optimization strategy is very little for small amounts of people but increases very fast. 
 
-In a scenario with 600 active users, a clear difference is noticeable between the four strategies. An EIRP power consumption optimized 
-network requires least amount of drones. This is logical when looking at \ref{s3b_dlAndPC} where such drones cause the highest amount of 
-electromagnetic radiation. This behaviour was also discussed in subsection \ref{s2b}. \textcolor{red}{<-Todo: dicuss ik dat wel?}.
-
-Subsection \ref{s2b} also showed how and wy a microstrip patch antennae in a low powered antenna with very little coverage. This 
-explains the behaviour of our blue line. This strategy prioritize the minimization of electromagnetic exposure. Therefore much more 
-drones are required in order to still reach 100\% coverage (Figure \ref{fig:s3b_numDronesAndCov}) and therefore requires much more energy 
-to power all the drones (Figure \ref{fig:s3b_numDronesAndCov} on the right).
-It becomes clear that more drones come with more users  and therefore result in more power consumption and electromagnetic exposure.
-
-\begin{figure}[]
+\begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/uvsnumdronesAndCov.png}
   \caption{This graph shows how much drones are required for different flying heights while trying to achieve a 100\% coverage.}
   \label{fig:s3b_numDronesAndCov}
 \end{figure}
+
+In a scenario with 600 active users, a clear difference is noticeable between the four configurations. An EIRP power consumption optimized 
+network requires least amount of drones. This is logical when looking at \ref{fig:s3b_dlAndPC} where such drones cause the highest amount of 
+electromagnetic radiation. This behaviour was also discussed in subsection \ref{s2b}. \textcolor{red}{<-Todo: dicuss ik dat wel?}.
+
+Subsection \ref{s2b} also showed how and why a microstrip patch antennae in a low powered antenna with very little coverage. This 
+explains the behaviour of our blue line. This strategy prioritize the minimization of electromagnetic exposure. Therefore much more 
+drones are required in order to still reach 100\% coverage (Figure \ref{fig:s3b_numDronesAndCov}) and therefore requires much more energy 
+to power all the drones (Figure \ref{fig:s3b_numDronesAndCov} on the right).
+It becomes clear that more drones come with more users  and therefore result in more power consumption and electromagnetic exposure.
 
 
 \begin{figure}[h!]
@@ -420,8 +425,6 @@ It becomes clear that more drones come with more users  and therefore result in 
   \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user.}
   \label{fig:s3b_dlAndPC}
 \end{figure}
-
-
 todo: pc and exp inverse linear stelling van margot bevestigen
 
 Figure \ref{fig:s3fhvspc} once again shows how the \gls{SAR} from other \gls{UE} can be neglected. It increases just like before but is very 
