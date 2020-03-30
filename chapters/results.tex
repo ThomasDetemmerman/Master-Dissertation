@@ -400,8 +400,9 @@ as much drones as users in the network. The correct behaviour of the decision al
 Also this case proves this.
 
 Figure \ref{fig:s3b_numDronesAndCov} shows on the left how the tool tries to reach a 100\% coverage. The tool reaches this goal 
-better for larger populations. The difference is however very little. The tool requires however also more drones for these large 
-populations. The difference in optimization strategy is very little for small amounts of people but increases very fast. 
+better for larger populations. The difference remains however very little. The tool also requires more drones for these large 
+populations which is a logical consequence of scenario \ref{s2b} where the percentage of covered users decreases for these larger populations.
+ The difference in optimization strategy is very little for small amounts of people but increases very fast. 
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/uvsnumdronesAndCov.png}
@@ -409,9 +410,18 @@ populations. The difference in optimization strategy is very little for small am
   \label{fig:s3b_numDronesAndCov}
 \end{figure}
 
-In a scenario with 600 active users, a clear difference is noticeable between the four configurations. An EIRP power consumption optimized 
-network requires least amount of drones. This is logical when looking at \ref{fig:s3b_dlAndPC} where such drones cause the highest amount of 
-electromagnetic radiation. This behaviour was also discussed in subsection \ref{s2b}. \textcolor{red}{<-Todo: dicuss ik dat wel?}.
+In a scenario with 600 active users, a clear difference is noticeable between the four configurations. 
+For instance, an EIRP power consumption optimized 
+network requires the least amount of drones (Figure \ref{fig:s3b_numDronesAndCov} on the right). This is logical when looking at figure \ref{fig:s3b_dlAndPC} where drones in such a configuration cause the highest amount of 
+electromagnetic radiation. This behaviour was also discussed in subsection \ref{s2b}. 
+
+So scenario 3 learns that a power consumption optimized network indeed result in very few drones. The average power consumption 
+is however much higher. Scenario 2 already showed that the \gls{UABS}s who were active, have a much higher power consumption.
+The statement that a power consumption optimized network will result in a few high powered devices is therefore confirmed.
+
+Likewise for an exposure optimized network. We can that the network has indeed a lower electromagnetic exposure but the power consumption 
+of the entire network is higher. In scenario 2 became already clear that the active \gls{UABS} have a low power consumption in order to 
+guarantee low \gls{SAR} values for the users.  The statement that an exposure optimized network will result in a lot low powered devices is thus also confirmed.
 
 Subsection \ref{s2b} also showed how and why a microstrip patch antennae in a low powered antenna with very little coverage. This 
 explains the behaviour of our blue line. This strategy prioritize the minimization of electromagnetic exposure. Therefore much more 
@@ -427,9 +437,9 @@ It becomes clear that more drones come with more users  and therefore result in 
 \end{figure}
 todo: pc and exp inverse linear stelling van margot bevestigen
 
-Figure \ref{fig:s3fhvspc} once again shows how the \gls{SAR} from other \gls{UE} can be neglected. It increases just like before but is very 
+Figure \ref{fig:s3b_fourSourcesMatrix} once again shows how the \gls{SAR} from other \gls{UE} can be neglected. It increases just like before but is very 
 low compared to the two other sources. Since more users result in more drones, the $SAR^{dl}_{10g}$ increases when the population 
-increases. Because all drones have the same flying height, all four scenarios show at first an almost constant $SAR^{ul}_{10g}$ becasue the average 
+increases. Because all drones have the same flying height, all four scenarios show at first an almost constant $SAR^{ul}_{10g}$ because the average 
 distance between the user and the \gls{UABS} remain the same. However, for higher amount of users, a slightly decrease can be noticed.
 Users that don't have a \gls{UABS} assigned above them still need to radiate higher to reach another \gls{UABS} nearby. The average distance 
 decreases when more \gls{UABS}s are present.
@@ -437,5 +447,5 @@ decreases when more \gls{UABS}s are present.
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/uFourSources.png}
   \caption{The influence of the flying height on the total power consumption of the network.}
-  \label{fig:s3fhvspc}
+  \label{fig:s3b_fourSourcesMatrix}
 \end{figure}
