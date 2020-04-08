@@ -1,11 +1,11 @@
 \chapter{Scenarios}
 \label{chap:scenarios}
 The tool supports multiple configurations and the behaviour will be different for most these configurations. Three main scenarios 
-will be investigated, order based on the network complexity. Within each scenario, different configurations will be applied.
-For the first scenario, only one user with one drone will be present in the network. The network will thereafter be expanded
-for multiple users but with still only one drone available. Eventually, that last restriction will be dropped meaning 
-that the third scenario covers multiple users with unlimited number of drones. 
-Table \ref{table:defaultconf} show the default configuration which values are always applicable unless mentioned otherwise.
+will be investigated, order based on the network complexity. Within each scenario, different cases will be investigated.
+First, only one user with one drone will be present in the network. The network will thereafter be expanded
+for multiple users but with still only one drone available. Eventually, also that last restriction will be dropped meaning 
+that multiple users with unlimited number of drones are examined. 
+Table \ref{table:defaultconf} show the default configuration whose values are always applicable unless mentioned otherwise.
 
 \begin{table}[!htb]
 \centering
@@ -53,31 +53,26 @@ Table \ref{table:defaultconf} show the default configuration which values are al
 This first scenario will investigate how $SAR_{10g}$ and power consumption is influenced in an isolated environment meaning there is nor influence 
 from other base stations nor other \gls{UE}. The tool will provision one single drone and position it directly above the user.
 These results will however depend on the position of the user. If the randomly generated location of the user is indoor, 
-the flying height of the drone might obstructed by the building where the user resides, causing the user to be uncovered. If this is not the case,
+the flying height of the drone might obstructed by the building where the user resides, causing the user to become uncovered. If this is not the case,
 the expected altitude of the user is half of the height of the building meaning that the user would be closer to the \gls{UABS} as 
-if he would have been outdoors. For a more consistent result, the user will therefore be positioned outside when systematically 
+if he would have been outdoors. For more consistent results, the user will be positioned outdoor while systematically 
 increasing the flying height. 
 
 Another considered variable will be the transmit power of the antenna.
 \gls{LTE} makes usages of power control meaning that no more power will be used then strictly necessary. The actual 
 transmit power therefore ranges between 0 and the maximum input power. This power is zero when either no user is 
-present or the user is so far away that the actual transmit power would exceed the maximum transmission power.
-Increasing the maximum transmission power won't influence the power consumption or $SAR_{10g}$ because the \gls{UABS} won't use more
+present or the user is so far away that the actual transmit power would exceed the maximum allowed transmission power.
+Increasing the maximum transmission power won't influence the actual power consumption or $SAR_{10g}$ because the \gls{UABS} won't use more
 then strictly required. It is therefore more useful to match the actual transmit power against a variable flying height.
 
 This scenario investigates $SAR_{10g}$, power consumption and minimal transmission power. The used optimization strategy is not important.
 The optimization algorithm decides which user will be connected to which drone in order to reach a certain goal. Since only one user and one
-\gls{UABS} are available, both optimization strategies will behave identical. These values will be checked when using a fictional \gls{isotropicradiator} and 
+\gls{UABS} are available, both optimization strategies will behave identical. These values will be checked for a fictional \gls{isotropicradiator} and 
 a realistic antenna.
 
-The user gets a fixed position. The exact location doesn't matter as long as it is outside. For this experiment is choses for the 
+The user gets a fixed position. The exact location doesn't matter as long as it is outside. For this experiment is chosen for the 
 `Koningin Maria Hendrikaplein', a square just next to the train station of Ghent.  Doing so will force the \gls{UE} 
-to always be at the same height of 1.5 meters. The conclusions will be based on $SAR_{10g}$, power consumption and transmission power.
-These output values depend on fly height and type of antenna. An overview can be found in table \ref{table:confOverviewScenario1}
-
-Note that there is no explicit restriction on the number of drones in table \ref{table:confOverviewScenario1}. The deployment tool initialy places 
-\gls{UABS}s above each user and it is the optimzation strategy that decides which of these potentiol positions remain. Since there is only one user,
-there can also be only one drone.
+to always be at the same height of 1.5 meters. An overview can be found in table \ref{table:confOverviewScenario1}
 
 \begin{table}[!htb]
     \begin{minipage}{.5\linewidth}
@@ -108,17 +103,22 @@ there can also be only one drone.
         \label{table:confOverviewScenario1}
 \end{table}
 
+Note that there is no explicit restriction on the number of drones in table \ref{table:confOverviewScenario1}. The deployment tool initially places 
+\gls{UABS}s above each user and it is the optimization strategy that decides which of these potential positions remain in the end solution.
+Since there is only one user, there can also be only one drone.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 2
 
 
 \section{Increasing Traffic with only one Drone available}
 
-This scenario investigate the same behavior  as the previous. Still with one drone but for a higher number of users. The scenario can be divided into two cases. One for a variable 
-flying height but with a fixed number of 224 users which is the number of active users on an average day at 5 p.m. meaning
- which means it is rush hour resulting in the highest number of simmulatanious users for the day\cite{J2}. The other 
-scenario has a fixed flying height of 100 m as recommended by \cite{J2} but with a variable number of users. To enforce the tool to only use one drone, a facility capacity is set to one 
-which implies that there is only one spot available in the facility where the \gls{UABS}s are stored. The tool will still generate as much potential places 
+This scenario investigates the same behaviour  as the previous one. Still with only one drone but for a higher number of users. 
+The scenario can be divided into two cases. One for a variable 
+flying height but with a fixed number of 224 users. This is the number of active users on an average day at 5 p.m. implying rush hour and therefore 
+resulting in the highest number of simultaneous users for the day\cite{J2}. The other 
+scenario has a fixed flying height of 100 m as recommended by \cite{J2} but with a variable number of users. To force the tool to only use one drone, a facility capacity is set to one 
+indicating that there is only one spot available in the facility where the \gls{UABS}s are stored. The tool will still consider as much potential places 
 as there are users in the network. But when the optimization algorithm is done, only one drone will remain.
 
 \begin{table}[!htb]
@@ -150,13 +150,8 @@ as there are users in the network. But when the optimization algorithm is done, 
         \label{table:confOverviewScenario2}
 \end{table}
 
-Four possible configurations are possible because there are two antennae available (\gls{isotropicradiator} and a realistic antenna) which can both operate in an power consumption optimzed network or an exposure optimized 
-network. These four configurations are investigated for the two cases mentioned above.
-Both cases can further be divided in four series where 
-The $SAR_{10g}$, power consumption and user coverage will be investigated for both cases.
-The only available drone will be positioned at the fly height of 100 m as recommended in \cite{J2}. For the second case, the same output variables are investigated 
-for a varying fly height but with a fixed number of 224 users.
-Both cases will be investigated for the two types of antennae: the fictional \gls{isotropicradiator} and the microstrip patch antenna.
+For both cases, four configurations are possible because there are two antennae available (\gls{isotropicradiator} and a realistic antenna) which can both operate in an power consumption optimzed network or an exposure optimized 
+network. The $SAR_{10g}$, power consumption and user coverage will be investigated for all configurations.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 3
@@ -178,28 +173,20 @@ Both cases will be investigated for the two types of antennae: the fictional \gl
         \label{table:confOverviewScenario2}
 \end{table}
 
+The third scenario implies no budget limitations. The tool can use as much \gls{UABS}s as desired while trying to maximize coverage. 
+A \gls{UABS} will be considered above each user which was also the case in scenario 2. However, the last step where the capacity of the facility
+was checked and drones got eliminates is omitted here. It is expected that the optimization strategies will perform best for this scenario since the decision algorithm has been written with multiple drones in mind.
+The scenario can once again be divided into two cases: one with a fixed flying height of 100 m and a variable number of users and a second one with 
+a variable flying  height and a fixed number of 224 users.
+The influence of these input parameters on the network will be based on the electromagnetic exposure, power consumption, number of drones required and user coverage.
 
-When more drones are available, an optimization strategy can be applied. The tool checks the capacity of the base stations and decides thereafter
-wich base station the user should be connected to. The original algorithm checks all pahts between the user that need to be connected with 
-all drones. Thereafter, the drones which path experience the least path loss and still has the capacity to cover an addition user will be selected.
-The authors from \cite{J1} proposed however another optimization strategy which tries to minimize electromagnetic exposure and 
-power consumption.
+\section{Summary}
+Three different scenarios will be investigated where the second and third one, each consist out of two cases. The first case is with a fixed flying height while 
+the second one is with a fixed population size. Each case consist out of four configurations. An overview is given in table \ref{fig:fourCasesMatrix}.
 
-The input variables flying height, transmit power and number of users will be used to see how electromagnetic exposure, power consumption en number of drones are influenced for
-different optimization strategies and type of antennas.
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../images/fourCasesMatrix.pdf}
+  \caption{Matrix with the four configurations}
+  \label{fig:fourCasesMatrix}
+\end{figure}
 
-Since there is no fixed budget limitation, the number of drones are unlimited. The tool will therefore try to connect each user and
-coverage will be expressed in number of drones required to cover as much users as possible instead of having a limited number of drones  
-as in scenario and therefore has only a limited coverage expressed in percentage.
-
-
-\begin{table}[]
-\begin{tabular}{cc|c|c|}
-\cline{3-4}
-                                                        &                               & \multicolumn{2}{c|}{{\color[HTML]{000000} Optimization strategy}} \\ \cline{3-4} 
-                                                        &                               & exposure optimized          & power consumption optimized         \\ \hline
-\multicolumn{1}{|c|}{}                                  & equivalent istropic radiatior &                             &                                     \\ \cline{2-4} 
-\multicolumn{1}{|c|}{\multirow{-2}{*}{\rotatebox[origin=c]{90}{type of antenna}}} & microstrip patch antenna      &                             &                                     \\ \hline
-\end{tabular}
-\caption{Four possible configurations= (2 optimization strategies + 2 types of antenna) for the decision algorithm}
-\end{table}

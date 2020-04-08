@@ -1,11 +1,52 @@
 \chapter{Conclusions}
 \label{chap:conclusions}
 
-far field radiation from UE has barely influence on the total SAR. For simplified models, this factor can be ignored.
+\section{Conlusion}
+%How can a UABS network be optimized to minimize global exposure or overall power consumption? 
+All conclusions are based on the default configuration as described in table \ref{table:defaultconf} unless mentioned otherwise.
+Literature showed that a network can be optimized towards either the power consumption of the entire network 
+or the electromagnetic exposure of the average user using a fitness function. This is because the power required to activate a new 
+base station is much higher then expending it's range \cite{J1}.
+The fitness function was originally applied for fixed transmission towers but can also be used 
+for \gls{UABS}s as this research shows.
+However, the fitness function should be used with care considering that \gls{UABS}s can be placed anywhere compared to 
+the transmission towers from \cite{J1} who have a determined position. This causes that a lot of users get a \gls{UABS}
+all by themselves in an exposure optimized network because this is the best approach to minimize exposure.
+A power consumption optimized network on the other hand will try to limit the number of drones 
+in order to save energy. So as a rule of thumb: an exposure optimized network will result in a lot of low powered devices (increasing the overall power consumption)
+while a power consumption optimized network results in a few high powered devices (increasing the exposure of the average user).
+A power consumption optimized network is thus cheaper because less drones are involved. 
+Moreover, the results show that the electromagnetic radiation in a power consumption optimized network (with high powered \gls{UABS}s)
+is far below the thresholds enforced by the Flemish government.
 
-pcopt -> much high powered devices
-pcopt with one drone -> does not meed first expectations
+The user's main sources of exposure are the user's own device and the \gls{UABS} who is serving him followed by all
+other \gls{UABS}s in the network. 
+When the population increases, also the exposure from other people their \gls{UE} increases. However, the electromagnetic
+ exposure from these devices can be ignored compared to the much higher electromagnetic exposure from the other sources. 
+A bigger population also cause an increase in number of drones. So when the population grows, the exposure of the 
+user increases mainly because of a growing exposure from other \gls{UABS}s that are not serving the user. Other sources barely contribute anything to the overall exposure
+of this user. An exposure optimized network will limits the total exposure mainly by trying to reduce the exposure from other \gls{UABS}s.
 
-liefst een EIRP antenna maarja die bestaat niet. Kunnen wel concluseren dat een bredere apperture beter is
+%1)	How does the network behave differently after the introduction of a realistic antenna?
+An equivalent isotropic radiator has higher exposure and coverage for less power compared to realistic antennae like microstrip patch antenna.
+This is because  of the absence of attenuation in \gls{EIRP} antennae. In other words, an \gls{EIRP} antenna can achieve the same coverage with less
+resources like power and number of drones but is unfortunately not a realistic antenna. The network will thus profit from an antenna which has a big 
+aperture angle so the attenuation for the users on the ground would be minimal.
 
-confirmed the statement van margot dat beide pc and exp omgekeerd evenredig zijn.
+
+An power consumption optimized network has the lowest exposure around 70 to 80 metres. An electromagnetic exposure in an 
+exposure optimized network only increases when the flying height increases. The number of required drones decrease 
+when the flying height becomes larger. When also considering the results from \cite{J27_backhaul} where an flying altitude from 
+80 metres is suggested for an optimal access and backhaul connectivity, a flying height 
+of 80 metres is also here proposed for the city centre of Ghent.
+
+In conclusion, a power consumption optimized network is proposed with a fixed flying height of 80 metres. A microstrip patch 
+antenna with a sufficiant large apperture angle is a good starting point. However, different antenna configurations should 
+be investigated 
+
+\section{Future work}
+The tool has been extended so any possible antenna in any possible direction is supported. Comparing different types 
+of antennae is however outside the scope of this research.
+Conclusions on how the network performs has thus been investigated for the already existing fictional omnidirectional antenna and a 
+realistic microstrip patch antenna. The reason for the chosen microstrip patch antenna is solely based on literature.
+

@@ -119,12 +119,13 @@
 
 \frontmatter                                            % latin page numbers
 \pagestyle{plain}                                       % page numbers in center of footer
-\includepdf{frontmatter/voorblad.pdf}                               % Front matter
+\includepdf{frontmatter/voorblad.pdf}                   % Front matter
 \newpage\thispagestyle{empty}\mbox{}                    % White page
-\include{frontmatter/Dankwoord}                            % Word of thanks
+\include{frontmatter/Dankwoord}                         % Word of thanks
 \include{frontmatter/summary.NL} 
 \include{frontmatter/summary.EN}   
-%\includepdf[pages=-]{frontmatter/extendedabstract.pdf}   % Extended Abstract
+\includepdf[pages=-]{frontmatter/extendedAbstracts/NL/extendedabstract.pdf}   % Extended Abstract
+\includepdf[pages=-]{frontmatter/extendedAbstracts/EN/extendedabstract.pdf}   % Extended Abstract
 \tableofcontents                                        % Table of Contents
 \listoffigures                                          % List of figures
 \addcontentsline{toc}{chapter}{List of Figures}         %list "list of figures" in 'table of contents"
