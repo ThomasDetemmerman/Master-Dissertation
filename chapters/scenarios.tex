@@ -5,7 +5,7 @@ will be investigated, order based on the network complexity. Within each scenari
 First, only one user with one drone will be present in the network. The network will thereafter be expanded
 for multiple users but with still only one drone available. Eventually, also that last restriction will be dropped meaning 
 that multiple users with unlimited number of drones are examined. 
-Table \ref{table:defaultconf} show the default configuration whose values are always applicable unless mentioned otherwise.
+Table \ref{table:defaultconf} shows the default values that are always applicable unless mentioned otherwise.
 
 \begin{table}[!htb]
 \centering
@@ -50,7 +50,7 @@ Table \ref{table:defaultconf} show the default configuration whose values are al
 \section{A Single User}
 \label{sec:s1}
 
-This first scenario will investigate how $SAR_{10g}$ and power consumption is influenced in an isolated environment meaning there is nor influence 
+This first scenario will investigate how $SAR_{10g}$ and power consumption behaves in an isolated environment meaning there is nor influence 
 from other base stations nor other \gls{UE}. The tool will provision one single drone and position it directly above the user.
 These results will however depend on the position of the user. If the randomly generated location of the user is indoor, 
 the flying height of the drone might obstructed by the building where the user resides, causing the user to become uncovered. If this is not the case,
@@ -59,16 +59,18 @@ if he would have been outdoors. For more consistent results, the user will be po
 increasing the flying height. 
 
 Another considered variable will be the transmit power of the antenna.
-\gls{LTE} makes usages of power control meaning that no more power will be used then strictly necessary. The actual 
+\gls{LTE} makes usage of power control meaning that no more power will be used then strictly necessary. The actual 
 transmit power therefore ranges between 0 and the maximum input power. This power is zero when either no user is 
 present or the user is so far away that the actual transmit power would exceed the maximum allowed transmission power.
 Increasing the maximum transmission power won't influence the actual power consumption or $SAR_{10g}$ because the \gls{UABS} won't use more
 then strictly required. It is therefore more useful to match the actual transmit power against a variable flying height.
 
-This scenario investigates $SAR_{10g}$, power consumption and minimal transmission power. The used optimization strategy is not important.
-The optimization algorithm decides which user will be connected to which drone in order to reach a certain goal. Since only one user and one
-\gls{UABS} are available, both optimization strategies will behave identical. These values will be checked for a fictional \gls{isotropicradiator} and 
-a realistic antenna.
+This scenario investigates $SAR_{10g}$, power consumption and minimal transmission power for two different type of antennae: a 
+ fictional \gls{isotropicradiator} and a realistic antenna.
+ The used optimization strategy is not important
+for this scenario. This is because the
+ decision algorithm decides which user needs to be connected to which drone. Since only one user and one
+\gls{UABS} are available, both optimization strategies will behave identical. 
 
 The user gets a fixed position. The exact location doesn't matter as long as it is outside. For this experiment is chosen for the 
 `Koningin Maria Hendrikaplein', a square just next to the train station of Ghent.  Doing so will force the \gls{UE} 
@@ -114,10 +116,10 @@ Since there is only one user, there can also be only one drone.
 \section{Increasing Traffic with only one Drone available}
 
 This scenario investigates the same behaviour  as the previous one. Still with only one drone but for a higher number of users. 
-The scenario can be divided into two cases. One for a variable 
-flying height but with a fixed number of 224 users. This is the number of active users on an average day at 5 p.m. implying rush hour and therefore 
+The scenario can be divided into two cases. The first case has a variable 
+flying height with a fixed number of 224 users. This is the number of active users on an average day at 5 p.m. implying rush hour and therefore 
 resulting in the highest number of simultaneous users for the day\cite{J2}. The other 
-scenario has a fixed flying height of 100 m as recommended by \cite{J2} but with a variable number of users. To force the tool to only use one drone, a facility capacity is set to one 
+case has a fixed flying height of 100 m as recommended by \cite{J2} but with a variable number of users. To force the tool to only use one drone, a facility capacity is set to one 
 indicating that there is only one spot available in the facility where the \gls{UABS}s are stored. The tool will still consider as much potential places 
 as there are users in the network. But when the optimization algorithm is done, only one drone will remain.
 
@@ -150,8 +152,8 @@ as there are users in the network. But when the optimization algorithm is done, 
         \label{table:confOverviewScenario2}
 \end{table}
 
-For both cases, four configurations are possible because there are two antennae available (\gls{isotropicradiator} and a realistic antenna) which can both operate in an power consumption optimzed network or an exposure optimized 
-network. The $SAR_{10g}$, power consumption and user coverage will be investigated for all configurations.
+For both cases, four configurations are possible because there are two antennae available (\gls{isotropicradiator} and a realistic antenna) which can both operate in a power consumption optimized network or an exposure optimized 
+network. The $SAR_{10g}$, power consumption and user coverage will be investigated for all four configurations.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 3
@@ -178,15 +180,15 @@ A \gls{UABS} will be considered above each user which was also the case in scena
 was checked and drones got eliminates is omitted here. It is expected that the optimization strategies will perform best for this scenario since the decision algorithm has been written with multiple drones in mind.
 The scenario can once again be divided into two cases: one with a fixed flying height of 100 m and a variable number of users and a second one with 
 a variable flying  height and a fixed number of 224 users.
-The influence of these input parameters on the network will be based on the electromagnetic exposure, power consumption, number of drones required and user coverage.
+The influence that these input parameters have on the network will be based on the electromagnetic exposure, power consumption, number of drones required and user coverage.
 
-\section{Summary}
+\section{Overview}
 Three different scenarios will be investigated where the second and third one, each consist out of two cases. The first case is with a fixed flying height while 
 the second one is with a fixed population size. Each case consist out of four configurations. An overview is given in table \ref{fig:fourCasesMatrix}.
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../images/fourCasesMatrix.pdf}
-  \caption{Matrix with the four configurations}
+  \caption{Matrix with the four possible configurations}
   \label{fig:fourCasesMatrix}
 \end{figure}
 
