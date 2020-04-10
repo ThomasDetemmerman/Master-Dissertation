@@ -43,7 +43,8 @@ each user. Thereafter, each user will have to be connected to the best possible 
 \section{Scenario 1: One User and One Drone}
 The network contains only one user for this scenario. This means that there is only one location possible for the drone which is just above 
 the user. This section will investigate minimal required transmission power and SAR values from different sources.
-\textcolor{red}{power consumption te doen}
+Finally, also the power consumption of the entire network is measured. The  ``entire network" refers to all drones and antennae. The entire network 
+will for the first scenario be constructed out of a singe \gls{UABS}.
 
 \subsection{The Influence of the Maximum Transmission Power}
 \label{s1a}
@@ -55,7 +56,7 @@ Increasing the maximum transmission power won't influence the actual used $P_{tx
 then strictly required. It is therefore more useful to match the actual transmission power against a variable flying height. 
 
 Figure \ref{fig:ptxfh} shows the logarithmic relationship between $P_{tx}$ and flying height.
-As already discussed in \ref{sec:s1}, the user is outdoor and just below the \gls{UABS}. There is thus a free line-of-sight between both
+As already discussed in \ref{sec:scenarios_s1}, the user is outdoor and just below the \gls{UABS}. There is thus a free line-of-sight between both
 radiators. It is clear  from figure \ref{fig:ptxfh} that a discontinue step function is achieved. This is because multiple flying heights correspond to the same transmission power.
 When the flying height increases, so does the path loss. \gls{LTE} tries to counteract this by increasing the power level. Each time 
 the path loss becomes too high, the power level of the antenna increases with one dBm. Doing so, decreases path loss allowing the antenna to reach
@@ -77,25 +78,28 @@ the power level exceeds the path loss.
 The red line in figure \ref{fig:ptxfh} indicates the default maximum transmission power used during simulations. 
 In a free line-of-sight scenario with only one user, a \gls{UABS} can fly up to 387 metres before losing connection.
 
-This scenario is investigated with a microstrip patch antenna using power consumption optimization. The configuration, however, does not matter
-despite the fact that an \gls{isotropicradiator} doesn't have any attenuation while a microstrip patch antenna does.
-Since the user is positioned in the perfect center of the main beam where there is 
-no attenuation experienced in either cases. Also the optimization won't make a difference. The goal of the optimization strategy is to decide which 
-drone is most suitable for which users. Since there is only one user and one possible position for the drone, both optimization strategies behave identical.
+This scenario is investigated with a microstrip patch antenna using power consumption optimization. 
+ However, the chosen optimization strategy doesn't really matter as already explained in  \ref{sec:scenarios_s1}. This is because the decision 
+ algorithm decides which user 
+needs to be connected to which user. Since only one \gls{UABS} is available, both optimization strategies will behave identical.
+Further, also the used antenna won't make any difference
+despite the fact that a microstrip patch antenna has attenuation while an \gls{isotropicradiator} doesn't.
+The user is namely positioned in the perfect center of the main beam where there is 
+no attenuation experienced in either cases. So the results are applicable for the four possible cases from figure \ref{fig:fourCasesMatrix}.
 
 \FloatBarrier
 \subsection{Influence of the Flying Height}
 \label{sub:senario1_influenceOfFlyHeight}
 
-This section investigates how the flying height of a \gls{UABS} influence $SAR_{10g}$ and power consumption.
-This induced electromagnetic radiation for our user is represented in figure \ref{fig:s1_fhsar}
-and shows that for low flying drones, \gls{UABS}s are the main source of electromagnetic radiation (green line).
-This changes around 80 meters where the \gls{UL} electromagnetic radiation of the \gls{UE} (red line)
+This section investigates how the flying height of a \gls{UABS} influences $SAR_{10g}$ and power consumption.
+The $SAR_{10g}$, which is actually induced electromagnetic radiation into our user, is represented in figure \ref{fig:s1_fhsar}
+and shows that for a low flying drone, \gls{UE} is the main source of electromagnetic radiation.
+This changes around 80 meters where the \gls{UL} electromagnetic radiation from the \gls{UE}
 exceeds the \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s.
 
-\gls{SAR}-values are caused by the input power of the antenna. The $P_{tx}$ in section \ref{s1a}
+\gls{SAR}-values are caused by the transmit power  $P_{tx}$ of the antenna. The $P_{tx}$ in section \ref{s1a}
 showed a discontinue behaviour that sometimes radiate more as strictly necessary. This has thus a direct influence
-on  $SAR^{dl}_{10g}$. Hence the same discontinue behaviour. $SAR^{dl}_{10g}$ can be simplified to an perfect constant line.
+on the \gls{DL} \gls{SAR}. Hence the same discontinue behaviour. The \gls{DL} \gls{SAR} can be simplified to a perfect constant line.
 This constant behaviour can once again be explained with power control. When the \gls{UABS} flies lower, there is  less path loss and the \gls{UABS} 
 will therefore reduce the $P_{tx}$. This results in formula \ref{eq:exposureBasicFormula} where the electromagnetic exposure is a constant fraction of power and distance.
 
@@ -107,13 +111,18 @@ will therefore reduce the $P_{tx}$. This results in formula \ref{eq:exposureBasi
 %The SAR values are the result of multiplying the electromagnetic exposure with a constant as explained in equation \ref{eq:DLconvertion}. So both have a linear relationship.
 
 Figure \ref{fig:s1_fhsar} doesn't show radiation from neighbours, because there are none present in this scenario. 
-Finally, all these values are added as explained in formula \ref{eq:overallSARwb} and indicated with the blue line. 
+Finally, all these values are added up as explained in formula \ref{eq:overallSARwb} resulting in the total \gls{SAR}
+to which our user is exposed.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s1/fhvssar.png}
   \caption{How SAR values from different sources are influenced by different flying altitudes.}
   \label{fig:s1_fhsar}
 \end{figure}
+
+The power consumption of the entire network includes both the power required by the drone itself and the antenna he is carrying.
+The power consumption of the entire network is here of course for the only \gls{UABS} available. Figure \ref{fig:ptxfh} shows an 
+exponential relationship between both power consumption and flying height. 
 
 \begin{figure}[t]
   \centering
@@ -122,7 +131,6 @@ Finally, all these values are added as explained in formula \ref{eq:overallSARwb
   \label{fig:ptxfh}
 \end{figure}
 
-\textcolor{red}{power consumption te doen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
 \section{Scenario 2: Increased Traffic}
@@ -134,7 +142,7 @@ When designing the network, there will be as much possible drone locations as th
 will consider all of them. It's only when the programme is finished, that one drone remains.
 
 \subsection{Influence of the Flying Altitude}
-The first case investigates how the network consisting out of one \gls{UABS} behaves when applied on an ordinary day during rush hour. 
+The first case investigates how the network, consisting out of one \gls{UABS}, behaves when applied on an ordinary day during rush hour. 
 Different fixed flying heights are considered while 224 active users are distributed uniformly over the city center of Ghent. 
 
 A power consumption optimized network with an \gls{EIRP} antenna (green) has the highest exposure. 
@@ -156,7 +164,17 @@ Therefore is the power consumption in a power consumption optimized network way 
   \label{fig:s2a_dlAndPc}
 \end{figure}
 
-\begin{figure}[bh!]
+
+
+%\newpage
+The \gls{DL} exposure in figure \ref{fig:s2a_dlAndPc} increases along with the flying height. One might expect a more constant 
+behaviour like it was the case in figure \ref{fig:s1_fhsar} of scenario 1. To understand this, the scenario has been deducted 
+with only two users and is illustrated in figure \ref{fig:schematicprove}.
+The two users who will be referred to by `red' and `blue' are 90 metres separated from each other with a building between them.
+Scenario 1 already explained that the charts can be simplified and the blue line from fig. \ref{fig:prove} remains in fact constant between the zero and 130 metres.
+The chart shows that the \gls{UABS} is positioned above the blue user. The red user is in \gls{NLOS} as long as the \gls{UABS} remains below 20 metres.
+
+\begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s2/prove.png}
   \caption{Scenario 2 with only 2 users. The coloured areas are only applicable for the red user. The blue user is connected during the entire time.}
   \label{fig:prove}
@@ -170,15 +188,6 @@ Therefore is the power consumption in a power consumption optimized network way 
   \caption{Schematic overview of scenario 2 with only 2 users.}
   \label{fig:schematicprove}
 \end{wrapfigure}
-
-%\newpage
-The \gls{DL} exposure in figure \ref{fig:s2a_dlAndPc} increases along with the flying height. One might expect a more constant 
-behaviour like it was the case in figure \ref{fig:s1_fhsar} of scenario 1. To understand this, the scenario has been deducted 
-with only two users and is illustrated in figure \ref{fig:schematicprove}.
-The two users who will be referred to by `red' and `blue' are 90 metres separated from each other with a building between them.
-Scenario 1 already explained that the charts can be simplified and the blue line from fig. \ref{fig:prove} remains in fact constant between the zero and 130 metres.
-The chart shows that the \gls{UABS} is positioned above the blue user. The red user is in \gls{NLOS} as long as the \gls{UABS} remains below 20 metres.
-
 Once the \gls{UABS} increases its flying altitude, the red user becomes into \gls{LOS} but still remains uncovered. This is because the tool initially locate a possible 
 \gls{UABS} above each user and thereafter performs the  fitness function. The applied fitness function must have decided that it is better to connect 
 each user to the \gls{UABS} above him. At a final state, the tool check whether the number of online drones does not exceed the capacity of the facility
@@ -194,44 +203,39 @@ each user. The tool must have decided that connecting both users to the other dr
 very little. This brings us back to figure \ref{fig:s2a_dlAndPc} where the electromagnetic exposure in the weighed average of all users. In other words, there are 223 users who behave like the  red user while only
 one user behaves like the blue one. The similarity between the red line from fig. \ref{fig:prove}  and  the electromagnetic exposure in fig  \ref{fig:s2a_dlAndPc} is clear.
 
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{../results/s2/fhvscov.png}
+  \caption{This graph shows the percentage of covered users by one drone for different flying heights.}
+  \label{fig:s2fhvscov}
+\end{figure}
+
 Figure  \ref{fig:s2fhvscov} shows that the flying height has a positive influence on the user coverage. 
 When a \gls{UABS} flies higher, there is less path loss between the user and the drone caused by buildings but also the path loss to neighbouring 
 users decreases as explained 
 with figure \ref{fig:prove} and \ref{fig:schematicprove}. 
 Also the increasing \gls{DL} exposure  from figure \ref{fig:s2a_dlAndPc} from earlier indicated that the
 user coverage should grow.
-Figure \ref{fig:s2a_dlAndPc} showed on the right how power consumption optimized networks in this scenario will result in higher power \gls{UABS}s.
-And since the power consumption and therefore also the exposure of the active \gls{UABS} is higher, more users will be covered compared to 
-the exposure optimized networks.
 
 When replacing the fictional \gls{EIRP} antenna with a microstrip patch antenna, the percentage of covered users drops for both 
 optimization strategies. This is because users who have a higher horizontal distance between themselves and the \gls{UABS}, 
 experience a higher attenuation. When a microstrip patch antenna is positioned higher, the range of the antenna increases 
 since the angle between the user and the \gls{UABS}s main lob decreases. The user will therefore experience less attenuation.
 
-%It becomes also clear that this advantage is limited. For a scenario of 224 users and one drone, the user coverage won’t increase
-% significantly any more around an altitude of 120m.
-
-\begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s2/fhvscov.png}
-  \caption{This graph shows the percentage of covered users by one drone for different flying heights.}
-  \label{fig:s2fhvscov}
-\end{figure}
-
-Figure \ref{fig:s2fhvssar} shows the total whole body $SAR_{10g}$, deducted from all electromagnetic sources. This being the exposure of all \gls{UABS}s,
- the uplink exposure from the user’s own device and the exposure of the devices from all other users. 
- Thereafter, the weighted average of all whole body $SAR_{10g}$ values in the network is calculated with the 50th and 95th percentile 
+Eventually, figure \ref{fig:s2shfourSourcesMatrix} shows the total whole body $SAR_{10g}$, deducted from all electromagnetic sources. This being the exposure 
+of the only \gls{UABS} available in the network, 
+ the \gls{UL} exposure from the user’s own device and the exposure of the devices from all other users. 
+ Thereafter, the weighted average whole body \gls{SAR} for each individual source in the network is calculated with the 50th and 95th percentile 
  being the most important values. This is because not only the mean value is important but also users who experience higher 
  levels of whole body $SAR_{10g}$.
 
-When investigating the 3 different sources of which the total \gls{SAR}-values are based on, we see 
+When investigating the three different sources of which the total \gls{SAR}-values are based on, we see 
 that the radiation from the \gls{UABS} is the main factor followed by the near field radiation from the user's own device.
 The far field radiation from other \gls{UE} has barely influence. 
-It looks like it is zero but it is just very low compared to the other two values and in fact does increases when the flying height becomes larger (just like the two other lines).
+It looks like it is zero but it is just very low compared to the other two values and in fact does increases when the flying height becomes larger.
 
 The weighted average $SAR^{ul}_{10g}$ from the own device is zero in an exposure optimized network with a microstrip patch antenna which is even lower that the $SAR^{neighbours}_{10g}$.
 This is because the coverage in this scenario is so low that the weighted average only consist of uncovered users and an uncovered user his device has no power consumption.
-\begin{figure}[h!]
+\begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s2/fhFourSources.png}
   \caption{This figure shows how different sources are influenced by an increasing flying height.}
   \label{fig:s2shfourSourcesMatrix}
@@ -242,8 +246,9 @@ This is because the coverage in this scenario is so low that the weighted averag
 \subsection{Influence of the Number of Users}
 \label{s2b}
 
-The number of covered users increase linearly compared to the number of users present in the network. This becomes clear when looking at figure 
-\ref{fig:s2uvsnumcovusers} on the right. It shows how an \gls{isotropicradiator} is able of reaching more users then microstrip patch antennae because of the absence of attenuation.
+The number of covered users increase linearly compared to the number of users present in the network as shown in figure 
+\ref{fig:s2uvsnumcovusers} on the right. It illustrates how an \gls{isotropicradiator} is able of reaching more users 
+compared to a microstrip patch antennae.
 Also, power consumption optimized networks are able of reaching more users compared to exposure optimized networks.
 This is because power consumption optimized network will result in few high powered base station while an 
 exposure optimized network result in a lot of low powered base stations. This behaviour will further be explained in section \ref{s3}
@@ -279,15 +284,16 @@ So in other words, the  percentage of covered users for a sparsely populated net
 
 The downlink exposure is shown in figure \ref{fig:s2b_dlAndPc} on the left and is directly influenced by the percentage of covered users. 
 The average electromagnetic exposure decreases when more users become uncovered. Since an \gls{isotropicradiator} in a power consumption optimized network (green)
-will have the highest coverage, also the \gls{DL} electromagnetic radiation from \gls{UABS}s will be highest compared to other configurations.
+will have the highest coverage, also the \gls{DL} electromagnetic radiation from \gls{UABS}s will be higher compared to other configurations.
 Despite the fact that the percentage of covered users decreases, the effective number of covered users increases. The power consumption of the only 
 active \gls{UABS} slightly increases in order to serve those covered users.
 
 
 Figure \ref{fig:s2fourSourcesMatrix} investigates the assets of each source contributing to the total \gls{SAR}. All four 
-configurations show that for 200 users and up, base stations are the main source of electromagnetic radiation.
-For less users, the electromagnetic radiation from the average user's device is the dominant factor. Figure \ref{fig:s2uvsnumcovusers} already 
-showed that for sparsely populated networks, a higher percentage is covered. The weighted average is thus much higher. When the population becomes more dense,
+configurations show that base stations are the main source of electromagnetic radiation.
+Figure \ref{fig:s2uvsnumcovusers} already 
+showed that for sparsely populated networks, a higher percentage is covered so the weighted average of the \gls{UL} \gls{SAR} will also be higher. 
+When the population becomes more dense,
 more users become uncovered which decreases the weighted average of the \gls{UL} \gls{SAR}.
 The chart also proves once again that the far field radiation from \gls{UE} can be neglected. The \gls{SAR} from 
 neighbouring devices is not zero as it looks from figure \ref{fig:s2fourSourcesMatrix} but is just really low compared to the much higher
@@ -306,6 +312,34 @@ users who are covered. To investigate this, a user is positioned in the middle o
 Figure \ref{fig:connectionMap} shows with the black lines which users are connected. The left map is for only 50 users and 
 shows that only one user is connected besides our central user. The map on the right is taken with 600 users and shows much more connected users.
 
+
+
+It might look that by increasing the population, the SAR of a user who is directly beneath a \gls{UABS} would be less but that is 
+certainly not the case as demonstrated in the experiment below. A central user will be placed in the middle of Ghent with one drone above him.
+The different \gls{SAR}-values of this central user are monitored while the population around him grows.
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=\textwidth/6*5]{../results/s2/uvsulsarcentralUser.png}
+  \caption{SAR-values for the user who is directly beneath the only UABS available.}
+  \label{fig:uvsulsarcentralUsers}
+\end{figure}
+
+Scenario 1 already showed that the \gls{SAR} from the user's own device is only influenced by the flying height. 
+The flying height for this experiment is fixed and the \gls{UL} \gls{SAR} from his device should therefore be also a constant. 
+A hypothesis that is confirmed by figure \ref{fig:uvsulsarcentralUsers}.
+The \gls{SAR} from the \gls{UABS} experience a slight  increase. When the population grows, more users become available 
+of which some will spawn near the central user. The \gls{UABS} will likely decide to cover these user  as well as visible in figure \ref{fig:connectionMap}.
+These user might have a slightly 
+worse path loss because of obstructing buildings or somewhat bigger distance. The \gls{UABS} reacts to this by increasing 
+his power consumption causing an increase in the \gls{DL} \gls{SAR} for the central user.
+
+The far-field radiation from \gls{UE} is very low as mentioned before and is therefore not visible in figure \ref{fig:connectionMap} 
+on the left and is therefore illustrated in a separate char on the right. 
+It shows that the \gls{SAR}  from other \gls{UE} indeed increases. This is normal 
+behaviour considering that more and more people become available around the central user of which some will be connected to the \gls{UABS}
+and therefore also emitting radiation.
+
 \begin{figure}[!htb]
 \minipage{0.50\textwidth}
   \includegraphics[width=\linewidth]{../images/connectionsMap50Users.png}
@@ -315,24 +349,6 @@ shows that only one user is connected besides our central user. The map on the r
 \endminipage
   \caption{Overview of which users are connected to the \gls{UABS}. The map on the left is for 50 active users while the map on the right is with 600 active users.}
   \label{fig:connectionMap}
-\end{figure}
-
-Scenario 1 already showed that the \gls{SAR} from the user's own device is only influenced by the flying height. 
-The flying height for this experiment is fixed and the \gls{UL} \gls{SAR} from his device is thus a perfect constant.
-The \gls{SAR} from the \gls{UABS} experience a slight  increase. When the population increases, more users become available 
-of which some near the central user. The \gls{UABS} decides to cover also these user. These user might have a slightly 
-worse path loss because of obstructing buildings or somewhat bigger distance. The \gls{UABS} reacts to this by increasing 
-his power consumption causing an increase in the \gls{SAR} for the central user.
-
-The far-field radiation from \gls{UE} is very low as mentioned before and is therefore not visible in figure \ref{fig:connectionMap} 
-on the left. When only looking at the right figure, we see that the \gls{SAR}  from other \gls{UE} in fact does increase. This is normal 
-behaviour when more and more people become available around the central user.
-
-\begin{figure}[h!]
-\centering
-  \includegraphics[width=\textwidth/6*5]{../results/s2/uvsulsarcentralUser.png}
-  \caption{SAR-values for the user who is directly beneath the only UABS available.}
-  \label{fig:uvsulsarcentralUsers}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%s
 \section{Scenario 3: Unlimited Drones}
