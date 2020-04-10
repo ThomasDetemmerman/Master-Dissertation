@@ -383,7 +383,6 @@ This changed around 80 meters where \gls{UL} electromagnetic radiation of the \g
  exceeds \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s. We know from 
  previous scenarios that the behaviour of the \gls{SAR} behave very similar to the downlink exposure \ref{fig:s3a_sar}.
 
-
 When looking at the different individual sources in \ref{fig:s3a_fourSourcesMatrix}, we see 
 that $SAR_{10g}^{ul}$ is logarithmic increasing despite the fact that figure \ref{fig:s1_fhsar} showed that the $SAR_{10g}^{ul}$
 increases exponentially. This was however deducted when only one user is present in the network as opposed to this scenario 
@@ -394,12 +393,20 @@ and the percentage of covered users is also less \ref{fig:s3a_numDronesAndCov}
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhFourSources.png}
-  \caption{Four Sources}
+  \caption{Each chart shows the total SAR to which the average user is exposed. ``My UABS" stands for the UABS that is serving our average user while ``other UABSs'' stand for 
+  all other UABSs to which that user is exposed to but not served by. ``Other" UE refer the exposure from all mobile devices that does not belong that user.}
   \label{fig:s3a_fourSourcesMatrix}
 \end{figure}
 
-"my UABS" stands fror the UABS who is serving that user. In other words, for the average user, a big portion of the radiation is originating from his own 
-device and the UABS who is serving him.... to do
+At a low flying altitude, users in an exposure optimized network experience significantly lower \gls{SAR}-values compared to power consumption optimized networks. This difference becomes less 
+around 70 metres. The main reason will be the path loss caused by obstructing buildings. A power consumption optimized network tries to minimize power by limiting the 
+number of drones. Therefore,  a \gls{UABS} has to increase it's power level to be able to penetrate buildings. So users directly below this \gls{UABS} 
+has much higher exposure, increasing the  average exposure. The \gls{UE} from the user on the other side of the building has to penetrate that building as well.
+So the \gls{UL} \gls{SAR} has to be higher as well. This behaviour is most noticeable when using an \gls{isotropicradiator} because microstrip patch antennae have by default a more limited range.
+
+Exposure from other \gls{UABS}s (who are serving  other users) increases when the flying height becomes higher. 
+Also here will the lower path loss from obstructing be the reason.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
 \subsection{Influence of the number of users}
@@ -456,6 +463,7 @@ from the user's own device and serving \gls{UABS} can't decrease that much.
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/uFourSources.png}
-  \caption{The influence of the flying height on the total power consumption of the network.}
+  \caption{Each chart shows the total SAR to which the average user is exposed. ``My UABS" stands for the UABS that is serving our average user while ``other UABSs'' stand for 
+  all other UABSs to which that user is exposed to but not served by. ``Other" UE refer the exposure from all mobile devices that does not belong that user.}
   \label{fig:s3b_fourSourcesMatrix}
 \end{figure}
