@@ -1,7 +1,7 @@
 \chapter{Conclusions}
 \label{chap:conclusions}
 
-\section{Conlusion}
+\section{Conclusion}
 %How can a UABS network be optimized to minimize global exposure or overall power consumption? 
 All conclusions are based on the default configuration as described in table \ref{table:defaultconf} unless mentioned otherwise.
 Literature showed that a network can be optimized towards either the power consumption of the entire network 
@@ -9,8 +9,8 @@ or the electromagnetic exposure of the average user using a fitness function. Th
 base station is much higher then expending it's range \cite{J1}.
 The fitness function was originally applied for fixed transmission towers but can also be used 
 for \gls{UABS}s as this research shows.
-However, the fitness function should be used with care considering that \gls{UABS}s can be placed anywhere compared to 
-the transmission towers from \cite{J1} who have a determined position. This causes that a lot of users get a \gls{UABS}
+However, the fitness function should be used with care considering that \gls{UABS}s can be placed anywhere as opposed to 
+the transmission towers from \cite{J1} who have a predetermined position. This causes that a lot of users get a \gls{UABS}
 all by themselves in an exposure optimized network because this is the best approach to minimize exposure.
 A power consumption optimized network on the other hand will try to limit the number of drones 
 in order to save energy. So as a rule of thumb: an exposure optimized network will result in a lot of low powered devices (increasing the overall power consumption)
@@ -24,19 +24,37 @@ other \gls{UABS}s in the network.
 When the population increases, also the exposure from other people their \gls{UE} increases. However, the electromagnetic
  exposure from these devices can be ignored compared to the much higher electromagnetic exposure from the other sources. 
 A bigger population also cause an increase in number of drones. So when the population grows, the exposure of the 
-user increases mainly because of a growing exposure from other \gls{UABS}s that are not serving the user. Other sources barely contribute anything to the overall exposure
-of this user. An exposure optimized network will limits the total exposure mainly by trying to reduce the exposure from other \gls{UABS}s.
+user increases mainly because of a growing exposure from other \gls{UABS}s that are not serving the user.
+An exposure optimized network will limits the total exposure mainly by trying to reduce the exposure from other \gls{UABS}s.
 
 %1)	How does the network behave differently after the introduction of a realistic antenna?
-An equivalent isotropic radiator has higher exposure and coverage for less power compared to realistic antennae like microstrip patch antenna.
-This is because  of the absence of attenuation in \gls{EIRP} antennae. In other words, an \gls{EIRP} antenna can achieve the same coverage with less
-resources like power and number of drones but is unfortunately not a realistic antenna. The network will thus profit from an antenna which has a big 
-aperture angle so the attenuation for the users on the ground would be minimal.
+An \gls{isotropicradiator} has higher exposure and coverage for less power compared to realistic antennae like microstrip patch antenna.
+The \gls{isotropicradiator} can be compared with an antenna with a very big aperture angle.
+These type of antenna can achieve the same coverage with less
+resources like power and number of drones. 
+A microstrip patch antenna  with a more limited aperture angle of \ang{90} focusses it's energy more towards the ground.
+It therefore requires more resources but 
+causes less sideways radiation. So the exposure from other \gls{UABS}s will be way less.
 
+\begin{figure}[hb!]
+  \includegraphics[width=\textwidth]{../images/fourCasesMatrixSol.png}
+  \caption{Matrix with the four possible configurations. Colour-coded based on the results.}
+  \label{fig:resultIllustration}
+\end{figure}
 
-An power consumption optimized network has the lowest exposure around 70 to 80 metres. An electromagnetic exposure in an 
-exposure optimized network only increases when the flying height increases. The number of required drones decrease 
-when the flying height becomes larger. When also considering the results from \cite{J27_backhaul} where an flying altitude from 
+Remarkable is that an \gls{EIRP} exposure optimized network behave very similar to a microstrip power consumption optimized network as shown 
+in figure \ref{fig:resultIllustration}.
+This results in the best of both worlds. 
+The microstrip patch antenna will generate less electromagnetic radiation by design and
+ the power consumption optimization reduces the number of required drones and power. A microstrip patch antenna with an aperture 
+ angle of \ang{90} is considered a good solution but if cost is more restricted, an antenna with a larger aperture angle 
+ would further reduce cost without interfering with the Flemish legislation.
+
+The electromagnetic radiation of an exposure optimized network increases with higher flying altitudes. Mainly caused by the user's 
+own device and \gls{UABS}s who are serving other users. Around 80 metres, the exposure from the  user's device surpasses the exposure from the serving \gls{UABS}.
+An power consumption optimized network shows a more concave relationship with the lowest exposure measured around 70 to 80 metres.
+Further, the results also show that the number of required drones decrease when the flying height becomes larger. A conclusion that was also made in \cite{J2}.
+ When also considering the results from \cite{J27_backhaul} where a flying altitude from 
 80 metres is suggested for an optimal access and backhaul connectivity, a flying height 
 of 80 metres is also here proposed for the city centre of Ghent.
 
@@ -44,11 +62,10 @@ In conclusion, a power consumption optimized network is proposed with a fixed fl
 antenna with a sufficient large aperture angle is a good starting point. However, different antenna configurations should 
 be investigated 
 
-\textcolor{red}{TODO: num of drones vs flying height terugkoppelen aan J2 margo.}
-
 \section{Future work}
 The tool has been extended so any possible antenna in any possible direction is supported. Comparing different types 
 of antennae is however outside the scope of this research.
 Conclusions on how the network performs has thus been investigated for the already existing fictional omnidirectional antenna and a 
 realistic microstrip patch antenna. The reason for the chosen microstrip patch antenna is solely based on literature.
 
+\textcolor{red}{doe iets aan de paper van 80m die voor het eerst in cocnlusie wordt vermeld.}
