@@ -1,42 +1,7 @@
 \chapter{State of the Art}
 \label{chap:stateoftheart}
 TODO: outline if the chapter
-\section{UAV-aided networks}
-A \gls{UAV} has several applications. When attaching attennae to the \gls{UAV}, it can be used as a gateway for cellular communication from \gls{UE} on the ground.
-Such a flying base station will be called a \gls{UABS}. 
-advantages are mobility and rapid deployment 
-\textcolor{red}{ (schrijf in eigen woorden!! The use of unmanned aerial vehicles (UAVs)
-as aerial communication platforms is of high
-practical value to future wireless systems such as
-5G, especially for swift and on-demand deployment
-in temporary events and emergency situations.
-Compared to the static terrestrial base
-stations (BSs) in cellular networks, UAV-mounted
-aerial BSs possess stronger line-of-sight links with
-the ground users due to their high altitude as
-well as high and flexible mobility in 3D space,
-which can be exploited to enhance the communication
-performance. On the other hand, unlike
-terrestrial BSs that have reliable power supply,
-aerial BSs in practice have limited onboard energy,
-but require high propulsion power to stay airborne
-and support high mobility.}
-Mozaffari et all. provides in \cite{U3} guidlines on how to opimize and analyze \gls{UAV}s equiped for 
-wireless communications. One path that has been excessively researched are location optimization solutions.
-For instance, \cite{U4} provides an algorithm that minimizes latency, \cite{U7}  minimizes interference between \gls{UABS} and \cite{U8,U9} minimizes the 
-distance between \gls{UABS} and \gls{UE}. Other papers investigate trajoctory optimizatin like in \gls{U6,U7}
-Cicek et all. discusses in \gls{U5} several approaches on how these optimization algorithms should be tackled like heuristic algorithms, exact algorithms and 
-machine learning. 
 
-\textcolor{red}{eigen woorden. e. Kawamoto et al. in \cite{U11} present
-the first known trial of a UAV serving users using WiFi resource management. They evaluate the
-impact of motion, antenna directivity and resource allocation in the experiment.
-In \cite{U10}, the results of a UAV relaying a user using an existing long term evolution (LTE) network are
-presented. The increase}
-
-minimize exposure for transmission towers
-
-non minimizes exposure for drones
 
 \section{Electromagnetic Exposure}
 
@@ -103,18 +68,37 @@ however only for the user's own device.
 In a realistic network like the used deployment tool, some users are calling while others are using other types of telecommunication services like browsing the web.
 Therefore, all absorbed electromagnetic exposure should be expressed in whole body SAR while still covering all sources.
 
-\section{Optimizing towards Electromagnetic Exposure and Power Consumption}
-\gls{UABS}s are drones with femtocell base stations attached to it. Drones can remain in the air for only a limited time, which is certainly 
-the case when also an antenna needs to be connected to the battery of his carrier. It is therefore
-interesting to not only consider electromagnetic exposure of the user but also the power consumption that comes with it. 
-However an increasing transmission power of an antenna comes with an increasing electromagnetic exposure. This is not the case considering
-both values for an entire network. In fact, the authors from \cite{J1}  prove that both become inversely equivalent.
+\section{Optimized UAV-aided networks}
 
-If a network is optimized towards power consumption, less drones will be provisioned radiating at higher power levels. This is because not only 
-the transmission power is considered but also the power needed to keep the drone in the air. Therefore, it is cheaper to cover a user by 
-increasing the antenna's transmission power of an already activated drone nearby as it therefore prevents the power cost of a new drone.
-By increasing the transmission power, also the electromagnetic exposure will increase for users closer to that drone. An exposure optimized
-network will therefore faster decide to power up a new drone.
+An \gls{UAV} knows several applications. It was originally mainly used to support the military for surveillance or remote attacks without 
+endangering pilots \cite{U12}. However, \gls{UAV}s have recently become more accessible by the general public due to decreasing costs, 
+
+When attaching an antenna to the \gls{UAV}, it can be used as a gateway for cellular communication for \gls{UE} on the ground.
+Such a flying base station will be called a \gls{UABS}. 
+This has several advantages like mobility and rapid deployment which is ideal for emergency situations or temporary events. Thanks to this mobility,  
+\gls{UABS}s can easily be repositioned to satisfy certain requirements. A \gls{UAV}-aided network also brings some challenges with them like 
+the limited weight of the payload and sparse power supply.
+
+Kawamoto et al. introduced in \cite{U11} a WiFi network with the support of drones while considering resource allocation 
+and antenna directivity. 
+Gangula et al. illustrates in \cite{U10} how \gls{UAV}s can be  used as a relay for \gls{LTE}. 
+If a terrestrial base station is in \gls{NLOS} with a user, a
+\gls{UABS} can be used as a relay.
+Zeng et al. proposes in  \cite{U12} a tutorial in 5G-and-beyond wireless systems where challenges like 
+energy consumption, mobility and antenna direction are discussed. 
+
+These \gls{UAV}-aided networks can be optimized towards certain goals.
+Mozaffari et al. provides in \cite{U3} guidelines on how to optimize and analyse \gls{UAV}s equipped for 
+wireless communications. Issues like deployment, performance and power consumption are addressed.
+One path that has been excessively researched are location optimization solutions.
+For instance, \cite{U4} provides an algorithm that minimizes latency, \cite{U7,U9}  minimizes interference between \gls{UABS} and \cite{U8} minimizes the 
+distance between \gls{UABS} and \gls{UE}. Other papers investigate trajectory optimization like in \cite{U6,U7}.
+Further, \cite{U3,U5} discus several implementation approaches on how optimization algorithms should be tackled by discussing options like 
+heuristic algorithms, exact algorithms and machine learning. 
+
+Optimizing the network towards electromagnetic exposure is rather limited. For a terrestrial network, using traditional base stations,
+Deruyck et al. discuss in \cite{J1} how the network can be optimized towards either a minimal exposure or minimal power consumption of the entire network.
+However, to the best of the author knowledge, no research has been done where a \gls{UABS}-network has been optimized towards electromagnetic exposure.
 
 \section{Technologies}
 \subsection{Type of Drone}
@@ -156,6 +140,9 @@ This master dissertation will make usage of \gls{FDD}.
 
 \subsection{Type of Antennae} % (fold)
 https://ieeexplore.ieee.org/abstract/document/5657918
+U12 -> antnena sectie
+
+
 An important part of this master dissertation is the type of antenna that will be used by the femtocell base stations. The deployment tool makes use
 of drones that will position the femtocell base stations in the right position.  Using conventional 
 sector antennae, as used by traditional terrestrial transmission towers, would be too complicated for a simple drone. 

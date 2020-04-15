@@ -311,7 +311,7 @@ This formula requires the width found in the previous formula along with the die
 This will result in a $\epsilon_{reff}$ of 3.91.
 
 \begin{equation} 
-L_{eff} [m] = \frac{C [m/s]}{2*f_0 [Hz]}*\sqrt{\epsilon_{reff}}}
+L_{eff} [m] = \frac{C [m/s]}{2*f_0 [Hz]}*\sqrt{\epsilon_{reff}}
 \label{eq:leff}
 \end{equation}
 Now formula \ref{eq:leff} can be used to calculate effective length ($L_{eff}$) which results in 29.16 mm.
@@ -415,6 +415,23 @@ found in appendix \ref{ch:radpattern}.
 
 \section{Optimizing the Network}
 \label{sec:methodology:optimizingTheNetwork}
+
+\textcolor{red}{TODO: the red paragraph belongs in this section but 
+still need to check whether the text vloeit over in volgende (zwarte) paragraaf...}
+
+ \gls{UABS}s are drones with femtocell base stations attached to it. Drones can remain in the air for only a limited time, which is certainly 
+the case when also an antenna needs to be connected to the battery of his carrier. It is therefore
+interesting to not only consider electromagnetic exposure of the user but also the power consumption that comes with it. 
+However an increasing transmission power of an antenna comes with an increasing electromagnetic exposure. This is not the case considering
+both values for an entire network. In fact, the authors from \cite{J1}  prove that both become inversely equivalent.
+
+If a network is optimized towards power consumption, less drones will be provisioned radiating at higher power levels. This is because not only 
+the transmission power is considered but also the power needed to keep the drone in the air. Therefore, it is cheaper to cover a user by 
+increasing the antenna's transmission power of an already activated drone nearby as it therefore prevents the power cost of a new drone.
+By increasing the transmission power, also the electromagnetic exposure will increase for users closer to that drone. An exposure optimized
+network will therefore faster decide to power up a new drone.
+
+\textcolor{red}{merge prev paragraph with the following paragraph}
 The network, as originally defined in the deployment tool, tried to minimize power consumption by connecting the user to a base station which
 experienced the lowest path loss. A second optimization strategy is introduced, based on the fitness function described in \cite{J1}.
 
