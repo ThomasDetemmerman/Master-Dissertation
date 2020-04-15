@@ -1,6 +1,44 @@
 \chapter{Methodology}
 \label{chap:methodology}
 
+\section{Deployment Tool for an UAV Network}
+\label{sec:stateoftheart:deploymenttool}
+
+Calculating electromagnetic exposure requires knowledge about the area. The position of base stations needs to be known,
+ the transmission power used by the antenna and how far the user is separated from these base stations are only a few parameters
+ that have to be considered.
+
+The WAVES research group at UGent has developed a deployment tool for disaster scenarios with the aid of UAVs \cite{J2}.
+The idea of this UAV-aided emergency network is that in case of a disaster, the existing network might be damaged and will not be able 
+to handle all users who are trying to reconnect to the backbone network. 
+The tool makes a fast deployable network possible by attaching femtocells to UAVs, so-called \gls{UABS}s.
+The tool will orchestrate the \gls{UABS}s over the disaster area. This tool is thus a suitable starting point and works as follows:
+
+%The optimal placement for each \gls{UABS} needs to be defined to make sure that as many users as possible are properly reconnected to the backbone network while satisfying certain restrictions. 
+%To make these calculations as realistic as possible the architecture of the several buildings present in the area is described in a shapefile. 
+%A deployment tool calculates the optimal position of the \gls{UABS} by taking the 3D models of the building into account along with some femtocell specifications and user distribution. This deployment tool is developed by the WAVES research group, a department within Ghent University.
+
+The deployment tool will try to calculate the optimal placement for each \gls{UABS} and requires therefore a description of the area where the UAV-aided network needs to 
+be deployed. This is done with the use of so-called shape files. These files contain three dimensional descriptions of the buildings present in the area and are
+key values in approaching results as realistic as possible. Furthermore, the tool also requires a time period and a configuration file containing technical specifications of the type of \gls{UABS} that is being used. 
+The tool will thereafter randomly distribute users over the area and assigns a certain bitrate to them. \\
+\\
+In a second phase, the optimal position for each \gls{UABS} is calculated. This is done by trying to locate a \gls{UABS} above each active user. Two options are possible.
+If a fixed flying height is defined, a base station is placed above each user at the given height, unless a building is obstructing its location. Then, no base station will be located above that user.
+Alternatively to the fixed flying height, a flying margin can be defined which represents the distance between the outdoor user and  the drone.
+If the user is inside, this margin will be measured between the drone and the rooftop of that building.
+The latter is only allowed if the suggested height remains below the given maximum allowed height. \\
+\\
+Finally, all \gls{UABS}s are sorted on whether they were active or not, followed by the increasing path loss from each \gls{UABS} to that user.
+So the algorithm starts by checking for each active \gls{UABS} if it can cover the user. If this is the case, the user will be connected to this \gls{UABS}. If not,
+the second active base station with a (slightly) worse path loss is considered. If no active base station is suitable, inactive \gls{UABS}s are considered. 
+The user remains uncovered if no \gls{UABS}
+is found. The reason behind only considering already active base stations at first, is the high cost that comes along with each drone.
+\\
+Up till now, the tool has only calculated some suggestions. The actual provisioning is done in the fourth phase where drones are sorted by the amount of users they cover. As long as \gls{UABS}s
+are available in the facility where they reside, \gls{UABS}s are provisioned and its users are marked as covered.
+
+TODO: add chart/figure to support this.
 
 %\section{Tool}
 %The goals 
@@ -19,10 +57,8 @@
 The total whole body \gls{SAR} ($SAR^{wb}_{10g}$) of a user can be calculated by a simple sum of individual SAR values from the different sources.
 Formula \ref{eq:overallSARwb} was originally described in \cite{J17_kuehn2019modelling} for \gls{SAR} values induced into the head.
 Using $SAR^{head}_{10g}$ would however result into incorrect conclusions since 
-the position of the phone relative to the user is unknown. This is because the tool assigns a bitrate 
-to a user depending on the service he is using
-meaning that users in the network are not only calling but are able of using other services as well like browsing the web. 
-The position of the phone can thus be next to the head but also in front of the user.
+the position of the phone relative to the user is unknown. 
+The position of the phone can be next to the head but also in front of the user.
 The induced electromagnetic radiation will therefore be expressed in function of the entire body.
 
 
@@ -32,7 +68,7 @@ SAR^{wb,total}_{10g} = SAR^{wb,ul}_{10g} +  SAR^{wb,dl}_{10g} + SAR^{wb,neighbou
 \end{equation}
 
 The first parameter, $SAR^{wb,ul}_{10g}$, will indicate the absorbed electromagnetic radiation by the whole body originating from the user's own device. However that the 
-radiation is destined for the serving \gls{UABS}, a portion of that radiation is directly absorbed by its user.
+radiation is destined for the serving \gls{UABS}, a portion of that radiation is directly absorbed by its user, due to the omnidirectional behaviour od the mobile's antenna.
 The second parameter $SAR^{wb,dl}_{10g}$ will represent the absorbed electromagnetic radiation caused by all the femtocell base stations in the considered area.
 The last factor, $SAR^{wb,neighbours}_{10g}$, specifies the exposure of our user to \gls{UL} radiation from other mobile devices.
 An illustration is given in figure \ref{fig:networkIllustration} where red and yellow are types of far field radiation and green near field radiation. This is further 
@@ -65,10 +101,7 @@ E_i(u) = 10^{\frac{RRP(u) - 43.15 + 20*\log(f)- PL(u)}{20}}
 \label{eq:singleexposure}
 \end{equation}
 
-\paragraph{frequency}
-The used frequency in the formula above is denoted as $f$ and is expressed in MHz. Since LTE is used, this value will be 2600 MHz.
-
-\paragraph{Real Radiation Power and EIRP}
+\paragraph{real radiation power and EIRP}
 In formula \ref{eq:singleexposure}, as it was described in \cite{J6_originalExposureFormula, J1}, 
 \gls{RRP} was defined as \gls{EIRP}. \gls{EIRP} is the radiation generated by an \gls{isotropicradiator} which is
 a theoretical source of electromagnetic waves that radiate with the same intensity in all directions. 
@@ -86,11 +119,15 @@ RRP(u) = EIRP - attenuation(u)
 \end{equation}
 The attenuation for a user $u$ is given based on the angle between the main beam and the user. More details on how this can be implemented is described in \ref{subsec:implementationradpat}.
 When assuming that $attenuation(u)$ returns positive values, the attenuation can simply be subtracted from the EIRP-value.
+
+\paragraph{frequency}
+The used frequency in the formula above is denoted as $f$ and is expressed in MHz. Since LTE is used, this value will be 2600 MHz.
+
 \paragraph{path loss}
 \label{subsec:pl}
 At last, formula \ref{eq:eirp} requires the path loss (in dB). In order to calculate this, an appropriate propagation model -of which several exist- is required .
-The tool uses the Walfish-Ikegami model because it performs well for femtocell networks in urban areas \cite{J2}. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
-The chosen propagation model consists of two formulas depending on whether a free \gls{LOS} between the user and the base station exists or not. Both formulas expect a distance in kilometre. %bron?
+The Walfish-Ikegami model is used since it performs well for femtocell networks in urban areas \cite{J2}. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
+It consists of two formulas depending on whether a free \gls{LOS} between the user and the base station exists or not. Both formulas expect a distance in kilometre. %bron?
 
 \subsubsection{Combining Exposure}
 The electromagnetic exposure for a given location originating from different sources can be calculated with formula \ref{eq:totalexposure} (in V/m). $E_i$ stands for 
@@ -99,7 +136,7 @@ $n$ stands for all far-field radiators of a certain category which will either b
 $E_{tot}$ was originally calculated for each $x$ meters \cite{J1}. In the tool, the exact location of the users is known and $E_{tot}$ will thus 
 only be calculated for locations where a user is positioned.  
 \begin{equation}
-E_{tot} = \sqrt{\sum_{i=1}^{n} E_i^2}
+E_{tot} [V/m] = \sqrt{\sum_{i=1}^{n} E_i^2}
 \label{eq:totalexposure}
 \end{equation}
 
@@ -121,11 +158,11 @@ from formula \ref{eq:totalexposure} (expressed in  $V/m$) should first be conver
 \ref{eq:flux} before formula \ref{eq:DLconvertion} can be applied.
 
 \begin{equation}
-S  = \frac{(E_{tot})^2}{337}
+S [W/m^2]= \frac{(E_{tot} [V/m])^2}{337}
 \label{eq:flux}
 \end{equation}
 \begin{equation}
-SAR^{wb,ff}_{10g} = S * 0.0028
+SAR^{wb,ff}_{10g} [W/kg]= S [W/m^2]* 0.0028
 \label{eq:DLconvertion}
 \end{equation}
 
@@ -133,7 +170,7 @@ SAR^{wb,ff}_{10g} = S * 0.0028
 \label{sub:Uplinkexposure}
 When a user is operating his device, a part of the \gls{UL} radiation will enter his body despite the fact that the 
  traffic is destined for the serving \gls{UABS}. So the 
- electromagnetic exposure won't be limited by \gls{DL} traffic from \gls{UABS}s or \gls{UL} traffic 
+ electromagnetic exposure will not be limited by \gls{DL} traffic from \gls{UABS}s or \gls{UL} traffic 
 from other \gls{UE} but also from \gls{UL} traffic from his own device.
 
 \subsubsection{Localized Specific Absorption Rate}
@@ -145,7 +182,7 @@ The European Union uses the directions of the  \acs{IEC} who
 The \acs{FCC} limits the maximum in the United States for a 1g tissue $SAR^{head}_{1g}$ at 1.6 W/kg \cite{S15_SARFCC}.
 Most countries, including Belgium, enforce the 10g model and will, therefore, be the point of reference for this master dissertation.
 The $SAR^{head}_{10g}$ values are phone dependent. The values reported by mobile manufactures are worst-case scenarios meaning that the 
-values are measured when the phone is transmitting at maximum power. This is an understandable decision but won't result in a realistic scenario since 
+values are measured when the phone is transmitting at maximum power. This is an understandable decision but will not result in a realistic scenario since 
 modern cellular networks use power control mechanisms to prevent unnecessary high radiation of a nearby device. \gls{UE} will therefore never use more energy than 
 required to maintain a connection.
 To compensate for this overestimation, the actual $SAR^{head}_{10g}$ of each user will be predicted. These will, however, remain an estimation since the 
@@ -153,7 +190,7 @@ position of the phone relative to the head differs from user to user. For exampl
 electromagnetic radiation. The \gls{SAR} values will also depend on the age of the user, especially children who experience on average higher exposure in 
 the brain regions because of different anatomical proportions \cite{J26_SARtissueage, J10_RDP}.
 \begin{equation}
-{SAR}_{10g} = \frac{P_{tx}}{P^{max}_{tx}} * {SAR}^{max}_{10g}
+{SAR}_{10g}[W/kg] = \frac{P_{tx} [W]}{P^{max}_{tx} [W]} * {SAR}^{max}_{10g} [W/kg]
 \label{eq:calculatesar}
 \end{equation}
 Equation \ref{eq:calculatesar} will be used to predict the actual $SAR^{head}_{10g}$  of a certain user with 
@@ -161,7 +198,7 @@ $P^{max}_{Tx}$ being the maximum transmission power for a phone which is in \gls
 The actual transmitted power ($P_{tx}$) is calculated with equation \ref{eq:ptx} where $P_{sens}$
 stands for the receiver sensitivity and $PL$ the path loss between sender and receiver.
 \begin{equation}
-P_{tx} = P_{sens} + PL
+P_{tx} = P_{sens} [W] + PL [dB]
 \label{eq:ptx}
 \end{equation}
  
@@ -169,7 +206,7 @@ However the legal $SAR^{max}_{10g}$ for Belgium is set to $2 W/kg$,  the actual 
 An average is calculated based on 3516 different phones from various brands using a German database \cite{SARDatabase} for which an overview can be 
 found in fig. \ref{chart:germanDatabase}.
 When the phone is positioned at the ear, an average of 0.7 $W/kg$ is found with a standard deviation of 0.25 $W/kg$ which are very similar 
-results as in ref. \cite{j10.1.1}. The median of 0.67  $W/kg$ is used.
+results as in ref. \cite{j10.1.1}.
 
 %todo: schrijven dat het enigste verschil een std van 0.27 is?
 %todo: j10.1.1 schrijft door de std van 0.25 dat er een onzekerheid van 40% is.
@@ -219,11 +256,12 @@ The constant to convert \gls{UL} exposure to $SAR^{wb,ul}_{10g}$
 for WiFi is defined to be 0.0070 $\left(\frac{W/kg}{W}\right)$ \cite{J22_plets2015joint} which leads to eq. \ref{eq:ulToSar}.
 
 \begin{equation} 
-SAR^{wb,ul}_{10g} \left(\frac{W}{kg}\right) = 0.0070 \left(\frac{W/kg}{W}\right) * P_{tx} (W)
+SAR^{wb,ul}_{10g} \left[\frac{W}{kg}\right] = 0.0070 \left[\frac{W/kg}{W}\right] * P_{tx} [W]
 \label{eq:ulToSar}
 \end{equation}
 
-\subsection{Defining an Antenna}
+\section{Microstrip Patch Antenna}
+\subsection{Design of  a Microstrip Patch Antenna}
 \label{sub:definingAntenna}
 A microstrip patch antenna is chosen because it allows easy production but more important, it has a low weight 
 and has a thin profile causing it to be very aerodynamic which is useful when attaching it to a drone \cite{J13_microstripadvantages}.
@@ -234,7 +272,7 @@ the permittivity of the substrate and depends on the used material.
 Substrates with a high dielectric constant and low height 
 reduce the dimensions of the antenna
 while a lower dielectric constant with a high height improves antenna performance. 
-In this paper, a substrate like glass 
+In this document, a substrate like glass 
 is chosen because of the higher dielectric constant of $\epsilon_r = 4.4$ compared to materials like teflon with only a dielectric 
 constant of $\epsilon_r = 2.2$ \cite{J14_antennadesign}. 
 Doing this in combination with an antenna height of 2.87 mm will decrease the dimensions of the entire antenna surface.
@@ -254,49 +292,53 @@ This comes in handy since drones only have limited space available.
 \end{table}
 
 The dimensions of the radiating patch can be calculated with the formulas from \cite{J14_antennadesign} and \cite{J15_antennadesign}
-using the defined values from table \ref{table:antennaparas}. In that way, the width $W$ is calculated using formula \ref{eq:antennawidth}.
+using the defined values from table \ref{table:antennaparas}. In that way, the width of the patch $W_{p}$ is calculated using formula \ref{eq:antennawidth}.
 
 \begin{equation} 
-W = \frac{C}{2*f_0*\sqrt{\frac{\epsilon_r+1}{2}}}
+W_{p} [m] = \frac{C [m/s]}{2*f_0 [Hz]}*\sqrt{\frac{\epsilon_r+1}{2}}
 \label{eq:antennawidth}
 \end{equation}
 With $C$ being the speed of light, $f_0$ the center frequency of 2600 MHz and a dielectric constant $\epsilon_r$ of 4.4. This results 
-in a width of 3.51 mm.
+in a width of 35.1 mm.
 
 In order to find the length of the radiating patch, some other values need to be determined first. Formula \ref{eq:epsilonreff} will
 calculate the effective dielectric constant ($\epsilon_{reff}$).
 \begin{equation} 
-\epsilon_{reff} = \frac{\epsilon_r+1}{2}+  \frac{\epsilon_r-1}{2} * \left(1+12*\frac{h}{W}\right)^{-\frac{1}{2}}
+\epsilon_{reff} = \frac{\epsilon_r+1}{2}+  \frac{\epsilon_r-1}{2} * \left(1+12*\frac{h [m]}{W_{p} [m] }\right)^{-\frac{1}{2}}
 \label{eq:epsilonreff}
 \end{equation}
 This formula requires the width found in the previous formula along with the dielectric constant and substrate height from table \ref{table:antennaparas}.
 This will result in a $\epsilon_{reff}$ of 3.91.
 
 \begin{equation} 
-L_{eff} = \frac{c}{2*f*\sqrt{\epsilon_{reff}}}
+L_{eff} [m] = \frac{C [m/s]}{2*f_0 [Hz]}*\sqrt{\epsilon_{reff}}}
 \label{eq:leff}
 \end{equation}
 Now formula \ref{eq:leff} can be used to calculate effective length ($L_{eff}$) which results in 29.16 mm.
 
 \begin{equation} 
-\Delta L = 0.412*h*\frac{(\epsilon_{reff}+0.3)\left(\frac{W}{h}+0.264\right)}{\left(\epsilon_{reff}-0.258\right)\left(\frac{W}{h}+0.8\right)}
+\Delta L [m]= 0.412*h*\frac{(\epsilon_{reff}+0.3)\left(\frac{W_{p} [m]}{h [m]}+0.264\right)}{\left(\epsilon_{reff}-0.258\right)\left(\frac{W_{p} [m]}{h [m]}+0.8\right)}
 \label{eq:lenghtextension}
 \end{equation}
 Eventually, the length extension is found with formula \ref{eq:lenghtextension} by substituting the values from above.
 Doing so determines that the $\Delta L$ equals 1.3071 mm.
 
-Finally, the length of the patch can be calculated using the expression: $L = L_{eff} - 2 * \Delta L$
-which results in 26.55 mm.
+Finally, the length of the patch can be calculated using the expression \ref{eq:realLenght}
+\begin{equation} 
+L_p [m]= L_{eff} [m] - 2 * \Delta L [m]
+\label{eq:realLenght}
+\end{equation}
+The length $P_l$ results in 26.55 mm.
 
 The dimensions of the radiation patch are now known. The only remaining questions are the dimensions of the ground plane and dielectric substrate to which the 
 radiation patch is attached. The transmission line model is in fact only applicable for an infinite ground plane but it has been proven that similar results
 can be achieved if the ground plane's dimensions are bigger than the patch by approximately 6 times the height of the dielectric substrate \cite{J14_antennadesign,J15_antennadesign}.
 
 \begin{equation} 
-L_{g} = 6 * h + L
+L_{g} [m] = 6 * h [m] + L_p [m]
 \end{equation}
 \begin{equation} 
-W_{g} = 6 * h + W
+W_{g} [m] = 6 * h [m] + W_p [m]
 \end{equation}
 Therefore, the length of the ground plane $L_{g}$ should be at least 0.0438 m and a width $W_{g}$ at least 0.0524 m.
 A schematic overview of how the antenna will look like is given in figure \ref{fig:antennadesign}.
@@ -415,7 +457,7 @@ certain position is only infeasible if it is obstructed by a building.
 
 Solving the network starts by calculating the path loss between all users and between users and \gls{UABS}s.
 Thereafter, the tool iterates over each user and tries to connect that user to each \gls{UABS}. This connection is not always possible. A \gls{UABS} might be saturated with users and 
-won't be able to cover yet another user or maybe the user is so far away that in order to cover that user, the \gls{UABS} would exceed its maximum allowed input power.
+will not be able to cover yet another user or maybe the user is so far away that in order to cover that user, the \gls{UABS} would exceed its maximum allowed input power.
 If however a connection is possible, the user will be connected to that \gls{UABS} and the fitness function from section \ref{sec:methodology:optimizingTheNetwork} is used. 
 Only the connection which results in the best fitness value for the entire network will be used. Thereafter, the tool shifts to the next user. 
 

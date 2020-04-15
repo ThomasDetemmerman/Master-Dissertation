@@ -52,7 +52,7 @@ will for the first scenario be constructed out of a singe \gls{UABS}.
 transmit power $P_{tx}$ therefore ranges between zero and the maximum allowed input power. $P_{tx}$ is zero when the \gls{UABS} doesn't cover anybody.
 For instance when the flying height is too high and therefore also the path loss that comes with it, the maximum allowed $P_{tx}$ is not enough to cover 
 the distance. In such case, the \gls{UABS} is shut down since it cannot meet the requirements.
-Increasing the maximum transmission power won't influence the actual used $P_{tx}$ or $SAR_{10g}$ because the \gls{UABS} won't use more
+Increasing the maximum transmission power will not influence the actual used $P_{tx}$ or $SAR_{10g}$ because the \gls{UABS} will not use more
 then strictly required. It is therefore more useful to match the actual transmission power against a variable flying height. 
 
 Figure \ref{fig:ptxfh} shows the logarithmic relationship between $P_{tx}$ and flying height.
@@ -82,7 +82,7 @@ This scenario is investigated with a microstrip patch antenna using power consum
  However, the chosen optimization strategy doesn't really matter as already explained in  \ref{sec:scenarios_s1}. This is because the decision 
  algorithm decides which user 
 needs to be connected to which user. Since only one \gls{UABS} is available, both optimization strategies will behave identical.
-Further, also the used antenna won't make any difference
+Further, also the used antenna will not make any difference
 despite the fact that a microstrip patch antenna has attenuation while an \gls{isotropicradiator} doesn't.
 The user is namely positioned in the perfect center of the main beam where there is 
 no attenuation experienced in either cases. So the results are applicable for the four possible cases from figure \ref{fig:fourCasesMatrix}.
