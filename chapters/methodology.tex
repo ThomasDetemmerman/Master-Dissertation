@@ -1,55 +1,6 @@
 \chapter{Methodology}
 \label{chap:methodology}
 
-\section{Deployment Tool for an UAV Network}
-\label{sec:stateoftheart:deploymenttool}
-
-Calculating electromagnetic exposure requires knowledge about the area. The position of base stations needs to be known,
- the transmission power used by the antenna and how far the user is separated from these base stations are only a few parameters
- that have to be considered.
-
-The WAVES research group at UGent has developed a deployment tool for disaster scenarios with the aid of UAVs \cite{J2}.
-The idea of this UAV-aided emergency network is that in case of a disaster, the existing network might be damaged and will not be able 
-to handle all users who are trying to reconnect to the backbone network. 
-The tool makes a fast deployable network possible by attaching femtocells to UAVs, so-called \gls{UABS}s.
-The tool will orchestrate the \gls{UABS}s over the disaster area. This tool is thus a suitable starting point and works as follows:
-
-%The optimal placement for each \gls{UABS} needs to be defined to make sure that as many users as possible are properly reconnected to the backbone network while satisfying certain restrictions. 
-%To make these calculations as realistic as possible the architecture of the several buildings present in the area is described in a shapefile. 
-%A deployment tool calculates the optimal position of the \gls{UABS} by taking the 3D models of the building into account along with some femtocell specifications and user distribution. This deployment tool is developed by the WAVES research group, a department within Ghent University.
-
-The deployment tool will try to calculate the optimal placement for each \gls{UABS} and requires therefore a description of the area where the UAV-aided network needs to 
-be deployed. This is done with the use of so-called shape files. These files contain three dimensional descriptions of the buildings present in the area and are
-key values in approaching results as realistic as possible. Furthermore, the tool also requires a time period and a configuration file containing technical specifications of the type of \gls{UABS} that is being used. 
-The tool will thereafter randomly distribute users over the area and assigns a certain bitrate to them. \\
-\\
-In a second phase, the optimal position for each \gls{UABS} is calculated. This is done by trying to locate a \gls{UABS} above each active user. Two options are possible.
-If a fixed flying height is defined, a base station is placed above each user at the given height, unless a building is obstructing its location. Then, no base station will be located above that user.
-Alternatively to the fixed flying height, a flying margin can be defined which represents the distance between the outdoor user and  the drone.
-If the user is inside, this margin will be measured between the drone and the rooftop of that building.
-The latter is only allowed if the suggested height remains below the given maximum allowed height. \\
-\\
-Finally, all \gls{UABS}s are sorted on whether they were active or not, followed by the increasing path loss from each \gls{UABS} to that user.
-So the algorithm starts by checking for each active \gls{UABS} if it can cover the user. If this is the case, the user will be connected to this \gls{UABS}. If not,
-the second active base station with a (slightly) worse path loss is considered. If no active base station is suitable, inactive \gls{UABS}s are considered. 
-The user remains uncovered if no \gls{UABS}
-is found. The reason behind only considering already active base stations at first, is the high cost that comes along with each drone.
-\\
-Up till now, the tool has only calculated some suggestions. The actual provisioning is done in the fourth phase where drones are sorted by the amount of users they cover. As long as \gls{UABS}s
-are available in the facility where they reside, \gls{UABS}s are provisioned and its users are marked as covered.
-
-TODO: add chart/figure to support this.
-
-%\section{Tool}
-%The goals 
-%\begin{figure}[h!]
-%\centering
- % \includegraphics[width=\textwidth]{../images/generalIdeaIllustration.png}
- % \caption{Design of the microstrip patch antenna.}
- % \label{fig:antennadesign}
-%\end{figure}
-
-
 \section{Electromagnetic Exposure}
 \subsection{Calculation of the Total Specific Absorption Rate} % (fold)
 \label{sub:Calculationexposure}
@@ -63,16 +14,16 @@ The induced electromagnetic radiation will therefore be expressed in function of
 
 
 \begin{equation} 
-SAR^{wb,total}_{10g} = SAR^{wb,my_UE}_{10g} +  SAR^{wb,my_UABS}_{10g} + SAR^{wb,other_UE}_{10g} + SAR^{wb,other_UABS}_{10g}
+SAR^{wb,total}_{10g} = SAR^{wb,my\_UE}_{10g} +  SAR^{wb,my\_UABS}_{10g} + SAR^{wb,other\_UE}_{10g} + SAR^{wb,other\_UABS}_{10g}
 \label{eq:overallSARwb}
 \end{equation}
 
-The first parameter, $SAR^{wb,my_UE}_{10g}$, indicates the absorbed electromagnetic radiation by the whole body originating from the user's own device. However that the 
+The first parameter, $SAR^{wb,my\_UE}_{10g}$, indicates the absorbed electromagnetic radiation by the whole body originating from the user's own device. However that the 
 \gls{UL} radiation is destined for the serving \gls{UABS}, a portion of that radiation is directly absorbed by its user, due to the omnidirectional nature of the mobile's antenna.
-The second parameter, $SAR^{wb,my_UABS}_{10g}$, represents the \gls{DL} radiation caused by the \gls{UABS} who is serving the user.
-As the third parameter, we have the $SAR^{wb,other_UE}_{10g}$ which is radiation caused by other people their device. The radiation of these devices is once again 
+The second parameter, $SAR^{wb,my\_UABS}_{10g}$, represents the \gls{DL} radiation caused by the \gls{UABS} who is serving the user.
+As the third parameter, we have the $SAR^{wb,other\_UE}_{10g}$ which is radiation caused by other people their device. The radiation of these devices is once again 
 destinated for a specific \gls{UABS} but again, a portion of that \gls{UL} radiation will also be absorbed by our user.
-Finally, $SAR^{wb,other_UABS}_{10g}$ represents the \gls{DL} radiation by the other UABSs our user is exposed to but not served by.
+Finally, $SAR^{wb,other\_UABS}_{10g}$ represents the \gls{DL} radiation by the other \gls{UABS}s our user is exposed to but not served by.
 An illustration is given in figure \ref{fig:networkIllustration} where the green arrow is a type near field radiation while 
 the others represent far field radiation. This is further 
 explained is subsequent chapters along with how each value in this formula can be calculated. We can only speak in terms of \gls{SAR}
@@ -302,7 +253,7 @@ W_{p} [m] = \frac{C [m/s]}{2*f_0 [Hz]}*\sqrt{\frac{\epsilon_r+1}{2}}
 \label{eq:antennawidth}
 \end{equation}
 With $C$ being the speed of light, $f_0$ the center frequency of 2600 MHz and a dielectric constant $\epsilon_r$ of 4.4. This results 
-in a width of 35.1 mm.
+in a width of 35.09 mm.
 
 In order to find the length of the radiating patch, some other values need to be determined first. Formula \ref{eq:epsilonreff} will
 calculate the effective dielectric constant ($\epsilon_{reff}$).
@@ -419,10 +370,7 @@ found in appendix \ref{ch:radpattern}.
 \section{Optimizing the Network}
 \label{sec:methodology:optimizingTheNetwork}
 
-\textcolor{red}{TODO: the red paragraph belongs in this section but 
-still need to check whether the text vloeit over in volgende (zwarte) paragraaf...}
-
- \gls{UABS}s are drones with femtocell base stations attached to it. Drones can remain in the air for only a limited time, which is certainly 
+\gls{UABS}s are drones with femtocell base stations attached to it. Drones can remain in the air for only a limited time, which is certainly 
 the case when also an antenna needs to be connected to the battery of his carrier. It is therefore
 interesting to not only consider electromagnetic exposure of the user but also the power consumption that comes with it. 
 However an increasing transmission power of an antenna comes with an increasing electromagnetic exposure. This is not the case considering
@@ -434,9 +382,7 @@ increasing the antenna's transmission power of an already activated drone nearby
 By increasing the transmission power, also the electromagnetic exposure will increase for users closer to that drone. An exposure optimized
 network will therefore faster decide to power up a new drone.
 
-\textcolor{red}{merge prev paragraph with the following paragraph}
-The network, as originally defined in the deployment tool, tried to minimize power consumption by connecting the user to a base station which
-experienced the lowest path loss. A second optimization strategy is introduced, based on the fitness function described in \cite{J1}.
+A new optimization strategy is introduced, based on the fitness function described in \cite{J1}.
 
 \begin{equation} 
 f = w * \left(1 - \frac{E_m}{E_{max}}\right) + (1 - w)*\left(1 - \frac{P}{P_{max}}\right) * 100
@@ -468,24 +414,81 @@ E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 
 \subsection{Network Planning, Bringing It All Together}
 
-The existing algorithm as described in section \ref{sec:stateoftheart:deploymenttool} is extended to support different optimization strategies by 
-using the formulas from section \ref{sec:methodology:optimizingTheNetwork}.
-As explained in State of the Art, the program starts with the preparation of the network by distributing the users over the network and assigns 
-the bitrate required for each user's cell phone activity.
-Thereafter, the tool tries to solve  this network by assigning a \gls{UABS} above each user. This master dissertation will only cover fixed flying heights meaning that a 
-certain position is only infeasible if it is obstructed by a building.
+\subsubsection{Deployment Tool for an UAV Network}
 
-Solving the network starts by calculating the path loss between all users and between users and \gls{UABS}s.
+Calculating electromagnetic exposure requires knowledge about the area. The position of base stations needs to be known,
+ the transmission power used by the antenna and how far the user is separated from these base stations are only a few parameters
+ that have to be considered.
+
+The WAVES research group at UGent has developed a deployment tool for disaster scenarios with the aid of UAVs \cite{J2}.
+The idea of this UAV-aided emergency network is that in case of a disaster, the existing network might be damaged and will not be able 
+to handle all users who are trying to reconnect to the backbone network. 
+The tool makes a fast deployable network possible by attaching femtocells to UAVs, so-called \gls{UABS}s.
+The tool will orchestrate the \gls{UABS}s over the disaster area. This tool is thus a suitable starting point and works as follows:
+
+%The optimal placement for each \gls{UABS} needs to be defined to make sure that as many users as possible are properly reconnected to the backbone network while satisfying certain restrictions. 
+%To make these calculations as realistic as possible the architecture of the several buildings present in the area is described in a shapefile. 
+%A deployment tool calculates the optimal position of the \gls{UABS} by taking the 3D models of the building into account along with some femtocell specifications and user distribution. This deployment tool is developed by the WAVES research group, a department within Ghent University.
+
+The deployment tool will try to calculate the optimal placement for each \gls{UABS} and requires therefore a description of the area where the UAV-aided network needs to 
+be deployed. This is done with the use of so-called shape files. These files contain three dimensional descriptions of the buildings present in the area and are
+key values in approaching results as realistic as possible. Furthermore, the tool also requires a configuration file containing technical specifications of the type of \gls{UABS} that is being used. 
+The tool will thereafter randomly distribute users over the area and assigns a certain bitrate to them.
+
+In a second phase, the optimal position for each \gls{UABS} is calculated. This is done by trying to locate a \gls{UABS} above each active user. Two options are possible.
+If a fixed flying height is defined, a \gls{UABS} is placed above each user at the given height, unless a building is obstructing its location. Then, no base station will be located above that user.
+Alternatively to the fixed flying height, a flying margin can be defined which represents the distance between the outdoor user and  the drone.
+If the user is inside, this margin will be measured between the drone and the rooftop of that building.
+The latter is only allowed if the suggested height remains below the given maximum allowed height.
+
+Thereafter, the decision algorithm calculates which users should be connected to which \gls{UABS}s. 
+These decisions are based on the specified optimization strategy. For this master dissertation,
+this will either be power consumption optimized or exposure optimized.
+
+%Finally, all \gls{UABS}s are sorted on whether they were active or not, followed by the increasing path loss from each \gls{UABS} to that user.
+%So the algorithm starts by checking for each active \gls{UABS} if it can cover the user. If this is the case, the user will be connected to this \gls{UABS}. If not,
+%the second active base station with a (slightly) worse path loss is considered. If no active base station is suitable, inactive \gls{UABS}s are considered. 
+%The user remains uncovered if no \gls{UABS}
+%is found. The reason behind only considering already active base stations at first, is the high cost that comes along with each drone.
+%Up till now, the tool has only calculated some po. The actual provisioning is done in the fourth phase where drones are sorted by the amount of users they cover. As long as \gls{UABS}s
+%are available in the facility where they reside, \gls{UABS}s are provisioned and its users are marked as covered.
+
+In the final state, unused \gls{UABS}s are removed and the capacity of the facility is checked. 
+If the number of active drones would exceed this capacity, \gls{UABS}s will be sorted based on the number of 
+users they cover. Thereafter, drones with to few users are removed so that all the active drones could be stored in the facility.
+The flowchart of the main algorithm is given in figure \ref{fig:mainflow}.
+\begin{figure}[h!]
+\centering
+ \includegraphics[width=\textwidth]{../images/mainflow.png}
+  \caption{Flowchart of the main algorithm.}
+  \label{fig:mainflow}
+\end{figure}
+
+\subsubsection{Decision algorithm}
+
+\noindent
+\begin{minipage}{0.6\textwidth}% adapt widths of minipages to your needs
+  \includegraphics[width=\textwidth]{../images/decisionAlgoFlowChart.png}
+  \captionof{figure}{Flowchart of the decision algorithm.}
+  \label{fig:decisionAlgoFlowChart}
+\end{minipage}%
+\begin{minipage}{0.4\textwidth}\vspace{-120pt}%
+Solving the network is done by the decision algorithm and starts by calculating the path loss between all users and between users and \gls{UABS}s.
 Thereafter, the tool iterates over each user and tries to connect that user to each \gls{UABS}. This connection is not always possible. A \gls{UABS} might be saturated with users and 
-will not be able to cover yet another user or maybe the user is so far away that in order to cover that user, the \gls{UABS} would exceed its maximum allowed input power.
-If however a connection is possible, the user will be connected to that \gls{UABS} and the fitness function from section \ref{sec:methodology:optimizingTheNetwork} is used. 
-Only the connection which results in the best fitness value for the entire network will be used. Thereafter, the tool shifts to the next user. 
+will not be able to cover yet another one or maybe the user is so far away that in order to cover that user, the \gls{UABS} would have to exceed its maximum allowed input power.
+If however a connection is possible, the user will be connected to that \gls{UABS} and the fitness function from section \ref{sec:methodology:optimizingTheNetwork} is applied. 
+This is repeated for each \gls{UABS}. Only the connection which results in the best fitness value for the entire network will be used. Thereafter, the tool shifts to the next user. 
+When the last user is finished, the network is fully designed for an unlimited number of drones and the result is returned to the main algorithm for further processing.
+The flowchart of this algorithm is given in figure \ref{fig:decisionAlgoFlowChart}.
+\end{minipage}
 
-Up till now, the tool assumed an unlimited number of drones but this is an unrealistic scenario. Certainly when high number of users are present in the network.
-The number of available drones can be limited by defining the capacity of the facility where the drones are stored. If such a capacity is defined and the number
-of active drones exceed this limitation, the tool will delete the necessary drones starting by those who cover the least number of users. These users will now become 
-uncovered.
 
+
+
+
+
+
+\FloatBarrier
 \subsection{Implementation of the Radiation Pattern}
 \label{subsec:implementationradpat}
 The deployment tool originally only supported \gls{isotropicradiator}s. The tool has thus been extended and is fully configurable allowing any possible antenna 
@@ -558,18 +561,21 @@ a space complexity of $n(n-1)$.
 
 \subsubsection{Limiting Antenna Searching}
 The user needs to be connected to the `best' base station. To identify this best \gls{UABS}, the user should be connected 
-to each base station and the fitness value \ref{eq:fitnessfunction} of the network has to be evaluated. The connection that resulted in the best fitness function
-will be added to the solution. This process is repeated for each user but can further be improved. A user will likely be connected to either the
-\gls{UABS} directly above him or to a \gls{UABS} in the direct neighbourhood. Time complexity can thus be improved by not considering drones 
-outside a certain radius.
-An ideal data structure for neighbourhood-search is a KD-tree. This data structure is based on a binary tree and is optimal for objects with 
-multiple keys. Objects are thus positioned in K dimensions where each node splits the hyperplane over exact one dimension. The dimension that needs 
-to be split depends on the level of the KD-tree in which that node is situated.
+to each base station and the fitness value \ref{eq:fitnessfunction} of the network has to be evaluated. 
+The connection that resulted in the best fitness function
+will be added to the solution. This process is repeated for each user but can further be improved. 
+A user will likely be connected to either the
+\gls{UABS} directly above him or to a \gls{UABS} in the direct neighbourhood. 
+Time complexity can thus be improved by not considering drones outside a certain radius.
+An ideal data structure for neighbourhood-search with geographical coordinates is a KD-tree \cite{J27,J28}. 
+This data structure  is described by Bentley in \cite{J29}  and is based on a binary tree, optimal for objects consisting out of 
+multiple keys.
+Each node in this tree is associated with a certain dimension and will split the hyperplane over exact one dimension.
 In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in figure \ref{fig:exampleKDtree}.
 
-\begin{figure}[]
+\begin{figure}[b]
   \centering
-  \includegraphics[width=\textwidth]{../images/Example-of-a-2D-k-d-tree.png}
+  \includegraphics[width=\textwidth/10*9]{../images/Example-of-a-2D-k-d-tree.png}
   \caption{Example of a KD-tree in two dimensions.}
   \label{fig:exampleKDtree}
 \end{figure}
