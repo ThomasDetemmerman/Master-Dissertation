@@ -63,22 +63,25 @@ The induced electromagnetic radiation will therefore be expressed in function of
 
 
 \begin{equation} 
-SAR^{wb,total}_{10g} = SAR^{wb,ul}_{10g} +  SAR^{wb,dl}_{10g} + SAR^{wb,neighbours}_{10g}
+SAR^{wb,total}_{10g} = SAR^{wb,my_UE}_{10g} +  SAR^{wb,my_UABS}_{10g} + SAR^{wb,other_UE}_{10g} + SAR^{wb,other_UABS}_{10g}
 \label{eq:overallSARwb}
 \end{equation}
 
-The first parameter, $SAR^{wb,ul}_{10g}$, will indicate the absorbed electromagnetic radiation by the whole body originating from the user's own device. However that the 
-radiation is destined for the serving \gls{UABS}, a portion of that radiation is directly absorbed by its user, due to the omnidirectional behaviour od the mobile's antenna.
-The second parameter $SAR^{wb,dl}_{10g}$ will represent the absorbed electromagnetic radiation caused by all the femtocell base stations in the considered area.
-The last factor, $SAR^{wb,neighbours}_{10g}$, specifies the exposure of our user to \gls{UL} radiation from other mobile devices.
-An illustration is given in figure \ref{fig:networkIllustration} where red and yellow are types of far field radiation and green near field radiation. This is further 
-explained is subsequent chapters along with how each value in this formula can be calculated.
+The first parameter, $SAR^{wb,my_UE}_{10g}$, indicates the absorbed electromagnetic radiation by the whole body originating from the user's own device. However that the 
+\gls{UL} radiation is destined for the serving \gls{UABS}, a portion of that radiation is directly absorbed by its user, due to the omnidirectional nature of the mobile's antenna.
+The second parameter, $SAR^{wb,my_UABS}_{10g}$, represents the \gls{DL} radiation caused by the \gls{UABS} who is serving the user.
+As the third parameter, we have the $SAR^{wb,other_UE}_{10g}$ which is radiation caused by other people their device. The radiation of these devices is once again 
+destinated for a specific \gls{UABS} but again, a portion of that \gls{UL} radiation will also be absorbed by our user.
+Finally, $SAR^{wb,other_UABS}_{10g}$ represents the \gls{DL} radiation by the other UABSs our user is exposed to but not served by.
+An illustration is given in figure \ref{fig:networkIllustration} where the green arrow is a type near field radiation while 
+the others represent far field radiation. This is further 
+explained is subsequent chapters along with how each value in this formula can be calculated. We can only speak in terms of \gls{SAR}
+  when the electromagnetic radiation is absorbed by the user. This last step is however not shown in the illustration.
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=\textwidth/3*2]{../images/networkExampleWith3Sources.png}
-  \caption{Illustration of the network that shows how the average user (here shown in the center) is influenced by different type of sources. We can only speak in terms of \gls{SAR}
-  when the electromagnetic radiation is absorbed by the user. This last step is however not shown in the illustration.}
+  \includegraphics[width=\textwidth/3*2]{../images/networkIllustrationSARSources.png}
+  \caption{Illustration of the network that shows how the average user (here shown in the center) is influenced by different type of sources. }
   \label{fig:networkIllustration}
 \end{figure}
 
