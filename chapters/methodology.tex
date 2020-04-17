@@ -136,8 +136,7 @@ It consists of two formulas depending on whether a free \gls{LOS} between the us
 The electromagnetic exposure for a given location originating from different sources can be calculated with formula \ref{eq:totalexposure} (in V/m). $E_i$ stands for 
 the electromagnetic exposure from source $i$ and
 $n$ stands for all far-field radiators of a certain category which will either be \gls{UABS}s or \gls{UE} from other people.
-$E_{tot}$ was originally calculated for each $x$ meters \cite{J1}. In the tool, the exact location of the users is known and $E_{tot}$ will thus 
-only be calculated for locations where a user is positioned.  
+$E_{tot}$ will be calculated for each location where a user is positioned.  
 \begin{equation}
 E_{tot} [V/m] = \sqrt{\sum_{i=1}^{n} E_i^2}
 \label{eq:totalexposure}
@@ -251,8 +250,9 @@ results as in ref. \cite{j10.1.1}.
 
 
 \subsubsection{Whole body Specific Absorption Rate}
-The position of the phone relative to the user's body is however unknown. The tool assigns different bitrates to different phones implying 
-that some users are calling and therefore probably holding their phone next to their ear while another part is using other services like browsing the web.
+The position of the phone relative to the user's body is however unknown. 
+Some users will be calling and therefore probably holding their phone next to their ear while another part is using other services like browsing the web. 
+This would result in different types of localized values. To be able to give an average SAR based on all active users, the whole body SAR will be used.
 For this reason formula \ref{eq:overallSARwb} expects that the specific absorption rate is expressed for the entire body instead of localized $SAR^{head}_{10g}$.
 The conversion factors for Duke from the Virtual Family will be used again as it was already the case in \ref{sub:convertDLtosarwb}. 
 The constant to convert \gls{UL} exposure to $SAR^{wb,ul}_{10g}$
