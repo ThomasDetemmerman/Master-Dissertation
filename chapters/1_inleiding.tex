@@ -6,44 +6,72 @@
 
 % inspiratie kan je hier ook nog vinden:
 % PREDICTION AND COMPARISON OF DOWNLINK ELECTRICFIELDAND UPLINK LOCALISED SARVALUES FOR REALISTIC INDOOR WIRELESS PLANNING
-Society is constantly getting more and more dependent on wireless communication. On any given moment, in any given location, an electronic device
-can request to connect to the bigger network. Devices need more than ever to be connected, starting from small \gls{IOT} sensors up to self-driving cars
+Society is constantly getting more and more dependent on wireless communication. 
+On any given moment, in any given location, an electronic device
+can request to connect to the bigger network. Devices need more than ever to be connected, 
+starting from small \gls{IOT} up to self-driving cars
 which all need to be supported by the existing infrastructure. 
-It is not surprising that the city center of Ghent has an average coverage of 97\% of 4G over all telecom operators.
+It is not surprising that the city center of Ghent has an average coverage of 97\% of 4G over all telecom operators
 \cite{testaankoop}. Once again it becomes clear why we're on the eve of a new generation of cellular communication named 5G. 
-%This new technology is capable of handling millions of connections every square meter %to do: klopt deze hoeveelheid want lijkt wel heel veel.
-%while satisfying only a few microseconds of a delay and providing connections up to 10Gbps \cite{5GFeatures}.
 
-Also in exceptional and possibly life-threatening situations, the public relies on the cellular network. For example during the terrorist attacks at Brussels Airport,
-mobile network operators saw all telecommunications drastically increasing causing moments of contention. Some operators decided to temporarily exceed the exposure limits in
+Also in exceptional and possibly life-threatening situations, the public relies on the cellular network. 
+Pukkelpop, a yearly festival at Belgium, got in 2011 struck by a severe storm. However the  storm 
+was quite short, the damage was done, including the mobile network which remained defective for the rest of the evening \cite{pukkelpop}.
+One solution for a fast temporarily deployable network is with the usage of a \gls{UAV}. Base station can be attached to 
+these flying \gls{UAV}s to support the damaged network over a limited area. 
+This approach does not only come in handy for 
+damaged networks but also in case of an unexpected increase of traffic. 
+For example during the terrorist attacks at Brussels Airport,
+mobile network operators saw all telecommunications drastically increasing causing moments of contention. 
+Some operators even decided to temporarily exceed the exposure limits in
 order to handle all connections \cite{baseZaventem}.
-
 Electromagnetic exposure can however not be neglected. Research shows how excessive electromagnetic radiation can cause diverse biological side effects \cite{bioeffects}.
 Because of public concern, the \gls{WHO} had launched a large, multidisciplinary research effort which eventually concluded that there was no sufficient evidence that confirmed 
-that exposure to low level electromagnetic fields is harmful \cite{WHO}. A large part of the population remains nevertheless very concerned about potential health risks.
+that exposure to low level electromagnetic fields is harmful \cite{WHO}. 
+A large part of the population remains nevertheless very concerned about potential health risks.
+It becomes clear that electromagnetic exposure is a key value  when designing a \gls{UAV}-aided network and should definitely 
+not surpass the predefined limits.
+
 
 \section{Objective}
 \label{sec:objective}
-People are constantly getting exposed to several sources of electromagnetic radiation and it is important to consider this when designing a network. For this research, three prominent sources of radiation in a telecommunication
-network are investigated, being: the user's own phone, all base stations and all devices from other users in the network. In order to calculate electromagnetic 
-exposure from all these sources, various parameters need to be known. Not only the used technology but also the position of the users and base stations 
-are required. There are several publications discussing how the electromagnetic exposure originating from base stations can be calculated. 
-Papers who cover electromagnetic exposure from all these different sources and convert it into a single value are rather limited.
+
+\gls{UAV}-aided networks can, thanks to their mobility, easily be repositioned towards a certain goal. Several papers 
+in literature exist, explaining how a network can be optimized towards different goals like power consumption.
+However, very limited
+research has been done where a \gls{UAV}-aided network is optimized towards  electromagnetic exposure.
+While several publications exist, discussing how the electromagnetic exposure can be calculated. 
+Most of them only consider a limited number of sources like only base stations or only mobile phones.
+Papers who cover electromagnetic exposure from all the different sources and convert it into a single value are rather limited.
+
+This master dissertation proposes a method to optimize the network towards electromagnetic exposure and power consumption
+when considering all four sources of radiation in a telecommunications network, being: the user's own phone,
+ the base station that is serving the user, 
+all devices from other users in the network and all 
+other active base stations that are not serving this user. In this way, the contribution of each source towards the total 
+electromagnetic exposure can easily be identified. 
+
+The electromagnetic exposure and power consumption behaves  behaviour of the network will be analysed by applying the tool in different scenarios 
+to give insight which variables influence the exposure and how
+the network can be optimized accordingly. Further, also the difference between omnidirectional and directional antennae will 
+be considered. This leads to the following research questions:
+
+\textbf{Research question 1:} How can a \gls{UABS} network be optimized to minimize global exposure and overall power consumption? 
+What are the effects on the network?\\
+
+\textbf{Research question 2:} How does the network behave differently after the introduction of a realistic antenna?\\
+
+\textbf{Research question 3:} How does the \gls{UABS} flying height and population density influence electromagnetic 
+exposure and power consumption?\\
+
+\textbf{Research question 4:} What is the contribution of each source towards the totals electromagnetic exposure?\\
 
 To make this research possible, an existing planning tool is used which gives insight in user and base station distributions.
 The tool also provides information about path loss between radiators, power usage of the different electrical devices and which base station serves which user. In other words, the tool describes 
 a fully configured network.
 In this way, all needed parameters will be known.
 
-The electromagnetic behaviour of the network will be analysed by applying the tool in different scenarios to give insight which variables influence the exposure and how
-the network can be optimized accordingly. 
-This leads to the following research questions:
 
-\textbf{Research question 1:} How can a \gls{UABS} network be optimized to minimize global exposure and overall power consumption? What are the effects on the network?\\
-
-\textbf{Research question 2:} What are the advantages and disadvantages of a model as described in research question 1 compared to the already existing path loss oriented model.\\
-
-\textbf{Research question 3:} How does the \gls{UABS} fly height influence uplink and downlink exposure?
 
 \section{Structure}
 \label{sec:structure}

@@ -1,6 +1,16 @@
 \chapter{Methodology}
 \label{chap:methodology}
 
+The content of this chapter gives an answer to which steps that has to be taken to 
+be able to answer the research questions.
+The first section explains how electromagnetic radiation is calculated for each source
+and how to convert these values to specific absorption rates. 
+The second section gives an detail overview of how a microstrip patch antenna can be 
+designed and how its radiation pattern is achieved.
+The third section discusses how the network can be optimized towards either electromagnetic 
+exposure or power consumption.
+The final section explains how these algorithm can be implemented and how to further improve performance.
+
 \section{Electromagnetic Exposure}
 \subsection{Calculation of the Total Specific Absorption Rate} % (fold)
 \label{sub:Calculationexposure}
@@ -370,19 +380,25 @@ found in appendix \ref{ch:radpattern}.
 \section{Optimizing the Network}
 \label{sec:methodology:optimizingTheNetwork}
 
-\gls{UABS}s are drones with femtocell base stations attached to it. Drones can remain in the air for only a limited time, which is certainly 
+\gls{UAV}s can remain in the air for only a limited time, which is certainly 
 the case when also an antenna needs to be connected to the battery of his carrier. It is therefore
 interesting to not only consider electromagnetic exposure of the user but also the power consumption that comes with it. 
 However an increasing transmission power of an antenna comes with an increasing electromagnetic exposure. This is not the case considering
 both values for an entire network. In fact, the authors from \cite{J1}  prove that both become inversely equivalent.
 
-If a network is optimized towards power consumption, less drones will be provisioned radiating at higher power levels. This is because not only 
-the transmission power is considered but also the power needed to keep the drone in the air. Therefore, it is cheaper to cover a user by 
-increasing the antenna's transmission power of an already activated drone nearby as it therefore prevents the power cost of a new drone.
-By increasing the transmission power, also the electromagnetic exposure will increase for users closer to that drone. An exposure optimized
-network will therefore faster decide to power up a new drone.
+The reason the network behaves like this is because it is often cheaper to increase the exposure of an already active base station 
+then activating a new one. 
 
-A new optimization strategy is introduced, based on the fitness function described in \cite{J1}.
+As an example, imagine there is a new user which can either be covered by activating a nearby base station or 
+by an already active base station a little further away. When this user is in a power consumption optimized network, 
+the already active base station will increase its power level because that will be cheaper then activating a new base station. 
+Users close by will thus experience a higher electromagnetic exposure. On the other hand, if the user would have been in an exposure 
+optimized network, the nearby base station which was offline would be activated at a lower power level. So the electromagnetic 
+exposure will also be lower but by activating a new base station, the overall power consumption increases.
+
+This results in a conflicting requirements. An optimization strategy which 
+optimizes towards either electromagnetic exposure or total power consumption is given in \ref{eq:fitnessfunction} and is
+based on the fitness function described in \cite{J1}.
 
 \begin{equation} 
 f = w * \left(1 - \frac{E_m}{E_{max}}\right) + (1 - w)*\left(1 - \frac{P}{P_{max}}\right) * 100
@@ -416,6 +432,11 @@ E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 
 \subsubsection{Deployment Tool for an UAV Network}
 
+\textcolor{red}{Fit "fully config network" somewhere.: To make this research possible, an existing planning tool is used which gives insight in user and base station distributions.
+The tool also provides information about path loss between radiators, power usage of the different electrical devices and which base station serves which user. In other words, the tool describes 
+a fully configured network.
+In this way, all needed parameters will be known.}
+
 Calculating electromagnetic exposure requires knowledge about the area. The position of base stations needs to be known,
  the transmission power used by the antenna and how far the user is separated from these base stations are only a few parameters
  that have to be considered.
@@ -445,14 +466,6 @@ Thereafter, the decision algorithm calculates which users should be connected to
 These decisions are based on the specified optimization strategy. For this master dissertation,
 this will either be power consumption optimized or exposure optimized.
 
-%Finally, all \gls{UABS}s are sorted on whether they were active or not, followed by the increasing path loss from each \gls{UABS} to that user.
-%So the algorithm starts by checking for each active \gls{UABS} if it can cover the user. If this is the case, the user will be connected to this \gls{UABS}. If not,
-%the second active base station with a (slightly) worse path loss is considered. If no active base station is suitable, inactive \gls{UABS}s are considered. 
-%The user remains uncovered if no \gls{UABS}
-%is found. The reason behind only considering already active base stations at first, is the high cost that comes along with each drone.
-%Up till now, the tool has only calculated some po. The actual provisioning is done in the fourth phase where drones are sorted by the amount of users they cover. As long as \gls{UABS}s
-%are available in the facility where they reside, \gls{UABS}s are provisioned and its users are marked as covered.
-
 In the final state, unused \gls{UABS}s are removed and the capacity of the facility is checked. 
 If the number of active drones would exceed this capacity, \gls{UABS}s will be sorted based on the number of 
 users they cover. Thereafter, drones with to few users are removed so that all the active drones could be stored in the facility.
@@ -481,12 +494,6 @@ This is repeated for each \gls{UABS}. Only the connection which results in the b
 When the last user is finished, the network is fully designed for an unlimited number of drones and the result is returned to the main algorithm for further processing.
 The flowchart of this algorithm is given in figure \ref{fig:decisionAlgoFlowChart}.
 \end{minipage}
-
-
-
-
-
-
 
 \FloatBarrier
 \subsection{Implementation of the Radiation Pattern}
