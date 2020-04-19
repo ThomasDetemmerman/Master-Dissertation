@@ -1,7 +1,7 @@
 \chapter{Results and Discussion}
 \label{chap:results}
 
-This chapters gives an overview of the achieved results from all considered scenarios and cases.
+This chapter gives an overview of the achieved results from all considered scenarios and cases.
 The first section talks about a small network with only one user and one \gls{UAV}s. In 
 the following section, this network is expanded for a larger population but still with one \gls{UAV}s.
 The last section is also for a large population but with an unlimited number of \gls{UAV}s.
@@ -16,16 +16,16 @@ will for the first scenario be constructed out of a singe \gls{UABS}.
 
 \subsection{The Influence of the Maximum Transmission Power}
 \label{s1a}
-\gls{LTE} makes usages of power control meaning that no more power will be used then strictly necessary. The actual 
-transmit power $P_{tx}$ therefore ranges between zero and the maximum allowed input power. $P_{tx}$ is zero when the \gls{UABS} doesn't cover anybody.
+\gls{LTE} makes usage of power control meaning that no more power will be used than strictly necessary. The actual 
+transmission power $P_{tx}$ therefore ranges between zero and the maximum allowed input power. $P_{tx}$ is zero when the \gls{UABS} doesn't cover anybody.
 For instance when the flying height is too high and therefore also the path loss that comes with it, the maximum allowed $P_{tx}$ is not enough to cover 
 the distance. In such case, the \gls{UABS} is shut down since it cannot meet the requirements.
 Increasing the maximum transmission power will not influence the actual used $P_{tx}$ or $SAR_{10g}$ because the \gls{UABS} will not use more
-then strictly required. It is therefore more useful to match the actual transmission power against a variable flying height. 
+than strictly required. It is therefore more useful to match the actual transmission power against a variable flying height. 
 
 Figure \ref{fig:ptxfh} shows a logarithmic relationship between $P_{tx}$ and flying height.
 As already discussed in \ref{sec:scenarios_s1}, the user is outdoor and just below the \gls{UABS}. There is thus a free line-of-sight between both
-radiators. It is clear  from figure \ref{fig:ptxfh} that a discontinue step function is achieved. This is because multiple flying heights correspond to the same transmission power.
+radiators. It is clear from figure \ref{fig:ptxfh} that a discontinue step function is achieved. This is because multiple flying heights correspond to the same transmission power.
 When the flying height increases, so does the path loss. \gls{LTE} tries to counteract this by increasing the power level. Each time 
 the path loss becomes too high, the power level of the antenna increases with one dBm. Doing so, decreases path loss allowing the antenna to reach
 the user again. 
@@ -37,7 +37,7 @@ the user again.
   \label{fig:ptxfh}
 \end{figure}
 
-After a jump in the step function, there is an overestimation meaning the input power increased more then necessary. So multiple flying heights correspond with the same $P_{tx}$.
+After a jump in the step function, there is an overestimation meaning the input power increased more than necessary. So multiple flying heights correspond with the same $P_{tx}$.
 Further, dBm is also a logarithmic scale meaning that while 10 dBm equals 10 mW, 20 dBm equals 100 mW. This explains why the black lines become longer at higher flying altitudes.
 Each time the power level increases with one dBm, the overestimation becomes larger. If the tool would make usage of a smaller step size, a more continuous 
 logarithmic function would be achieved. This would however worsen the time complexity because it would take much more iterations before 
@@ -45,12 +45,12 @@ the power level exceeds the path loss.
 
 The red line in figure \ref{fig:ptxfh} indicates the default maximum transmission power used during simulations as 
 defined in table \ref{table:defaultconf}. 
-In a free line-of-sight scenario with only one user, a \gls{UABS} can fly up to 387 metres before losing connection.
+In a free line-of-sight scenario with only one user, a \gls{UABS} can fly up to 387 meters before losing connection.
 
 This scenario is investigated with a microstrip patch antenna using power consumption optimization. 
  However, the chosen optimization strategy doesn't really matter as already explained in  \ref{sec:scenarios_s1}. This is because the decision 
  algorithm decides which user 
-needs to be connected to which user. Since only one \gls{UABS} is available, both optimization strategies will behave identical.
+needs to be connected to which \gls{UABS}. Since only one \gls{UABS} is available, both optimization strategies will behave identical.
 Further, also the used antenna will not make any difference
 despite the fact that a microstrip patch antenna has attenuation while an \gls{isotropicradiator} doesn't.
 The user is namely positioned in the perfect center of the main beam where there is 
@@ -67,9 +67,9 @@ This changes around 80 meters where the \gls{UL} electromagnetic radiation from 
 exceeds the \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s.
 
 \gls{SAR}-values are caused by the transmitted power  $P_{tx}$ of the antenna. The $P_{tx}$ in section \ref{s1a}
-showed a discontinue behaviour that sometimes radiate more as strictly necessary. This has thus a direct influence
+showed a discontinue behaviour that sometimes radiates more as strictly necessary. This has thus a direct influence
 on the \gls{DL} \gls{SAR}. Hence the same discontinue behaviour. The \gls{DL} \gls{SAR} can be simplified to a perfect constant line.
-This constant behaviour can once again be explained with power control. When the \gls{UABS} flies lower, there is  less path loss and the \gls{UABS} 
+This constant behaviour can once again be explained with power control. When the \gls{UABS} flies lower, there is less path loss and the \gls{UABS} 
 will therefore reduce the $P_{tx}$. This results in formula \ref{eq:exposureBasicFormula} where the electromagnetic exposure is a constant fraction of power and distance.
 
 \begin{equation}
