@@ -1,44 +1,11 @@
 \chapter{Results and Discussion}
 \label{chap:results}
-%\section{Number of simulations}
-%The  algorithm makes usage of randomly distributed users causing each simulation to be difference. The results are based on average values over multiple simulations. It is therefore important knowing how mush simulations is required in order to become a converged average. This is done by using an example scenario which details can be found in table \ref{table:configForNumberOfUsers}. The most important parameters
-%investigated in the different scenarios are $SAR_{10g}$, power consumption and user coverage. Therefore, the cummulative avarage of each investigated value is plotted in function of number of simulations.
-\iffalse %remove to reanable section (dont forget fi little further)
-\begin{table}[!htb]
-\centering
-  \begin{tabular}{|l|l|}
-  \hline
-  Parameter               & value          \\   \hline 
-  number of users               & 40            \\ 
-  facilityCapacity                    & 20           \\ 
-  fixedFlyHeight               & 100           \\ 
-  optimization strategy               & power consumption optimized           \\ 
-  \hline
-  \end{tabular}
-  \caption{Overview of the configuration.}
-  \label{table:confOverviewScenario2}
-\end{table}
 
-The number of simulations has a direct influence on the runtime. Certain configurations take a considerable amount of runtime (expessed in hours). This is because of the
-exponential time complexity. The deployment tool with $n$ users, will need to calculate $n$ times the path loss between $n$ drones and $n$ users and thereafter $n/2$ times between
-each user. Thereafter, each user will have to be connected to the best possible \gls{UABS} and each user is therefore required to consider multiple \gls{UABS}s.
+This chapters shows the achieved results from all considered scenarios and cases.
+The first section talks about a small network with only one user and one \gls{UAV}s. In 
+the following section, this network is expanded for a larger population but still with one \gls{UAV}s.
+The last section is also for a large population and with an unlimited number of \gls{UAV}s.
 
-\begin{figure}[th!]
-  \includegraphics[width=\textwidth]{../results/numberOfSim/sarvssim.png}
-  \caption{Total SAR versus.}
-  \label{fig:fhsar}
-\end{figure}
-\begin{figure}[th!]
-  \includegraphics[width=\textwidth]{../results/numberOfSim/pcvssim.png}
-  \caption{General design of a microstrip antenna.}
-  \label{fig:fhsar}
-\end{figure}
-\begin{figure}[th!]
-  \includegraphics[width=\textwidth]{../results/numberOfSim/sarvssim.png}
-  \caption{General design of a microstrip antenna.}
-  \label{fig:fhsar}
-\end{figure}
-\fi %remove to reanable section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scenario 1: One User and One Drone}
 The network contains only one user for this scenario. This means that there is only one location possible for the drone which is just above 

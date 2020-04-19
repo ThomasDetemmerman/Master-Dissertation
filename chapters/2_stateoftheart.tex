@@ -1,7 +1,14 @@
 \chapter{State of the Art}
 \label{chap:stateoftheart}
-TODO: outline if the chapter
 
+This chapter gives an overview of related research that has been done in the field of work
+and aims to familiarize the reader with the subject. First, 
+an overview of the legislation related to electromagnetic exposure and specific absorption rates
+is given after which the related work around electromagnetic exposure is discussed.
+The second section describes how UAV-networks are designed and how they can be optimized.
+Finally, the used technologies are summed up including the type of drone, 
+which generation of telecommunication and the type of antennae that are often used for this 
+type of applications.
 
 \section{Electromagnetic Exposure}
 
@@ -9,44 +16,42 @@ TODO: outline if the chapter
 \label{sub:emf}
 People in a telecommunication network are exposed to far field electromagnetic radiation originating from base stations and other \gls{UE}. 
 Network planners need to make sure that the electromagnetic fields (expressed in V/m) do not exceed limitations enforced 
-by the government. These limits are location dependent. The European Union recommends the guidelines as defined by the \gls{ICNIRP} which limits electromagnetic exposure to 61 V/m.
+by the government. These limits are location dependent. The \gls{EU} recommends the guidelines as defined by the \gls{ICNIRP} which limits electromagnetic exposure to 61 V/m.
 Each European country needs to decide for themselves which limitations to enforce. Belgium for example delegated this responsibility to Flanders, Brussels and Wallonia \cite{J23}.
-
-The used deployment tool is applied in Ghent, a Flemish city in Belgium. The standards defined by the Flemish government are therefore applicable.
-They state that in the 2.6 GHz frequency band, an individual antenna cannot exceed 4.5 V/m and the cumulative sum of all fixed sources has its maximum at 31 V/m \cite{J23, S13_normenBelgie}.
+Since the considered area is the city center of Ghent, the standards will be defined by the Flemish government.
+They state that in the 2.6 GHz frequency band, an individual antenna cannot exceed 4.5 V/m and the cumulative sum of all 
+fixed sources has its maximum at 31 V/m \cite{J23, S13_normenBelgie}.
 
 \subsection{Specific Absorption Rate}
-\gls{SAR} represents the rate at which electromagnetic energy is absorbed by human tissue with the thermal effect as its most important health consequence.
-The volume of this tissue is typically 1 g or 10 g. The \gls{FCC} of the \gls{USA} defines regulations based on 1 g tissue (indicated as $SAR_{1g}$) 
-while the European Union handles the 
+\gls{SAR} represents the rate at which electromagnetic energy is absorbed by human tissue with the thermal 
+effect as its most important health consequence.
+The volume of this tissue is typically 1 g or 10 g. The \gls{FCC} of the \gls{USA} defines 
+regulations based on 1 g tissue (indicated as $SAR_{1g}$) 
+while the \gls{EU} handles the 
 10 g model ($SAR_{10g}$). $SAR$ values can further be categorized based on the area it covers, as an example, 
-the whole body \gls{SAR} ($SAR^{wb}$)is defined as the average radiation over the entire body.
+the whole body \gls{SAR} ($SAR^{wb}$) is defined as the average radiation over the entire body.
 Another  example are localized \gls{SAR}-values that only cover a certain part of the human body like the head.
-The \gls{ICNIRP} has concluded that the threshold effect for $SAR^{wb}_{10g}$ is at 4 W/kg meaning that any higher absorption rate would overwhelm the \gls{thermoregulatory capacity} of the human body.
-Whole body values between 1 and 4 W/kg increase the temperature of human body less than 1°C, which is proven not to be harmful for a healthy human being\cite{J24}.
+The \gls{ICNIRP} has concluded that the threshold effect for $SAR^{wb}_{10g}$ is at 4 W/kg meaning that any higher absorption 
+rate would overwhelm the \gls{thermoregulatory capacity} of the human body.
+Whole body \gls{SAR}-values between 1 and 4 W/kg increase the temperature of human body less than 1°C, which is proven not to be harmful 
+for a healthy human being \cite{J24}.
 Thereafter, a safety margin is introduced to tackle unknown variables like experimental errors, increased sensitivity for certain population groups and so on. 
-This results in a whole body $SAR_{10g}$ of $0.8 W/kg$ and $2 W/kg$ for localized $SAR_{10g}$ at head and torso area \cite{J23, S13_normenBelgie}.
-An overview is given in table \ref{table:overviewSARValues}
+The \gls{EU} follows the recommendation from the \gls{ICNIRP} \cite{J23} and 
+suggests a whole body $SAR_{10g}$ of $0.8 W/kg$ and $2 W/kg$ for localized $SAR_{10g}$ at head and torso area \cite{J30}. 
+Belgium follows this recommendation \cite{J23, S13_normenBelgie}.
+An overview is given in table \ref{table:overviewSARValues}.
 
-%todo: de 10g slaat al op localized, vandaar dat het maar 10g is, anders is het whole-body
-%todo: we kunnen niet sar10gmax gebruiken want This means that the SAR calculations will be worst-case and possibly an overestimation of the real localised SAR. (herwoorden voor plagiaat)
-%Human exposure caused by downlink traffic is a not negligible asset. However, telecommunications is not a one-way street. When connecting to a UMTS network, also uplink data caused by the \gls{UE} should be considered.
-%\gls{UE} generates, just like femtocells, electromagnetic waves to which a user is exposed. A part of this radiation goes to the femtocell, another part enters the body of its user. How much electormagnic strenghts enters the body is defined as \gls{SAR} and is measured with 10g biological tissue which represents the human skin. This value will from now on be expressed as $SAR_{10g}$. 
-%A mobile device induces two types of exposure: local and whole-body. 
-
-\begin{table}[]
-\begin{tabular}{|l|c|}
+\begin{table}[h!]
+\begin{tabular}{|l|c|c|}
 \hline
-\textbf{Description} & \textbf{Value} \\ \hline
-Maximum $SAR^{wb}_{10g}$ as defined by \gls{ICNIRP}                           &  $4 W/kg$              \\ \hline
-Maximum $SAR^{wb}_{10g}$ as defined by the Belgian government                  & $0.8 W/kg$               \\ \hline
-Maximum $SAR_{10g}$ for head and torso as defined by the Belgian government                  & $2 W/kg$               \\ \hline
+\textbf{Description} & \textbf{Value} & \textbf{Units} \\ \hline
+Maximum $SAR^{wb}_{10g}$ as defined by \gls{ICNIRP}                           &  $4$ & $W/kg$              \\ \hline
+Maximum $SAR^{wb}_{10g}$ as defined by the Belgian government                  & $0.8$ & $W/kg$               \\ \hline
+Maximum $SAR_{10g}$ for head and torso as defined by the Belgian government                  & $2$ & $W/kg$               \\ \hline
 \end{tabular}
-\label{table:overviewSARValues}
 \caption{Overview of the different \gls{SAR} limitations.}
+\label{table:overviewSARValues}
 \end{table}
-TODO:  is dit voor heel belgie of voor vlaanderen?
-
 
 \subsection{Related Work} % (fold)
 \label{sub:general}
