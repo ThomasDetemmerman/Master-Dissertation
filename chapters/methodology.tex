@@ -498,9 +498,16 @@ The flowchart of this algorithm is given in figure \ref{fig:decisionAlgoFlowChar
 \FloatBarrier
 \subsection{Implementation of the Radiation Pattern}
 \label{subsec:implementationradpat}
-The deployment tool originally only supported \gls{isotropicradiator}s. The tool has thus been extended and is fully configurable allowing any possible antenna 
-in any possible 
-orientation with the usage of a XML-file. The configuration described in this file will apply to all \gls{UABS}s. 
+
+Originally, the deployment tool  did not considered attenuation. 
+Therefore, the radiation from the antenna attached to the \gls{UAV} 
+was equal in each direction. Such a fictional antenna is called an \gls{isotropicradiator}. 
+Thus the tool has been extended in order 
+to support several types of antennae by introducing new parameter like attenuation and direction.
+Doing so allows any type of antennae which is fully configurable in any given orientation.
+This configuration is done with the usage of an XML-file which will apply to all \gls{UABS}s in the network.
+An \gls{isotropicradiator} is still supported by returning 
+a zero value when the attenuation is requested.
 
 The orientation is done using two values called `downtilt' and `north offset'. The first value
 defines the downtilt angle under wich the antenna is pointing. A downtilt angle of zero degrees is perfectly horizontal and 

@@ -1,16 +1,17 @@
 \chapter{Results and Discussion}
 \label{chap:results}
 
-This chapters shows the achieved results from all considered scenarios and cases.
+This chapters gives an overview of the achieved results from all considered scenarios and cases.
 The first section talks about a small network with only one user and one \gls{UAV}s. In 
 the following section, this network is expanded for a larger population but still with one \gls{UAV}s.
-The last section is also for a large population and with an unlimited number of \gls{UAV}s.
+The last section is also for a large population but with an unlimited number of \gls{UAV}s.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scenario 1: One User and One Drone}
-The network contains only one user for this scenario. This means that there is only one location possible for the drone which is just above 
+The network contains only one user in this scenario. This means that there is only one location possible for the drone which will 
+be just above 
 the user. This section will investigate minimal required transmission power and SAR values from different sources.
-Finally, also the power consumption of the entire network is measured. The  ``entire network" refers to all drones and antennae. The entire network 
+Finally, also the power consumption of the entire network is measured. The  ``entire network" refers to all \gls{UABS}s. The entire network 
 will for the first scenario be constructed out of a singe \gls{UABS}.
 
 \subsection{The Influence of the Maximum Transmission Power}
@@ -22,7 +23,7 @@ the distance. In such case, the \gls{UABS} is shut down since it cannot meet the
 Increasing the maximum transmission power will not influence the actual used $P_{tx}$ or $SAR_{10g}$ because the \gls{UABS} will not use more
 then strictly required. It is therefore more useful to match the actual transmission power against a variable flying height. 
 
-Figure \ref{fig:ptxfh} shows the logarithmic relationship between $P_{tx}$ and flying height.
+Figure \ref{fig:ptxfh} shows a logarithmic relationship between $P_{tx}$ and flying height.
 As already discussed in \ref{sec:scenarios_s1}, the user is outdoor and just below the \gls{UABS}. There is thus a free line-of-sight between both
 radiators. It is clear  from figure \ref{fig:ptxfh} that a discontinue step function is achieved. This is because multiple flying heights correspond to the same transmission power.
 When the flying height increases, so does the path loss. \gls{LTE} tries to counteract this by increasing the power level. Each time 
@@ -42,7 +43,8 @@ Each time the power level increases with one dBm, the overestimation becomes lar
 logarithmic function would be achieved. This would however worsen the time complexity because it would take much more iterations before 
 the power level exceeds the path loss. 
 
-The red line in figure \ref{fig:ptxfh} indicates the default maximum transmission power used during simulations. 
+The red line in figure \ref{fig:ptxfh} indicates the default maximum transmission power used during simulations as 
+defined in table \ref{table:defaultconf}. 
 In a free line-of-sight scenario with only one user, a \gls{UABS} can fly up to 387 metres before losing connection.
 
 This scenario is investigated with a microstrip patch antenna using power consumption optimization. 
@@ -64,7 +66,7 @@ and shows that for a low flying drone, \gls{UE} is the main source of electromag
 This changes around 80 meters where the \gls{UL} electromagnetic radiation from the \gls{UE}
 exceeds the \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s.
 
-\gls{SAR}-values are caused by the transmit power  $P_{tx}$ of the antenna. The $P_{tx}$ in section \ref{s1a}
+\gls{SAR}-values are caused by the transmitted power  $P_{tx}$ of the antenna. The $P_{tx}$ in section \ref{s1a}
 showed a discontinue behaviour that sometimes radiate more as strictly necessary. This has thus a direct influence
 on the \gls{DL} \gls{SAR}. Hence the same discontinue behaviour. The \gls{DL} \gls{SAR} can be simplified to a perfect constant line.
 This constant behaviour can once again be explained with power control. When the \gls{UABS} flies lower, there is  less path loss and the \gls{UABS} 
@@ -79,7 +81,7 @@ will therefore reduce the $P_{tx}$. This results in formula \ref{eq:exposureBasi
 
 Figure \ref{fig:s1_fhsar} doesn't show radiation from neighbours, because there are none present in this scenario. 
 Finally, all these values are added up as explained in formula \ref{eq:overallSARwb} resulting in the total \gls{SAR}
-to which our user is exposed.
+to which our user is exposed which is represented by the black line in \ref{fig:s1_fhsar}.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s1/fhvssar.png}
@@ -95,7 +97,7 @@ exponential relationship between both power consumption and flying height.
   \centering
   \includegraphics[width=\textwidth]{../results/s1/fhvspc.png}
   \caption{Minimal required transmission power by the antenna to reach the ground just below him. The red line shows the default maximum transmission power.}
-  \label{fig:ptxfh}
+  \label{fig:fhvspc}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
