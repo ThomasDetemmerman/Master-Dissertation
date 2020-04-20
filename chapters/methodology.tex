@@ -5,17 +5,17 @@ The content of this chapter gives an answer to which steps that has to be taken 
 be able to answer the research questions.
 The first section explains how electromagnetic radiation is calculated for each source
 and how to convert these values to specific absorption rates. 
-The second section gives an detail overview of how a microstrip patch antenna can be 
+The second section gives a detailed overview of how a microstrip patch antenna can be 
 designed and how its radiation pattern is achieved.
 The third section discusses how the network can be optimized towards either electromagnetic 
 exposure or power consumption.
-The final section explains how these algorithm can be implemented and how to further improve performance.
+The final section explains how these algorithm are implemented and how to further improve performance.
 
 \section{Electromagnetic Exposure}
 \subsection{Calculation of the Total Specific Absorption Rate} % (fold)
 \label{sub:Calculationexposure}
 
-The total whole body \gls{SAR} ($SAR^{wb}_{10g}$) of a user can be calculated by a simple sum of individual SAR values from the different sources.
+The total whole body \gls{SAR} ($SAR^{wb,total}_{10g}$) of a user can be calculated by a simple sum of individual SAR values from the different sources.
 Formula \ref{eq:overallSARwb} was originally described in \cite{J17_kuehn2019modelling} for \gls{SAR} values induced into the head.
 Using $SAR^{head}_{10g}$ would however result into incorrect conclusions since 
 the position of the phone relative to the user is unknown. 
@@ -24,7 +24,7 @@ The induced electromagnetic radiation will therefore be expressed in function of
 
 
 \begin{equation} 
-SAR^{wb,total}_{10g} = SAR^{wb,my\_UE}_{10g} +  SAR^{wb,my\_UABS}_{10g} + SAR^{wb,other\_UE}_{10g} + SAR^{wb,other\_UABS}_{10g}
+SAR^{wb,total}_{10g} = SAR^{wb,my\_UE}_{10g} +  SAR^{wb,my\_UABS}_{10g} + SAR^{wb,other\_UE}_{10g} + SAR^{wb,other\_UABSs}_{10g}
 \label{eq:overallSARwb}
 \end{equation}
 
@@ -33,7 +33,7 @@ The first parameter, $SAR^{wb,my\_UE}_{10g}$, indicates the absorbed electromagn
 The second parameter, $SAR^{wb,my\_UABS}_{10g}$, represents the \gls{DL} radiation caused by the \gls{UABS} who is serving the user.
 As the third parameter, we have the $SAR^{wb,other\_UE}_{10g}$ which is radiation caused by other people their device. The radiation of these devices is once again 
 destinated for a specific \gls{UABS} but again, a portion of that \gls{UL} radiation will also be absorbed by our user.
-Finally, $SAR^{wb,other\_UABS}_{10g}$ represents the \gls{DL} radiation by the other \gls{UABS}s our user is exposed to but not served by.
+Finally, $SAR^{wb,other\_UABSs}_{10g}$ represents the \gls{DL} radiation by the other \gls{UABS}s to which our user is exposed to but not served by.
 An illustration is given in figure \ref{fig:networkIllustration} where the green arrow is a type near field radiation while 
 the others represent far field radiation. This is further 
 explained is subsequent chapters along with how each value in this formula can be calculated. We can only speak in terms of \gls{SAR}
@@ -106,9 +106,9 @@ E_{tot} [V/m] = \sqrt{\sum_{i=1}^{n} E_i^2}
 \subsubsection{Converting Far-Field Electromagnetic Exposure to $SAR^{wb}_{10g}$}
 \label{sub:convertDLtosarwb}
 
-Formula \ref{eq:overallSARwb} expects that the electromagnetic radiation is expressed into $SAR^{wb,dl}_{10g}$ and $SAR^{wb,neighbours}_{10g}$. The 
-calculation for both values is in fact identical. The only difference is the source; where the first one is for \gls{UABS}s, the second one for \gls{UE}.
-Physically seen, they are both whole body SAR values induced by far-field radiation ($SAR^{ff,wb}_{10g}$).
+Formula \ref{eq:overallSARwb} expects that the radiation from each far field source is expressed in $SAR^{wb,my\_UABS}_{10g}$, $SAR^{wb,other\_UE}_{10g}$ and $SAR^{wb,other\_UABSs}_{10g}$. The 
+calculation for all these values is in fact identical since the only difference is the source.
+Physically seen, they are all whole body SAR values induced by far-field radiation ($SAR^{ff,wb}_{10g}$).
 
 The electromagnetic radiation needs to be converted into $SAR^{ff,wb}_{10g}$. 
 This conversion factor is based on Duke from the Virtual Family. Duke is a 34-year old male with a weight of 72 kg, a height of 1.74 m and body
@@ -169,7 +169,7 @@ However the legal $SAR^{max}_{10g}$ for Belgium is set to $2 W/kg$,  the actual 
 An average is calculated based on 3516 different phones from various brands using a German database \cite{SARDatabase} for which an overview can be 
 found in fig. \ref{chart:germanDatabase}.
 When the phone is positioned at the ear, an average of 0.7 $W/kg$ is found with a standard deviation of 0.25 $W/kg$ which are very similar 
-results as in ref. \cite{j10.1.1}.
+results as in ref. \cite{j10.1.1}. The median of 0.67  $W/kg$ is used as $SAR^{max}_{10g}$ in formula \ref{eq:calculatesar}.
 
 %todo: schrijven dat het enigste verschil een std van 0.27 is?
 %todo: j10.1.1 schrijft door de std van 0.25 dat er een onzekerheid van 40% is.
@@ -217,7 +217,7 @@ This would result in different types of localized values. To be able to give an 
 For this reason formula \ref{eq:overallSARwb} expects that the specific absorption rate is expressed for the entire body instead of localized $SAR^{head}_{10g}$.
 The conversion factors for Duke from the Virtual Family will be used again as it was already the case in \ref{sub:convertDLtosarwb}. 
 The constant to convert \gls{UL} exposure to $SAR^{wb,ul}_{10g}$
-for WiFi is defined to be 0.0070 $\left(\frac{W/kg}{W}\right)$ \cite{J22_plets2015joint} which leads to eq. \ref{eq:ulToSar}.
+for WiFi is defined to be 0.0070 $\frac{W/kg}{W}$ \cite{J22_plets2015joint} which leads to eq. \ref{eq:ulToSar}.
 
 \begin{equation} 
 SAR^{wb,ul}_{10g} \left[\frac{W}{kg}\right] = 0.0070 \left[\frac{W/kg}{W}\right] * P_{tx} [W]
@@ -388,7 +388,6 @@ both values for an entire network. In fact, the authors from \cite{J1}  prove th
 
 The reason the network behaves like this is because it is often cheaper to increase the exposure of an already active base station 
 then activating a new one. 
-
 As an example, imagine there is a new user which can either be covered by activating a nearby base station or 
 by an already active base station a little further away. When this user is in a power consumption optimized network, 
 the already active base station will increase its power level because that will be cheaper then activating a new base station. 
@@ -406,11 +405,11 @@ f = w * \left(1 - \frac{E_m}{E_{max}}\right) + (1 - w)*\left(1 - \frac{P}{P_{max
 \end{equation}
 
 Formula \ref{eq:fitnessfunction} returns a fitness value which represents the performance of the entire network. Users are connected to different \gls{UABS}s and each time a fitness value is 
-calculated. The user will eventually be connected to the drone resulting in the highest fitness value. This process is repeated for each user.
+calculated. The user will eventually be connected to the drone resulting in the highest fitness value. 
+and is repeated for each user. This process is explained in detail in section \ref{sec:implementation:deploymenttool}.
 $w$ is the importance factor of electromagnetic exposure ranging from 0 to 1, boundaries included. A $w$ set to zero means that electromagnetic 
-exposure is not important. Such a network will therefore be called a power consumption optimized network. 
-Likewise, a $w$ set to one means that minimizing exposure is top priority and will result in an exposure optimized 
-network. $P_{max}$ is the power consumption of all \gls{UABS}s, both active and inactive, when radiating at the highest possible level 
+exposure is not important. Such a network will therefore be called a \gls{PwrC Opt}. 
+Likewise, a $w$ set to one means that minimizing exposure is top priority and will result in an \gls{Exp Opt}. $P_{max}$ is the power consumption of all \gls{UABS}s, both active and inactive, when radiating at the highest possible level 
 while $P$ is the effective power used by the current designed network. 
 This will be the power required for the flying drones themselves and their antenna.
 $E_m$ will be the weighted exposure of the average user for the current designed network and $E_{max}$ the weighted average electromagnetic exposure when all antennae are at their highest power level.
@@ -429,23 +428,19 @@ E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 \section{Implementation}
 
 \subsection{Network Planning, Bringing It All Together}
-
+\label{sec:implementation:deploymenttool}
 \subsubsection{Deployment Tool for an UAV Network}
 
-\textcolor{red}{Fit "fully config network" somewhere.: To make this research possible, an existing planning tool is used which gives insight in user and base station distributions.
-The tool also provides information about path loss between radiators, power usage of the different electrical devices and which base station serves which user. In other words, the tool describes 
-a fully configured network.
-In this way, all needed parameters will be known.}
-
-Calculating electromagnetic exposure requires knowledge about the area. The position of base stations needs to be known,
+Calculating electromagnetic exposure requires knowledge about the area. The position of \gls{UABS}s needs to be known,
  the transmission power used by the antenna and how far the user is separated from these base stations are only a few parameters
  that have to be considered.
 
-The WAVES research group at UGent has developed a deployment tool for disaster scenarios with the aid of UAVs \cite{J2}.
+The WAVES research group at Ghent University has developed a capacity based deployment tool for disaster scenarios with the aid of UAVs \cite{J2}.
 The idea of this UAV-aided emergency network is that in case of a disaster, the existing network might be damaged and will not be able 
 to handle all users who are trying to reconnect to the backbone network. 
 The tool makes a fast deployable network possible by attaching femtocells to UAVs, so-called \gls{UABS}s.
-The tool will orchestrate the \gls{UABS}s over the disaster area. This tool is thus a suitable starting point and works as follows:
+The tool will orchestrate the \gls{UABS}s over the disaster area and by describing a fully configured network.
+This tool is thus a suitable starting point and works as follows:
 
 %The optimal placement for each \gls{UABS} needs to be defined to make sure that as many users as possible are properly reconnected to the backbone network while satisfying certain restrictions. 
 %To make these calculations as realistic as possible the architecture of the several buildings present in the area is described in a shapefile. 
