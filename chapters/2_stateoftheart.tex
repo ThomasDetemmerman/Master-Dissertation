@@ -4,7 +4,7 @@
 This chapter gives an overview of related research that has been done in the field of work
 and aims to familiarize the reader with the subject. First, 
 an overview of the legislation related to electromagnetic exposure and specific absorption rates
-is given after which the related work around electromagnetic exposure is discussed.
+are given after which the related work about electromagnetic exposure is discussed.
 The second section describes how UAV-networks are designed and how they can be optimized.
 Finally, the used technologies are summed up including the type of drone, 
 which generation of telecommunication and the type of antennae that are often used for this 
@@ -55,8 +55,10 @@ Maximum $SAR_{10g}$ for head and torso as defined by the Belgian government     
 
 \subsection{Related Work} % (fold)
 \label{sub:general}
-The goal of this master dissertation is the investigation of electromagnetic exposure considering all sources. Three types of sources are considered: electromagnetic radiation 
-caused by base stations, near field radiation from the user's own device and far field radiation originating from other users' equipment. This electromagnetic radiation is thereafter
+The goal of this master dissertation is the investigation of electromagnetic exposure considering all sources. Four types of sources are considered: the user's own phone,
+ the base station that is serving this user, 
+all devices from other users in the network and all 
+other active base stations that are not serving this user. This electromagnetic radiation is thereafter
 absorbed by the human body which will be expressed in SAR values.
 
 Several papers calculate exposure originating from certain sources, but very  limited research has been done covering the whole picture.
@@ -70,21 +72,22 @@ exposure to localized SAR values.
 Finally, \cite{J22_plets2015joint} describes how both \gls{UL} and \gls{DL} traffic can be converted in whole body SAR values making it possible to achieve an overall picture. They applied this formula 
 however only for the user's own device.
 
-In a realistic network like the used deployment tool, some users are calling while others are using other types of telecommunication services like browsing the web.
+In a realistic network, some users are calling while others are using other types of telecommunication services like browsing the web.
 Therefore, all absorbed electromagnetic exposure should be expressed in whole body SAR while still covering all sources.
 
 \section{Optimized UAV-aided networks}
 
-An \gls{UAV} knows several applications. It was originally mainly used to support the military for surveillance or remote attacks without 
-endangering pilots \cite{U12}. However, \gls{UAV}s have recently become more accessible by the general public due to decreasing costs, 
+A \gls{UAV} knows several applications. It was originally mainly used to support the military for surveillance and remote attacks without 
+endangering pilots \cite{U12}. However, \gls{UAV}s have recently become more accessible by the general public due to decreasing costs. This 
+allowed \gls{UAV}s to be researched for various applications.
 
-When attaching an antenna to the \gls{UAV}, it can be used as a gateway for cellular communication for \gls{UE} on the ground.
+When attaching an antenna to a \gls{UAV}, it can be used as a gateway for cellular communication for \gls{UE} on the ground.
 Such a flying base station will be called a \gls{UABS}. 
 This has several advantages like mobility and rapid deployment which is ideal for emergency situations or temporary events. Thanks to this mobility,  
 \gls{UABS}s can easily be repositioned to satisfy certain requirements. A \gls{UAV}-aided network also brings some challenges with them like 
 the limited weight of the payload and sparse power supply.
 
-Kawamoto et al. introduced in \cite{U11} a WiFi network with the support of drones while considering resource allocation 
+Kawamoto et al. introduced in \cite{U11} a WiFi network with the support of  \gls{UAV}s while considering resource allocation 
 and antenna directivity. 
 Gangula et al. illustrates in \cite{U10} how \gls{UAV}s can be  used as a relay for \gls{LTE}. 
 If a terrestrial base station is in \gls{NLOS} with a user, a
@@ -94,23 +97,24 @@ energy consumption, mobility and antenna direction are discussed.
 
 These \gls{UAV}-aided networks can be optimized towards certain goals.
 Mozaffari et al. provides in \cite{U3} guidelines on how to optimize and analyse \gls{UAV}s equipped for 
-wireless communications. Issues like deployment, performance and power consumption are addressed.
+wireless communication equipment. Issues like deployment, performance and power consumption are addressed.
 One path that has been excessively researched are location optimization solutions.
 For instance, \cite{U4} provides an algorithm that minimizes latency, \cite{U7,U9}  minimizes interference between \gls{UABS} and \cite{U8} minimizes the 
-distance between \gls{UABS} and \gls{UE}. Other papers investigate trajectory optimization like in \cite{U6,U7}.
+distance between \gls{UABS} and \gls{UE}. Other papers investigate trajectory optimization like in \cite{U7,U6}.
 Further, \cite{U3,U5} discus several implementation approaches on how optimization algorithms should be tackled by discussing options like 
 heuristic algorithms, exact algorithms and machine learning. 
 
 Optimizing the network towards electromagnetic exposure is rather limited. For a terrestrial network, using traditional base stations,
-Deruyck et al. discuss in \cite{J1} how the network can be optimized towards either a minimal exposure or minimal power consumption of the entire network.
-However, to the best of the author knowledge, no research has been done where a \gls{UABS}-network has been optimized towards electromagnetic exposure.
+Deruyck et al. discusses in \cite{J1} how the network can be optimized towards either a minimal exposure or minimal power consumption of the entire network.
+However, to the best of the author knowledge, no research has been done where a \gls{UABS}-network have been optimized towards electromagnetic exposure.
 
 \section{Technologies}
 \subsection{Type of Drone}
 \label{sec:typeofdrone}
 
-Section \ref{sec:stateoftheart:deploymenttool} described how femtocell antennae will be connected to helicopter drones. Two types of 
-drones are considered in \cite{J2}: an off-the-shelf drone affordable by the general public and a more robust drone. The results in \cite{J2}
+The type of \gls{UAV} will have a major impact on the network performance.
+Two types of 
+drones are considered in \cite{J2}: an off-the-shelf drone affordable by the general public and a more robust one. The results in \cite{J2}
 show that the second type will require less drones to cover the same number of users and will last longer in the air. The research in this paper
 will therefore be done with the usage of the second type. A technical overview of this drone is given in table \ref{table:dronespecs}.
 
@@ -158,17 +162,18 @@ When the antenna is to close to the \gls{UAV}, the \gls{UAV} can behave as a par
 When using a directional antenna, the influence of the \gls{UAV} will be much less but still existing. Even when the \gls{UAV} is not 
 positioned in the direction of the mean beam. \cite{A1} suggest that this side-effect can be reduced by introducing a little offset 
 between the antenna and the \gls{UAV}.
-
+Another challenge that comes with attaching an antenna to a \gls{UAV} is the need for 3D modelling of radiation patterns.
 In traditional terrestrial networks,
 the waves mainly propagated horizontally. When using \gls{UAV}s, waves will have to travel rather downwards 
 causing 2D antenna modelling to become insufficient. A 3D-model which accounts for both elevation and azimuth directivity 
 will be required \cite{U12}.
+
 The easiest radiation pattern is a hypothetical  \gls{isotropicradiator} which radiates equally in all directions.
 Antennae that radiate equal quantities for a certain plane  are called omnidirectional antennae \cite{U12} and several types 
 exist.
-Attaching a conventional dipole antenna arrays might be low-cost, they are too high in profile and weight \cite{A6}.
+Attaching a conventional dipole antenna array might be low-cost, they are too high in profile and weight \cite{A6}.
 The authors of \cite{A9} and \cite{A11} both propose a broadband monopole blade antenna for \gls{UAV} applications but
-suffers from large surface which is a big disadvantage for the limited space available on the used \gls{UAV}s in \ref{sec:typeofdrone}.
+suffers from a large surface which is a big disadvantage for the limited space available on the used \gls{UAV}s in \ref{sec:typeofdrone}.
 \cite{A10, A4} propose a broadband blade dipole antenna which is much smaller. Their wing-shaped design 
 allows good aerodynamics when flying.
 \cite{A12} proposes an alternative to blade 
@@ -176,20 +181,15 @@ antennae by presenting a wideband low profile monopole. The radiation pattern be
 a reduced height.
 %meer bronnen en/of antennes voor bovenstaande paragraaf? Gebruik paragraaf 2 van de introductie uit https://ieeexplore.ieee.org/abstract/document/8357805
 
-
-
-Directional antennae takes advantages of throughput, lower interference and battery life \cite{A7}. This is done by focussing the 
+Annother type of antennae are directional antennae that takes advantage of throughput, lower interference and battery life \cite{A7}. This is done by focussing the 
 electromagnetic energy there where it is needed.
-
-One type of directional antennae which have excessively been investigated for \gls{UAV}-usage are microstrip antenna
+One type of directional antennae that excessively has been investigated for \gls{UAV}-usage are microstrip antenna
 since they provide several advantages compared to traditional antennae \cite{J13_microstripadvantages, J14_antennadesign}. Microstrip antennae
 are lightweight, low in cost and thin causing them to be more aerodynamic which is a useful feature since the antennae will be attached
-to flying drones.
-
-Zeng et al. proposes in \cite{A6} the use of such an antennae in sunflower-shaped array configuration. These microwave antennae
-have a much more thin profile and are light in weight.
+to \gls{UAV}s.
+Zeng et al. proposes in \cite{A6} the use of such an antennae in sunflower-shaped array configuration.
 Also the authors from \cite{A5} attach star-shaped millimetre wave antennae to the wings of a \gls{UAV} and
-\cite{A8} uses circular patch antennae in a circular array for communication between \gls{UAV}s.
+\cite{A8} uses circular patch antennae in a circular array configuration for communication between \gls{UAV}s.
 
 A basic microstrip antenna like figure \ref{fig:basicpatchantenna} consists of a ground plane and
 a radiating patch, both separated with a dielectric substrate. 

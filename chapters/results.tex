@@ -226,7 +226,7 @@ This is because power consumption optimized network will result in few high powe
 exposure optimized network result in a lot of low powered base stations. This behaviour will further be explained in section \ref{s3}
 
 \begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s2/uvsnum\gls{UAV}sAndCov.png}
+  \includegraphics[width=\textwidth]{../results/s2/uvsnumdronesAndCov.png}
   \caption{The influence of increasing traffic on user coverage.}
   \label{fig:s2uvsnumcovusers}
 \end{figure}
@@ -364,7 +364,7 @@ Not only the power consumption optimized networks profit from higher flying alti
 more electromagnetic exposure, much less \gls{UAV}s are required.
 
 \begin{figure}[]
-  \includegraphics[width=\textwidth]{../results/s3/fhvsnum\gls{UAV}sAndCov.png}
+  \includegraphics[width=\textwidth]{../results/s3/fhvsnumdronesAndCov.png}
   \caption{This graph shows how much \gls{UAV}s are required for different flying heights while trying to achieve a 100\% coverage.}
   \label{fig:s3a_numDronesAndCov}
 \end{figure}
@@ -410,29 +410,29 @@ The last case of scenario 3 investigates a variable number of users for a fixed 
 restriction on the number of available \gls{UAV}s just like in the previous case meaning that there are at most 
 as much \gls{UAV}s as users in the network. The correct behaviour of the decision algorithm became already clear in the previous subsection \ref{S3A} but is also
 confirmed by this case.
-Figure \ref{fig:s3b_num\gls{UAV}sAndCov} shows on the left how the tool tries to reach a 100\% coverage. The tool reaches this goal 
+Figure \ref{fig:s3b_numdronesAndCov} shows on the left how the tool tries to reach a 100\% coverage. The tool reaches this goal 
 better for larger populations. The difference remains however very little. The tool also requires more \gls{UAV}s for these large 
 populations. An expected behaviour  when looking at scenario \ref{s2b} where, with only one \gls{UABS} available, the percentage of covered users decreases for these larger populations.
  The difference in optimization strategy is very little for small amounts of people but increases very fast. Further, \ref{fig:s3b_dlAndPC} shows an increase 
  in exposure for larger populations because more \gls{UAV}s come with these larger populations and more 
- exposure comes with more \gls{UAV}s as visible in \ref{fig:s3b_num\gls{UAV}sAndCov}.
+ exposure comes with more \gls{UAV}s as visible in \ref{fig:s3b_numdronesAndCov}.
 
 \begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s3/uvsnum\gls{UAV}sAndCov.png}
+  \includegraphics[width=\textwidth]{../results/s3/uvsnumdronesAndCov.png}
   \caption{This graph shows how much \gls{UAV}s are required for different flying heights while trying to achieve a 100\% coverage.}
-  \label{fig:s3b_num\gls{UAV}sAndCov}
+  \label{fig:s3b_numdronesAndCov}
 \end{figure}
 
 In a scenario with 600 active users, a clear difference is noticeable between the four configurations. 
 For instance, an EIRP power consumption optimized 
-network requires the least amount of \gls{UAV}s (Figure \ref{fig:s3b_num\gls{UAV}sAndCov} on the right). This is logical when looking at figure \ref{fig:s3b_dlAndPC} where \gls{UAV}s in such a configuration cause the highest amount of 
+network requires the least amount of \gls{UAV}s (Figure \ref{fig:s3b_numdronesAndCov} on the right). This is logical when looking at figure \ref{fig:s3b_dlAndPC} where \gls{UAV}s in such a configuration cause the highest amount of 
 electromagnetic radiation. This behaviour was already discussed in subsection \ref{s2b}. 
 
 On the complete opposite, we have a microstrip patch antenna in an exposure optimized network. 
 This strategy prioritize the minimization of electromagnetic exposure. In addition, a microstrip antenna has a much more limited range.
 Therefore, much more 
-\gls{UAV}s are required in order to reach 100\% coverage (Figure \ref{fig:s3b_num\gls{UAV}sAndCov}) and therefore requires much more energy 
-to power all the \gls{UAV}s (Figure \ref{fig:s3b_num\gls{UAV}sAndCov} on the right).
+\gls{UAV}s are required in order to reach 100\% coverage (Figure \ref{fig:s3b_numdronesAndCov}) and therefore requires much more energy 
+to power all the \gls{UAV}s (Figure \ref{fig:s3b_numdronesAndCov} on the right).
 
 So scenario 3 learns that a power consumption optimized network indeed result in less \gls{UAV}s and less 
  power consumption of the entire network. 
