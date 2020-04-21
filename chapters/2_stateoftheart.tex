@@ -141,12 +141,32 @@ of their simplicity. Femtocell base stations are therefore used by the deploymen
 Further, \gls{LTE} also support both \gls{FDD} and \gls{TDD}.
 
 \gls{FDD} makes simultaneous \gls{UL} and \gls{DL} traffic possible by assigning different frequencies within the same frequency range 
-to both data streams. A small guard band is used between the \gls{UL} and \gls{DL} direction in order to prevent interference.
+to both data streams. A small guard band is used between the \gls{UL} and \gls{DL} direction in order to prevent interference. An illustration 
+is given in fig \ref{fig:FDD}.
 
 \gls{TDD} allows  \gls{UL} and \gls{DL} traffic by splitting the time domain. Meaning that both traffic directions use the same frequency and therefore
-alternately (in time) use the same frequency. A small time interval is used to prevent interference in case of a slightly bad timed synchronization.
+alternately (in time) use the same frequency. A small time interval is used to prevent interference in case of a slightly bad timed synchronization as 
+illustrated by fig. \ref{fig:TDD}
 
-This master dissertation will make usage of \gls{FDD}.
+Since it is assumed in this master dissertation that the user is continuously being exposed without interruption, 
+\gls{FDD} will be used throughout this document.
+
+\begin{figure}[!h]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{../images/TDDResourceAllocation.pdf}
+    \caption{Resource allocation for \gls{TDD}.}
+    \label{fig:TDD}
+  \end{minipage}
+\hspace*{\fill}
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{../images/FDDResourceAllocation.pdf}
+    \caption{Resource allocation for \gls{FDD}.}
+    \label{fig:FDD}
+  \end{minipage}
+\end{figure}
+
+
 
 \subsection{Type of Antennae} % (fold)
 
@@ -181,7 +201,7 @@ antennae by presenting a wideband low profile monopole. The radiation pattern be
 a reduced height.
 %meer bronnen en/of antennes voor bovenstaande paragraaf? Gebruik paragraaf 2 van de introductie uit https://ieeexplore.ieee.org/abstract/document/8357805
 
-Annother type of antennae are directional antennae that takes advantage of throughput, lower interference and battery life \cite{A7}. This is done by focussing the 
+Another type of antennae are directional antennae that takes advantage of throughput, lower interference and battery life \cite{A7}. This is done by focussing the 
 electromagnetic energy there where it is needed.
 One type of directional antennae that excessively has been investigated for \gls{UAV}-usage are microstrip antenna
 since they provide several advantages compared to traditional antennae \cite{J13_microstripadvantages, J14_antennadesign}. Microstrip antennae
