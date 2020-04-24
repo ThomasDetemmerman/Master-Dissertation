@@ -28,12 +28,16 @@ user increases mainly because of a growing exposure from other \gls{UABS}s that 
 An exposure optimized network will limits the total exposure mainly by trying to reduce the exposure from other \gls{UABS}s.
 
 %1)	How does the network behave differently after the introduction of a realistic antenna?
-An \gls{isotropicradiator} has higher exposure and coverage for less power compared to realistic antennae like microstrip patch antenna.
-The \gls{isotropicradiator} can be compared with an antenna with a very big aperture angle.
-These type of antenna can achieve the same coverage with less
+A directional microstrip patch antenna is introduced because it gives several advantages compared to omnidirectional antennae.
+Directional antennae are able to focus their energy there where it is need, namely on the ground. Microstrip patch antennae 
+further benefit from their thin and lightweight design. The directional microstrip patch antenna has been compared to a 
+fictional \gls{isotropicradiator}.
+This \gls{isotropicradiator} has higher exposure and coverage for less power compared to realistic antennae like microstrip patch antenna
+because of the absence of attenuation.
+The \gls{isotropicradiator} can hypothetically be compared with an antenna with a very big aperture angle.
+This type of antenna can achieve the same coverage with less
 resources like power and number of drones. 
-A microstrip patch antenna  with a more limited aperture angle of \ang{90} focusses it's energy more towards the ground.
-It therefore requires more resources but 
+A microstrip patch antenna  with a more limited aperture angle of \ang{90} requires more resources but 
 causes less sideways radiation. So the exposure from other \gls{UABS}s will be way less.
 
 \begin{figure}[hb!]
@@ -48,26 +52,29 @@ This results in the best of both worlds.
 The microstrip patch antenna will generate less electromagnetic radiation by design and
  the power consumption optimization reduces the number of required drones and power. A microstrip patch antenna with an aperture 
  angle of \ang{90} is considered a good solution but if cost is more restricted, an antenna with a larger aperture angle 
- would further reduce cost without interfering with the Flemish legislation.
+ would further reduce cost without interfering with the Flemish legislation regarding electromagnetic exposure.
 
-The electromagnetic radiation of an exposure optimized network increases with higher flying altitudes. Mainly caused by the user's 
+The electromagnetic radiation of an exposure optimized network increases with higher flying altitudes. This increase is mainly caused by the user's 
 own device and \gls{UABS}s who are serving other users. Around 80 metres, the exposure from the  user's device surpasses the exposure from the serving \gls{UABS}.
-An power consumption optimized network shows a more concave relationship with the lowest exposure measured around 70 to 80 metres.
+On the other hand, a power consumption optimized network shows a more concave relationship with the lowest exposure measured around 70 to 80 metres.
 Further, the results also show that the number of required drones decrease when the flying height becomes larger. A conclusion that was also made in \cite{J2}.
- When also considering the results from \cite{J27_backhaul} where a flying altitude from 
+ When also considering the results from \cite{U1} where a flying altitude from 
 80 metres is suggested for an optimal access and backhaul connectivity, a flying height 
 of 80 metres is also here proposed for the city centre of Ghent.
 
-In conclusion, a power consumption optimized network is proposed with a fixed flying height of 80 metres. A microstrip patch 
-antenna with a sufficient large aperture angle is a good starting point. However, different antenna configurations should 
+In short, a power consumption optimized network is proposed with a fixed flying height of 80 metres. A microstrip patch 
+antenna with a sufficiently large aperture angle is a good starting point. However, different antenna configurations should 
 be investigated 
-
-\section{Future work}
-The tool has been extended so any possible antenna in any possible direction is supported. Comparing different types 
-of antennae is however outside the scope of this research.
-Conclusions on how the network performs has thus been investigated for the already existing fictional omnidirectional antenna and a 
-realistic microstrip patch antenna. The reason for the chosen microstrip patch antenna is solely based on literature.
 
 \textcolor{red}{doe iets aan de paper van 80m die voor het eerst in cocnlusie wordt vermeld.}
 
-todo: mention bad time complexity and that a "heuristic algorithm" (uit U5) een betere oplossing is. (considered)
+\section{Future work}
+
+The chosen microstrip patch antenna is solely based on literature and performing an excessive research to various 
+types of radiation patterns is outside the scope of this master dissertation. It is expected that the radiation can 
+further be improved by using microstrip patch antennae in more complex arrray-configurations.
+
+The tool makes usage of an \gls{exact algorithm}. Despite the fact that several  
+tactics have been introduced to improve performance, large populations still cause long runtimes. It might be useful 
+to reduce the quality of the result in order to improve performance. Mozafari et al. discusses in \cite{U3} several 
+other approaches besides \gls{exact algorithm} like heuristic methods, machine learning and so on.

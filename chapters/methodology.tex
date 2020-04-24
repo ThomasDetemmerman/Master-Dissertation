@@ -115,7 +115,7 @@ This conversion factor is based on Duke from the Virtual Family. Duke is a 34-ye
 mass index of 23.1 kg/m \cite{J22_plets2015joint}. Research shows that the conversion factor for WiFi is $0.0028 \frac{W/kg}{W/m^2}$.
  Since WiFi, at a frequency of 2400 MHz,
 is very close to LTE, at 2600 MHz, it is assumed in \cite{J22_plets2015joint} that this value is also applicable for \gls{LTE}.
-This constant converts the \gls{power flux density} $S$ (with units $\frac{W}{m^2}$) to the required $SAR^{ff,wb}_{10g}$.
+The constant in \ref{eq:DLconvertion} converts the \gls{power flux density} $S$ (with units $\frac{W}{m^2}$) to the required $SAR^{ff,wb}_{10g}$.
 To make this possible, the electromagnetic radiation
 from formula \ref{eq:totalexposure} (expressed in  $V/m$) should first be converted to the  \gls{power flux density} with formula 
 \ref{eq:flux} before formula \ref{eq:DLconvertion} can be applied.
@@ -125,7 +125,7 @@ S [W/m^2]= \frac{(E_{tot} [V/m])^2}{337}
 \label{eq:flux}
 \end{equation}
 \begin{equation}
-SAR^{wb,ff}_{10g} [W/kg]= S [W/m^2]* 0.0028
+SAR^{wb,ff}_{10g} [W/kg]= S [W/m^2]* 0.0028  \left[\frac{W/kg}{W/m^2}\right]
 \label{eq:DLconvertion}
 \end{equation}
 
