@@ -24,7 +24,7 @@ Increasing the maximum transmission power will not influence the actual used $P_
 than strictly required. It is therefore more useful to match the actual transmission power against a variable flying height. 
 
 Figure \ref{fig:ptxfh} shows a logarithmic relationship between $P_{tx}$ and flying height.
-As already discussed in \ref{sec:scenarios_s1}, the user is outdoor and just below the \gls{UABS}. There is thus a free line-of-sight between both
+As already discussed in \ref{sec:scenarios_s1}, the user is outdoor and just below the \gls{UABS}. There is thus a free \gls{LOS} between both
 radiators. It is clear from figure \ref{fig:ptxfh} that a discontinue step function is achieved. This is because multiple flying heights correspond to the same transmission power.
 When the flying height increases, so does the path loss. \gls{LTE} tries to counteract this by increasing the power level. Each time 
 the path loss becomes too high, the power level of the antenna increases with one dBm. Doing so, decreases path loss allowing the antenna to reach
@@ -458,10 +458,8 @@ using a lot of low powered \gls{UAV}s.
 
 When looking at the different contributions to the total \gls{SAR} in figure \ref{fig:s3b_fourSourcesMatrix}, 
 we see that the weighted average 
-\gls{SAR} from the users own device remains constant. The flying altitude is always the same so the
- \gls{UE} will, on average, radiate at the same intensity for all simulations.
- Further, the \gls{DL} \gls{SAR} from the serving \gls{UABS} is also almost constant because the \gls{UABS} flies at 100 meters which is
-above the average building. There is thus a \gls{LOS} between the \gls{UABS} and most of his connected users.
+\gls{SAR} from the users own device and from the serving \gls{UABS} remains constant. The flying altitude is always the same so 
+also the required energy to cover that distance will remain the same. 
 The only \gls{SAR} value that increases are the \gls{DL} \gls{SAR} from other \gls{UABS}s and the \gls{UL} \gls{SAR} from other \gls{UE}. 
 When more users come online, also more \gls{UAV}s will be radiating. Moreover, there is very little path loss because the flying height is above the average building.
 
