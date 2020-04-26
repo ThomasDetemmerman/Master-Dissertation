@@ -147,6 +147,11 @@ and antenna directivity.
 Gangula et al. illustrates in \cite{U10} how \gls{UAV}s can be  used as a relay for LTE. 
 Zeng et al. proposes in  \cite{U12} a tutorial in 5G-and-beyond wireless systems where challenges like 
 energy consumption, mobility and antenna direction are discussed. 
+Deruyck et al. designed in \cite{J2} a capacity based deployment tool for UAV-aided emergency
+networks for large-scale disaster scenarios where an ideal flying height of 100 m is suggested. This was expanded 
+in \cite{U1} with a performance evaluation of the direct-link backhaul of this tool where a slightly lower 
+flying height of 80 metres is recommended.
+
 
 Mozaffari et al. provides in \cite{U3} guidelines on how to optimize and analyse \gls{UAV}s equipped for 
 wireless communication equipment.
@@ -248,8 +253,8 @@ and antenna transmission power are investigated at different flying heights.
 In a second scenario, the network is expanded for multiple users but with still only one drone available. 
 The scenario is divided into two cases. One with a variable flying height but with a fixed 
 number of 224 users which is an average day 
-at 5 p.m. in Ghent. In the other case, the number of users varies but the flying height is set to 100. 
-\textcolor{red}{Todo: bronnen 100m and 224 users}. The power consumption, electromagnetic exposure and specific 
+at 5 p.m. in Ghent. In the other case, the number of users varies but the flying height is set to 100 \cite{J2}.
+ The power consumption, electromagnetic exposure and specific 
 absorption rate are investigated in the four different configurations.
 
 The third scenario is quite similar then the previous scenario. It has the same 
@@ -288,7 +293,7 @@ the others represent far field radiation.
 \begin{figure}[h!]
 \centering
   \includegraphics[width=\linewidth]{networkIllustrationSARSources.png}
-  \caption{Illustration of the network that shows how the average user (here shown in the center) is influenced by different type of sources. }
+  \caption{Illustration of the network that shows how the average user (here shown in the center) is influenced by different types of sources. }
   \label{fig:networkIllustration}
 \end{figure}
 
@@ -424,7 +429,7 @@ The microstrip patch antenna as illustrated in fig. \ref{fig:basicpatchantenna} 
 \minipage{0.50\linewidth}%
   \includegraphics[width=\linewidth]{pattern2/hp.png}
 \endminipage
-  \caption{Radiation pattern 1: On the left a 3D model of the entire pattern with the configuration as described above. In the middle a 2D radiation pattern of the E-plane and at the right a 2D model of the H-plane.}
+  \caption{Radiation pattern 1: On the left the radiation pattern of the E-plane and at the right for the H-plane.}
 \label{fig:radpattern}
 \end{figure}
 
@@ -531,7 +536,7 @@ The far field radiation from other \gls{UE} barely contribute anything.
 
 Also these results show how EIRP antenna are able to cover more users then microstrip patch antennae
 just as that power consumption optimized network will reach more users then exposure optimized networks.
-The contribution to the total \gls{SAR} from each individual source is identical to the previous scenario. \textcolorr{red}{ << deze zin weg?}
+The contribution to the total \gls{SAR} from each individual source is identical to the previous scenario. \textcolor{red}{ << deze zin weg?}
 
 There is still only one \gls{UABS} is available. So when the population grows, more users become uncovered and 
 therefore decreasing the average electromagnetic exposure.
@@ -573,7 +578,8 @@ On the other hand, an exposure optimized network will reduce the electromagnetic
 This conclusion was already made  in \cite{J1} and is supported by these results.
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s3/fhvsdlAndPc.png}
-  \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user. This graph shows the percentage of covered users by one \gls{UAV} for different flying heights.}
+  \caption{These two figures show how the flying height influences the downlink electromagnetic radiation of the average user (left) and 
+  power consumption of the entire network (rights) for an unlimited number of drones.}
   \label{fig:s3a_dlAndPc}
 \end{figure}
 
@@ -584,7 +590,7 @@ so it's logical that the electromagnetic exposure is very low.
 The number of \gls{UAV}s in a power consumption optimized network is much less in order 
 to save energy but the same percentage of coverage is still achieved.
 So these \gls{UAV}s will try to cover more users requiring higher level of radiation. This is certainly the case 
-since there are a lot of obsturcting buildings at this flying altitude.
+since there are a lot of obstructing buildings at this flying altitude.
 Because of this, users who are close and in \gls{LOS} will experience much higher electromagnetic radiation.
 
 The results further show that the network profits from increasing the flying altitude. Not only
@@ -599,10 +605,10 @@ The figures from \ref{fig:s3a_fourSourcesMatrix} further also clearly show that 
 in electromagnetic radiation will be less for a microstrip patch antenna. The reason behind this is that energy 
 will be more focussed towards the ground and there is less sideways radiation because of attenuation.
 
-\begin{figure}[]
+\begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s3/fhFourSources.png}
-  \caption{Each chart shows the total SAR to which the average user is exposed. ``My UABS" stands for the UABS that is serving our average user while ``other UABSs'' stands for 
-  all other UABSs to which that user is exposed to but not served by. ``Other" UE refers to the exposure from all mobile devices that does not belong to that user.}
+  \caption{Each chart corresponds with one of the four possible configurations. The contribution of each source towards towards the total 
+  \gls{SAR} for a varying flying height is shown.}
   \label{fig:s3a_fourSourcesMatrix}
 \end{figure}
 
@@ -616,7 +622,8 @@ The two other combinations are in the middle and behave very similar.
 
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s3/uvsdlAndPc.png}
-  \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user.}
+  \caption{These two figuress show how the number of users influences the downlink electromagnetic radiation of the average user (left) and 
+  power consumption of the entire network (rights) for an unlimited number of drones.}
   \label{fig:s3b_dlAndPC}
 \end{figure}
 
@@ -629,20 +636,78 @@ When more users come online, also more \gls{UAV}s will be radiating. Moreover, t
 
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s3/uFourSources.png}
-  \caption{Each chart shows the total SAR to which the average user is exposed. ``My UABS" stands for the UABS that is serving our average user while ``other UABSs'' stands for 
-  all other UABSs to which that user is exposed to but not served by. ``Other" UE refers to the exposure from all mobile devices that do not belong to that user.}
+  \caption{Each chart corresponds with one of the four possible configurations. The contribution of each source towards towards the total 
+  \gls{SAR} for a varying number of users shown.}
   \label{fig:s3b_fourSourcesMatrix}
 \end{figure}
 
 \section{Conclusion}
-todo
+%How can a UABS network be optimized to minimize global exposure or overall power consumption? 
+Literature showed that a network can be optimized towards either the power consumption of the entire network 
+or the electromagnetic exposure of the average user using a fitness function \cite{J1}.
+However, the fitness function should be used with care considering that \gls{UABS}s can be placed anywhere as opposed to 
+the transmission towers from \cite{J1} who have a predetermined position. This causes that in an exposure optimized network, 
+a lot of users get a \gls{UABS}
+all by themselves because this is the best approach to minimize exposure.
+A power consumption optimized network on the other hand will try to limit the number of drones 
+in order to save energy. 
+So as a rule of thumb: an exposure optimized network will result in a lot of low powered devices (increasing the overall power consumption)
+while a power consumption optimized network results in a few high powered devices (increasing the exposure of the average user).
+A power consumption optimized network is thus cheaper because less drones are involved. 
+Moreover, the results show that the electromagnetic radiation in a power consumption optimized network (with high powered \gls{UABS}s)
+is far below the thresholds enforced by the Flemish government.
 
-\section{Acknowledgement}
+The user's main sources of exposure are the user's own device and the \gls{UABS} who is serving him followed by all
+other \gls{UABS}s in the network. 
+When the population increases, there is not only more radiation from \gls{UE} but also 
+from more \gls{UABS}s that are serving the other users.
+The exposure from other people their \gls{UE} is so low that it can be neglected.
+An exposure optimized network will limits the total exposure mainly by trying to reduce the exposure from other \gls{UABS}s.
+
+%1)	How does the network behave differently after the introduction of a realistic antenna?
+A directional microstrip patch antenna is introduced because it gives several advantages compared to omnidirectional antennae.
+Directional antennae are able to focus their energy there where it is need, namely towards the ground. Microstrip patch antennae 
+further benefit from their thin and lightweight design. The performance 
+of this directional microstrip patch antenna has been compared to a 
+fictional \gls{isotropicradiator}.
+This \gls{isotropicradiator} has higher exposure and coverage for less power compared to realistic antennae like microstrip patch antenna
+because of the absence of attenuation and can hypothetically be compared with an antenna with a very big aperture angle.
+This type of antenna can achieve the same coverage with less
+resources like power and number of drones. 
+A microstrip patch antenna  with a more limited aperture angle of \ang{90} requires more resources but 
+causes less sideways radiation. So the exposure from other \gls{UABS}s will be way less.
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{fourCasesMatrixSol.png}
+  \caption{Matrix with the four possible configurations. Colour-coded based on the results.}
+  \label{fig:resultIllustration}
+\end{figure}
+
+Remarkable is that an \gls{EIRP} exposure optimized network behave very similar to a microstrip power consumption optimized network as shown 
+in figure \ref{fig:resultIllustration}.
+This results in the best of both worlds. 
+The microstrip patch antenna will generate less electromagnetic radiation by design and
+ the power consumption optimization reduces the number of required drones and power. A microstrip patch antenna with an aperture 
+ angle of \ang{90} is considered a good solution but if cost is more restricted, an antenna with a larger aperture angle 
+ would further reduce cost without interfering with the Flemish legislation regarding electromagnetic exposure.
+
+The electromagnetic radiation of an exposure optimized network increases with higher flying altitudes.
+Around 80 metres, the exposure from the  user's device surpasses the exposure from the serving \gls{UABS}.
+On the other hand, a power consumption optimized network shows that the lowest exposure is measured around 70 to 80 metres.
+Further, the results also show that the number of required drones decrease when the flying height becomes larger. 
+A conclusion that was also made in \cite{J2}.
+When also considering the results from \cite{U1} where a flying altitude from 
+80 metres is suggested for an optimal access and backhaul connectivity, a flying height 
+of 80 metres is also here proposed for the city centre of Ghent.
+
+In short, a power consumption optimized network is proposed with a fixed flying height of 80 metres. A microstrip patch 
+antenna with a sufficiently large aperture angle is a good starting point. However, different antenna configurations should 
+be investigated 
+
+\section*{Acknowledgement}
 Special thanks to the WAVES research group at Ghent University for providing 
 access to their capacity based deployment tool and therefore making this research possible.
 
-\subsection{Referencies}
-\nocite{*}
 \bibliographystyle{ieeetr}
 \bibliography{referenties}
 

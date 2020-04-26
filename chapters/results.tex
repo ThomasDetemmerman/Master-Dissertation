@@ -85,7 +85,7 @@ to which our user is exposed which is represented by the black line in \ref{fig:
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s1/fhvssar.png}
-  \caption{How SAR values from different sources are influenced by different flying altitudes.}
+  \caption{This figure showss how SAR values from different sources are influenced by different flying altitudes.}
   \label{fig:s1_fhsar}
 \end{figure}
 
@@ -97,7 +97,8 @@ attached to the \gls{UABS} which will require more energy to maintain the same e
 \begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{../results/s1/fhvspc.png}
-  \caption{Minimal required transmission power by the antenna to reach the ground just below him. The red line shows the default maximum transmission power.}
+  \caption{This figure shows the behaviour of the power consumption over the entire network at different flying  heights.
+  For this scenario, this will only be one \gls{UABS}.}
   \label{fig:fhvspc}
 \end{figure}
 
@@ -130,13 +131,11 @@ Therefore, the power consumption in a power consumption optimized network is muc
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s2/fhvsdlAndPc.png}
-  \caption{The influence of the flying height on the weighted average downlink exposure of users in the network.}
+  \caption{These two figures show how the flying height influences the downlink electromagnetic radiation of the average user (left) and 
+  power consumption of the entire network (rights) for one \gls{UABS} available in the network.}
   \label{fig:s2a_dlAndPc}
 \end{figure}
 
-
-
-%\newpage
 The \gls{DL} exposure in figure \ref{fig:s2a_dlAndPc} increases along with the flying height. One might expect a more constant 
 behaviour like it was the case in figure \ref{fig:s1_fhsar} of scenario 1. To understand this, the scenario has been reduced  
 to only two users and is illustrated in figure \ref{fig:schematicprove}.
@@ -178,7 +177,7 @@ The red line therefore dominates the average exposure in figure \ref{fig:s2a_dlA
 
 \begin{figure}[h]
   \includegraphics[width=\textwidth]{../results/s2/fhvscov.png}
-  \caption{This graph shows the percentage of covered users by one \gls{UAV} for different flying heights.}
+  \caption{This graph shows the percentage of covered users for only one \gls{UABS} at different flying heights.}
   \label{fig:s2fhvscov}
 \end{figure}
 
@@ -216,7 +215,7 @@ This is because the coverage in this scenario is so low that the weighted averag
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s2/fhFourSources.png}
-  \caption{This figure shows how different sources are influenced by an increasing flying height.}
+  \caption{Each figure corresponds with a certain configuration and shows how the \gls{SAR} from different sources are influenced by an increasing flying height.}
   \label{fig:s2shfourSourcesMatrix}
 \end{figure}
 
@@ -233,7 +232,7 @@ exposure optimized network results in a lot of low powered base stations. This b
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s2/uvsnumdronesAndCov.png}
-  \caption{The influence of increasing traffic on user coverage.}
+  \caption{The influence of increasing traffic on the user coverage.}
   \label{fig:s2uvsnumcovusers}
 \end{figure}
 
@@ -257,7 +256,8 @@ This means that the percentage of covered users for a sparsely populated network
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s2/uvsdlAndPc.png}
-  \caption{This figure shows how different sources are influenced by an increasing number of users. }
+  \caption{These two figures show how various sizes of population influence the downlink electromagnetic radiation of the average user (left) and 
+  power consumption of the entire network (rights) for one \gls{UABS} available in the network.}
   \label{fig:s2b_dlAndPc}
 \end{figure}
 
@@ -295,7 +295,7 @@ shows that only one user is connected besides our central user. The map on the r
 \begin{figure}[h!]
 \centering
   \includegraphics[width=\textwidth/6*5]{../results/s2/uvsulsarcentralUser.png}
-  \caption{SAR-values for the user who is directly beneath the only UABS available.}
+  \caption{SAR-values for the user who is directly beneath the only \gls{UABS} available.}
   \label{fig:uvsulsarcentralUsers}
 \end{figure}
 
@@ -345,8 +345,11 @@ This conclusion was already made  in \cite{J1} and is supported by these results
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/fhvsdlAndPc.png}
-  \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user. This graph shows the percentage of covered users by one \gls{UAV} for different flying heights.}
-  \label{fig:s3a_dlAndPc}
+  \caption{
+    These two figures show how the flying height influences the downlink electromagnetic radiation of the average user (left) and 
+  power consumption of the entire network (rights) for an unlimited number of drones.
+  }
+     \label{fig:s3a_dlAndPc}
 \end{figure}
 
 Figure \ref{fig:s3a_dlAndPc} shows that the number of \gls{UAV}s required decreases when the flying altitude becomes higher.
@@ -367,7 +370,7 @@ more electromagnetic exposure, much less \gls{UAV}s are required.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhvsnumdronesAndCov.png}
-  \caption{This graph shows how much \gls{UAV}s are required for different flying heights while trying to achieve a 100\% coverage.}
+  \caption{This graph shows how much \gls{UAV}s are required at different flying heights while trying to achieve a 100\% coverage.}
   \label{fig:s3a_numDronesAndCov}
 \end{figure}
 
@@ -388,8 +391,8 @@ an individual that is covered.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhFourSources.png}
-  \caption{Each chart shows the total SAR to which the average user is exposed. ``My UABS" stands for the UABS that is serving our average user while ``other UABSs'' stands for 
-  all other UABSs to which that user is exposed to but not served by. ``Other" UE refers to the exposure from all mobile devices that does not belong to that user.}
+  \caption{
+  Each figure corresponds with a certain configuration and shows how the \gls{SAR} from different sources are influenced by an increasing flying height.}  
   \label{fig:s3a_fourSourcesMatrix}
 \end{figure}
 
@@ -452,7 +455,7 @@ using a lot of low powered \gls{UAV}s.
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/uvsdlAndPc.png}
-  \caption{The influence of the flying height on the downlink electromagnetic radiation of the average user.}
+  \caption{The influence of the population density on the downlink electromagnetic radiation (left) and power consumption (right).}
   \label{fig:s3b_dlAndPC}
 \end{figure}
 
@@ -465,7 +468,8 @@ When more users come online, also more \gls{UAV}s will be radiating. Moreover, t
 
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{../results/s3/uFourSources.png}
-  \caption{Each chart shows the total SAR to which the average user is exposed. ``My UABS" stands for the UABS that is serving our average user while ``other UABSs'' stands for 
-  all other UABSs to which that user is exposed to but not served by. ``Other" UE refers to the exposure from all mobile devices that do not belong to that user.}
+  \caption{Each figure corresponds with a certain configuration and shows how the \gls{SAR} 
+  from different sources are influenced by an increasing population density. Unlimited number of \gls{UABS} are available.
+  }
   \label{fig:s3b_fourSourcesMatrix}
 \end{figure}

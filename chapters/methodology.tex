@@ -42,7 +42,7 @@ explained is subsequent chapters along with how each value in this formula can b
 \begin{figure}[h!]
 \centering
   \includegraphics[width=\textwidth/3*2]{../images/networkIllustrationSARSources.png}
-  \caption{Illustration of the network that shows how the average user (here shown in the center) is influenced by different type of sources. }
+  \caption{Illustration of the network that shows how the average user (here shown in the center) is influenced by different types of sources. }
   \label{fig:networkIllustration}
 \end{figure}
 
@@ -187,7 +187,7 @@ results as in ref. \cite{j10.1.1}. The median of 0.67  $W/kg$ is used as $SAR^{m
           xlabel near ticks,
           height=8cm, width=\textwidth,
           ylabel={Percentage of mobile phones},
-          xlabel={SAR},
+          xlabel={maximum SAR able to transmit},
           symbolic x coords={0.0--0.2,0.2--0.4,0.4--0.6,0.6--0.8,0.8--1.0,1.0--1.2,1.2--1.4,1.4--1.6,1.6--1.8,1.8--2.0},
           x tick label style={rotate=45, anchor=east, align=left},
           nodes near coords,
@@ -336,7 +336,7 @@ pattern(p,2.6e9, "CoordinateSystem", 'polar', "Normalize",true)
 pattern(p,2.6e9, 90, "CoordinateSystem", 'polar', "Normalize",true)
 pattern(p,2.6e9, 0, "CoordinateSystem", 'polar', "Normalize",true)
 \end{minted}
-\caption{Mathlab code to generate radiation pattern for a microstrip patch antenna.}
+\caption{Mathlab code to generate the radiation patterns for the microstrip patch antenna.}
 \label{c:mathlabradpattern}
 \end{listing}
 
@@ -443,10 +443,6 @@ to handle all users who are trying to reconnect to the backbone network.
 The tool makes a fast deployable network possible by attaching femtocells to UAVs, so-called \gls{UABS}s.
 The tool will orchestrate the \gls{UABS}s over the disaster area and by describing a fully configured network.
 This tool is thus a suitable starting point and works as follows:
-
-%The optimal placement for each \gls{UABS} needs to be defined to make sure that as many users as possible are properly reconnected to the backbone network while satisfying certain restrictions. 
-%To make these calculations as realistic as possible the architecture of the several buildings present in the area is described in a shapefile. 
-%A deployment tool calculates the optimal position of the \gls{UABS} by taking the 3D models of the building into account along with some femtocell specifications and user distribution. This deployment tool is developed by the WAVES research group, a department within Ghent University.
 
 The deployment tool will try to calculate the optimal placement for each \gls{UABS} and requires therefore a description of the area where the UAV-aided network needs to 
 be deployed. This is done with the use of so-called shape files. These files contain three dimensional descriptions of the buildings present in the area and are
@@ -593,3 +589,4 @@ In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in fig
 
 In this case the choice was made to only consider \gls{UABS}s within a radius of half a kilometre. 
 This will result in 23 \gls{UABS}s on average when applied to a default scenario of 224 \gls{UABS}s at a flying altitude of 100 m.
+\textcolor{red}{todo: waarom deze radius?}
