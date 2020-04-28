@@ -51,20 +51,34 @@
 \maketitle
 
 \begin{abstract}
-Society relies more than ever on the availability of the wireless networks but is at the same time also 
+Society relies more than ever on the availability of the wireless networks.
+Due to the mobility of a UAV, a UAV-aided network is able to provide this necessary access in case that the existing terrestrial network gets damaged.
+However,  the public is 
 concerned about the potential health effects of the electromagnetic radiation caused by these networks.
-The government has enforced strict legislations to which mobile devices and base stations have to satisfy.
+Therefore, mobile devices and base stations have to comply to strict legislation enforced by the government.
 
-This research investigates the specific absorption rate caused by these electromagnetic waves by taking all mobile devices and base stations into account.
-To accomplish this goal, the deployment tool developed by the WAVES research group at Ghent University will be used. This tool simulates an entire network 
-where transmission towers are represented by femtocell base stations attached to drones. This research also investigates how these drones can be guided 
-in order to reach certain goals like minimizing power consumption or electromagnetic exposure.
+This research investigates how different scenarios influence power consumption, electromagnetic exposure and specific absorption rate.
+These different scenarios are defined by various flying heights, number of UAVs available and population densities. Further, also 
+an analysis on the difference
+between a realistic microstrip patch antenna and a fictional equivalent isotropic radiator is performed.
+Thereafter, the network will be optimized towards goals like electromagnetic exposure of the average user or 
+power consumption of the entire network which result in conflicting requirements.
 
-It looks from the results that ... (todo)
+To accomplish this goal, a capacity based deployment tool will be used which simulates an entire UAV-aided network.
+In this way, all important sources for electromagnetic radiation, like all user equipment and all flying base stations, 
+will be considered.
+
+It looks from the results that a power consumption optimized network with a fixed flying height of 80 metres is the recommended approach
+for the city center of Ghent.
+A microstrip patch 
+antenna with a sufficiently large aperture angle is a good starting point. However, different antenna array configurations still have to 
+be investigated.
 \end{abstract}
 
 \begin{keywords}
-LTE, Electromagnetic Radiation, power consumption, drones, femtocell, microstrip patch antenna, radiation pattern, specific absorption rate (SAR)
+LTE, microstrip patch antenna, radiation pattern, specific absorption rate (SAR),
+deployment tool, electromagnetic exposure, power consumption, wireless access network, 
+emergency network, UAV, unmanned aerial base stations
 \end{keywords}
 
 \section{Introduction}
@@ -469,9 +483,6 @@ Since both values are considered to have equal importance, the weight factors $w
 E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 \label{eq:em}
 \end{equation}
-
-
-
 
 \section{Results}
 \subsection{One User and One \gls{UAV}}
