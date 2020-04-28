@@ -51,20 +51,34 @@
 \maketitle
 
 \begin{abstract}
-Society relies more than ever on the availability of the wireless networks but is at the same time also 
+Society relies more than ever on the availability of the wireless networks.
+Due to the mobility of a UAV, a UAV-aided network is able to provide this necessary access in case that the existing terrestrial network gets damaged.
+However,  the public is 
 concerned about the potential health effects of the electromagnetic radiation caused by these networks.
-The government has enforced strict legislations to which mobile devices and base stations have to satisfy.
+Therefore, mobile devices and base stations have to comply to strict legislation enforced by the government.
 
-This research investigates the specific absorption rate caused by these electromagnetic waves by taking all mobile devices and base stations into account.
-To accomplish this goal, the deployment tool developed by the WAVES research group at Ghent University will be used. This tool simulates an entire network 
-where transmission towers are represented by femtocell base stations attached to drones. This research also investigates how these drones can be guided 
-in order to reach certain goals like minimizing power consumption or electromagnetic exposure.
+This research investigates how different scenarios influence power consumption, electromagnetic exposure and specific absorption rate.
+These different scenarios are defined by various flying heights, number of UAVs available and population densities. Further, also 
+an analysis on the difference
+between a realistic microstrip patch antenna and a fictional equivalent isotropic radiator is performed.
+Thereafter, the network will be optimized towards goals like electromagnetic exposure of the average user or 
+power consumption of the entire network which result in conflicting requirements.
 
-It looks from the results that ... (todo)
+To accomplish this goal, a capacity based deployment tool will be used which simulates an entire UAV-aided network.
+In this way, all important sources for electromagnetic radiation, like all user equipment and all flying base stations, 
+will be considered.
+
+It looks from the results that a power consumption optimized network with a fixed flying height of 80 metres is the recommended approach
+for the city center of Ghent.
+A microstrip patch 
+antenna with a sufficiently large aperture angle is a good starting point. However, different antenna array configurations still have to 
+be investigated.
 \end{abstract}
 
 \begin{keywords}
-LTE, Electromagnetic Radiation, power consumption, drones, femtocell, microstrip patch antenna, radiation pattern, specific absorption rate (SAR)
+LTE, microstrip patch antenna, radiation pattern, specific absorption rate (SAR),
+deployment tool, electromagnetic exposure, power consumption, wireless access network, 
+emergency network, UAV, unmanned aerial base stations
 \end{keywords}
 
 \section{Introduction}
@@ -470,11 +484,7 @@ E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 \label{eq:em}
 \end{equation}
 
-
-
-
 \section{Results}
-\textcolor{red}{todo: fix tussentitels}
 \subsection{One User and One \gls{UAV}}
 
 The  results show that for a varying flying height, a logarithmic relationship exists between the $P_{tx}$ and the flying height. 
@@ -508,8 +518,8 @@ around 80 metres.
 \label{eq:exposureBasicFormula}
 \end{equation}
 
-\subsection{Increased Traffic}
-
+\subsection{Increased Traffic with one UABS}
+\subsubsection{Variable Flying Height}
 A power consumption optimized network has the highest exposure, a behaviour that was already proven by \cite{J1}. 
 However, a power consumption optimized network will have higher power consumption than an exposure optimized network. 
 To understand this, the behaviour of the deployment tool needs to be understood first. 
@@ -538,7 +548,7 @@ The results further show
 that the radiation from the \gls{UABS} is the main factor followed by the near field radiation from the user's own device.
 The far field radiation from other \gls{UE} barely contribute anything.
 
-\subsubsection{Influence of the Number of Users}
+\subsubsection{Variable Number of Users}
 
 Also these results show how EIRP antennae designs are able to cover more users than microstrip patch antennae
 just like power consumption optimized networks will reach more users than exposure optimized networks.
@@ -577,6 +587,7 @@ compared to the other sources.
 \end{figure}
 
 \subsection{Unlimited Number of UABSs}
+\subsubsection{Variable Flying Height}
 The same scenario as the previous one is investigated. Only now, an unlimited number of \gls{UABS}s is available.
 The results prove that the different optimization strategies work as intended.
 Power consumption optimized networks have indeed a lower power consumption but therefore result in higher electromagnetic radiation.
