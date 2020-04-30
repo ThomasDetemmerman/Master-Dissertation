@@ -16,7 +16,7 @@ type of applications.
 \label{sub:emf}
 People in a telecommunication network are exposed to far field electromagnetic radiation originating from base stations and other \gls{UE}. 
 Network planners need to make sure that the electromagnetic fields (expressed in V/m) do not exceed limitations enforced 
-by the government. These limits are location dependent. The \gls{EU} recommends the guidelines as defined by the \gls{ICNIRP} which limits electromagnetic exposure to 61 V/m.
+by the government. These limits are location dependent. The \gls{EU} recommends the guidelines as defined by the \gls{ICNIRP} which limit electromagnetic exposure to 61 V/m.
 Each European country needs to decide for themselves which limitations to enforce. Belgium for example delegated this responsibility to Flanders, Brussels and Wallonia \cite{J23}.
 Since the considered area is the city center of Ghent, the standards will be defined by the Flemish government.
 They state that in the 2.6 GHz frequency band, an individual antenna cannot exceed 4.5 V/m and the cumulative sum of all 
@@ -59,7 +59,7 @@ The goal of this master dissertation is the investigation of electromagnetic exp
  the base station that is serving this user, 
 all devices from other users in the network and all 
 other active base stations that are not serving this user. This electromagnetic radiation is thereafter
-absorbed by the human body which will be expressed in SAR values.
+absorbed by the human body and will be expressed in SAR values.
 
 Several papers calculate exposure originating from certain sources, but very  limited research has been done covering the whole picture.
 In \cite{J6_originalExposureFormula} is described how electromagnetic radiation of several WiFi access points is being calculated. The authors of \cite{J1} used this knowledge 
@@ -67,8 +67,7 @@ to investigate electromagnetic exposure originating from base stations in a more
 also \gls{UL} traffic from the user's device should be considered. They therefore investigated indoor exposure. They did not only consider the electromagnetic radiation
 but also how much is absorbed by the body, which will be expressed as specific absorption rate. Since the authors only covered voice calls,
 uplink SAR was expressed in localized SAR values while the downlink traffic is expressed in whole body SAR. With the advent of 5G, paper \cite{J17_kuehn2019modelling} has been 
-published, describing how localized SAR values are achieved from different sources. More precisely: all mobile phones and all base stations in the network after which they converted the electromagnetic 
-exposure to localized SAR values.
+published, describing how localized SAR values are achieved from different sources including all mobile phones and all base stations.
 Finally, \cite{J22_plets2015joint} describes how both \gls{UL} and \gls{DL} traffic can be converted in whole body SAR values making it possible to achieve an overall picture. They applied this formula 
 however only for the user's own device.
 
@@ -136,13 +135,13 @@ will therefore be done with the usage of the second type. A technical overview o
 \label{table:dronespecs}
 \end{table}
 
-\subsection{LTE}
-The tool makes usage of \gls{LTE}, by the general public better known as 4G.  \gls{LTE} allows better \gls{UL} and \gls{DL} data speeds 
+\subsection{Long Term Evolution}
+The tool makes use of \gls{LTE}, by the general public better known as 4G.  \gls{LTE} allows better \gls{UL} and \gls{DL} data speeds 
 compared to its predecessors and is based on an all IP architecture. This technology can cover macrocells supporting cell sizes ranging from 5 km up to 100 km. 
 Macrocell antennae are usually used by transmission towers along highways or on top of buildings. LTE supports however also smaller cells like
-femtocells covering only a few hundred meters. They are therefore more portable, require less energy and will not require a telecommunication operator because
+femtocells covering only a few hundred meters. These femtocell antennae are therefore more portable, require less energy and will not require a telecommunication operator because
 of their simplicity. Femtocell base stations are therefore used by the deployment tool.
-Further, \gls{LTE} also support both \gls{FDD} and \gls{TDD}.
+Further, \gls{LTE} also supports both \gls{FDD} and \gls{TDD}.
 
 \gls{FDD} makes simultaneous \gls{UL} and \gls{DL} traffic possible by assigning different frequencies within the same frequency range 
 to both data streams. A small guard band is used between the \gls{UL} and \gls{DL} direction in order to prevent interference. An illustration 
@@ -150,7 +149,7 @@ is given in fig \ref{fig:FDD}.
 
 \gls{TDD} allows  \gls{UL} and \gls{DL} traffic by splitting the time domain. Meaning that both traffic directions use the same frequency and therefore
 alternately (in time) use the same frequency. A small time interval is used to prevent interference in case of a slightly bad timed synchronization as 
-illustrated by fig. \ref{fig:TDD}
+illustrated in fig. \ref{fig:TDD}
 
 Since it is assumed in this master dissertation that the user is continuously exposed without interruption, 
 \gls{FDD} will be used throughout this document.
@@ -183,7 +182,7 @@ Namely, the structure of the \gls{UAV} can influence the radiation pattern.
 This can either have a constructive or destructive impact and depends on the relative position between the \gls{UAV} and
 the antenna.
 When the antenna is too close to the \gls{UAV}, the \gls{UAV} can behave as a parasitic radiator, also emitting radiation.
-When using a directional antenna, the influence of the \gls{UAV} will be much less but still existing. Even when the \gls{UAV} is not 
+When using a directional antenna, the influence of the \gls{UAV} will be much less but still existing, even when the \gls{UAV} is not 
 positioned in the direction of the mean beam. \cite{A1} suggest that this side-effect can be reduced by introducing a little offset 
 between the antenna and the \gls{UAV}.
 Another challenge that comes with attaching an antenna to a \gls{UAV} is the need for 3D modelling of radiation patterns.
@@ -195,9 +194,9 @@ will be required \cite{U12}.
 The easiest radiation pattern is a hypothetical  \gls{isotropicradiator} which radiates equally in all directions.
 Antennae that radiate equal quantities for a certain plane  are called omnidirectional antennae \cite{U12} and several types 
 exist.
-Attaching a conventional dipole antenna array might be low-cost, they are too high in profile and weight \cite{A6}.
-The authors of \cite{A9} and \cite{A11} both propose a broadband monopole blade antenna for \gls{UAV} applications but
-suffers from a large surface which is a big disadvantage for the limited space available on the used \gls{UAV}s in \ref{sec:typeofdrone}.
+Attaching a conventional dipole antenna array might be low-cost, yet they are too high in profile and weight \cite{A6}.
+The authors of \cite{A9} and \cite{A11} both propose a broadband monopole blade antenna for \gls{UAV} applications 
+but this type suffers from a large surface which is a big disadvantage for the limited space available on the used \gls{UAV}s in \ref{sec:typeofdrone}.
 \cite{A10, A4} propose a broadband blade dipole antenna which is much smaller. Their wing-shaped design 
 allows good aerodynamics when flying.
 \cite{A12} proposes an alternative to blade 
@@ -207,21 +206,23 @@ a reduced height.
 
 Another type of antennae are directional antennae that take advantage of throughput, lower interference and battery life \cite{A7}. This is done by focussing the 
 electromagnetic energy there where it is needed.
-One type of directional antennae that excessively has been investigated for \gls{UAV}-usage are microstrip antennae
+One type of directional antennae that has been investigated excessively for \gls{UAV}-usage are microstrip antennae
 since they provide several advantages compared to traditional antennae \cite{J13_microstripadvantages, J14_antennadesign}. Microstrip antennae
 are lightweight, low in cost and thin causing them to be more aerodynamic which is a useful feature since the antennae will be attached
 to \gls{UAV}s.
-Zeng et al. proposes in \cite{A6} the use of such an antenna in sunflower-shaped array configuration.
+Zeng et al. proposes in \cite{A6} the use of such an antenna in a sunflower-shaped array configuration.
 Also the authors from \cite{A5} attach star-shaped millimetre wave antennae to the wings of a \gls{UAV} and
 \cite{A8} uses circular patch antennae in a circular array configuration for communication between \gls{UAV}s.
 
 A basic microstrip antenna like figure \ref{fig:basicpatchantenna} consists of a ground plane and
-a radiating patch, both separated with a dielectric substrate. 
-Several variations exist like microstrip patch antenna, microstrip slot antenna and printed dipole antenna which
+a radiating patch, both separated by a dielectric substrate. 
+Several variations exist like microstrip patch antennae, microstrip slot antennae and printed dipole antennae which
 all have similar characteristics \cite{J13_microstripadvantages, J14_antennadesign}. They are all thin, support dual frequency operation and they all have the disadvantage that they 
-will transmit at frequencies outside the aimed band which is also known as
+will transmit at frequencies outside the aimed band. This is also known as
 \gls{spuriousradiation}. The microstrip patch and slot antenna support both linear
-and circular polarization while the printed dipole only supports linear polarization. Further is the fabrication of a microstrip patch antenna considered to be the easiest of the considered patch antennae \cite{J13_microstripadvantages}. 
+and circular polarization while the printed dipole only supports linear polarization. 
+Further, the fabrication of a microstrip patch antenna is considered to be 
+the easiest of the considered patch antennae \cite{J13_microstripadvantages}. 
 
 \begin{figure}[H]
 \centering
@@ -233,15 +234,18 @@ and circular polarization while the printed dipole only supports linear polariza
 The microstrip antenna requires besides the groundplane, dielectric substrate and the radiation patch also a feed line. Several feeding techniques exist of which the most popular are: coaxial probe feeding, microstrip line and aperture coupling. %and Microstrip Patch Antenna
 %(todo: more refs? gebruik nummer twee van J13 (p2))
 
-A first feeding method is with the usage of a coaxial cable where the outer conductor is attached to the ground plane and the inner conductor to the radiations patch. Modelling is however difficult, especially for thick substrates as will be used in this master dissertation.
+A first feeding method is the usage of a coaxial cable where the outer conductor is attached to the ground plane and the inner conductor to the radiations patch. Modelling is however difficult, especially for thick substrates as will be used in this master dissertation.
 A second option is the usage of a microstrip line. This type of feeding is much easier to model since the microstrip line can be seen as en extension of the radiating patch.
 A disadvantage is the increased \gls{spuriousradiation} which limits bandwidth.
 A third is proximity coupling which has the largest bandwidth and low \gls{spuriousradiation}. It consists however of two dielectric substrates causing the overall thickness
 of the antenna to increase as well as its fabrication difficulty \cite{J13_microstripadvantages}.
 %(todo: tekst te weinig, bespreek ook apperture coupled attenna (zelfde paper als de rest))
 
-The increasing usage of the microstrip patch antennae can be explained by it's easy fabrication and lightweightness and therefore knows a widespread application in the millitary, global possitioning systems, telemedicine, WiMAX applications and so on.
-The authors of \cite{J13_microstripadvantages} also state that some of the disadvantages like lower gain and power handling can be solved with the usage of an array configuration.
+The increasing usage of the microstrip patch antennae can be explained by its easy fabrication and lightweightness 
+and therefore knows a widespread application in the millitary, global possitioning systems, telemedicine, 
+WiMAX applications and so on.
+The authors of \cite{J13_microstripadvantages} also state that some of the disadvantages like lower gain and power 
+handling can be solved by using an array configuration.
 
 The radiating patch is usually made of a thin layer of either gold or copper \cite{J14_antennadesign,J15_antennadesign}
 and can have any form. However, shapes other than circles or rectangles would require large numerical computation \cite{J14_antennadesign}.
