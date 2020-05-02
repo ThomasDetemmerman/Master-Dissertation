@@ -68,7 +68,7 @@ To accomplish this goal, a capacity based deployment tool will be used which sim
 In this way, all important sources for electromagnetic radiation, like all user equipment and all flying base stations, 
 will be considered.
 
-It looks from the results that a power consumption optimized network with a fixed flying height of 80 metres is the recommended approach
+It looks from the results that a \gls{PwrC Opt} network with a fixed flying height of 80 metres is the recommended approach
 for the city centre of Ghent.
 A microstrip patch 
 antenna with a sufficiently large aperture angle is a good starting point. However, different antenna array configurations still have to 
@@ -255,7 +255,7 @@ The default configuration is given below and is always applicable unless mention
 
 
 Four possible configurations  will be investigated in different scenarios. There are two possible antennae, namely EIRP 
-and microstrip pach antenna, which can both be applied in a power consumption optimized network or an exposure optimized network.
+and microstrip pach antenna, which can both be applied in a \gls{PwrC Opt} network or an \gls{Exp Opt} network.
 
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{fourCasesMatrix.pdf}
@@ -469,8 +469,8 @@ f = w * \left(1 - \frac{E_m}{E_{max}}\right) + (1 - w)*\left(1 - \frac{P}{P_{max
 
 Formula \ref{eq:fitnessfunction} returns a fitness value which represents the performance of the entire network. 
 $w$ is the importance factor of electromagnetic exposure ranging from 0 to 1, boundaries included. A $w$ set to zero means that electromagnetic 
-exposure is not important. Such a network will therefore be called a power consumption optimized network. 
-Likewise, a $w$ set to one means that minimizing exposure is top priority and will result in an exposure optimized network. $P_{max}$ is the power consumption of all UABSs, 
+exposure is not important. Such a network will therefore be called a \gls{PwrC Opt} network. 
+Likewise, a $w$ set to one means that minimizing exposure is top priority and will result in an \gls{Exp Opt} network. $P_{max}$ is the power consumption of all UABSs, 
 both active and inactive, when radiating at the highest level possible 
 while $P$ is the effective power used by the current designed network. 
 This will be the power required for the flying drones themselves and their antennae.
@@ -494,7 +494,7 @@ This is mainly caused by the logarithmic
 scale in which the decibels of the $P_{tx}$ are expressed. So while 10 dBm equals 10 mW, 20 dBm equals 100 mW. 
 Each time the flying height becomes too large to cover, the 
 $P_{tx}$ increases with one dBm. 
-When using the default configuration where the maximum allowed $P_{tx}$ is set to 33 dBm,
+When using the default configuration, with a maximum $P_{tx}$ of 33 dBm,
 a \gls{UABS} can fly up to 387 m before losing connection in a free \gls{LOS} scenario.
 
 This scenario is investigated with a microstrip patch antenna using power consumption optimization. 
@@ -522,25 +522,26 @@ around 80 metres.
 
 \subsection{Increased Traffic with one UABS}
 \subsubsection{Variable Flying Height}
-A power consumption optimized network has the highest exposure, a behaviour that was already proven by \cite{J1}. 
-However, a power consumption optimized network will have higher power consumption than an exposure optimized network. 
+A \gls{PwrC Opt} network has higher exposure compared to an \gls{Exp Opt} network.
+A behaviour that was already proven by \cite{J1}. 
+However, for this scenario, a \gls{PwrC Opt} network will also result in a higher power consumption. 
 To understand this, the behaviour of the deployment tool needs to be understood first. 
-A power consumption optimized network will result in a few high powered \gls{UABS}s because increasing the input power of an antenna costs 
-less than activating a new  \gls{UAV}. Likewise, an exposure optimized network 
+A \gls{PwrC Opt} network will result in a few high powered \gls{UABS}s because increasing the input power of an antenna costs 
+less than activating a new  \gls{UAV}. Likewise, an \gls{Exp Opt} network 
 generates a lot of low powered \gls{UABS}s because the lower the power of the antenna, the lower the exposure. This has the consequence that the cover radius 
 is less and therefore requires more \gls{UAV}s which costs more energy.
 When only a limited amount of \gls{UABS}s are available, 
 like only one in this scenario, the tool will only keep \gls{UABS}s which cover the most users. 
-Therefore, the power consumption in a power consumption optimized network is much more higher. 
+Therefore, the power consumption in a \gls{PwrC Opt} network is much more higher. 
 
-Further, the results also show that the exposure increases with higher flying altitudes. At low flying altitudes, 
-there is a lot of path loss by obstructing buildings. When 
-\gls{UABS}s fly higher, the exposure increases and more users become covered. 
+Further, the results also show that the exposure increases with higher flying altitudes
+because there is less path loss by obstructing buildings. This has as consequence that  
+more users become covered. 
 The increasing electromagnetic radiation is however not unlimited.
 At even higher
-flying altitudes, the distance between a given \gls{UABS} and users further away becomes too large causing the 
-coverage to decrease again. When this decrease occurs depends on the configuration. A power consumption optimized 
-network tends to decrease earlier than an exposure optimized network.
+flying altitudes, the distance between a given \gls{UABS} and some users further away becomes too large causing the 
+coverage to decrease again. When this decrease occurs depends on the configuration. A \gls{PwrC Opt} 
+network tends to decline earlier than an \gls{Exp Opt} network.
 
 When replacing the fictional \gls{EIRP} antenna by a microstrip patch antenna, the percentage of covered users drops for both 
 optimization strategies. This is because users, who have a higher horizontal distance between themselves and the \gls{UABS}, 
@@ -552,15 +553,15 @@ The far-field radiation from other \gls{UE} barely contribute anything.
 
 \subsubsection{Variable Number of Users}
 
-Also these results show how EIRP antennae designs are able to cover more users than microstrip patch antennae
-just like power consumption optimized networks will reach more users than exposure optimized networks.
-The contribution to the total \gls{SAR} from each individual source is identical to the previous scenario. \textcolor{red}{ << deze zin weg?}
+Also the results from this case show how EIRP antennae designs are able to cover more users than microstrip patch antennae
+just like \gls{PwrC Opt} networks will reach more users than \gls{Exp Opt} networks.
+The contribution to the total \gls{SAR} from each individual source is identical to the previous scenario. 
 
 There is still only one \gls{UABS} available. So when population grows, more users become uncovered and 
 therefore the average electromagnetic exposure decreases.
-For example, an EIRP power consumption optimized network
+For example, an EIRP \gls{PwrC Opt} network
 will have the highest exposure and therefore covers the most users as opposed to a microstrip patch antenna in 
-an exposure optimized network which will radiate the least and thus has the lowest number of covered users.
+an \gls{Exp Opt} network which will radiate the least and thus has the lowest number of covered users.
 
 While the population grows, more and more users become uncovered causing the average SAR to drop. 
 However, this does not conclude that by increasing the population, the SAR of a user who is directly beneath a \gls{UABS} would be less.
@@ -568,7 +569,7 @@ To investigate this, a user is positioned in the middle of the city centre of Gh
 49 people are active around him. The \gls{SAR} of our central user is monitored while the population around him is growing.
 Figure \ref{fig:connectionMap} shows with the black lines which users are connected. The left map is for only 50 users and 
 shows that only one user is connected besides our central user. The map on the right is taken with 600 users and shows much more connected users.
-The results show how the \gls{UL} \gls{SAR} remains constant. A normal behaviour since the flying altitude does not change.
+The results show that the \gls{UL} \gls{SAR} remains constant. A normal behaviour since the flying altitude does not change.
 The \gls{SAR} from the \gls{UABS} experiences a slight increase. When the population grows, more users become available 
 and some will spawn near the central user. The \gls{UABS} will likely decide to cover these users as well as visible in figure \ref{fig:connectionMap}.
 These users might have a slightly 
@@ -590,10 +591,10 @@ compared to the other sources.
 
 \subsection{Unlimited Number of UABSs}
 \subsubsection{Variable Flying Height}
-The same scenario as the previous one is investigated. Only now, an unlimited number of \gls{UABS}s is available.
+The same cases as the previous scenario are investigated. Only now, an unlimited number of \gls{UABS}s are available.
 The results prove that the different optimization strategies work as intended.
-Power consumption optimized networks have indeed a lower power consumption but therefore result in higher electromagnetic radiation.
-On the other hand, an exposure optimized network will reduce the electromagnetic exposure by using more \gls{UAV}s and thence also increase the network's
+\gls{PwrC Opt} networks have indeed a lower power consumption but therefore result in higher electromagnetic radiation.
+On the other hand, an \gls{Exp Opt} network will reduce the electromagnetic exposure by using more \gls{UAV}s and thence also increase the network's
 power consumption.
 This conclusion was already made in \cite{J1} and is supported by these results.
 \begin{figure}[h!]
@@ -603,24 +604,22 @@ This conclusion was already made in \cite{J1} and is supported by these results.
   \label{fig:s3a_dlAndPc}
 \end{figure}
 
-The exposure in an exposure optimized network increases logarithmically while the power consumption optimized network rather 
-shows a concave relationship with its lowest point at around 70 metres.
-At a flying height of 20 m, the exposure optimized network has on average 220 to 224 \gls{UABS}s. That is (almost) one \gls{UABS} for each user
+The exposure in figure \ref{fig:s3a_dlAndPc} show that an \gls{Exp Opt} network increases logarithmically while the \gls{PwrC Opt} network rather 
+shows a concave relationship with its lowest point around 70 metres.
+At a flying height of 20 m, the \gls{Exp Opt} network has on average 220 to 224 \gls{UABS}s. That is (almost) one \gls{UABS} for each user
 so it's logical that the electromagnetic exposure is very low.
-The number of \gls{UAV}s in a power consumption optimized network is much less in order 
-to save energy but the same percentage of coverage is still achieved.
-So these \gls{UAV}s will try to cover more users requiring higher levels of radiation. This is certainly the case 
-since there are a lot of obstructing buildings at this flying altitude.
-Because of this, users who are close and in \gls{LOS} will experience much more electromagnetic radiation.
-
+The number of \gls{UAV}s in a \gls{PwrC Opt} network is much less in order 
+to save energy but it is still able to achieve the same percentage of coverage.
+This is done by increasing the radiation so the cover radius would become larger.
 The results further show that the network profits from increasing the flying altitude. Not only
 less \gls{UAV}s are needed but also the power consumption is lower. Both can be explained by the
-lower path loss when UABSs fly higher. At higher flying altitudes, 
-the exposure from the \gls{UE} increases. A behaviour also explained in the first scenario.
-The SAR from the serving \gls{UABS} is identical to the exposure which has been explained earlier.
-When looking at the exposure from `other \gls{UABS}s', an increase in electromagnetic radiation at higher 
-flying altitudes is noticed.
-Also here the lower path loss from less obstructing buildings will be the reason.
+lower path loss when UABSs fly higher. 
+
+Figure \ref{fig:s3a_fourSourcesMatrix} shows how each source contributes to the total \gls{SAR}.
+A first consequence of higher flying altitudes is the increase in electromagnetic radiation from the user's own device.
+A behaviour also explained in the first scenario.
+A second  consequence is that also 
+ the exposure from `other \gls{UABS}s' increases, caused by lower path loss from less obstructing buildings will be the reason.
 The figures from \ref{fig:s3a_fourSourcesMatrix} further also clearly show that this increase 
 in electromagnetic radiation will be less for a microstrip patch antenna. The reason behind this is that energy 
 will be more focussed towards the ground and there is less sideways radiation because of attenuation.
@@ -634,10 +633,11 @@ will be more focussed towards the ground and there is less sideways radiation be
 
 \subsubsection{Variable Number of Users}
 When the flying height of the \gls{UABS}s are fixed to 100 metres and the density of the population increases, also 
-the number of required drones increases in order to reach a 100 \% coverage. When the number of drones increases, 
-so does the electromagnetic exposure and power consumption.
+the number of required \gls{UAV}s increases in order to reach a 100 \% coverage.
+Figure \ref{fig:s3b_dlAndPC} shows that when the number of \gls{UABS}s and users increases, 
+also the electromagnetic exposure and power consumption increases.
 Once again, the EIRP antenna in a power consumption network has the highest exposure for the lowest power consumption
-and a microstrip patch antenna in an exposure optimized network the lowest exposure for the highest power consumption.
+and a microstrip patch antenna in an \gls{Exp Opt} network the lowest exposure for the highest power consumption.
 The two other combinations are in the middle and behave very similar.
 
 \begin{figure}[h!]
@@ -651,9 +651,11 @@ When looking at the different contributions to the total \gls{SAR} in figure \re
 we see that the weighted average 
 \gls{SAR} from the users' own device and from the serving \gls{UABS} remains constant. The flying altitude is always the same so 
 also the required energy to cover that distance will remain the same. 
-The only \gls{SAR} value that increases are the \gls{DL} \gls{SAR} from other \gls{UABS}s and the \gls{UL} \gls{SAR} from other \gls{UE}. 
-When more users come online, also more \gls{UAV}s will be radiating. Moreover, there is very little path loss because the flying height is above the
-average building.
+The only \gls{SAR} values that increase are the \gls{DL} \gls{SAR} from other \gls{UABS}s and the \gls{UL} \gls{SAR} 
+from other \gls{UE}. 
+When more users come online, also more \gls{UAV}s will be radiating. So the electromagnetic
+radiation will increase for both types of sources. Moreover, there is very little path loss at this flying altitude since it 
+is above the average building.
 
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s3/uFourSources.png}
@@ -667,17 +669,17 @@ average building.
 Literature showed that a network can be optimized towards either the power consumption of the entire network 
 or the electromagnetic exposure of the average user using a fitness function \cite{J1}.
 However, the fitness function should be used with care considering that \gls{UABS}s can be placed anywhere as opposed to 
-the transmission towers from \cite{J1} who have a predetermined position. This causes that in an exposure optimized network, 
+the transmission towers from \cite{J1} who have a predetermined position. This causes that in an \gls{Exp Opt} network, 
 a lot of users get a \gls{UABS}
 all by themselves because this is the best approach to minimize exposure.
-A power consumption optimized network on the other hand will try to limit the number of drones 
+A \gls{PwrC Opt} network on the other hand will try to limit the number of drones 
 in order to save energy. 
-So as a rule of thumb: an exposure optimized network will result in a lot of low powered devices (increasing the overall power consumption)
-while a power consumption optimized network results in a few high powered devices (increasing the exposure of the average user).
-If the goal is to remain in the air for a longer period of time, an exposure optimized network is recommended because the power consumption of 
+So as a rule of thumb: an \gls{Exp Opt} network will result in a lot of low powered devices (increasing the overall power consumption)
+while a \gls{PwrC Opt} network results in a few high powered devices (increasing the exposure of the average user).
+If the goal is to remain in the air for a longer period of time, an \gls{Exp Opt} network is recommended because the power consumption of 
 an individual \gls{UABS} is lower.
-On the other hand, a power consumption optimized network is cheaper because less drones are involved. 
-Moreover, the results show that the electromagnetic radiation in a power consumption optimized network (with high powered \gls{UABS}s)
+On the other hand, a \gls{PwrC Opt} network is cheaper because less drones are involved. 
+Moreover, the results show that the electromagnetic radiation in a \gls{PwrC Opt} network (with high powered \gls{UABS}s)
 is far below the thresholds enforced by the Flemish government.
 
 The user's main sources of exposure are the user's own device and the \gls{UABS} who is serving him followed by all
@@ -685,7 +687,7 @@ other \gls{UABS}s in the network.
 When the population increases, there is not only more radiation from \gls{UE} but also 
 from more \gls{UABS}s that are serving the other users.
 The exposure from other people their \gls{UE} is so low that it can be neglected.
-An exposure optimized network will limit the total exposure mainly by trying to reduce the exposure from other \gls{UABS}s.
+An \gls{Exp Opt} network will limit the total exposure mainly by trying to reduce the exposure from other \gls{UABS}s.
 
 %1)	How does the network behave differently after the introduction of a realistic antenna?
 A directional microstrip patch antenna is introduced because it gives several advantages compared to omnidirectional antennae.
@@ -706,7 +708,7 @@ causes less sideways radiation. So the exposure from other \gls{UABS}s will be w
   \label{fig:resultIllustration}
 \end{figure}
 
-Remarkable is that an \gls{EIRP} exposure optimized network behaves very similar to a microstrip power consumption optimized network as shown 
+Remarkable is that an \gls{EIRP} \gls{Exp Opt} network behaves very similar to a microstrip \gls{PwrC Opt} network as shown 
 in figure \ref{fig:resultIllustration}.
 This results in the best of both worlds. 
 The microstrip patch antenna will generate less electromagnetic radiation by design and
@@ -714,16 +716,16 @@ The microstrip patch antenna will generate less electromagnetic radiation by des
  angle of \ang{90} is considered as a good solution but if budget is limited, an antenna with a larger aperture angle 
  would further reduce cost without interfering with the Flemish legislation regarding electromagnetic exposure.
 
-The electromagnetic radiation of an exposure optimized network increases with higher flying altitudes.
+The electromagnetic radiation of an \gls{Exp Opt} network increases with higher flying altitudes.
 Around 80 metres, the exposure from the  user's device surpasses the exposure from the serving \gls{UABS}.
-On the other hand, a power consumption optimized network shows that the lowest exposure is measured around 70 to 80 metres.
+On the other hand, a \gls{PwrC Opt} network shows that the lowest exposure is measured around 70 to 80 metres.
 Further, the results also show that the number of required drones decreases when the flying height becomes larger. 
 A conclusion that was also made in \cite{J2}.
 When also considering the results from \cite{U1} where a flying altitude from 
 80 metres is suggested for an optimal access and backhaul connectivity, a flying height 
 of 80 metres is also here proposed for the city centre of Ghent.
 
-In short, a power consumption optimized network is proposed with a fixed flying height of 80 metres. A microstrip patch 
+In short, a \gls{PwrC Opt} network is proposed with a fixed flying height of 80 metres. A microstrip patch 
 antenna with a sufficiently large aperture angle is a good starting point. However, different antenna configurations should 
 be investigated.
 
