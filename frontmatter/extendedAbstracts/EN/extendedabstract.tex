@@ -68,7 +68,7 @@ To accomplish this goal, a capacity based deployment tool will be used which sim
 In this way, all important sources for electromagnetic radiation, like all user equipment and all flying base stations, 
 will be considered.
 
-It looks from the results that a \gls{PwrC Opt} network with a fixed flying height of 80 metres is the recommended approach
+It looks from the results that a power consumption optimized network with a fixed flying height of 80 metres is the recommended approach
 for the city centre of Ghent.
 A microstrip patch 
 antenna with a sufficiently large aperture angle is a good starting point. However, different antenna array configurations still have to 
@@ -84,20 +84,20 @@ emergency network, UAV, unmanned aerial base stations
 \section{Introduction}
 \PARstart{S}{ociety} is constantly getting more and more dependent on wireless communication. 
 On any given moment, in any given location, an electronic device
-can request to connect to the bigger network. Devices need more than ever to be connected, 
-starting from small \gls{IOT} up to self-driving cars
-which all need to be supported by the existing infrastructure. 
+can request to connect to the bigger network, 
+starting from small \gls{IOT} up to self-driving cars.
 
-Also in exceptional and possibly life threatening situations, the public relies on the cellular network. 
-One solution for a fast temporarily deployable network is with the usage of a \gls{UAV}. A base station can be attached to 
-these flying \gls{UAV}s to support the damaged network over a limited area. 
+Also in exceptional and possibly life threatening situations, the public relies on the cellular network
+despite the fact that the network might be severely damaged and not properly functioning any more.
+One solution for a fast temporarily deployable network is with the usage of \gls{UAV}s. A base station can be attached to 
+these flying \gls{UAV}s to support the network over a limited area. 
 This approach is also useful in case of an unexpected increase in traffic. 
 For example during the terrorist attacks at Brussels Airport,
 mobile network operators saw all telecommunications drastically increasing causing moments of contention. 
 Some operators even decided to temporarily exceed the exposure limits in
 order to handle all connections \cite{baseZaventem}.
-Electromagnetic exposure can however not be neglected. 
-Research shows how excessive electromagnetic radiation can cause diverse biological side effects \cite{bioeffects, WHO}.
+Electromagnetic exposure caused by these networks can however not be neglected. 
+Research shows how excessive electromagnetic radiation can cause diverse biological side effects \cite{bioeffects,WHO}.
 It becomes clear that electromagnetic exposure is a key value when designing a \gls{UAV}-aided network and should definitely 
 not surpass the limits predefined by the government.
 
@@ -105,8 +105,8 @@ not surpass the limits predefined by the government.
 explain how a network can be optimized towards different goals like power consumption.
 However, very limited
 research has been done where a \gls{UAV}-aided network is optimized towards electromagnetic exposure.
-While several publications exist, discussing how the electromagnetic exposure can be calculated. 
-Most of them only consider a limited number of sources like only base stations or only mobile phones.
+While several publications exist, discussing how the electromagnetic exposure can be calculated, 
+most of them only consider a limited number of sources. For example only base stations or only the user's mobile device.
 Papers who cover electromagnetic exposure from all the different sources and convert it into a single value are rather limited.
 
 This research proposes a method to optimize the network towards electromagnetic exposure and power consumption
@@ -131,17 +131,17 @@ This planning tool describes a fully configured \gls{UAV}-network which is a sui
 \subsection{Electromagnetic exposure}
 
 Users in a telecommunication network are exposed to various sources of electromagnetic radiation, expressed in $V/m$. Once this exposure is absorbed by the human 
-body we are talking about specific absorption rate (SAR) and is expressed in $W/kg$. All these values are 
-subjected to limitations enforced by the government. This research is done in Ghent, 
-a Flemish city in Belgium, where in the 2.6 GHz frequency band, an individual antenna cannot exceed 4.5 V/m and the cumulative sum of all 
-fixed sources has its maximum at 31 V/m \cite{J23, S13_normenBelgie}. The maximum SAR-values for the whole body 
-over a 10 g tissue ($SAR_{10g}$) is $2 W/kg$ \cite{J30}. 
+body we are talking about specific absorption rate (SAR) which is expressed in $W/kg$. All these values are 
+subjected to limitations enforced by the government. This research is performed in Ghent, 
+a Flemish city in Belgium where the 2.6 GHz frequency band, an individual antenna cannot exceed 4.5 V/m and the cumulative sum of all 
+fixed sources has its maximum at 31 V/m \cite{J23,S13_normenBelgie}. The maximum whole body SAR-values for a mobile device 
+over a 10 g tissue ($SAR_{10g}$) is defined at $2 W/kg$ \cite{J30}. 
 
-Several papers calculate exposure originating from certain sources  \cite{J6_originalExposureFormula, J1, J10_RDP, J10.1} 
-where some convert the \gls{UL} radiation into localized specific absorption rates \cite{ J10_RDP, J10.1}. 
+Several papers calculate exposure originating from specific sources  \cite{J6_originalExposureFormula,J1,J10_RDP,J10.1} 
+where some convert the \gls{UL} radiation into localized specific absorption rates \cite{J10_RDP,J10.1}. 
 With the advent of 5G, paper \cite{J17_kuehn2019modelling} describes 
-how the localized \gls{SAR}-values are achieved from different sources.
-Finally, \cite{J22_plets2015joint} describes how both \gls{UL} and \gls{DL} traffic can be converted into a single whole body SAR value.
+how the localized \gls{SAR}-values are achieved from all different sources.
+Finally, \cite{J22_plets2015joint} describes how the electronic radiation can be converted into whole body SAR values.
 
 In a realistic network, some users are calling while others are using other types of telecommunication services like browsing the web.
 Therefore, all absorbed electromagnetic exposure should be expressed in whole body SAR while still covering all sources.
@@ -158,10 +158,11 @@ However, it brings also challenges like limited weight of the payload and sparse
 
 Kawamoto et al. introduced in \cite{U11} a WiFi network with the support of  \gls{UAV}s while considering resource allocation 
 and antenna directivity. 
-Gangula et al. illustrates in \cite{U10} how \gls{UAV}s can be used as a relay for LTE. 
+Gangula et al. illustrates in \cite{U10} how \gls{UAV}s can be used as a relay for \gls{LTE}
+and
 Zeng et al. proposes in  \cite{U12} a tutorial in 5G-and-beyond wireless systems where challenges like 
 energy consumption, mobility and antenna direction are discussed. 
-Deruyck et al. designed in \cite{J2} a capacity based deployment tool for UAV-aided emergency
+In \cite{J2}, Deruyck et al. designed  a capacity based deployment tool for UAV-aided emergency
 networks for large-scale disaster scenarios where an ideal flying height of 100 m is suggested. This was expanded 
 in \cite{U1} with a performance evaluation of the direct-link backhaul of this tool where a slightly lower 
 flying height of 80 metres is recommended.
@@ -171,7 +172,7 @@ Mozaffari et al. provides in \cite{U3} guidelines on how to optimize and analyse
 wireless communication equipment.
 One path that has been excessively researched are location optimization solutions where the network is 
 designed in such a way that certain goals like minimal power consumption are achieved \cite{U6,U7,U8,U9}.
-These optimizations can be achieved through different implementation methods like exact algorithms or machine learning \cite{U3,U5}.
+These optimizations can be done through different implementation methods like exact algorithms or machine learning \cite{U3,U5}.
 
 Research where network is optimized towards electromagnetic exposure is rather limited.
 Deruyck et al. discusses in \cite{J1} how a terrestrial network can be optimized towards either a minimal exposure or minimal power consumption of the entire network.
@@ -179,7 +180,7 @@ However, to the best of the author knowledge, no research has been done where a 
 
 \subsection{Technologies}
 
-For the deployment of the network, the more robust \gls{UAV}s from \cite{J2} will be used and will be operating in the 2.6 Ghz 
+For the deployment of the network, the more robust \gls{UAV}s from \cite{J2} will be used (details in table \ref{table:defaultconf}) and will be operating in the 2.6 Ghz 
 bandwidth. Since the users are assumed to experience a constant electromagnetic exposure without interruptions, frequency division duplex is used.
 
 % problem antennae on drones
@@ -192,26 +193,29 @@ will be required \cite{U12}.
 
 The easiest radiation pattern is a hypothetical isotropic radiator which radiates equally in all directions.
 Antennae that radiate equal quantities for a certain plane are called omnidirectional antennae \cite{U12} and several types 
-have been investigated for \gls{UAV} usage like monopoles, dipoles and wing antennae 
+for \gls{UAV} usage like monopoles, dipoles and wing antennae 
 have been considered \cite{A4,A10,A11,A12}.
-Another type of antennae are directional antennae. One type 
+Another type of antennae are directional antennae which saves energy by focussing the electromagnetic energy there where it 
+is needed. One type 
 that has excessively been researched in various array-configurations are microstrip patch antennae \cite{A5,A6,A8}.
-They provide several advantages compared to traditional antennae \cite{J13_microstripadvantages, J14_antennadesign}
+They provide several advantages compared to traditional antennae \cite{J13_microstripadvantages,J14_antennadesign}
 like lightweightness, low in cost and thin causing them to be more aerodynamic. 
 
 A basic microstrip antenna consists of a ground plane and
-a radiating patch, both separated with a dielectric substrate. 
-Several variations exist like microstrip patch antenna, microstrip slot antenna and printed dipole antenna which
-all have similar characteristics \cite{J13_microstripadvantages, J14_antennadesign}. They are all thin, support dual frequency operation and they all have the disadvantage that 
+a radiating patch, both separated by a dielectric substrate. 
+Several variations exist like microstrip patch antennae, microstrip slot antennae and printed dipole antennae which
+all have similar characteristics \cite{J13_microstripadvantages, J14_antennadesign}. 
+They are all thin, support dual frequency operation and they all have the disadvantage that 
 they 
 will transmit at frequencies outside the aimed band which is also known as
 spurious radiation. The microstrip patch and slot antenna support both linear
-and circular polarization while the printed dipole only supports linear polarization. Further is the fabrication of a microstrip patch antenna considered to be the easiest 
+and circular polarization while the printed dipole only supports linear polarization. 
+Further, the fabrication of a microstrip patch antenna is considered to be the easiest 
 of the considered patch antennae \cite{J13_microstripadvantages}. 
 
 
 \section{Scenarios}
-The default configuration is given below and is always applicable unless mentioned otherwise. 
+The default configuration is given in table \ref{table:defaultconf} and is always applicable unless mentioned otherwise. 
 
 \begin{table}[!htb]
 \centering
@@ -251,11 +255,28 @@ The default configuration is given below and is always applicable unless mention
         \toprule
 \end{tabular}
 \caption{Overview of default configuration values.}
+\label{table:defaultconf}
 \end{table}
 
+Three main scenarios will be investigated. 
+The first one is with only one user and one drone present in the network. 
+SAR, electromagnetic exposure, power consumption 
+and antenna transmission power are investigated at different flying heights.
 
-Four possible configurations  will be investigated in different scenarios. There are two possible antennae, namely EIRP 
-and microstrip pach antenna, which can both be applied in a \gls{PwrC Opt} network or an \gls{Exp Opt} network.
+In a second scenario, the network is expanded for multiple users but with still only one drone available. 
+The scenario is divided into two cases. One with a variable flying height but with a fixed 
+number of 224 users which is on an average day 
+at 5 p.m. in Ghent. In the other case, the number of users varies but the flying height is set to 100 metres \cite{J2}.
+The power consumption, electromagnetic exposure and specific 
+absorption rate are investigated for each case.
+
+The third scenario is quite similar to the previous scenario. It has the same 
+two cases. The only exception is that an unlimited number of \gls{UABS}s are available.
+
+Each case from each scenario consist out of four possible configurations.
+There are two possible antennae, namely EIRP 
+and microstrip patch antenna, which can both be applied in a \gls{PwrC Opt} network or an \gls{Exp Opt} network.
+An overview is given in figure \ref{fig:fourCasesMatrix}
 
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{fourCasesMatrix.pdf}
@@ -263,26 +284,12 @@ and microstrip pach antenna, which can both be applied in a \gls{PwrC Opt} netwo
   \label{fig:fourCasesMatrix}
 \end{figure}
 
-Three main scenarios will be investigated. 
-First, only one user with one drone will be present in the network. SAR, electromagnetic exposure, power consumption 
-and antenna transmission power are investigated at different flying heights.
-
-In a second scenario, the network is expanded for multiple users but with still only one drone available. 
-The scenario is divided into two cases. One with a variable flying height but with a fixed 
-number of 224 users which is an average day 
-at 5 p.m. in Ghent. In the other case, the number of users varies but the flying height is set to 100 \cite{J2}.
-The power consumption, electromagnetic exposure and specific 
-absorption rate are investigated in the four different configurations.
-
-The third scenario is quite similar to the previous scenario. It has the same 
-two cases with each its four configurations. The only exception is that an unlimited number of UABSs are available.
-
 \section{Methodology}
 
 \subsection{Electromagnetic Exposure}
 
 
-The total whole body SAR ($SAR^{wb,total}_{10g}$) (expressed in $W/kg$) of a user can be calculated by a simple sum of individual SAR values from the different sources
+The total whole body SAR ($SAR^{wb,total}_{10g}$) of a user can be calculated by a simple sum of individual SAR values from the different sources
 and is based on \cite{J17_kuehn2019modelling} where SAR values are used that are induced into the head.
 Using $SAR^{head}_{10g}$ would however result into incorrect conclusions since 
 the position of the phone relative to the user is unknown. 
@@ -298,16 +305,14 @@ SAR^{wb,total}_{10g} = SAR^{wb,my\_UE}_{10g} +  SAR^{wb,my\_UABS}_{10g} \\
 \label{eq:overallSARwb}
 \end{equation}
 
-The first parameter, $SAR^{wb,my\_UE}_{10g}$, indicates the absorbed electromagnetic radiation by the whole body originating from the user's own device.
- However the 
-\gls{UL} radiation is destined for the serving \gls{UABS}, a portion of that radiation is directly absorbed by its user, due to the omnidirectional nature of the mobile 
-antenna.
-The second parameter, $SAR^{wb,my\_UABS}_{10g}$, represents the \gls{DL} radiation caused by the \gls{UABS} who is serving the user.
-As the third parameter, we have the $SAR^{wb,other\_UE}_{10g}$ which is radiation caused by the device of other people. The radiation of these devices is once again 
-destinated for a specific \gls{UABS} but again, a portion of that \gls{UL} radiation will also be absorbed by our user.
-Finally, $SAR^{wb,other\_UABSs}_{10g}$ represents the \gls{DL} radiation by the other UABSs to which our user is exposed to but not served by.
-An illustration is given in figure \ref{fig:networkIllustration} where the green arrow is a type near-field radiation while 
-the others represent far-field radiation.
+The first parameter, $SAR^{wb,my\_UE}_{10g}$, indicates the absorbed electromagnetic radiation by the whole body originating from the user's own device. However that the 
+\gls{UL} radiation is destined for the serving \gls{UABS}, a portion of that radiation is directly absorbed by its user, due to the omnidirectional nature of the mobile's antenna.
+The second parameter, $SAR^{wb,my\_UABS}_{10g}$, represents the \gls{DL} radiation caused by the \gls{UABS} that is serving the user.
+As the third parameter, we have the $SAR^{wb,other\_UE}_{10g}$ which is radiation caused by other people's devices. The radiation of these devices is once again 
+destined for a specific \gls{UABS} but again, a portion of that \gls{UL} radiation will also be absorbed by our user.
+Finally, $SAR^{wb,other\_UABSs}_{10g}$ represents the \gls{DL} radiation by the other \gls{UABS}s to which our user is exposed to but not served by.
+An illustration is given in figure \ref{fig:networkIllustration}.
+The green arrow stands for near-field radiation, the others represent far-field radiation.
 
 \begin{figure}[h!]
 \centering
@@ -323,7 +328,7 @@ the others represent far-field radiation.
 \label{sec:calculatingexposure}
 
 Calculating far-field exposure needs to be done for all UABSs and UE that do not belong to the user.
-To determine the total exposure $E$ (expressed in V/m) of this single user $u$ from a single radiator $i$ can be calculated
+To determine the total exposure $E$ of this single user $u$ from a single radiator $i$ can be calculated
 as follows.
 
 \begin{equation}
@@ -331,7 +336,7 @@ E_i(u) [V/m] = 10^{\frac{RRP(u)[dBm] - 43.15 + 20*\log(f [Mhz])- PL(u) [dB]}{20}
 \label{eq:singleexposure}
 \end{equation}
 
-Caculating the real radiation power (RRP) for a certain user $u$, requires first the EIRP-value to be calculated  \cite{J6_originalExposureFormula, J1}.
+Caculating the real radiation power (RRP) for a certain user $u$, requires first the EIRP-value to be calculated  \cite{J6_originalExposureFormula,J1}.
 This is achieved by adding the transmit power $P_t$ to the transmitter gain $G_t$ and thereafter subtracting the feeder loss $L_t$.
 This formula needs to be expanded to also account for attenuation. This value depends on the angle 
 between this user and the antenna's main beam. This leads to the following formula.
@@ -343,9 +348,9 @@ RRP [dBm] = P_t [dBm] + G_t [dBi]- L_t [dB]\\
 \end{aligned}
 \label{eq:eirp}
 \end{equation}
-The used frequency in formula \ref{eq:singleexposure} is denoted as $f$ and is expressed in MHz. Since LTE is used, this value will be 2600 MHz.
+The used frequency in formula \ref{eq:singleexposure} is denoted as $f$ and is expressed in MHz. Since \gls{LTE} is used, this value will be 2600 MHz.
 
-At last, formula \ref{eq:eirp} requires the path loss (in dB). In order to calculate this, an appropriate propagation model -of which several exist- is required .
+At last, formula \ref{eq:eirp} requires the path loss (in dB). In order to calculate this, an appropriate propagation model ---of which several exist--- is required .
 The Walfish-Ikegami model is used since it performs well for femtocell networks in urban areas \cite{J2}. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
 %It consists of two formulas depending on whether a free LOS between the user and the base station exists or not. Both formulas expect a distance in kilometre. %bron?
 
@@ -361,9 +366,10 @@ E_{tot} [V/m] = \sqrt{\sum_{i=1}^{n} (E_i [V/m]) ^2}
 
 \subsubsection{Converting electromagnetic radiation into SAR-values}
 
-Formula \ref{eq:overallSARwb} expects that the radiation is expressed in whole body \gls{SAR}.
+Formula \ref{eq:overallSARwb} expects that the radiation is expressed in whole body \gls{SAR}-values.
 To make this calculation possible, a distinction has to be made between near-field \gls{SAR}
-$SAR^{wb,nf}$ and far-field \gls{SAR} $SAR^{wb,ff}$.
+($SAR^{wb,nf}$) and far-field \gls{SAR} ($SAR^{wb,ff}$). $SAR^{wb,my\_UABS}_{10g}$ is a form of near-field radiation, 
+all the other types are far-field radiation.
 %$SAR^{wb,my\_UABS}_{10g}$, $SAR^{wb,other\_UE}_{10g}$ and $SAR^{wb,other\_UABSs}_{10g}$ are forms 
 %of far-field radiation while $SAR^{wb,my\_UABS}_{10g}$ is a form of near-field radiation.
 
@@ -374,9 +380,9 @@ Research shows that the conversion factor for WiFi in the far-field is $0.0028 \
 and for 0.0070 $\frac{W/kg}{W}$ \cite{J22_plets2015joint} in the near-field.
 
 Since WiFi, at a frequency of 2400 MHz,
-is very close to LTE, at 2600 MHz, it is assumed in \cite{J22_plets2015joint} that this value is also applicable for \gls{LTE}.
+is very close to \gls{LTE}, at 2600 MHz, it is assumed in \cite{J22_plets2015joint} that this value is also applicable for \gls{LTE}.
 
-Caculating \gls{SAR} from far-field radiation is done as follows:
+Calculating \gls{SAR} from far-field radiation is done as follows:
 
 \begin{equation}
 S [W/m^2]= \frac{(E_{tot} [V/m])^2}{337}
@@ -393,8 +399,7 @@ from formula \ref{eq:totalexposure} should first be converted to the  \gls{power
 \ref{eq:flux}.
 
 The SAR caused by near-field radiation is calculated by multiplying the constant with the used transmission
-power of the \gls{UE} (eq. \ref{eq:ulToSar}) 
-as follows:
+power of the \gls{UE} which results to the following formula:
 
 \begin{equation} 
 SAR^{wb,nf}_{10g} \left[\frac{W}{kg}\right] = 0.0070 \left[\frac{W/kg}{W}\right] * P_{tx} [W]
@@ -410,7 +415,7 @@ The antenna will be radiating at a centre frequency $f_0$ of 2.6 GHz. Each subst
 the permittivity of the substrate and depends on the used material.
 Substrates with a high dielectric constant and low height 
 reduce the dimensions of the antenna
-while a lower dielectric constant with a high height improves the performance of the antenna. 
+while a lower dielectric constant with a high height improves the performance of the antenna \cite{J14_antennadesign,J15_antennadesign}. 
 In this document, a substrate like glass 
 is chosen because of the higher dielectric constant of $\epsilon_r = 4.4$ compared to materials like teflon with only a dielectric 
 constant of $\epsilon_r = 2.2$ \cite{J14_antennadesign}. 
@@ -430,7 +435,7 @@ This comes in handy since drones only have limited space available.
 \label{table:antennaparas}
 \end{table}
 
-The dimensions of the radiating patch can be calculated with the formulas from \cite{J14_antennadesign, J15_antennadesign}.
+The dimensions of the radiating patch can be calculated with the formulas from \cite{J14_antennadesign,J15_antennadesign}.
 Doing so will result in a radiating patch of 35.09 mm by 26.55 mm and a groundplane of at least 52.40 mm by 43.80 mm.
 The microstrip patch antenna as illustrated in fig. \ref{fig:basicpatchantenna} will result in the radiation pattern of fig. \ref{fig:radpattern}.
 \begin{figure}[h!]
@@ -468,9 +473,9 @@ f = w * \left(1 - \frac{E_m}{E_{max}}\right) + (1 - w)*\left(1 - \frac{P}{P_{max
 \end{equation}
 
 Formula \ref{eq:fitnessfunction} returns a fitness value which represents the performance of the entire network. 
-$w$ is the importance factor of electromagnetic exposure ranging from 0 to 1, boundaries included. A $w$ set to zero means that electromagnetic 
+$w$ is the importance factor of electromagnetic exposure ranging from 0 to 1, boundaries included. A $w$ set to 0 means that electromagnetic 
 exposure is not important. Such a network will therefore be called a \gls{PwrC Opt} network. 
-Likewise, a $w$ set to one means that minimizing exposure is top priority and will result in an \gls{Exp Opt} network. $P_{max}$ is the power consumption of all UABSs, 
+Likewise, a $w$ set to 1 means that minimizing exposure is top priority and will result in an \gls{Exp Opt} network. $P_{max}$ is the power consumption of all UABSs, 
 both active and inactive, when radiating at the highest level possible 
 while $P$ is the effective power used by the current designed network. 
 This will be the power required for the flying drones themselves and their antennae.
