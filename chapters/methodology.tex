@@ -509,18 +509,18 @@ The second value, the north offset, defines the azimuth orientation of the drone
 and the horizontal direction to which the antenna should be pointing at. The value once again ranges from \ang{0} to \ang{360} with the upper boundary not included. The
 angle is calculated in counterclockwise orientation. For instance, a north offset of \ang{270} will let the \gls{UABS} point to the east.  
 
+\begin{figure}[H]
+\centering
+  \includegraphics[width=\textwidth/10*7]{../images/3Dimages/slicesOfPattern.jpg}
+  \caption{Schematic example of slices in a radiation pattern.}
+  \label{fig:slicesOfPattern}
+\end{figure}
+
 Thereafter, the normalized radiation pattern is supplied to the tool. The actual pattern is three dimensional. To simplify this,
 slices perpendicular to the az-axis are extracted. These are indicated in figure \ref{fig:slicesOfPattern} with azimuth cuts. With
 an angle of \ang{90} four slices are achieved, each consisting out of elevation cuts. The intersection of an elevation and azimuth plane 
 corresponds with a certain attenuation which is fed to the tool. Figure \ref{fig:slicesOfPattern} shows only 3 elevation planes. The radiation pattern used in the tool 
 has an attenuation every \ang{10}. In other words, a slice consists of 19 values ranging from \ang{0} to \ang{180} (boundaries included).
-
-\begin{figure}[H]
-\centering
-  \includegraphics[width=\textwidth/3*2]{../images/3Dimages/slicesOfPattern.jpg}
-  \caption{Schematic example of slices in a radiation pattern.}
-  \label{fig:slicesOfPattern}
-\end{figure}
 
 The number of required slices depends on the complexity of the radiation pattern. For symmetrical radiation patterns, like 
 in figure \ref{radpattern2} and \ref{radpattern1}, two azimuth cuts perpendicular to each other dividing the radiation pattern in 4 azimuth-slices 
@@ -592,11 +592,11 @@ In this case the choice was made to only consider \gls{UABS}s within a radius of
 to have a sufficient safety margin. The rare connections that would have exceeded this radius would not contribute much to 
 the average values.
 
-\begin{figure}[]
+\begin{figure}[h]
 \begin{tikzpicture}
     \begin{axis}[
-        width  = 0.85*\textwidth,
-        height = 8cm,
+        width  = \textwidth,
+        height = 6cm,
         major x tick style = transparent,
         ybar=2*\pgflinewidth,
         bar width=14pt,

@@ -70,13 +70,12 @@ exceeds the \gls{DL} radiation in order to still be able to reach the high flyin
 showed a discontinue behaviour that sometimes radiates more than strictly necessary. This has thus a direct influence
 on the \gls{DL} \gls{SAR}. Hence the same discontinue behaviour. The \gls{DL} \gls{SAR} can be simplified to a perfect constant line.
 This constant behaviour can once again be explained with power control. When the \gls{UABS} flies lower, there is less path loss and the \gls{UABS} 
-will therefore reduce the $P_{tx}$. This results in formula \ref{eq:exposureBasicFormula} where the electromagnetic exposure is a constant fraction of power and distance.
+will therefore reduce the $P_{tx}$. We can therefore confirm that the electromagnetic exposure is a constant fraction of power and distance.
 
-\begin{equation}
-\vec{E} (V/m) = \frac{\Delta U (V) }{\Delta x (m)}
-\label{eq:exposureBasicFormula}
-\end{equation}
-
+%\begin{equation}
+%\vec{E} (V/m) = \frac{\Delta U (V) }{\Delta x (m)}
+%\label{eq:exposureBasicFormula}
+%\end{equation}
 %The SAR values are the result of multiplying the electromagnetic exposure with a constant as explained in equation \ref{eq:DLconvertion}. So both have a linear relationship.
 
 Figure \ref{fig:s1_fhsar} doesn't show radiation from neighbours, because there are none present in this scenario. 
@@ -101,6 +100,7 @@ attached to the \gls{UABS} which will require more energy to maintain the same e
   For this scenario, the power is used by only one \gls{UABS}.}
   \label{fig:fhvspc}
 \end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
@@ -136,13 +136,6 @@ Therefore, the power consumption in a power consumption optimized network is muc
   \label{fig:s2a_dlAndPc}
 \end{figure}
 
-The \gls{DL} exposure in figure \ref{fig:s2a_dlAndPc} increases along with the flying height. One might expect a more constant 
-behaviour like it was the case in figure \ref{fig:s1_fhsar} of scenario 1. To understand this, the scenario has been reduced  
-to only two users and is illustrated in figure \ref{fig:schematicprove}.
-The two users, who will be referred to by `red' and `blue', are 90 meters separated from each other with a building between them.
-Scenario 1 already explained that the charts can be simplified and the blue line from fig. \ref{fig:prove} remains in fact constant between zero and 130 meters.
-The chart shows that the \gls{UABS} is positioned above the blue user. The red user is in \gls{NLOS} as long as the \gls{UABS} remains below 20 meters.
-
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s2/prove.png}
   \caption{Scenario 2 with only 2 users. The coloured areas are only applicable for the red user. The blue user is connected during the entire time.}
@@ -157,6 +150,13 @@ The chart shows that the \gls{UABS} is positioned above the blue user. The red u
   \caption{Schematic overview of scenario 2 with only 2 users.}
   \label{fig:schematicprove}
 \end{wrapfigure}
+The \gls{DL} exposure in figure \ref{fig:s2a_dlAndPc} increases along with the flying height. One might expect a more constant 
+behaviour like it was the case in figure \ref{fig:s1_fhsar} of scenario 1. To understand this, the scenario has been reduced  
+to only two users and is illustrated in figure \ref{fig:schematicprove}.
+The two users, who will be referred to by `red' and `blue', are 90 meters separated from each other with a building between them.
+Scenario 1 already explained that the charts can be simplified and the blue line from fig. \ref{fig:prove} remains in fact constant between zero and 130 meters.
+The chart shows that the \gls{UABS} is positioned above the blue user. The red user is in \gls{NLOS} as long as the \gls{UABS} remains below 20 meters.
+
 Once the \gls{UABS} increases its flying altitude, the red user comes into \gls{LOS} but still remains uncovered. This is because the tool initially locates a possible 
 \gls{UABS} above each user and thereafter performs the  fitness function. The applied fitness function must have decided that it is better to connect 
 each user to the \gls{UABS} above him. In a final stage, the tool checks whether the number of online \gls{UAV}s does not exceed the capacity of the facility
@@ -198,12 +198,18 @@ optimization strategies. This is because users who have a higher horizontal dist
 experience a higher attenuation. When a microstrip patch antenna is positioned higher, the range of the antenna increases 
 since the angle between the user and the \gls{UABS}'s main lob decreases. The user will therefore experience less attenuation.
 
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{../results/s2/fhFourSources.png}
+  \caption{Each figure corresponds with a certain configuration and shows how the \gls{SAR} from different sources are influenced by an increasing flying height.}
+  \label{fig:s2shfourSourcesMatrix}
+\end{figure}
+
 Eventually, figure \ref{fig:s2shfourSourcesMatrix} shows the total whole body $SAR_{10g}$ deducted from all electromagnetic sources. This combines the exposure 
 of the only \gls{UABS} available in the network, 
- the \gls{UL} exposure from the user’s own device and the exposure of the devices from all other users. 
- Thereafter, the weighted average whole body \gls{SAR} for each individual source in the network is calculated with the 50th and 95th percentile 
- being the most important values. This is because not only the mean value is important but also users who experience higher 
- levels of whole body $SAR_{10g}$.
+the \gls{UL} exposure from the user’s own device and the exposure of the devices from all other users. 
+Thereafter, the weighted average whole body \gls{SAR} for each individual source in the network is calculated with the 50th and 95th percentile 
+being the most important values. This is because not only the mean value is important but also users who experience higher 
+levels of whole body $SAR_{10g}$.
 
 When investigating the three different sources of which the total \gls{SAR}-values are based on, we see 
 that the radiation from the \gls{UABS} is the main factor followed by the near-field radiation from the user's own device.
@@ -214,12 +220,6 @@ The weighted average $SAR^{ul}_{10g}$ from the own device is zero in an exposure
 which is even lower than the $SAR^{neighbours}_{10g}$.
 This is because the coverage in this scenario is so low that the weighted average 
 only consists of uncovered users and the transmission power of an uncovered user is zero.
-
-\begin{figure}[]
-  \includegraphics[width=\textwidth]{../results/s2/fhFourSources.png}
-  \caption{Each figure corresponds with a certain configuration and shows how the \gls{SAR} from different sources are influenced by an increasing flying height.}
-  \label{fig:s2shfourSourcesMatrix}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
@@ -390,13 +390,6 @@ which decreases the average \gls{SAR}.
 In conclusion, the average  \gls{UL} \gls{SAR}  will not increase as fast as the \gls{UL} \gls{SAR} of 
 an individual that is covered.
 
-\begin{figure}[]
-  \includegraphics[width=\textwidth]{../results/s3/fhFourSources.png}
-  \caption{
-  Each figure corresponds with a certain configuration and shows how the \gls{SAR} from different sources are influenced by an increasing flying height.}  
-  \label{fig:s3a_fourSourcesMatrix}
-\end{figure}
-
 We can see from \ref{fig:s3a_fourSourcesMatrix} that once out of the buildings level (around 70 to 80 meters), the SAR from the serving \gls{UABS} remains 
 more or less constant; a behaviour that was already determined in `scenario 1' and `scenario 2: experiment \ref{fig:uvsulsarcentralUsers}'. 
 
@@ -407,6 +400,12 @@ The figures from \ref{fig:s3a_fourSourcesMatrix} further also clearly show that 
 in electromagnetic radiation will be less for a microstrip patch antenna. The reason behind this is that energy 
 will be more focused towards the ground and there is less sideways radiation because of attenuation.
 
+\begin{figure}[]
+  \includegraphics[width=\textwidth]{../results/s3/fhFourSources.png}
+  \caption{
+  Each figure corresponds with a certain configuration and shows how the \gls{SAR} from different sources are influenced by an increasing flying height.}  
+  \label{fig:s3a_fourSourcesMatrix}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
