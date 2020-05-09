@@ -24,16 +24,16 @@ The induced electromagnetic radiation will therefore be expressed in function of
 
 
 \begin{equation} 
-SAR^{wb,total}_{10g} = SAR^{wb,my\_UE}_{10g} +  SAR^{wb,my\_UABS}_{10g} + SAR^{wb,other\_UE}_{10g} + SAR^{wb,other\_UABSs}_{10g}
+SAR^{wb,total}_{10g} = SAR^{wb,myUE}_{10g} +  SAR^{wb,myUABS}_{10g} + SAR^{wb,otherUE}_{10g} + SAR^{wb,otherUABSs}_{10g}
 \label{eq:overallSARwb}
 \end{equation}
 
-The first parameter, $SAR^{wb,my\_UE}_{10g}$, indicates the absorbed electromagnetic radiation by the whole body originating from the user's own device. However that the 
+The first parameter, $SAR^{wb,myUE}_{10g}$, indicates the absorbed electromagnetic radiation by the whole body originating from the user's own device. However that the 
 \gls{UL} radiation is destined for the serving \gls{UABS}, a portion of that radiation is directly absorbed by its user, due to the omnidirectional nature of the mobile's antenna.
-The second parameter, $SAR^{wb,my\_UABS}_{10g}$, represents the \gls{DL} radiation caused by the \gls{UABS} that is serving the user.
-As the third parameter, we have the $SAR^{wb,other\_UE}_{10g}$ which is radiation caused by other people's devices. The radiation of these devices is once again 
+The second parameter, $SAR^{wb,myUABS}_{10g}$, represents the \gls{DL} radiation caused by the \gls{UABS} that is serving the user.
+As the third parameter, we have the $SAR^{wb,otherUE}_{10g}$ which is radiation caused by other people's devices. The radiation of these devices is once again 
 destined for a specific \gls{UABS} but again, a portion of that \gls{UL} radiation will also be absorbed by our user.
-Finally, $SAR^{wb,other\_UABSs}_{10g}$ represents the \gls{DL} radiation by the other \gls{UABS}s to which our user is exposed to but not served by.
+Finally, $SAR^{wb,otherUABSs}_{10g}$ represents the \gls{DL} radiation by the other \gls{UABS}s to which our user is exposed to but not served by.
 An illustration is given in figure \ref{fig:networkIllustration}.
 The green arrow stands for near-field radiation, the others represent far-field radiation.
 This is further 
@@ -107,7 +107,7 @@ E_{tot} [V/m] = \sqrt{\sum_{i=1}^{n} (E_i [V/m]) ^2}
 \subsubsection{Converting Far-Field Electromagnetic Exposure to $SAR^{wb}_{10g}$}
 \label{sub:convertDLtosarwb}
 
-Formula \ref{eq:overallSARwb} expects that the radiation from each far-field source is expressed in $SAR^{wb,my\_UABS}_{10g}$, $SAR^{wb,other\_UE}_{10g}$ and $SAR^{wb,other\_UABSs}_{10g}$. The 
+Formula \ref{eq:overallSARwb} expects that the radiation from each far-field source is expressed in $SAR^{wb,myUABS}_{10g}$, $SAR^{wb,otherUE}_{10g}$ and $SAR^{wb,otherUABSs}_{10g}$. The 
 calculation for all these values is in fact identical since the only difference is the source.
 Physically seen, they all are whole body SAR values induced by far-field radiation ($SAR^{ff,wb}_{10g}$).
 

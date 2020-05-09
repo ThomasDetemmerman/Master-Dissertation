@@ -123,7 +123,7 @@ Values like \gls{SAR}, electromagnetic exposure and power consumption will
  give insight in how the network behaves so the network could be optimized accordingly.
 
 To make this research possible, 
-an existing capacity based deployment tool developed by the WAVES research group at Ghent University is used.
+an existing capacity based deployment tool developed by the WAVES research group at Ghent University is extended for the specific purpose.
 This planning tool describes a fully configured \gls{UAV}-network which is a suitable starting point for this research.
 
 
@@ -132,7 +132,7 @@ This planning tool describes a fully configured \gls{UAV}-network which is a sui
 
 Users in a telecommunication network are exposed to various sources of electromagnetic radiation, expressed in $V/m$. Once the exposure is absorbed by the human 
 body, we speak of the specific absorption rate (SAR) which is expressed in $W/kg$. All these values are 
-subjected to limitations enforced by the government. This research is performed in Ghent, 
+subjected to limitations enforced by the government. This research is based in Ghent, 
 a Flemish city in Belgium where the 2.6 GHz frequency band, an individual antenna cannot exceed 4.5 V/m and the cumulative sum of all 
 fixed sources has its maximum at 31 V/m \cite{J23,S13_normenBelgie}. The maximum whole body SAR-values for a mobile device 
 over a 10 g tissue ($SAR_{10g}$) is defined at $2 W/kg$ \cite{J30}. 
@@ -152,7 +152,7 @@ A \gls{UAV} knows several applications. It was originally mainly used to support
 endangering pilots \cite{U12}. However, \gls{UAV}s have recently become more accessible by the general public due to decreasing costs. This 
 allowed \gls{UAV}s to be researched for various applications.
 
-A \gls{UAV} equipped with a femtocell base station antenna will be called a \gls{UABS}
+A \gls{UAV} equipped with a femtocell base station antenna is called a \gls{UABS}
 which brings several advantages like mobility and rapid deployment. 
 However, it brings also challenges like limited weight of the payload and sparse power supply.
 
@@ -170,7 +170,7 @@ flying height of 80 metres is recommended.
 
 Mozaffari et al. provides in \cite{U3} guidelines on how to optimize and analyse \gls{UAV}s equipped for 
 wireless communication equipment.
-One path that has been excessively researched are location optimization solutions where the network is 
+A research area that has been excessively studied is the location solution optimization problem where networks are 
 designed in such a way that certain goals like minimal power consumption are achieved \cite{U6,U7,U8,U9}.
 These optimizations can be done through different implementation methods like exact algorithms or machine learning \cite{U3,U5}.
 
@@ -180,7 +180,7 @@ However, to the best of the author knowledge, no research has been done where a 
 
 \subsection{Technologies}
 
-For the deployment of the network, the more robust \gls{UAV}s from \cite{J2} will be used (details in table \ref{table:defaultconf}) and will be operating in the 2.6 Ghz 
+For the deployment of the network, the more robust \gls{UAV} from \cite{J2} will be used (details in table \ref{table:defaultconf}) and will be operating in the 2.6 GHz 
 bandwidth. Since the users are assumed to experience a constant electromagnetic exposure without interruptions, frequency division duplex is used.
 
 % problem antennae on drones
@@ -192,20 +192,19 @@ A 3D-model which accounts for both elevation and azimuth directivity
 will be required \cite{U12}.
 
 The easiest radiation pattern is a hypothetical isotropic radiator which radiates equally in all directions.
-Antennae that radiate equal quantities for a certain plane are called omnidirectional antennae \cite{U12} and several types 
-for \gls{UAV} usage like monopoles, dipoles and wing antennae 
-have been considered \cite{A4,A10,A11,A12}.
-Another type of antennae are directional antennae which save energy by focussing the electromagnetic energy there where it 
+Antennae that radiate equal quantities for a certain plane are called omnidirectional antennae \cite{U12} and several 
+\gls{UABS}s use antennae like monopoles, dipoles and wing antennae \cite{A4,A10,A11,A12}.
+Another type of antennae are directional antennae which save energy by focussing the electromagnetic energy where it 
 is needed. One type 
-that has excessively been researched in various array-configurations are microstrip patch antennae \cite{A5,A6,A8}.
-They provide several advantages compared to traditional antennae \cite{J13_microstripadvantages,J14_antennadesign}
-like lightweightness, low in cost and thin causing them to be more aerodynamic. 
+that has excessively been researched in various array-configurations is a microstrip patch antenna \cite{A5,A6,A8}.
+These provide several advantages compared to traditional antennae \cite{J13_microstripadvantages,J14_antennadesign}
+like lightweightness, low in cost causing them to be more aerodynamic. 
 
 A basic microstrip antenna consists of a ground plane and
 a radiating patch, both separated by a dielectric substrate. 
 Several variations exist like microstrip patch antennae, microstrip slot antennae and printed dipole antennae which
-all have similar characteristics \cite{J13_microstripadvantages, J14_antennadesign}. 
-They are all thin, support dual frequency operation and they all have the disadvantage that 
+all have similar characteristics \cite{J13_microstripadvantages,J14_antennadesign}. 
+They all are thin, support dual frequency operation and they all have the disadvantage that 
 they 
 will transmit at frequencies outside the aimed band which is also known as
 spurious radiation. The microstrip patch and slot antenna support both linear
@@ -214,102 +213,32 @@ Further, the fabrication of a microstrip patch antenna is considered to be the e
 of the considered patch antennae \cite{J13_microstripadvantages}. 
 
 
-\section{Scenarios}
-The default configuration is given in table \ref{table:defaultconf} and is always applicable unless mentioned otherwise. 
-
-\begin{table}[!htb]
-\centering
-\begin{tabular}[t]{ll}
-        \toprule
-        \multicolumn{2}{l}{\textbf{Broadband cellular network}} \\
-        \hline
-        \hspace{3mm}  technology        & LTE     \\
-        \hspace{3mm}  frequency         & 2.6 GHz \\
-        \hline
-        \multicolumn{2}{l}{\textbf{Carrier}} \\
-        \hline  
-        \hspace{3mm}  carrier power        & 13.0 A   \\
-        \hspace{3mm}  average carrier speed        & 12.0 m/s \\
-        \hspace{3mm}  average carrier power usage      & 17.33 Ah    \\
-        \hspace{3mm}  carrier battery voltage       & 22.2 V \\
-        \hline
-        \multicolumn{2}{l}{\textbf{Femtocell antenna}} \\
-        \hline  
-        \hspace{3mm}  maximum $P_{tx}$          & 33 dBm   \\
-        \hspace{3mm}  antenna  direction        & downwards   \\ 
-        \hspace{3mm}                            & (az: \ang{0}; el: \ang{90})    \\
-        \hspace{3mm}  gain                      & 4 dBm   \\ 
-        \hspace{3mm}  feeder loss               & 2 dBm   \\ 
-        \hspace{3mm}  implementation loss       & 0 dBm   \\
-        \hspace{3mm}  radiation pattern         & EIRP or\\
-         \hspace{3mm}                           & microstrip patch\\
-        \hspace{3mm}  height                    & 100m  \\
-        \hline
-        \multicolumn{2}{l}{\textbf{UE Antenna}} \\
-        \hline 
-        \hspace{3mm} height                     & 1.5m from the floor       \\ 
-        \hspace{3mm} gain                      & 0 dBm   \\ 
-        \hspace{3mm} feeder loss               & 0 dBm   \\ 
-        \hspace{3mm} radiation pattern         & EIRP  \\
-        \hspace{3mm} number present in the network         & 224  \\
-        \toprule
-\end{tabular}
-\caption{Overview of default configuration values.}
-\label{table:defaultconf}
-\end{table}
-
-Three main scenarios will be investigated. 
-The first one has only one user and one drone present in the network. 
-SAR, electromagnetic exposure, power consumption 
-and antenna transmission power are investigated at different flying heights.
-
-In a second scenario, the network is expanded for multiple users still only one drone is available. 
-The scenario is divided into two cases. One with a variable flying height but with a fixed 
-number of 224 users as is average on an usual day at 5 p.m. in Ghent.
- In the other case, the number of users varies but the flying height is set to 100 metres \cite{J2}.
-The power consumption, electromagnetic exposure and specific 
-absorption rate are investigated for each case.
-
-The third scenario is quite similar to the previous scenario. The same two cases are investigated, but now an unlimited number of \gls{UABS}s is avalaible.
-
-Each case from each scenario consists out of four possible configurations.
-There are two possible antennae, namely EIRP 
-and microstrip patch antenna, which can both be applied in a \gls{PwrC Opt} network or an \gls{Exp Opt} network.
-An overview is given in figure \ref{fig:fourCasesMatrix}
-
-\begin{figure}[h!]
-  \includegraphics[width=\linewidth]{fourCasesMatrix.pdf}
-  \caption{Matrix with the four possible configurations}
-  \label{fig:fourCasesMatrix}
-\end{figure}
 
 \section{Methodology}
-
 \subsection{Electromagnetic Exposure}
-
-
+\subsubsection{Total Electromagnetic Exposure}
 The total whole body SAR ($SAR^{wb,total}_{10g}$) of a user can be calculated by a simple sum of individual SAR values from the different sources
-and is based on \cite{J17_kuehn2019modelling} where SAR values are used that are induced into the head.
-Using $SAR^{head}_{10g}$ would however result into incorrect conclusions since 
-the position of the phone relative to the user is unknown. 
+and is based on \cite{J17_kuehn2019modelling}. This formula assumes that the users are holding their device next to their ear and therefore 
+investigates localized \gls{SAR} for head and torso eara.
+However for this case, this would result into incorrect conclusions since 
+the position of the device relative to the user is unknown. 
 The position of the phone can be next to the head but also in front of the user.
 The induced electromagnetic radiation will therefore be expressed in function of the entire body.
 
-
 \begin{equation} 
 \begin{aligned}
-SAR^{wb,total}_{10g} = SAR^{wb,my\_UE}_{10g} +  SAR^{wb,my\_UABS}_{10g} \\
-+ SAR^{wb,other\_UE}_{10g} + SAR^{wb,other\_UABSs}_{10g}
+SAR^{wb,total}_{10g} = SAR^{wb,myUE}_{10g} +  SAR^{wb,myUABS}_{10g} \\
++ SAR^{wb,otherUE}_{10g} + SAR^{wb,otherUABSs}_{10g}
 \end{aligned}
 \label{eq:overallSARwb}
 \end{equation}
 
-The first parameter, $SAR^{wb,my\_UE}_{10g}$, indicates the absorbed electromagnetic radiation by the whole body originating from the user's own device. However that the 
+The first parameter, $SAR^{wb,myUE}_{10g}$, indicates the absorbed electromagnetic radiation by the whole body originating from the user's own device. Despite that the 
 \gls{UL} radiation is destined for the serving \gls{UABS}, a portion of that radiation is directly absorbed by its user, due to the omnidirectional nature of the mobile's antenna.
-The second parameter, $SAR^{wb,my\_UABS}_{10g}$, represents the \gls{DL} radiation caused by the \gls{UABS} that is serving the user.
-As the third parameter, we have the $SAR^{wb,other\_UE}_{10g}$ which is radiation caused by other people's devices. The radiation of these devices is once again 
+The second parameter, $SAR^{wb,myUABS}_{10g}$, represents the \gls{DL} radiation caused by the \gls{UABS} that is serving the user.
+As the third parameter, we have the $SAR^{wb,otherUE}_{10g}$ which is radiation caused by other people's devices. The radiation of these devices is once again 
 destined for a specific \gls{UABS} but again, a portion of that \gls{UL} radiation will also be absorbed by our user.
-Finally, $SAR^{wb,other\_UABSs}_{10g}$ represents the \gls{DL} radiation by the other \gls{UABS}s to which our user is exposed to but not served by.
+Finally, $SAR^{wb,otherUABSs}_{10g}$ represents the \gls{DL} radiation by the other \gls{UABS}s to which our user is exposed to but not served by.
 An illustration is given in figure \ref{fig:networkIllustration}.
 The green arrow stands for near-field radiation, the others represent far-field radiation.
 
@@ -319,9 +248,6 @@ The green arrow stands for near-field radiation, the others represent far-field 
   \caption{Illustration of the network that shows how the average user (here shown in the center) is influenced by different types of sources. }
   \label{fig:networkIllustration}
 \end{figure}
-
-\subsection{Electromagnetic Exposure Caused by Far-Field Radiation} % (fold)
-\label{sub:Calculatingdownlinkexposure}
 
 \subsubsection{Electromagnetic Radiation from a Single Source}
 \label{sec:calculatingexposure}
@@ -337,8 +263,8 @@ E_i(u) [V/m] = 10^{\frac{RRP(u)[dBm] - 43.15 + 20*\log(f [Mhz])- PL(u) [dB]}{20}
 
 Caculating the real radiation power (RRP) for a certain user $u$, requires first the EIRP-value to be calculated  \cite{J6_originalExposureFormula,J1}.
 This is achieved by adding the transmission power $P_t$ to the transmitter gain $G_t$ and thereafter subtracting the feeder loss $L_t$.
-This formula needs to be expanded to also account for attenuation. This value depends on the angle 
-between this user and the antenna's main beam. This leads to the following formula.
+This formula needs to be expanded to also account for attenuation from the used antenna. This value depends on the angle
+between this user and the antenna's main beam. The attenuation from an \gls{isotropicradiator} is always zero. This leads to the following formula.
 
 \begin{equation}
 \begin{aligned}
@@ -349,7 +275,7 @@ RRP [dBm] = P_t [dBm] + G_t [dBi]- L_t [dB]\\
 \end{equation}
 The used frequency in formula \ref{eq:singleexposure} is denoted as $f$ and is expressed in MHz. Since \gls{LTE} is used, this value will be 2600 MHz.
 
-At last, formula \ref{eq:eirp} requires the path loss (in dB). In order to calculate this, an appropriate propagation model ---of which several exist--- is required .
+At last, formula \ref{eq:eirp} requires the path loss (in dB). In order to calculate this, an appropriate propagation model ---of which several exist--- is required.
 The Walfish-Ikegami model is used since it performs well for femtocell networks in urban areas \cite{J2}. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
 %It consists of two formulas depending on whether a free LOS between the user and the base station exists or not. Both formulas expect a distance in kilometre. %bron?
 
@@ -376,7 +302,7 @@ Converting the electromagnetic radiation is done with a conversion factor which 
 on Duke of the Virtual Family. Duke is a 34-year old male with a weight of 72 kg, a height of 1.74 m and body
 mass index of 23.1 kg/m \cite{J22_plets2015joint}. 
 Research shows that the conversion factor for WiFi in the far-field is $0.0028 \frac{W/kg}{W/m^2}$
-and for 0.0070 $\frac{W/kg}{W}$ \cite{J22_plets2015joint} in the near-field.
+and 0.0070 $\frac{W/kg}{W}$ \cite{J22_plets2015joint} for the near-field.
 
 Since WiFi, at a frequency of 2400 MHz,
 is very close to \gls{LTE}, at 2600 MHz, it is assumed in \cite{J22_plets2015joint} that this value is also applicable for \gls{LTE}.
@@ -392,7 +318,7 @@ SAR^{wb,ff}_{10g} [W/kg]= S [W/m^2]* 0.0028 \left[\frac{W/kg}{W/m^2}\right]
 \label{eq:DLconversion}
 \end{equation}
 
-The constant in \ref{eq:DLconversion} converts the \gls{power flux density} $S$ to the required $SAR^{ff,wb}_{10g}$.
+The constant in equation \ref{eq:DLconversion} converts the \gls{power flux density} $S$ to the required $SAR^{ff,wb}_{10g}$.
 To make this possible, the electromagnetic radiation
 from formula \ref{eq:totalexposure} should first be converted to the  \gls{power flux density} with formula 
 \ref{eq:flux}.
@@ -462,7 +388,7 @@ Deruyck et al. discusses in \cite{J1} how a terrestrial  telecommunication netwo
 exposure of an individual or towards power consumption of the entire network. 
 However, an increasing transmission power of an antenna comes with an increasing electromagnetic exposure. This is not the case considering
 both values for an entire network. In fact, the authors from \cite{J1}  prove that both become inversely equivalent.
-The reason the network behaves like this is because it is often cheaper to increase the exposure of an already active base station 
+The reason why the network behaves like this is because it is often cheaper to increase the exposure of an already active base station 
 than activating a new one. 
 This leads to the following fitness function which is based on \cite{J1}.
 
@@ -473,7 +399,7 @@ f = w * \left(1 - \frac{E_m}{E_{max}}\right) + (1 - w)*\left(1 - \frac{P}{P_{max
 
 Formula \ref{eq:fitnessfunction} returns a fitness value which represents the performance of the entire network. 
 $w$ is the importance factor of electromagnetic exposure ranging from 0 to 1, boundaries included. A $w$ set to 0 means that electromagnetic 
-exposure is not important. Such a network will therefore be called a \gls{PwrC Opt} network. 
+exposure is not important. Such network will therefore be called a \gls{PwrC Opt} network. 
 Likewise, a $w$ set to 1 means that minimizing exposure is top priority and will result in an \gls{Exp Opt} network. $P_{max}$ is the power consumption of all UABSs, 
 both active and inactive, when radiating at the highest level possible 
 while $P$ is the effective power used by the current designed network. 
@@ -490,6 +416,85 @@ E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 \label{eq:em}
 \end{equation}
 
+\subsection{Implementation}
+to do
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Scenarios}
+The default configuration is given in table \ref{table:defaultconf} and is always applicable unless mentioned otherwise. 
+
+\begin{table}[!htb]
+\centering
+\begin{tabular}[t]{ll}
+        \toprule
+        \multicolumn{2}{l}{\textbf{Broadband cellular network}} \\
+        \hline
+        \hspace{3mm}  technology        & LTE     \\
+        \hspace{3mm}  frequency         & 2.6 GHz \\
+        \hline
+        \multicolumn{2}{l}{\textbf{UAV}} \\
+        \hline  
+        \hspace{3mm}  carrier power        & 13.0 A   \\
+        \hspace{3mm}  average carrier speed        & 12.0 m/s \\
+        \hspace{3mm}  average carrier power usage      & 17.33 Ah    \\
+        \hspace{3mm}  carrier battery voltage       & 22.2 V \\
+        \hline
+        \multicolumn{2}{l}{\textbf{Femtocell antenna}} \\
+        \hline  
+        \hspace{3mm}  maximum $P_{tx}$          & 33 dBm   \\
+        \hspace{3mm}  antenna  direction        & downwards   \\ 
+        \hspace{3mm}                            & (az: \ang{0}; el: \ang{90})    \\
+        \hspace{3mm}  gain                      & 4 dBm   \\ 
+        \hspace{3mm}  feeder loss               & 2 dBm   \\ 
+        \hspace{3mm}  implementation loss       & 0 dBm   \\
+        \hspace{3mm}  radiation pattern         & EIRP or\\
+         \hspace{3mm}                           & microstrip patch\\
+        \hspace{3mm}  height                    & 100m  \\
+        \hline
+        \multicolumn{2}{l}{\textbf{UE Antenna}} \\
+        \hline 
+        \hspace{3mm} height                     & 1.5m from the floor       \\ 
+        \hspace{3mm} gain                      & 0 dBm   \\ 
+        \hspace{3mm} feeder loss               & 0 dBm   \\ 
+        \hspace{3mm} radiation pattern         & EIRP  \\
+        \hspace{3mm} number present in the network         & 224  \\
+        \toprule
+\end{tabular}
+\caption{Overview of default configuration values.}
+\label{table:defaultconf}
+\end{table}
+
+Three main scenarios will be investigated. 
+The first one has only one user and one \gls[UABS] present in the network. 
+SAR, electromagnetic exposure, power consumption 
+and antenna transmission power are investigated at different flying heights.
+
+In a second scenario, the network is expanded for multiple users while still considering only one \gls{UABS}. 
+The scenario is divided into two cases. One with a variable flying height but with a fixed 
+number of 224 users as is average on an usual day at 5 p.m. in Ghent \gls{J2}.
+ In the other case, the number of users varies but the flying height is set to 100 metres \cite{J2}.
+The power consumption, electromagnetic exposure and specific 
+absorption rate are investigated for each case.
+
+The third scenario is quite similar to the previous scenario. The same two cases are investigated, but now an unlimited number of \gls{UABS}s is avalaible.
+
+Each case from each scenario consists out of four possible configurations.
+There are two possible antennae, namely EIRP 
+and microstrip patch antenna, which can both be applied in a \gls{PwrC Opt} network or an \gls{Exp Opt} network.
+
+It is important to note that 
+all measured values are strictly limited to the mentioned sources and only cover data traffic 
+between \gls{UE} and \gls{UABS}s. Any other potential sources like backhaul links will not be covered.
+
+An overview of the simulation configuration scenarios is presented in figure \ref{fig:fourCasesMatrix}
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{fourCasesMatrix.pdf}
+  \caption{Matrix with the four possible configurations}
+  \label{fig:fourCasesMatrix}
+\end{figure}
+
 \section{Results}
 \subsection{One User and One \gls{UAV}}
 
@@ -502,7 +507,7 @@ When using the default configuration, with a maximum $P_{tx}$ of 33 dBm,
 a \gls{UABS} can fly up to 387 m before losing connection in a free \gls{LOS} scenario.
 
 This scenario is investigated with a microstrip patch antenna using power consumption optimization. 
- However, the chosen optimization strategy doesn't really matter because the decision 
+ However, the chosen optimization strategy does not really matter because the decision 
  algorithm decides which user 
 needs to be connected to which \gls{UABS}. Since only one \gls{UABS} is available, both optimization strategies will behave identical.
 Further, also the used antenna will not make any difference.
@@ -524,7 +529,7 @@ around 80 metres.
 %\label{eq:exposureBasicFormula}
 %\end{equation}
 
-\subsection{Increased Traffic with one UABS}
+\subsection{Increased Population with one UABS}
 \subsubsection{Variable Flying Height}
 A \gls{PwrC Opt} network has higher exposure compared to an \gls{Exp Opt} network; a behaviour that was already proven by \cite{J1}. 
 However, for this scenario, a \gls{PwrC Opt} network will also result in a higher power consumption. 
@@ -538,7 +543,7 @@ like only one in this scenario, the tool will only keep \gls{UABS}s which cover 
 Therefore, the power consumption in a \gls{PwrC Opt} network is much more higher. 
 
 Further, the results also show that the exposure increases with higher flying altitudes
-because there is less path loss by obstructing buildings. This has as consequence that  
+because there is a lower probability of having \gls{NLOS} links by obstructing buildings. This has as consequence that  
 more users become covered. 
 The increasing electromagnetic radiation is however not unlimited.
 At even higher
@@ -572,7 +577,7 @@ To investigate this, a user is positioned in the middle of the city centre of Gh
 49 people are active around him. The \gls{SAR} of our central user is monitored while the population around him is growing.
 Figure \ref{fig:connectionMap} shows with the black lines which users are connected. The left map is for only 50 users and 
 shows that only one user is connected besides our central user. The map on the right considers 600 users and shows much more connected users.
-The results show that the \gls{UL} \gls{SAR} remains constant; a normal behaviour since the flying altitude does not change.
+The results show that the \gls{UL} \gls{SAR} of the central user remains constant; a normal behaviour since the flying altitude does not change.
 The \gls{SAR} from the \gls{UABS} experiences a slight increase. When the population grows, more users become available 
 and some will spawn near the central user. The \gls{UABS} will likely decide to cover these users as well as visible in figure \ref{fig:connectionMap}.
 These users might have a slightly 
