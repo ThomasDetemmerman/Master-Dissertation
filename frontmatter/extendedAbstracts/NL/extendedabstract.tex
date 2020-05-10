@@ -124,46 +124,50 @@ is gelimiteerd tot 4.5 V/m en de totale electrische veldsterkte voor elk punt ni
 De maximame \gls{SAR} voor het volledige lichaam komende van een mobiel aparaat verspreid over een 
 10 g tissue ($SAR_{10g}$) is beperkt tot $2 W/kg$ \cite{J30}. 
 
-Several papers calculate exposure originating from specific sources  \cite{J6_originalExposureFormula,J1,J10_RDP,J10.1} 
-where some convert the \gls{UL} radiation into localized specific absorption rates \cite{J10_RDP,J10.1}. 
-With the advent of 5G, paper \cite{J17_kuehn2019modelling} describes 
-how the localized \gls{SAR}-values are achieved from all different sources.
-Finally, \cite{J22_plets2015joint} describes how the electronic radiation can be converted into whole body SAR values.
+Verschillende onderzoeken berekenen de electromagnetische veldsterkte van verschillende bronneen \cite{J6_originalExposureFormula,J1,J10_RDP,J10.1} 
+waarbij sommigen de \gls{UL} electromagnetische veldsterkte geconverteerd wordt naar locale \gls{SAR} \cite{J10_RDP,J10.1}. 
+Met de naderende 5G technologie werd \cite{J17_kuehn2019modelling} gepubliceerd waarbij beschreven wordt hoe 
+deze locale  \gls{SAR}-waarden van alle verschillende bronnen berekend kunnen worden en bij elkaar opgeteld worden.
+Uiteindelijk beschrijft \cite{J22_plets2015joint} hoe de electromagnetische veldsterkte omgezet kan worden 
+naar \gls{SAR}-waarden voor het volledige lichaam.
 
-In a realistic network, some users are calling while others are using other types of telecommunication services like browsing the web.
-Therefore, all absorbed electromagnetic exposure should be expressed in whole body SAR while still covering all sources.
+In een realistisch netwerk kunnen sommige gebruikers telefoneren terwijl anderen andere vormen van telecommunicatie gebruiken zoals 
+surfen op het internet. Aangezien de positie van het mobiel apparaat t.o.v. zijn gebruiker niet gekend is,
+is het belangrijk dat de \gls{SAR}-waarden berekend worden in functie van het volledige lichaam. 
 
-\subsection{Optimized \gls{UAV}-aided networks}
+\subsection{Geoptimaliseerde drone-gestuurde netwerken}
 
-A \gls{UAV} knows several applications. It was originally mainly used to support the military for surveillance and remote attacks without 
-endangering pilots \cite{U12}. However, \gls{UAV}s have recently become more accessible by the general public due to decreasing costs. This 
-allowed \gls{UAV}s to be researched for various applications.
+Drones kennen verschillende toepassingen. Ze werden oorspronkelijk voornamelijk gebruikt door het leger waarbij ze dienst doen  
+als camera bewaking of aanvallen zonder piloten in gevaar te brengen \cite{U12}. 
+Deze drones zijn de laatste jaren in prijs gedaald waardoor ze beter toegankelijk worden
+voor het algemene publiek. Hierdoor is het onderzoek naar nieuwe toepassingen ervan sterk toegenomen.
 
-A \gls{UAV} equipped with a femtocell base station antenna is called a \gls{UABS}
-which brings several advantages like mobility and rapid deployment. 
-However, it brings also challenges like limited weight of the payload and sparse power supply.
+Een drone uitgerust met een femtocell base station wordt een \gls{UABS} genoemd en 
+geniet verschillende voordelen zoals mobiliteit en snelle inzetbaarheid.
+Desondanks zijn er ook verschillende nadelen zoals het beperkte gewicht dat een drone kan dragen 
+en de schaarse energievoorziening.
 
-Kawamoto et al. introduced in \cite{U11} a WiFi network with the support of  \gls{UAV}s while considering resource allocation 
-and antenna directivity. 
-Gangula et al. illustrates in \cite{U10} how \gls{UAV}s can be used as a relay for \gls{LTE}
-and
-Zeng et al. proposes in  \cite{U12} a tutorial in 5G-and-beyond wireless systems where challenges like 
-energy consumption, mobility and antenna direction are discussed. 
-In \cite{J2}, Deruyck et al. designed  a capacity based deployment tool for UAV-aided emergency
-networks for large-scale disaster scenarios where an ideal flying height of 100 m is suggested. This was expanded 
-in \cite{U1} with a performance evaluation of the direct-link backhaul of this tool where a slightly lower 
-flying height of 80 metres is recommended.
+Kawamoto et al. introduceert in \cite{U11} een WiFi netwerk  met behulp van drones waarbij rekending gehouden wordt
+met de richting van de geplaatste anntenes op de drone. 
+Gangula et al. illustreerdt in \cite{U10} hoe drones gebruikt kunnen worden voor \gls{LTE}
+en
+Zeng et al. presenteerd in  \cite{U12} een handleiding waarbij uitdagingen   zoals energieverbruik, mobiliteit en 
+de richting van de antenne voor een 5G netwerk besproken worden. 
+In \cite{J2}, Deruyck et al. ontwikkeld een deployment tool voor een drone gestuurd netwerk voor rampsituaties waarbij 
+een ideale vlieghoogte van 100 meter aangeraden wordt.  
+Dit word verder uitgebreid in \cite{U1} waarbij ook rekening gehouden wordt met 
+ direct-link backhaul connecties waarbij een ietwat lagere vlieghoogte van 80 meter bekomen wordt.
 
+Mozaffari et al. voorziet in \cite{U3} richtlijnen hoe een een drone-gestuurd netwerk geoptimaliseerd en geanalyseerd kan worden.
+Eén onderzoekgsgebied dat uitgebreid onderzocht wordt is het optimaliseren van de lacaties ware drones zich moeten bevinden.
+Deze algorithmen trachten bepaalde doelstellingen zoals minimaal energieverbruik of korste vlieg afstand te bereiken \cite{U6,U7,U8,U9}.
+Deze optimalistatie kan gebeuren door verschillende implementaties waaronder exacte algorithmen of machinaal leren \cite{U3,U5}.
 
-Mozaffari et al. provides in \cite{U3} guidelines on how to optimize and analyse \gls{UAV}s equipped for 
-wireless communication equipment.
-A research area that has been excessively studied is the location solution optimization problem where networks are 
-designed in such a way that certain goals like minimal power consumption are achieved \cite{U6,U7,U8,U9}.
-These optimizations can be done through different implementation methods like exact algorithms or machine learning \cite{U3,U5}.
-
-Research where network is optimized towards electromagnetic exposure is rather limited.
-Deruyck et al. discusses in \cite{J1} how a terrestrial network can be optimized towards either a minimal exposure or minimal power consumption of the entire network.
-However, to the best of the author knowledge, no research has been done where a \gls{UABS}-network has been optimized towards electromagnetic exposure.
+Onderzoek waarbij de electromagnetische straling gelimiteerd wordt is echter beperkt.
+Deruyck et al. bespreekt in \cite{J1} hoe een conventioneel mobiel netwerk geoptimaliseerd kan worden zodoende dat het energieverbruik 
+van het volledige netwerk minimaal wordt of de electromagnetische bloodstelling van een individu.
+Echter onderzoek waarbij een drone-gestuurd netwerk geoptimaliseerd wordt naar electromagnetische straling is 
+door de auteur niet gekend.
 
 \subsection{Technologies}
 
