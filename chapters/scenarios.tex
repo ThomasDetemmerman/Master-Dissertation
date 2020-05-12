@@ -4,7 +4,10 @@ The tool supports multiple configurations and the behaviour will be different fo
 will be investigated, order based on the network complexity. Within each scenario, different cases will be investigated.
 First, only one user with one drone will be present in the network. The network will thereafter be expanded
 for multiple users but with still only one drone available. Eventually, also that last restriction will be dropped meaning 
-that multiple users with unlimited number of drones are examined. 
+that multiple users with unlimited number of drones are examined.
+It is important to note that 
+all considered values are strictly limited to the mentioned sources in chapter \ref{chap:methodology} and thus only cover data traffic 
+between \gls{UE} and \gls{UABS}s. Any other potential sources like backhaul links will not be covered.
 Table \ref{table:defaultconf} shows the default values that are always applicable unless mentioned otherwise.
 
 \begin{table}[!htb]
@@ -16,7 +19,7 @@ Table \ref{table:defaultconf} shows the default values that are always applicabl
         \hspace{3mm}  technology        & LTE     \\
         \hspace{3mm}  frequency         & 2.6 GHz \\
         \hline
-        \multicolumn{2}{l}{\textbf{Carrier}} \\
+        \multicolumn{2}{l}{\textbf{UAV}} \\
         \hline  
         \hspace{3mm}  carrier power        & 13.0 A   \\
         \hspace{3mm}  average carrier speed        & 12.0 m/s \\
@@ -31,7 +34,7 @@ Table \ref{table:defaultconf} shows the default values that are always applicabl
         \hspace{3mm}  feeder loss               & 2 dBm   \\ 
         \hspace{3mm}  implementation loss       & 0 dBm   \\
         \hspace{3mm}  radiation pattern         & \acs{EIRP} or microstrip patch antenna\\
-        \hspace{3mm}  height                    & 100m  \\
+        \hspace{3mm}  flying altitude           & 100m  \\
         \hline
         \multicolumn{2}{l}{\textbf{\acs{UE} Antenna}} \\
         \hline 
@@ -72,9 +75,10 @@ for this scenario. This is because the
  decision algorithm decides which user needs to be connected to which drone. Since only one user and one
 \gls{UABS} are available, both optimization strategies will behave identical. 
 
-The user gets a fixed position. The exact location doesn't matter as long as it is outside. For this experiment is chosen for the 
+The user gets a fixed position. The exact location does not matter as long as it is outside. For this experiment is chosen for the 
 `Koningin Maria Hendrikaplein', a square just next to the train station of Ghent.  Doing so will force the \gls{UE} 
-to always be at the same height of 1.5 meters. An overview can be found in table \ref{table:confOverviewScenario1}
+to always be at the same height of 1.5 meters. 
+An overview of the simulation configuration scenarios is presented in figure \ref{table:confOverviewScenario1}.
 
 \begin{table}[!htb]
     \begin{minipage}{.5\linewidth}

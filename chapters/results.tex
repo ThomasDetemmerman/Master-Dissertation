@@ -17,7 +17,7 @@ will for the first scenario be constructed out of a single \gls{UABS}.
 \subsection{The Influence of the Maximum Transmission Power}
 \label{s1a}
 \gls{LTE} makes use of power control meaning that no more power will be used than strictly necessary. The actual 
-transmission power $P_{tx}$ therefore ranges between zero and the maximum allowed input power. $P_{tx}$ is zero when the \gls{UABS} doesn't cover anybody.
+transmission power $P_{tx}$ therefore ranges between zero and the maximum allowed input power. $P_{tx}$ is zero when the \gls{UABS} does not cover anybody.
 For instance when the flying height is too high and therefore also the path loss that comes with it, the maximum allowed $P_{tx}$ is not enough to cover 
 the distance. In such case, the \gls{UABS} is shut down since it cannot meet the requirements.
 Increasing the maximum transmission power will not influence the actual used $P_{tx}$ or $SAR_{10g}$ because the \gls{UABS} will not use more
@@ -48,11 +48,11 @@ defined in table \ref{table:defaultconf}.
 In a free \gls{LOS} scenario with only one user, a \gls{UABS} can fly up to 387 meters before losing connection.
 
 This scenario is investigated with a microstrip patch antenna using power consumption optimization. 
- However, the chosen optimization strategy doesn't really matter as already explained in  \ref{sec:scenarios_s1}. This is because the decision 
+ However, the chosen optimization strategy does not really matter as already explained in  \ref{sec:scenarios_s1}. This is because the decision 
  algorithm decides which user 
 needs to be connected to which \gls{UABS}. Since only one \gls{UABS} is available, both optimization strategies will behave identical.
 Further, also the used antenna will not make any difference
-despite the fact that a microstrip patch antenna has attenuation while an \gls{isotropicradiator} doesn't.
+despite the fact that a microstrip patch antenna has attenuation while an \gls{isotropicradiator} does not.
 The user is namely positioned in the perfect center of the main beam where there is 
 no attenuation experienced in either cases. So the results are applicable for the four possible cases from figure \ref{fig:fourCasesMatrix}.
 
@@ -78,7 +78,7 @@ will therefore reduce the $P_{tx}$. We can therefore confirm that the electromag
 %\end{equation}
 %The SAR values are the result of multiplying the electromagnetic exposure with a constant as explained in equation \ref{eq:DLconvertion}. So both have a linear relationship.
 
-Figure \ref{fig:s1_fhsar} doesn't show radiation from neighbours, because there are none present in this scenario. 
+Figure \ref{fig:s1_fhsar} does not show radiation from neighbours, because there are none present in this scenario. 
 Finally, all these values are added up as explained in formula \ref{eq:overallSARwb} resulting in the total \gls{SAR}
 to which our user is exposed, represented by the black line in \ref{fig:s1_fhsar}.
 
@@ -104,7 +104,7 @@ attached to the \gls{UABS} which will require more energy to maintain the same e
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
-\section{Scenario 2: Increased Traffic}
+\section{Scenario 2: Increased Population}
 
 This scenario has just like the previous scenario only one \gls{UAV} available. However, more users will be present in the network.
 First, a variable flying altitude is investigated for a fixed number of 224 users. 
@@ -338,7 +338,7 @@ The only difference is that the restriction of only one \gls{UABS} is dropped.
 \label{S3A}
 
 The first case of this scenario examines how the network behaves for various flying heights and a fixed number of 224 users.
-Scenario 2 already explained that when only one \gls{UAV} is available, a power consumption optimized network won’t result in a low 
+Scenario 2 already explained that when only one \gls{UAV} is available, a power consumption optimized network will not result in a low 
 powered network. In this scenario, there is no limitation on the number of \gls{UAV}s and the network remains thus unaltered after the decision 
 algorithm is done. Figure \ref{fig:s3a_dlAndPc} clearly proves that the different optimization strategies work as intended.
 Power consumption optimized networks have indeed a lower power consumption but therefore result in higher electromagnetic radiation.
