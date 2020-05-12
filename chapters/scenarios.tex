@@ -1,9 +1,9 @@
 \chapter{Scenarios}
 \label{chap:scenarios}
 The tool supports multiple configurations and the behaviour will be different for most of these configurations. Three main scenarios 
-will be investigated, order based on the network complexity. Within each scenario, different cases will be investigated.
+will be investigated, ordered, based on the network complexity. Within each scenario, different cases will be investigated.
 First, only one user with one drone will be present in the network. The network will thereafter be expanded
-for multiple users but with still only one drone available. Eventually, also that last restriction will be dropped meaning 
+for multiple users but with still only one drone available. Finally, the last restriction will be dropped meaning 
 that multiple users with unlimited number of drones are examined.
 It is important to note that 
 all considered values are strictly limited to the mentioned sources in chapter \ref{chap:methodology} and thus only cover data traffic 
@@ -21,10 +21,10 @@ Table \ref{table:defaultconf} shows the default values that are always applicabl
         \hline
         \multicolumn{2}{l}{\textbf{UAV}} \\
         \hline  
-        \hspace{3mm}  carrier power        & 13.0 A   \\
-        \hspace{3mm}  average carrier speed        & 12.0 m/s \\
-        \hspace{3mm}  average carrier power usage      & 17.33 Ah    \\
-        \hspace{3mm}  carrier battery voltage       & 22.2 V \\
+        \hspace{3mm}  UAV power        & 13.0 A   \\
+        \hspace{3mm}  average UAV speed        & 12.0 m/s \\
+        \hspace{3mm}  average UAV power usage      & 17.33 Ah    \\
+        \hspace{3mm}  UAV battery voltage       & 22.2 V \\
         \hline
         \multicolumn{2}{l}{\textbf{Femtocell antenna}} \\
         \hline  
@@ -42,7 +42,7 @@ Table \ref{table:defaultconf} shows the default values that are always applicabl
         \hspace{3mm} gain                      & 0 dBm   \\ 
         \hspace{3mm} feeder loss               & 0 dBm   \\ 
         \hspace{3mm} radiation pattern         & \acs{EIRP}  \\
-        \hspace{3mm} number present in the network         & 224  \\
+        \hspace{3mm} Quantity                   & 224  \\
         \toprule
 \end{tabular}
 \caption{Overview of default configuration values.}
@@ -50,7 +50,7 @@ Table \ref{table:defaultconf} shows the default values that are always applicabl
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 1
-\section{A Single User}
+\section{Scenario I: A Single User}
 \label{sec:scenarios_s1}
 
 This first scenario will investigate how $SAR_{10g}$ and power consumption behave in an isolated environment meaning there is no influence 
@@ -63,7 +63,7 @@ increasing the flying height.
 
 Another considered variable will be the transmission power of the antenna.
 \gls{LTE} makes use of power control meaning that no more power will be used than strictly necessary. The actual 
-transmission power therefore ranges between 0 and the maximum input power. This power is zero when either no user is 
+transmission power therefore ranges between 0 dBm and the maximum input power. This power is zero when either no user is 
 present or the user is so far away that the actual transmitted power would exceed the maximum allowed transmission power.
 Increasing the maximum transmission power will not influence the actual power consumption or $SAR_{10g}$ because the \gls{UABS} will not use more
 than strictly required. It is therefore more useful to match the actual transmission power against a variable flying height.
@@ -117,7 +117,7 @@ Since there is only one user, there can also be only one drone.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 2
 
 
-\section{Increasing Traffic with only one Drone available}
+\section{Scenario II: Increasing Traffic with only one Drone available}
 
 This scenario investigates the same behaviour as the previous one. Still with only one drone but for a higher number of users. 
 The scenario can be divided into two cases. The first case has a variable 
@@ -163,7 +163,7 @@ network. The $SAR_{10g}$, power consumption and user coverage will be investigat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 3
 
 
-\section{Increasing Traffic with an Undefined Amount of Drones}
+\section{Scenario III: Increasing Traffic with an Undefined Amount of Drones}
 \begin{table}[!htb]
       \centering
             \begin{tabular}{|l|l|}

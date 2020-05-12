@@ -235,13 +235,13 @@ A microstrip patch antenna is chosen because it allows easy production but more 
 and has a thin profile causing it to be very aerodynamic which is useful when attaching it to a drone \cite{J13_microstripadvantages}.
 
 The dimensions of the antenna depend on the frequency it is operating at and the characteristics of the used substrate.
-The antenna will be radiating at a center frequency $f_0$ of 2.6 GHz. Each substrate has a dielectric constant $\epsilon_r$ representing 
+The antenna will be radiating at a center frequency $f_0$ of 2.6 GHz. Each substrate has a \gls{dielectric constant} $\epsilon_r$ representing 
 the permittivity of the substrate that depends on the used material.
-Substrates with a high dielectric constant and low height 
+Substrates with a high \gls{dielectric constant} and low height 
 reduce the dimensions of the antenna
-while a lower dielectric constant with a high height improves antenna performance \cite{J14_antennadesign,J15_antennadesign}. 
+while a lower \gls{dielectric constant} with a high height improves antenna performance \cite{J14_antennadesign,J15_antennadesign}. 
 In this document, a substrate like glass 
-is chosen because of the higher dielectric constant of $\epsilon_r = 4.4$ compared to materials like Teflon with only a dielectric 
+is chosen because of the higher \gls{dielectric constant} of $\epsilon_r = 4.4$ compared to materials like Teflon with only a dielectric 
 constant of $\epsilon_r = 2.2$ \cite{J14_antennadesign}. 
 Doing this in combination with an antenna height of 2.87 mm will decrease the dimensions of the entire antenna surface.
 This comes in handy since drones only have limited space available.
@@ -252,7 +252,7 @@ This comes in handy since drones only have limited space available.
 \hline
  description            & symbol          & value         \\    \hline
  center frequency       & $f_0$           & 2600 Hz       \\ 
- dielectric constant    & $\epsilon_r$    & 4.4         \\ 
+ \gls{dielectric constant}    & $\epsilon_r$    & 4.4         \\ 
  heigt of the substrate & $h$             & 0.00287 m    \\ \hline
 \end{tabular}
 \caption{Overview of configuration parameters.}
@@ -266,15 +266,15 @@ using the defined values from table \ref{table:antennaparas}. In that way, the w
 W_{p} [m] = \frac{C [m/s]}{2*f_0 [Hz]}*\sqrt{\frac{\epsilon_r+1}{2}}
 \label{eq:antennawidth}
 \end{equation}
-With $C$ being the speed of light, $f_0$ the center frequency of 2600 MHz and a dielectric constant $\epsilon_r$ of 4.4, the width of the patch becomes 35.09 mm.
+With $C$ being the speed of light, $f_0$ the center frequency of 2600 MHz and a \gls{dielectric constant $\epsilon_r$ of 4.4, the width of the patch becomes 35.09 mm.
 
 In order to find the length of the radiating patch, some other values need to be determined first. Formula \ref{eq:epsilonreff} will
-calculate the effective dielectric constant ($\epsilon_{reff}$).
+calculate the effective \gls{dielectric constant ($\epsilon_{reff}$).
 \begin{equation} 
 \epsilon_{reff} = \frac{\epsilon_r+1}{2}+  \frac{\epsilon_r-1}{2} * \left(1+12*\frac{h [m]}{W_{p} [m] }\right)^{-\frac{1}{2}}
 \label{eq:epsilonreff}
 \end{equation}
-This formula requires the width found in the previous formula along with the dielectric constant and substrate height from table \ref{table:antennaparas}.
+This formula requires the width found in the previous formula along with the \gls{dielectric constant and substrate height from table \ref{table:antennaparas}.
 This will result in a $\epsilon_{reff}$ of 3.91.
 
 \begin{equation} 
@@ -318,7 +318,7 @@ A schematic overview of how the antenna will look like is given in figure \ref{f
 
 \subsection{Radiation Pattern}
 Mathlab is able to generate the radiation pattern for this microstrip patch antenna.
-The code in  listing \ref{c:mathlabradpattern} starts by defining the dielectric substrate which will be glass with a dielectric constant
+The code in  listing \ref{c:mathlabradpattern} starts by defining the dielectric substrate which will be glass with a \gls{dielectric constant
 of 4.4 and a height of 0.00287 m. Thereafter, the microstrip patch antenna is generated with the \verb|width| and \verb|length| being the dimensions
 of the radiation patch and the \verb|GroundPlaneLength| and \verb|GroundPlaneWidth| the dimensions of the ground plane and dielectric substrate.
 The \verb|FeedOffset| is the relative offset from the center where the radio frequency power is fed to the radiating patch which will here be
