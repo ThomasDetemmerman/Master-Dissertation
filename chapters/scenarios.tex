@@ -63,7 +63,7 @@ increasing the flying height.
 
 Another considered variable will be the transmission power of the antenna.
 \gls{LTE} makes use of power control meaning that no more power will be used than strictly necessary. The actual 
-transmission power therefore ranges between 0 dBm and the maximum input power. This power is zero when either no user is 
+transmission power therefore ranges between zero dBm and the maximum input power. This power is zero when either no user is 
 present or the user is so far away that the actual transmitted power would exceed the maximum allowed transmission power.
 Increasing the maximum transmission power will not influence the actual power consumption or $SAR_{10g}$ because the \gls{UABS} will not use more
 than strictly required. It is therefore more useful to match the actual transmission power against a variable flying height.
@@ -179,9 +179,9 @@ network. The $SAR_{10g}$, power consumption and user coverage will be investigat
         \label{table:confOverviewScenario2}
 \end{table}
 
-The third scenario implies no budget limitations. The tool can use as much \gls{UABS}s as desired while trying to maximize coverage. 
-A \gls{UABS} will be considered above each user as was also the case in scenario 2. However, the last step where the capacity of the facility
-was checked and drones got eliminated is omitted here. It is expected that the optimization strategies will perform best for this scenario since the decision algorithm has been written
+The third scenario has no restrictions. The tool can use as much \gls{UABS}s as desired while trying to maximize coverage. 
+A \gls{UABS} will be considered above each user as was also the case in scenario II. However, the last step where the capacity of the facility
+was checked and drones got eliminated, as discussed in chapter \ref{chap:methodology}, is omitted here. It is expected that the optimization strategies will perform best for this scenario since the decision algorithm has been written
  with multiple drones in mind.
 The scenario can once again be divided into two cases: one with a fixed flying height of 100 m and a variable number of users and a second one with 
 a variable flying height and a fixed number of 224 users.

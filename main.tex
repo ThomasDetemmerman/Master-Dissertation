@@ -34,9 +34,10 @@
 \usepackage{mathtools}
 \usepackage{float}
 \usepackage{caption}
-\usepackage{subcaption}
+%\usepackage{subcaption}
 \usepackage[toc,page]{appendix}
 \usepackage{minted}                                    % for modern code highlighting
+\usepackage{subfig}
 \newenvironment{code}{\captionsetup{type=listing}}{}   % To get multiline code fragments working: https://tex.stackexchange.com/a/53540/72273
 
 \usepackage{upquote}
@@ -85,6 +86,7 @@
 % Page numbers and auto generate headers
 %
 \usepackage{fancyhdr}   
+\fancyhead[LE,RO]{\colorbox{darkgray}{\textcolor{white}{\bfseries\Large\thepage}}}
 
 % automatically ensure floats (=figures) do not go into the next section.
 \usepackage[section]{placeins}
