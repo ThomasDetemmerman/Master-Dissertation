@@ -1,6 +1,11 @@
 \chapter{Introduction}
 \label{chap:intro}
 
+This chapters gives a general introduction about the subject. First, the problem with 
+classic terrestrial networks is explained and illustrated with some examples. Thereafter, 
+the research questions that are believed to give a solution to this problem are discussed.
+Finally, an overview of the entire document is given.
+
 \section{Outline of the Issue} %1p
 \label{sec:issue}
 
@@ -25,12 +30,21 @@ For example during the terrorist attacks at Brussels Airport,
 mobile network operators saw all telecommunications drastically increasing causing moments of contention. 
 Some operators even decided to temporarily exceed the exposure limits in
 order to handle all connections \cite{baseZaventem}.
+This is illustrated in figure \ref{networkIllustrationDamagedNetwork}.
 Electromagnetic exposure can however not be neglected. Research shows how excessive electromagnetic radiation can cause diverse biological side effects \cite{J31_bioeffects}.
-Because of increasing public concern \cite{J31_bioeffects}, the \gls{WHO} had launched a large, multidisciplinary research effort which eventually concluded that there was no sufficient evidence that confirmed 
+Because of increasing public concern \cite{J31_bioeffects}, the \gls{WHO} had launched a large multidisciplinary research effort which eventually concluded that there was no sufficient evidence that confirmed 
 that exposure to low level electromagnetic fields is harmful \cite{WHO}. 
 A large part of the population remains nevertheless very concerned about potential health risks.
 It becomes clear that electromagnetic exposure is a key value when designing a \gls{UAV}-aided network and should definitely 
 not surpass the predefined limits.
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=\textwidth]{../images/networkIllustrationDamagedNetwork.png}
+  \caption{This illustration shows how a UAV-aided network is able to either assist or replace 
+  existing transmission towers.}
+  \label{fig:c}
+\end{figure}
 
 \section{Objective}
 \label{sec:objective}
@@ -59,8 +73,8 @@ What are the effects on the network?\\
 
 \textbf{Research question 2:} How does the network behave differently after the introduction of a realistic antenna?\\
 
-\textbf{Research question 3:} How does the \gls{UABS} flying height and population density influence electromagnetic 
-exposure and power consumption?\\
+\textbf{Research question 3:} How does the \gls{UABS} flying height and number of userrs influence
+electromagnetic exposure and power consumption?\\
 
 \textbf{Research question 4:} What is the contribution of each source towards the total electromagnetic exposure?\\
 
@@ -78,7 +92,7 @@ Here, the State of the Art, explaining electromagnetic exposure and its absorpti
 Also the used technology such as type of antennae, type of base station and which infrastructure will be examined. 
 The chapter also discusses why this master dissertation differs from other research documents. 
 Thereafter, chapter \ref{chap:scenarios} talks about the different scenarios that will be
-investigated. \textcolor{red}{TODO: (Include another phrase/sentence that says more about ch3)}
+investigated. Each scenario has differrent restrictions and consists of various configurations where different parameters will be evaluated.
  Eventually, the methodology is covered in chapter \ref{chap:methodology}, where the calculations and implementation 
  of the different aspects discussed in the State of the Art are presented. 
  Chapter \ref{chap:results} shows the results of this implementation for the scenarios described in chapter \ref{chap:scenarios}. 
