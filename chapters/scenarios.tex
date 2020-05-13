@@ -113,6 +113,14 @@ Note that there is no explicit restriction on the number of drones in table \ref
 \gls{UABS}s above each user and it is the optimization strategy that decides which of these potential positions will remain in the end solution.
 Since there is only one user, there can also be only one drone.
 
+Figure \ref{fig:IllustrationS1} illustrates a possible network which satisfies the restrictions of scenario I. In the middle is the average user drawn with above him the only available \gls{UABS}.
+\begin{figure}[H]
+\centering
+  \includegraphics[width=\textwidth]{../images/IllustrationS1.png}
+  \caption{Illustration of an example network that satifies the restrictions of scenario I.}
+  \label{fig:IllustrationS1}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 2
 
@@ -159,7 +167,14 @@ as there are users in the network. But when the optimization algorithm is done, 
 For both cases, four configurations are possible because there are two antennae available (\gls{isotropicradiator} and a realistic antenna) which can both operate in a power consumption optimized network or an exposure optimized 
 network. The $SAR_{10g}$, power consumption and user coverage will be investigated for all four configurations.
 
-
+An illustration of a possible network is given in figure \ref{fig:IllustrationS2}. The average user is drawn in the middel. The only available \gls{UABS} covers him along with the person to the right.
+The two other  users at the left side are uncovered and therefore are not  emiting any radiation.
+\begin{figure}[H]
+\centering
+  \includegraphics[width=\textwidth]{../images/IllustrationS2.png}
+  \caption{Illustration of an example network that satifies the restrictions of scenario II.}
+  \label{fig:IllustrationS2}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 3
 
 
@@ -187,6 +202,18 @@ The scenario can once again be divided into two cases: one with a fixed flying h
 a variable flying height and a fixed number of 224 users.
 The influence that these input parameters have on the network will be based on the electromagnetic exposure, power consumption, number of drones required and user coverage.
 
+An illustration is given in figure \ref{fig:IllustrationS3} with the average user drawn in the middel.
+Most users are covered by the many \gls{UABS}s available. The average user 
+will be exposed to all these \gls{UABS}s and to all the \gls{UE} that belong to covered users.
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=\textwidth]{../images/IllustrationS3.png}
+  \caption{Illustration of an example network according to the description of scenario III.}
+  \label{fig:IllustrationS2}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Overview}
 Three different scenarios will be investigated where the second and third one, each consist out of two cases. The first case considers a fixed flying height while 
 the second one has a fixed population size. Each case consists out of four configurations. An overview of these configurations is given in table \ref{fig:fourCasesMatrix}.
