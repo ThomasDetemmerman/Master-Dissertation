@@ -559,7 +559,15 @@ This tool is thus a suitable starting point and works as follows:
 The deployment tool will try to calculate the optimal placement for each \gls{UABS} and requires therefore a description of the area where the UAV-aided network needs to 
 be deployed. This is done with the use of so-called shape files. These files contain three dimensional descriptions of the buildings present in the area and are
 key values in approaching results as realistic as possible. Furthermore, the tool also requires a configuration file containing technical specifications of the type of \gls{UABS} that is being used. 
-The tool will thereafter randomly distribute users over the area and assigns a certain bitrate to them.
+The tool will thereafter randomly distribute users over the area and assigns a certain bitrate to them (figure \ref{fig:userdistribution}). If a user is indoor, the height of the user will be estimated 
+at hal the height of the building. The height \gls{UE} itself will be 1.5 metres above the floor. 
+
+\begin{figure}[h!]
+\centering
+ \includegraphics[width=.85\textwidth]{../images/cityCenterGhentUserDistributionB.png}
+  \caption{Example of how users are randomly distributed over the city center of Ghent.}
+  \label{fig:userdistribution}
+\end{figure}
 
 In a second phase, the optimal position for each \gls{UABS} is calculated. This is done by trying to locate a \gls{UABS} above each active user. Two options are possible.
 If a fixed flying height is defined, a \gls{UABS} is placed above each user at the given height, unless a building is obstructing its location. Then, no base station will be located above that user.
@@ -591,7 +599,8 @@ The flowchart of the main algorithm is given in figure \ref{fig:mainflow}.
   \label{fig:decisionAlgoFlowChart}
 \end{minipage}%
 \begin{minipage}{0.4\textwidth}\vspace{-120pt}%
-Solving the network is done by the decision algorithm and starts by calculating the path loss between all users and between users and \gls{UABS}s.
+Solving the network is done by the decision algorithm and starts by calculating the path loss
+between the different users and thereafter between users and \gls{UABS}s.
 Thereafter, the tool iterates over each user and tries to connect that user to each \gls{UABS}. This connection is not always possible. A \gls{UABS} might be saturated with users and 
 will not be able to cover yet another one or maybe the user is so far away that in order to cover that user, the \gls{UABS} would have to exceed its maximum allowed input power.
 However, if a connection is possible, the user will be connected to that \gls{UABS} and the fitness function from section \ref{sec:methodology:optimizingTheNetwork} is applied. 
@@ -621,12 +630,14 @@ This parameter only supports positive values ranging from \ang{0} to \ang{360} (
 The second value, the north offset, defines the azimuth orientation of the drone. The value given to this parameter indicates the offset between the north
 and the horizontal direction to which the antenna should be pointing at. The value once again ranges from \ang{0} to \ang{360} with the upper boundary not included. The
 angle is calculated in counterclockwise orientation. For instance, a north offset of \ang{270} will let the \gls{UABS} point to the east.  
+An example is given in figure \ref{fig:droneOrientations}. The \gls{UAV} on the left performs a horizontal movement with a north offset of \ang{90}. 
+The antenna attached to the \gls{UAV} on the left performs a downtilt movement of \ang{90}.
 
 \begin{figure}[H]
 \centering
-  \includegraphics[width=\textwidth/10*7]{../images/3Dimages/slicesOfPattern.jpg}
-  \caption{Schematic example of slices in a radiation pattern.}
-  \label{fig:slicesOfPattern}
+  \includegraphics[width=\textwidth]{../images/droneOrientations.png}
+  \caption{Illustration of the two possible movements. The \gls{UAV} on the left is a top view while the \gls{UAV} on the right is a side view. }
+  \label{fig:droneOrientations}
 \end{figure}
 
 Thereafter, the normalized radiation pattern is supplied to the tool, the actual pattern is three dimensional. To simplify this,
@@ -634,6 +645,12 @@ slices perpendicular to the az-axis are extracted. These are indicated in figure
 an angle of \ang{90} four slices are achieved, each consisting out of elevation cuts. The intersection of an elevation and azimuth plane 
 corresponds with a certain attenuation which is fed to the tool. Figure \ref{fig:slicesOfPattern} shows only 3 elevation planes. The radiation pattern used in the tool 
 has an attenuation every \ang{10}. In other words, a slice consists of 19 values ranging from \ang{0} to \ang{180} (boundaries included).
+\begin{figure}[H]
+\centering
+  \includegraphics[width=\textwidth/10*6]{../images/3Dimages/slicesOfPattern.jpg}
+  \caption{Schematic example of slices in a radiation pattern.}
+  \label{fig:slicesOfPattern}
+\end{figure}
 
 The number of required slices depends on the complexity of the radiation pattern. For symmetrical radiation patterns, like 
 in figure \ref{radpattern2} and \ref{radpattern1}, two azimuth cuts perpendicular to each other dividing the radiation pattern in 4 azimuth-slices 
