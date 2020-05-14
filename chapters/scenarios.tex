@@ -1,14 +1,41 @@
 \chapter{Scenarios}
-\label{chap:scenarios}
+\label{chap:scenarios} 
 The tool supports multiple configurations and the behaviour will be different for most of these configurations. Three main scenarios 
-will be investigated, ordered, based on the network complexity. Within each scenario, different cases will be investigated.
+will be investigated, ordered, based on the network complexity. Within each scenario, different parameters are evaluated.
 First, only one user with one drone will be present in the network. The network will thereafter be expanded
 for multiple users but with still only one drone available. Finally, the last restriction will be dropped meaning 
 that multiple users with unlimited number of drones are examined.
 It is important to note that 
 all considered values are strictly limited to the mentioned sources in chapter \ref{chap:methodology} and thus only cover data traffic 
 between \gls{UE} and \gls{UABS}s. Any other potential sources like backhaul links will not be covered.
-Table \ref{table:defaultconf} shows the default values that are always applicable unless mentioned otherwise.
+
+Table \ref{table:defaultconf} shows the default values that are always applicable unless mentioned otherwise. 
+Firstly, the table shows 
+the specifications for LTE operating at a frequency of 2.6 Ghz. The mentioned values are used for calculating 
+the transmission power of \gls{UE} as discussed in chapter \ref{chap:methodology}: equation \ref{eq:powerUE}. 
+Secondly, the details of the antenna
+used by the femtocell base station are presented. The antenna is attached under the \gls{UABS} and will be pointing downwards. 
+The antenna has a maximum transmission power of 33 dBm and 
+a gain of 4 dBm. Two types of antennae are considered, which is either an \gls{isotropicradiator}  generating an \gls{EIRP} 
+or a microstrip patch antenna with a slightly more complex radiation pattern. The design of this radiation pattern is show 
+in chapter \ref{chap:methodology}: fig. \ref{radpattern2}. By default, the \gls{UABS}s will fly at a fixed altitude of 100 metres.
+Thirdly, the specifications of the carrying \gls{UAV}s are summed up. 
+The authors from \cite{J2} investigated two types of \gls{UAV}s for their \gls{UAV}-aided emergency network 
+and concluded that the more robust \gls{UAV} outperformed the off-the-shelf \gls{UAV}.
+The specifications of the more advanced \gls{UAV} will be used in this master dissertation.
+Finally, the characteristics of the antenna belonging to \gls{UE} are listed. The antenna will be located 
+one and a half metre from the floor. Note that the floor does not necessarily mean the ground.
+For example, a user can be indoor at the third floor.
+The antenna will be an \gls{isotropicradiator}. By default, 224 users with each one device 
+will be distributed over the city center of Ghent. This city planning map is given in figure \ref{fig:ghent}
+
+\begin{wrapfigure}{r}{0.48\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{../images/mariahendrikaplein_B.png}
+  \end{center}
+ \caption{The red area covers the city center of Ghent, Belgium.}
+  \label{fig:ghent}
+\end{wrapfigure}
 
 \begin{table}[!htb]
 \centering
@@ -16,25 +43,29 @@ Table \ref{table:defaultconf} shows the default values that are always applicabl
         \toprule
         \multicolumn{2}{l}{\textbf{Broadband cellular network}} \\
         \hline
-        \hspace{3mm}  technology        & LTE     \\
-        \hspace{3mm}  frequency         & 2.6 GHz \\
-        \hline
-        \multicolumn{2}{l}{\textbf{UAV}} \\
-        \hline  
-        \hspace{3mm}  UAV power        & 13.0 A   \\
-        \hspace{3mm}  average UAV speed        & 12.0 m/s \\
-        \hspace{3mm}  average UAV power usage      & 17.33 Ah    \\
-        \hspace{3mm}  UAV battery voltage       & 22.2 V \\
+        \hspace{3mm}  technology                          & LTE     \\
+        \hspace{3mm}  frequency                           & 2.6 GHz \\
+        \hspace{3mm}  power offset ($P_pusch$)            & -120 dBm  \\
+        \hspace{3mm}  path loss compensation ($\alpha$)   & 1  \\
+        \hspace{3mm}  correction value                    & 0 dBm  \\
+        \hspace{3mm}  number of used resource blocks      & 100  \\
         \hline
         \multicolumn{2}{l}{\textbf{Femtocell antenna}} \\
         \hline  
-        \hspace{3mm}  maximum $P_{tx}$          & 33 dBm   \\
-        \hspace{3mm}  antenna  direction        & downwards (az: \ang{0}; el: \ang{90})    \\ 
-        \hspace{3mm}  gain                      & 4 dBm   \\ 
-        \hspace{3mm}  feeder loss               & 2 dBm   \\ 
-        \hspace{3mm}  implementation loss       & 0 dBm   \\
-        \hspace{3mm}  radiation pattern         & \acs{EIRP} or microstrip patch antenna\\
-        \hspace{3mm}  flying altitude           & 100m  \\
+        \hspace{3mm}  maximum $P_{tx}$                    & 33 dBm   \\
+        \hspace{3mm}  antenna  direction                  & downwards (az: \ang{0}; el: \ang{90})    \\ 
+        \hspace{3mm}  gain                                & 4 dBm   \\ 
+        \hspace{3mm}  feeder loss                         & 2 dBm   \\ 
+        \hspace{3mm}  implementation loss                 & 0 dBm   \\
+        \hspace{3mm}  radiation pattern                   & \acs{EIRP} or microstrip patch antenna\\
+        \hspace{3mm}  flying altitude                     & 100 m  \\
+        \hline
+        \multicolumn{2}{l}{\textbf{UAV}} \\
+        \hline  
+        \hspace{3mm}  UAV power                           & 13.0 A   \\
+        \hspace{3mm}  average UAV speed                   & 12.0 m/s \\
+        \hspace{3mm}  average UAV power usage             & 17.33 Ah    \\
+        \hspace{3mm}  UAV battery voltage                 & 22.2 V \\
         \hline
         \multicolumn{2}{l}{\textbf{\acs{UE} Antenna}} \\
         \hline 
@@ -67,54 +98,60 @@ transmission power therefore ranges between zero dBm and the maximum input power
 present or the user is so far away that the actual transmitted power would exceed the maximum allowed transmission power.
 Increasing the maximum transmission power will not influence the actual power consumption or $SAR_{10g}$ because the \gls{UABS} will not use more
 than strictly required. It is therefore more useful to match the actual transmission power against a variable flying height.
+\gls{UABS} are available, both optimization strategies will behave identical. 
 
+\begin{wrapfigure}{r}{0.48\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{../images/mariahendrikaplein_B.png}
+  \end{center}
+ \caption{Location of `Koningin Maria Hendrikaplein' on the town planning map of Ghent}
+  \label{fig:locationHendrikaplein}
+\end{wrapfigure}
 This scenario investigates $SAR_{10g}$, power consumption and minimal transmission power for two different types of antennae: a 
  fictional \gls{isotropicradiator} and a realistic antenna as presented in figurer \ref{table:s1:evalpara}.
  The used optimization strategy is not important
-for this scenario. This is because the
+for this scenario.
+This is because the
  decision algorithm decides which user needs to be connected to which drone. Since only one user and one
-\gls{UABS} are available, both optimization strategies will behave identical. 
+
 
 The user gets a fixed position. The exact location does not matter as long as it is outside. For this experiment is chosen for the 
-`Koningin Maria Hendrikaplein', a square just next to the train station of Ghent.  Doing so will force the \gls{UE} 
+`Koningin Maria Hendrikaplein', a square just next to the train station of Ghent (fig. \ref{fig:locationHendrikaplein}).  Doing so will force the \gls{UE} 
 to always be at the same height of 1.5 meters. 
 An overview of the simulation configuration scenarios is presented in figure \ref{table:S1:restrictions}.
 
+Note that there is no explicit restriction on the number of drones in table \ref{table:S1:restrictions}. The deployment tool initially places 
+\gls{UABS}s above each user and it is the optimization strategy that decides which of these potential positions will remain in the end solution.
+Since there is only one user, there can also be only one drone.
 \begin{table}[!htb]
-    \begin{minipage}{.5\linewidth}
-      \centering
+\centering
             \begin{tabular}{|l|l|}
             \hline
-            \textbf{Input variables  }              & \textbf{Output variables}          \\   \hline 
-            type of antenna                & $SAR_{10g}$               \\ 
-            flying height                  & power consumption             \\ 
-                                           &  minimal $P_{tx}$ \\ 
-                                           & \\
+            \textbf{Input variables  }                    & \textbf{Output variables}          \\   \hline 
+            type of antenna \{EIRP, microstrip\}            & $SAR_{10g}$  ($W/kg$)            \\ 
+            flying height [20m-200m]                        & power consumption  ($W$)           \\ 
+                                                          &  minimal $P_{tx}$ ($dBm$)\\ 
+                                                          & electromagnetic field radiation ($V/m$)\\
             \hline
             \end{tabular} 
             \caption{Evaluated parameters}
           \label{table:s1:evalpara}
-        \end{minipage}%
-    \begin{minipage}{.5\linewidth}
-      \centering
+\end{table}
+\begin{table}[!htb]
+\centering
         \begin{tabular}{|l|c|l|}
         \hline
         \textbf{Parameter}              & \textbf{Value}          \\   \hline 
-        x position user               & 3.711198       \\    
-        y position user               & 51.036747          \\ 
-        shadow margin user             & -3.0398193 \\
+        x position user (longitude)              & 3.711198       \\    
+        y position user (latitude)               & 51.036747          \\ 
+        shadow margin             & -3.0398193 \\
         number of users                & 1 \\
         \hline
         \end{tabular}
         \caption{Restrictions}
         \label{table:S1:restrictions}
-    \end{minipage} 
-       
 \end{table}
 
-Note that there is no explicit restriction on the number of drones in table \ref{table:confOverviewScenario1}. The deployment tool initially places 
-\gls{UABS}s above each user and it is the optimization strategy that decides which of these potential positions will remain in the end solution.
-Since there is only one user, there can also be only one drone.
 
 Figure \ref{fig:IllustrationS1} illustrates a possible network which satisfies the restrictions of scenario I. In the middle is the average user drawn with above him the only available \gls{UABS}.
 \begin{figure}[H]
@@ -127,7 +164,7 @@ Figure \ref{fig:IllustrationS1} illustrates a possible network which satisfies t
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% scenario 2
 
-
+\FloatBarrier
 \section{Scenario II: Increasing Traffic with only one Drone available}
 
 This scenario investigates the same behaviour as the previous one. Still with only one drone but for a higher number of users. 
@@ -140,29 +177,28 @@ An overview of the evaluated parameters is shown in table \ref{table:s2:evalpara
  To force the tool to only use one drone, a facility capacity is set to one 
 indicating that there is only one spot available in the facility where the \gls{UABS}s are stored. The tool will still consider as much potential places 
 as there are users in the network. But when the optimization algorithm is done, only one drone will remain.
-On overview of the restrictions is presented in figure \ref{table:s2:evalpara}.
+On overview of the restrictions is presented in figure \ref{table:s2:restrictions}.
 
-\begin{table}[!htb]
-    \begin{minipage}{.5\linewidth}
-      \centering
+\begin{table}
+\centering
             \begin{tabular}{|l|l|}
             \hline
             \textbf{Input variables  }              & \textbf{Output variables}          \\   \hline 
-            type of antenna                & $SAR_{10g}$               \\ 
-            flying height                     & power consumption             \\ 
-            number of users                & user coverage            \\
-            optimization strategy         &                               \\ 
+            type of antenna  \{EIRP, microstrip\}               & $SAR_{10g}$ ($W/kg$)             \\ 
+            flying height [20m-200m]                 & power consumption ($W$)          \\ 
+            number of users  [50-600]              & user coverage            \\
+            optimization strategy \{Exp Opt, PwrC Opt\}        &     electromagnetic field radiation ($V/m$)\\
             \hline
             \end{tabular}
             \caption{Evaluated parameters}
           \label{table:s2:evalpara}
-    \end{minipage} 
-    \begin{minipage}{.5\linewidth}
-      \centering
-        \begin{tabular}{|l|c|l|}
+\end{table}
+\begin{table}
+\centering
+        \begin{tabular}{|l|c|}
         \hline
-        \textbf{Parameter}              & \textbf{Value}          \\   \hline 
-        facility capacity               & 1        \\    
+        \textbf{Parameter}            & \textbf{Value}       \\   \hline 
+        capacity of the facility          & 1        \\    
         &  \\ 
         & \\ 
         & \\ 
@@ -170,10 +206,9 @@ On overview of the restrictions is presented in figure \ref{table:s2:evalpara}.
         \end{tabular}
                 \caption{Restrictions}
         \label{table:S2:restrictions}
-    \end{minipage}%
 \end{table}
 
-For both cases, four configurations are possible because there are two antennae available (\gls{isotropicradiator} and a realistic antenna) which can both operate in a power consumption optimized network or an exposure optimized 
+For both cases, four configurations are possible because there are two antennae available (\gls{isotropicradiator} and a microstrip antenna) which can both operate in a power consumption optimized network or an exposure optimized 
 network. The $SAR_{10g}$, power consumption and user coverage will be investigated for all four configurations.
 
 An illustration of a possible network is given in figure \ref{fig:IllustrationS2}. The average user is drawn in the middel. The only available \gls{UABS} covers him along with the person to the right.
@@ -202,11 +237,11 @@ The influence that these input parameters have on the network will be based on t
       \centering
             \begin{tabular}{|l|l|}
             \hline
-            \textbf{Input variables  }              & \textbf{Output variables}          \\   \hline 
-            type of antenna                & $SAR_{10g}$               \\ 
-            flying height                   & power consumption             \\ 
-            number of users                & user coverage            \\ 
-            optimization strategy           & \\
+            \textbf{Input variables  }                        & \textbf{Output variables}       \\   \hline 
+            type of antenna  \{EIRP, microstrip\}               & $SAR_{10g}$ ($W/kg$)                    \\ 
+            flying height    [20-200]                         & power consumption ($W$)             \\ 
+            number of users  [50-600]                         & user coverage                   \\
+            optimization strategy \{Exp Opt, PwrC Opt\}         &   electromagnetic field radiation ($V/m$)\\
             \hline
             \end{tabular}
                  \caption{Evaluated parameters}

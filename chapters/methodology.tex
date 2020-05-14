@@ -232,26 +232,24 @@ SAR^{wb,myUE}_{10g} \left[\frac{W}{kg}\right] = 0.0070 \left[\frac{W/kg}{W}\righ
 
 The power of the \gls{UE} can be calculated using formule \ref{eq:powerUE} \cite{J22_plets2015joint}.
 \begin{equation} 
-P_{tx}^{UE} = P_{0} [dBm] + \alpha * PL [dB] + 10log(M) + \sigma
+P_{tx}^{UE} = \big\{P_{max} [dBm] , P_{pusch} [dBm] + \alpha * PL [dB] + 10log(M) + \sigma \big\}
 \label{eq:powerUE}
 \end{equation}
 
-\textcolor{red}{TODO: nalezen}
-Where $P_0$ is the required received power at the
-\gls{UABS}. $\alpha$ is the path-loss compensation factor where 
-$\alpha$ in \{0,0.4,0.5,0.6,0.7,0.8,0.9,1\}. When $\alpha$ is set to 
-one, we have a full pathloss compensation while a zero is 
-represent no path loss compensation. Any other value of α represents a FPC \cite{J32,J33}.
-Further, $M$ is the number of  used resource blocks and $\sigma$ is 
- as a network-controlled factor, reflecting power
-increase or decrease commands. 
-Full pathloss compensation will be asumed, making $\alpha$ equal to zero. 
+$P_{max}$ is the maximum allowed transmission power by \gls{UE} for LTE, defined at 23 dBm. 
+However, this is the worst case and the actual used power is uselly mutch lower thanks to power control.
+$P_{pusch}$ is the required received power at the
+\gls{UABS} and will be advertised by the base station over the \gls{pusch}. This research will use a
+$P_{pusch}$ of -120 dBm. 
+$\alpha$ is the path loss compensation factor where 
+$\alpha$ must equal \{0,0.4,0.5,0.6,0.7,0.8,0.9,1\}. An $\alpha$ set to 
+zero indicates there is no path loss compensation \cite{J32,J33}.
+For this document, full pathloss compensation will be used with an $\alpha$ equal to one.
 For the 20-MHz
-channel used in this paper, $M$ equal to 100 \cite{32}. 
-$P_0$
-to −54.5 dBm \cite{J33}. The transmit power will range between
- −40 and 23 dBm.
-
+channel used in this paper, $M$ will be set to 100; indicating the number of  used resource blocks by \gls{pusch} \cite{J22_plets2015joint}.
+Finally, we have $\sigma$
+ as the correnction factor and is set to zero. Other possible values are \{-1, 0, 1, 3\} \cite{J22_plets2015joint,J32}.
+ The presented values can be found in the overview given in table \ref{table:defaultconf}.
 
 \section{Microstrip Patch Antenna}
 \subsection{Design of  a Microstrip Patch Antenna}
