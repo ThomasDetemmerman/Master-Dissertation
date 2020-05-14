@@ -41,9 +41,8 @@ We can only speak in terms of \gls{SAR}
   when the electromagnetic radiation is absorbed by the user. This last step is however not shown in the illustration.
 
 The electromagnetic exposure to which people are exposed can be categorized in two groups. One of them is near-field radiation which is caused 
-by the user's own device which is indicaed in figure \ref{fig:networkIllustration} and will be discussed in \ref{sub:Uplinkexposure}.
-The other type is far-field radiation and will be explained in section \ref{sub:Calculatingdownlinkexpsure}. 
-This kind of radiation is caused by radiators `far away'.
+by the user's own device which is indicated with the green arrow in figure \ref{fig:networkIllustration} and will be discussed in \ref{sub:Uplinkexposure}.
+The other arrows are a form of far-field radiation and will be explained in section \ref{sub:Calculatingdownlinkexpsure}. 
 Examples of these types of radiators are \gls{UE} which belong to other people and \gls{UABS}s. 
 
 \begin{figure}[h!]
@@ -66,7 +65,7 @@ To determine the total exposure of a single human being or even of the entire ne
 The formula to determine this electromagnetic value $E$ (expressed in V/m) for a specific location $u$ is given in equation \ref{eq:singleexposure}.
 
 \begin{equation}
-E_i(u) [V/m] = 10^{\frac{RRP(u)[dBm] - 43.15 + 20*\log(f [MHz])- PL(u) [dB]}{20}}
+E_i(u) [V/m] = 10^{\frac{RRP(u)[dBm] - 43.15 + 20\cdot\log(f [MHz])- PL(u) [dB]}{20}}
 \label{eq:singleexposure}
 \end{equation}
 
@@ -95,8 +94,105 @@ The used frequency in the formula above is denoted as $f$ and is expressed in MH
 \paragraph{path loss}
 \label{subsec:pl}
 At last, formula \ref{eq:singleexposure} requires the path loss $PL$. In order to calculate this, an appropriate propagation model ---of which several exist--- is required .
-The Walfish-Ikegami model is used since it performs well for femtocell networks in urban areas \cite{J2}. %optioneel kan je hier dezelfde bron gebruiken als dat ze in thesis van de vorige gebruikten. Bron nummer 32
-It consists of two formulas depending on whether a free \gls{LOS} between the user and the base station exists or not. Both formulas expect a distance in kilometre. %bron?
+The Walfish-Ikegami model is used since it performs well for femtocell networks in urban areas \cite{J2}. 
+The model makes a distinction between whether a free \gls{LOS} between the user and the base station exists or not.
+The mathematical representation is given in the formulas below and is based on \cite{J34,J35}.
+
+The formula for \gls{LOS} situation is rather simple.
+\begin{equation}
+L_{p}=42.6+20\cdot\log(f [MHz])+26\cdot\log(d[km])
+\end{equation}
+
+where $f$ is the used frequency and $d$ the distance between the two radiators.
+The formula for \gls{NLOS} is more complex and translates as follows.
+
+\begin{equation}
+L_p=
+\begin{cases*}
+  L_{0} [dB] + L_{rts} [dB] + L_{msd} [dB]    & if $L_{rts}[dB] + L_{msd}[dB] > 0[dB]$ \\
+L_{0}  [dB]                        &  if $L_{rts}[dB] + L_{msd}[dB] \leq 0[dB]$\\
+\end{cases*}
+\label{eq:walfish2}
+\end{equation}
+With $L_0$ the path loss in free space, $L_{rts}$ the roof-top-to-street diffraction and scatter loss.
+Further, $L_{msd}$ stands for he multi-screen diffraction loss. The free space loss $L_0$ can be calculated as follows.
+
+\begin{equation}
+L_{0}=32.4+20\cdot\log(f [MHz])+20\cdot\log(d[km])
+\end{equation}
+Where $f$ is the used frequency in MHz and $d$ the radio-path length.
+The second term in equation \ref{eq:walfish2} is the roof-top-to-street diffraction and scatter loss
+calculated with the following formulas.
+
+\begin{equation}
+L_{rts}=-16.9-10\log(w)+10\cdot\log(f [MHz]+20\cdot( h_{roof}[m] - h_{rx} [m]) +L_{orientation}
+\end{equation}
+with $w$ representing the width of the roads and $h_{roof} - h_{rx}$ the difference in height between 
+the receiver and the roof. $L_{orientation}$ depends on the orientation of the road 
+and can be calculated as follows.
+
+\begin{equation}
+L_{orientation}=
+\begin{cases*}
+  -10+0.354\cdot \phi[\deg] & if $ 0^{\circ}\leq\phi<35^{\circ}$  \\
+  2.5+0.075\cdot (\phi[\deg]-35) & if $ 35^{\circ}\leq\phi<55^{\circ}$ \\
+  4.0-0.114\cdot (\phi[\deg]-55) &if $ 55^{\circ}\leq\phi\leq 90^{\circ}$ \\
+\end{cases*}
+\end{equation}
+where $\phi$ is the angle of incidence relative to the direction of the
+street. The final parameter required by equation \ref{eq:walfish2}
+is the multi-screen diffraction loss and can be defined as follows.
+
+\begin{equation}
+L_{msd}=L_{bsh}+k_{a}+k_{d}\cdot \log(d) +k_{f}\cdot \log(f)-9\cdot \log(b)
+\end{equation}
+
+$L_{bsh}$ and $k_a$ quantifies the increase of path loss caused by obstructing buildings. 
+This is especially the case for lower positioned base stations. $b$ is the distance between buildings
+along the path where the signal travels. The factors $k_f$ and $k_d$
+control the dependence of $L_{msd}$ as a function of radio frequency and distance, respectively.
+$L_{bsh}$ and $k_a$ can be calculated with respectively equations \ref{eq:walfish7} and \ref{eq:walfish8}
+and $k_f$ and $k_d$ respectively with equations \ref{eq:walfish9} and \ref{eq:walfish10}.
+
+\begin{equation}
+L_{bsh}=
+\begin{cases*}
+ -18\log(1+\Delta h_{Base})   &if $ h_{Base}>h_{Roof}$\\
+  0                           & if $h_{Base}\leq h_{Roof}$ \\
+\end{cases*}
+\label{eq:walfish7}
+\end{equation}
+
+
+\begin{equation}
+K_{a}=
+\begin{cases*}
+    54                                                  & if $h_{Base}>h_{Roof} $\\
+   54-0.8 \cdot (h_{tx}[m]-h_{roof}[m])                 & if $d \geq 0.5 km and h_{Base}\leq h_{Roof}$\\
+    54-0.8 \cdot \frac{(h_{tx}[m]-h_{roof}[m])}{0.5}    & if $d < 0.5 km and h_{Base}\leq h_{Roof}$\\
+  \end{cases*}
+  \label{eq:walfish8}
+\end{equation}
+
+\begin{equation}
+k_{d}=
+\begin{cases*}
+18 & if $h_{Base}>h_{Roof}$\\
+ 18-15 * \left( \frac{(h_{tx} [m] - h_{roof} [m])}{h_{roof}[m]- h_{rx}}  \right)  & if $h_{Base}>h_{Roof}$\\
+  \end{cases*}
+  \label{eq:walfish9}
+\end{equation}
+
+\begin{equation}
+K_{f} = -4 + 
+\begin{cases*}
+  0.7\left(\frac{f [MHz]}{925}-1\right)  & for medium sized and suburban areas\cr 
+  1.5\left(\frac{f [MHz]}{925}-1\right) & for metropolitan centers\cr 
+\end{cases*}
+\label{eq:walfish10}
+\end{equation}
+
+
 
 \subsubsection{Combining Exposure}
 The total electromagnetic exposure $E_{tot}$ for a given location originating from different sources can be calculated with formula \ref{eq:totalexposure} (in V/m). $E_i$ stands for 
