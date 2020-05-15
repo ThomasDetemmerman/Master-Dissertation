@@ -436,7 +436,7 @@ A schematic overview of how the antenna will look like is given in figure \ref{f
 \end{figure}
 
 \subsection{Radiation Pattern}
-Mathlab is able to generate the radiation pattern for this microstrip patch antenna.
+Matlab is able to generate the radiation pattern for this microstrip patch antenna.
 The code in  listing \ref{c:mathlabradpattern} starts by defining the dielectric substrate which will be glass with a \gls{dielectric constant}
 of 4.4 and a height of 0.00287 m. Thereafter, the microstrip patch antenna is generated with the \verb|width| and \verb|length| being the dimensions
 of the radiation patch and the \verb|GroundPlaneLength| and \verb|GroundPlaneWidth| the dimensions of the ground plane and dielectric substrate.
@@ -458,7 +458,7 @@ pattern(p,2.6e9, "CoordinateSystem", 'polar', "Normalize",true)
 pattern(p,2.6e9, 90, "CoordinateSystem", 'polar', "Normalize",true)
 pattern(p,2.6e9, 0, "CoordinateSystem", 'polar', "Normalize",true)
 \end{minted}
-\caption{Mathlab code to generate the radiation patterns for the microstrip patch antenna.}
+\caption{Matlab code to generate the radiation patterns for the microstrip patch antenna.}
 \label{c:mathlabradpattern}
 \end{listing}
 
@@ -711,13 +711,21 @@ In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in fig
 
 \begin{figure}[]
   \centering
-  \includegraphics[width=\textwidth/10*9]{../images/Example-of-a-2D-k-d-tree.png}
+  \includegraphics[width=\textwidth/10*8]{../images/Example-of-a-2D-k-d-tree.png}
   \caption{Example of a KD-tree in two dimensions.}
   \label{fig:exampleKDtree}
 \end{figure}
 
-Figure \ref{chart:distances} shows that the majority of the connections are not longer than 100 metres in a power consumption 
-optimized network. This percentage will even be higher in  an exposure optimized network.
+The length of  the connections is investigated to define a proper cut-off radius.
+The investigated network is a power consumption optimized network with an \gls{isotropicradiator} because this 
+configuration will result in the biggest cell sizes due to the absence of attenuation in the antenna. 
+Figure \ref{chart:distances} shows that for small networks with 50 users, 78\% of the connections
+is less then 100 metres. The other 22\% is situated between 100 and 400 metres and decreases logarithmically.
+For bigger networks with 600 users, 57\% of the connections is less then 100 metres. The remaining 43\%
+of the connections is situated between 100 and 500 metres. No significant percentage of connections longer then 500 metre
+were recorded for either cases.
+The percentage of  connections less then 100 metres will even be higher when using exposure optimized networks 
+and/or microstrip patch antennae.
 In this case the choice was made to only consider \gls{UABS}s within a radius of half a kilometre which is believed 
 to have a sufficient safety margin. The rare connections that would have exceeded this radius would not contribute much to 
 the average values.
@@ -733,7 +741,7 @@ the average values.
         ymajorgrids = true,
         ylabel = {Percentage of connections},
         xlabel = {Distance in metre},
-        symbolic x coords={0-100,100-200,200-300,300-400,400-500},
+        symbolic x coords={0-100,100-200,200-300,300-400,400-500, 500-600},
         xtick = data,
         scaled y ticks = false,
         enlarge x limits=0.25,
@@ -746,10 +754,10 @@ the average values.
         }
     ]
         \addplot[style={blue,fill=blue,mark=none}]
-            coordinates {(0-100, 78) (100-200,11) (200-300,7) (300-400,4) (400-500,0)};
+            coordinates {(0-100, 78) (100-200,11) (200-300,7) (300-400,4) (400-500,0) (500-600,0)};
 
         \addplot[style={red,fill=red,mark=none}]
-            coordinates {(0-100, 58) (100-200,27) (200-300,10) (300-400,5) (400-500,1)};
+            coordinates {(0-100, 57) (100-200,27) (200-300,10) (300-400,5) (400-500,1) (500-600,0)};
 
         \legend{Network with 50 users, Network with 600 users}
     \end{axis}
@@ -759,3 +767,27 @@ the average values.
       \caption{Distribution of how many connections belong to a certain interval of distance. Upper boundaries are not included.}
   \label{chart:distances}
 \end{figure}
+
+\section{Summary}
+This chapter discussed the several formulas that will be used by the tool and how to program or optimized
+some of the more complex problems like radiation patterns or path loss calculations.
+
+First, the formulas on how to calculate the electromagnetic exposure from different sources and how they 
+can be converted in \gls{SAR}-values are presented. The electromagnetic field radiation in the far-field 
+and near-field can be converted with the constants $0.0028 \frac{W/kg}{W/m^2}$ and  $0.0070 \frac{W/kg}{W}$, respectively.
+Secondly, a proper microstrip patch antenna 
+has been defined, optimized for the 2.6 GHz frequency band.
+The dimensions of the groundplane and glass substrate resulted in 52.4 mm by 43.8 mm and a height of 2.87 mm. The radiating patch 
+itself has a width of 35.09 mm and a length of 26.55 mm.
+Thereafter, the radiation pattern of this
+antenna is achieved with the use of Matlab. 
+Thirdly, a fitness function for the optimization strategy is introduced, explaining how this function will be able 
+to optimize the network towards either electromagnetic exposure or network power consumption.
+Eventually, the implementation itself is tackled  by discussing the main algorithm of the deployment tool and its embedded optimization 
+algorithm. This is followed with an explanation on how a program can provide support 
+for any possible radiation pattern.  As a last instance, some improvements towards the general performance are discussed
+in order to reduce time complexity. The path loss calculations can be multithreaded, a proper data structure for neighbourhood search 
+is introduced and nonsensical computations are avoided by limiting the neighbourhood search to half a kilometre.
+
+Once all these values and formulas have been implemented, the tool is ready to by applied on different scenarios which will 
+be discussed in chapter \ref{chap:scenarios}
