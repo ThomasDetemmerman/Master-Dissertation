@@ -14,10 +14,10 @@ Each considered input value is averaged over 20 simulations.
 Some interesting values are presented to give the reader an idea on how long these computations take.
 For example, the variable flying height in each scenario ranges from 
 20 m to 200 m in steps of 20 m resulting in a total of 200 simulations for one scenario. 
-Such one graph took over 15 million 52 thousand path loss calculations.
+This results in more then 15 million 52 thousand path loss calculations.
 The evaluated parameter  `number of users'
-ranges from 50 to 600 in steps of 50 resulting 
-in 240 simulations. This results in 48 million 750 thousand path loss calculations alone. Remember that path loss calculations
+ranges from 50 to 600 in steps of 50, resulting 
+in 240 simulations. Such one graph take 48 million 750 thousand path loss calculations. Remember that path loss calculations
 are done in the preparation phase and the network has not even been optimized at this point.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,7 +31,7 @@ will for the first scenario be constructed out of a single \gls{UABS}.
 \subsection{The Influence of the Maximum Transmission Power}
 \label{s1a}
 \gls{LTE} makes use of power control meaning that no more power will be used than strictly necessary. The actual 
-transmission power $P_{tx}$ therefore ranges between zero dBm and the maximum allowed input power. $P_{tx}$ is zero when the \gls{UABS} does not cover anybody.
+transmission power $P_{tx}$ therefore ranges between zero dBm and the maximum allowed input power. $P_{tx}$ is zero dBm when the \gls{UABS} does not cover anybody.
 For instance when the flying height is too high and therefore also the path loss that comes with it, the maximum allowed $P_{tx}$ is not enough to cover 
 the distance. In such case, the \gls{UABS} is shut down since it cannot meet the requirements.
 Increasing the maximum transmission power will not influence the actual used $P_{tx}$ because the \gls{UABS} will not use more
@@ -58,7 +58,7 @@ Each time the power level increases with one dBm, the overestimation becomes lar
 logarithmic function would be achieved. This would however worsen the time complexity because it would take much more iterations before 
 the power level exceeds the path loss. 
 
-The red line in figure \ref{fig:ptxfh} indicates the default maximum transmission power used during simulations as 
+The red line in figure \ref{fig:ptxfh} indicates the default maximum transmission power of 33 dBm used during simulations as 
 defined in table \ref{table:defaultconf}. 
 In a free \gls{LOS} scenario with only one user, a \gls{UABS} can fly up to 387 meters before losing connection.
 
@@ -83,9 +83,16 @@ exceeds the \gls{DL} radiation in order to still be able to reach the high flyin
 
 \gls{SAR}-values are caused by the transmitted power  $P_{tx}$ of the antenna. The $P_{tx}$ in section \ref{s1a}
 showed a discontinue behaviour that sometimes radiates more than strictly necessary. This has thus a direct influence
-on the \gls{DL} \gls{SAR}; Hence, the same discontinue behaviour. The \gls{DL} \gls{SAR} can be simplified to a perfect constant line.
+on the \gls{DL} \gls{SAR}; hence, the same discontinue behaviour. The \gls{DL} \gls{SAR} can be simplified to a perfect constant line.
 This constant behaviour can once again be explained with power control. When the \gls{UABS} flies lower, there is less path loss and the \gls{UABS} 
-will therefore reduce the $P_{tx}$. We can therefore confirm that the electromagnetic exposure is a constant fraction of power and distance.
+will therefore reduce the $P_{tx}$. 
+We can therefore confirm that the electromagnetic exposure from the \gls{UABS} is a constant fraction of power and distance.
+
+The electromagnetic radiation from the \gls{UE} shows in figure \ref{fig:s1_fhsar} an exponential behaviour. The power
+used by the antenna is calculated with formula \ref{eq:powerUE}  and depends mainly on path loss.
+\gls{UE} will, similar to \gls{UABS}s, radiate just enough so the \gls{SNR} is high enough to be decoded by the receiver.
+The only difference with \gls{DL} radiation is that the distance between the radiator and the user remains unchanged. 
+Therefore, the \gls{UL} electromagnetic radiation experienced by the user will increase when the flying altitude of the \gls{UABS} increases.
 
 %\begin{equation}
 %\vec{E} (V/m) = \frac{\Delta U (V) }{\Delta x (m)}
@@ -103,9 +110,13 @@ to which our user is exposed, represented by the black line in \ref{fig:s1_fhsar
   \label{fig:s1_fhsar}
 \end{figure}
 
-The power consumption of the entire network is here of course for the only \gls{UABS} available. Figure \ref{fig:fhvspc} shows an 
-exponential relationship between both power consumption and flying height. This  is mainly caused by the antenna 
-attached to the \gls{UABS} which will require more energy to maintain the same exposure on the ground but over a larger distance.
+The power consumption of the entire network is here of course for the only \gls{UABS} available.
+The energy is based on the transmission power of the antenna and the the used battery by the \gls{UAV}.
+Section \ref{s1a} already explained the reason behind the stepped function. The transmission power 
+is an important parameter when calculating the used power and is the cause that we see the seem stepped behaviour in 
+figure \ref{fig:fhvspc}. All individual results (indicated with dots) can once again be simplified 
+with a connected line that clearly shows an exponentially behaviour. The grey shadow 
+behind the line represented the confidence interval.
 
 \begin{figure}[t]
   \centering
@@ -125,15 +136,31 @@ First, a variable flying altitude is investigated for a fixed number of 224 user
 Secondly, the flying height is set to 100 meters with a variable number of users.
 When designing the network, there will be as much possible \gls{UAV} locations as there are users in the network and the tool
 will consider all of them. Only when the program is finished, one \gls{UAV} will remain.
+Each considered input value will be averaged over 20 simulations.
+
+
 
 \subsection{Influence of the Flying Altitude}
 The first case investigates how the network, consisting out of one \gls{UABS}, behaves when applied on an ordinary day during rush hours. 
 Different fixed flying heights are considered while 224 active users are distributed uniformly over the city centre of Ghent. 
+An example network is given in figure \ref{fig:s2a:distribution}.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../images/ghentDistribution_pcEIRP_1drone.jpg}
+  \caption{Example of an EIRP \gls{PwrC Opt} network with only one \gls{UABS} (yellow triangle). Only a very few users (green) are connected.
+  All other users (red) remain uncovered.}
+  \label{fig:s2a:distribution}
+\end{figure}
 
-A power consumption optimized network with an \gls{EIRP} antenna (green) has the highest exposure. 
-This is logical when comparing to an EIRP antenna in an exposure optimized network (red). 
-However, when looking at figure \ref{fig:s2a_dlAndPc} on the right, the power consumption in a power consumption optimized network is worse 
-than in an exposure optimized network. To understand this, the behaviour of the deployment tool needs to be understood first. 
+Figure \ref{fig:s2a_dlAndPc}.a presents the total \gls{DL} exposure and the mean whole 
+body \gls{SAR} for 20 simulations. The grey area represents the confidence interval. 
+A power consumption optimized network with an \gls{EIRP} antenna (green) has the highest exposure during the 
+entire experiment. At the default flying height of 100 metres, an electromagnetic field radiation 
+of $10 mV/m$.
+This is logical when comparing to an EIRP antenna in an exposure optimized network (red) with only $8.5 mV/m$. 
+However, when looking at figure \ref{fig:s2a_dlAndPc}.b, the power consumption in a power consumption optimized network is worse 
+than in an exposure optimized network. 
+To understand this, the behaviour of the deployment tool needs to be understood first. 
 A power consumption optimized network will result in a few high powered \gls{UABS}s because increasing the input power of an antenna costs 
 less than activating a new  \gls{UAV}. Likewise, an exposure optimized network 
 generates a lot of low powered \gls{UABS}s because the lower the power of the antenna, the lower the exposure. This has the consequence that the cover radius 
@@ -347,6 +374,13 @@ and therefore also emitting radiation.
 This scenario has just like the previous scenario much more users in the network 
 and investigates the same cases which include the variable flying height and the variable number of  users.
 The only difference is that the restriction of only one \gls{UABS} is dropped.
+
+\begin{figure}[!htb]
+\subfloat[microstrip, \gls{Exp Opt} ]{\includegraphics[width=0.5\textwidth]{../images/ghentDistribution_expmicro_drones.jpg}}
+\subfloat[EIRP, \gls{PwrC Opt}]{\includegraphics[width=0.5\textwidth]{../images/ghentDistribution_pcEIRP_drones.jpg}}
+\caption{Radiation pattern 1: a) a 3D model of the entire pattern with the configuration as described above. b) is a 2D radiation pattern of the E-plane and c) is a 2D model of the H-plane.}
+  \label{radpattern2}
+\end{figure}
 
 \subsection{Influence of the Flying Altitude}
 \label{S3A}
