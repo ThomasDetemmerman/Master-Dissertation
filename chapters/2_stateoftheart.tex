@@ -26,23 +26,23 @@ fixed sources has its maximum at 31 V/m \cite{J23, S13_normenBelgie}.
 
 \subsection{Specific Absorption Rate}
 The Specific Absorption Rate (\gls{SAR}) represents the rate at which electromagnetic energy is 
-absorbed by human tissue with the thermal 
-effect as its most important health consequence.
-The volume of this tissue is typically 1 g or 10 g. The \gls{FCC} of the \gls{USA} defines 
-regulations based on 1 g tissue (indicated as $SAR_{1g}$) 
-while the \gls{EU} handles the 
-10 g model ($SAR_{10g}$). $SAR$ values can further be categorized based on the area it covers, as an example, 
+absorbed by human tissue with the thermal effect as its most important health consequence.
+The volume of this tissue is typically 1 g ($SAR_{1g}$) or 10 g ($SAR_{10g}$). 
+$SAR$ values can be categorized based on the area it covers, as an example, 
 the whole body \gls{SAR} ($SAR^{wb}$) is defined as the average radiation over the entire body.
 Another  example are localized \gls{SAR}-values that only cover a certain part of the human body like the head.
 The \gls{ICNIRP} has concluded that the threshold effect for $SAR^{wb}_{10g}$ is at 4 W/kg meaning that any higher absorption 
 rate would overwhelm the \gls{thermoregulatory capacity} of the human body.
 Whole body \gls{SAR}-values between 1 and 4 W/kg increase the temperature of the human body less than 1°C, which is proven not to be harmful 
-for a healthy human being \cite{J24}.
+for a healthy human being \cite{J24,P2}.
 Thereafter, a safety margin is introduced to tackle unknown variables like experimental errors, increased sensitivity for certain population groups and so on. 
 The \gls{EU} follows the recommendation from the \gls{ICNIRP} \cite{J23} and 
 suggests a whole body $SAR_{10g}$ of 0.8 $W/kg$ and 2 $W/kg$ for localized $SAR_{10g}$ at head and torso area \cite{J31_bioeffects,J30}. 
 The first metric is applicable for \gls{UE} and the second one for transmission towers \cite{S20}.
 Belgium follows this recommendation \cite{J23, S13_normenBelgie}.
+The \gls{FCC} of the \gls{USA} follows the recommendations of \gls{IEEE} Std C95.1-1999 \cite{P1,P2} that defines 
+regulations based on 1 g tissue.
+The $SAR^{wb}_{1g}$ is therefore defined at 1.6 $W/kg$ despite the fact that this value has been reviewed and changed by the \gls{IEEE} to 8 $W/kg$ in Std C95.1-2005 \cite{P2}.
 An overview is given in table \ref{table:overviewSARValues}.
 
 \begin{table}[h!]
@@ -52,6 +52,7 @@ An overview is given in table \ref{table:overviewSARValues}.
 Max $SAR^{wb}_{10g}$ (defined by \gls{ICNIRP})                           &  $4$ & $W/kg$              \\ \hline
 Max $SAR^{wb}_{10g}$ for transmission towers (defined by the Belgian government)                & $0.8$ & $W/kg$               \\ \hline
 Max $SAR_{10g}$ for \acs{UE} at head area (defined by the Belgian government)                  & $2$ & $W/kg$               \\ \hline
+Max $SAR_{1g}$ for \acs{UE} at head area (defined by the \gls{FCC})                  & $2$ & $W/kg$               \\ \hline
 \end{tabular}
 \caption{Overview of the different \gls{SAR} limitations.}
 \label{table:overviewSARValues}
@@ -105,6 +106,23 @@ Further, their optimization algorithm is able to reduce downlink doses for WiFi 
  the dose reductions for  \gls{LTE}  will be at least 80\%.
 Thanks to power control, \gls{UMTS} and \gls{LTE} requirer an almost cotinuous uplink usage in order to 
 see a significant effect by the optimization algorithm.
+
+Various papers exist, investigating the localized \gls{SAR} induced by \gls{UE}.
+Mahfouz et al. performs an analysis on the total \gls{SAR} considering the fact that a mobile phone conatins multiple antennas and
+concluded that the local \gls{SAR} for the different configurations never exceeds the limit defined by the \gls{ICNIRP} \cite{P3}.
+The authors of \cite{P5} investigated the \gls{SAR} values for the head area when the mobile phone is possitioned in the near-field and 
+far-field and concluded that a difference was measured for both scenarios.  In \cite{P7} discuss standardization efforts  to predict
+ localized and whole body \gls{SAR} of users in and around the car when an antenna is attached to the outside of the car.
+ Piuzzi et al. investigates in \cite{P8} the \gls{SAR} of numeric models. The model of the children is achieved by anatomically downscaling the adult.
+ The results show that the whole body \gls{SAR} is higher for the children and therefore conclude that while the \gls{SAR} measured for an adult 
+ might comply with restrictions enforced by the government, it is not necesairly the case for children. In \cite{P10} addressed the problem 
+ that it costs time and money to develop a numeric model to investigate \gls{SAR} and therefore proposes an equation to 
+ estimate whole body \gls{SAR} when using a half-wave dipole. \gls{UE} is not necesairly a mobile phone. The authors of \cite{P11} for example
+ investigate the exposure of a user to a nearby smart meter and concluded that \gls{SAR} was well bellow the guidline resctrions. 
+ As last, the authors from \gls{J10.1.1} explained the duality between \gls{UE} and base stations and concluded that the exposure 
+ from \gls{UE} will decrease when the received signal improves. They further noticed that 
+ exposure from \gls{UABS}s is lower that from \gls{UE} for a \gls{GSM} network. However, thanks to power control in an \gls{UMTS} network,
+ exposure from \gls{UE} is drasticlly reduced and at some points even equal to radiation from the base station.
 
 In a realistic network, some users are calling while others are using other types of telecommunication services like browsing the web.
 Therefore, all absorbed electromagnetic exposure should be expressed in whole body SAR while still covering all sources.
