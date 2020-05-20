@@ -1,6 +1,9 @@
 \chapter{Conclusions}
 \label{chap:conclusions}
 
+The following section present the conclusion from the work evaluation the impact of the flight height, and users population in a UABS-aided network, where  power consumption and exposure optimization techniques are evaluated.  
+All conclusions are based on the default configuration as described in table \ref{table:defaultconf} unless mentioned otherwise.
+
 \section{Conclusion}
 \textcolor{red}{5G paper zegt voor localized values dat own UE has biggest ccontribution! Check fluo in J17. Interessant voor te vergelijken.}
 \textcolor{red}{Finally, Plets et al. published in \cite{J22_plets2015joint} how 
@@ -11,13 +14,12 @@ UMTS and LTE, an almost continuous
 uplink usage is required to have a significant effect on the total dose, thanks to the power control mechanism.}
 
 \textcolor{red}{
-   As last, the authors from \gls{J10.1.1} explained the duality between \gls{UE} and base stations and concluded that the exposure 
+   As last, the authors from \cite{J10.1.1} explained the duality between \gls{UE} and base stations and concluded that the exposure 
  from \gls{UE} will decrease when the received signal improves. They further noticed that 
  exposure from \gls{UABS}s is lower that from \gls{UE} for a GSM network. However, thanks to power control in an \gls{UMTS} network,
  exposure from \gls{UE} is drasticlly reduced and at some points even equal to radiation from the base station.
 }
 %How can a UABS network be optimized to minimize global exposure or overall power consumption? 
-All conclusions are based on the default configuration as described in table \ref{table:defaultconf} unless mentioned otherwise.
 Literature showed that a network can be optimized towards either the power consumption of the entire network 
 or the electromagnetic exposure of the average user using a fitness function. This is because the power required to activate a new 
 base station is much higher then for expanding its range \cite{J1}.
@@ -26,6 +28,7 @@ for \gls{UABS}s as this research shows.
 However, the fitness function should be used with care considering that \gls{UABS}s can be placed anywhere as opposed to 
 the transmission towers from \cite{J1} who have a predetermined position.  
 In an exposure optimized network, this causes a lot of users to get a \gls{UABS} all by themselves because this is the best approach to minimize exposure.
+For small networks, exposure optimized networks use on average 52 drones more than power consumption optimized networks.
 A power consumption optimized network on the other hand will try to limit the number of drones 
 in order to save energy. So as a rule of thumb: an exposure optimized network will result in a lot of low powered devices (increasing the overall power consumption)
 while a power consumption optimized network results in a few high powered devices (increasing the exposure of the average user).
@@ -35,6 +38,12 @@ On the other hand, a power consumption optimized network is cheaper because less
 Moreover, the results show that the electromagnetic radiation in a power consumption optimized network (with high powered \gls{UABS}s)
 is far below the thresholds enforced by the Flemish government.
 
+
+
+%How does the \gls{UABS} flying height and number of users influence electromagnetic exposure and power consumption?
+todo
+
+%What is the contribution of each source towards the total electromagnetic exposure?
 The user's main sources of exposure are the user's own device and the \gls{UABS} who is serving him, followed by all
 other \gls{UABS}s in the network. 
 When the population increases, also the exposure from other people's \gls{UE} increases. However, the electromagnetic
@@ -43,7 +52,58 @@ A bigger population also causes an increase in number of drones. So when the pop
 user increases mainly because of a growing exposure from other \gls{UABS}s that are not serving the user.
 An exposure optimized network will limit the total exposure mainly by trying to reduce the exposure from other \gls{UABS}s.
 
-%1)	How does the network behave differently after the introduction of a realistic antenna?
+\definecolor{c_myuabs}{HTML}{A9C6FC}
+\definecolor{c_otheruabs}{HTML}{7A4655}
+\definecolor{c_myue}{HTML}{90AF74}
+\definecolor{c_otherue}{HTML}{F4A259}
+
+ \begin{tikzpicture}
+  \begin{axis}[
+    title={SAR for default configuration},
+    ylabel={Whole body sar (nW/kg)},
+    xlabel={Configurations},
+    height=8cm, width=\textwidth,
+    legend cell align={left},
+    ybar stacked, ymin=0,  
+    bar width=10mm,
+    %symbolic x coords={a,b,c,d},
+    symbolic x coords={EIRP Exp Opt, EIRP PwrC Opt, Microstrip Exp Opt, Microstrip PwrC},
+    xtick=data,
+    nodes near coords, 
+    nodes near coords align={anchor=north},%Move values in bar
+    every node near coord/.style={
+    },
+  ]
+  %myUABS
+  \addplot [fill=c_myuabs] coordinates {
+({EIRP Exp Opt},50)
+({EIRP PwrC Opt},73)
+({Microstrip Exp Opt},45)
+({Microstrip PwrC},98)};
+  %other uabs
+  \addplot [fill=c_otheruabs] coordinates {
+({EIRP Exp Opt},70)
+({EIRP PwrC Opt},105)
+({Microstrip Exp Opt},25)
+({Microstrip PwrC},30)};
+%myue
+  \addplot [fill=c_myue] coordinates {
+({EIRP Exp Opt},115)
+({EIRP PwrC Opt},127)
+({Microstrip Exp Opt},85)
+({Microstrip PwrC},87)};
+%other ue
+  \addplot [fill=c_otherue] coordinates {
+({EIRP Exp Opt},0)
+({EIRP PwrC Opt},0)
+({Microstrip Exp Opt},0)
+({Microstrip PwrC},0)};
+  \legend{my UABS,other UABSs,my UE,other UE}
+  \end{axis}
+  \end{tikzpicture}
+
+
+%	How does the network behave differently after the introduction of a realistic antenna?
 A directional microstrip patch antenna is introduced because it gives several advantages compared to omnidirectional antennae.
 Directional antennae are able to focus their energy there where it is needed, namely towards the ground. Microstrip patch antennae 
 further benefit from their thin and lightweight design. The performance 

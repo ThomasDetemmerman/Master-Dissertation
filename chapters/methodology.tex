@@ -168,8 +168,8 @@ L_{bsh}=
 K_{a}=
 \begin{cases*}
     54                                                  & if $h_{Base}>h_{Roof} $\\
-   54-0.8 \cdot (h_{tx}[m]-h_{roof}[m])                 & if $d \geq 0.5 km and h_{Base}\leq h_{Roof}$\\
-    54-0.8 \cdot \frac{(h_{tx}[m]-h_{roof}[m])}{0.5}    & if $d < 0.5 km and h_{Base}\leq h_{Roof}$\\
+   54-0.8 \cdot (h_{tx}[m]-h_{roof}[m])                 & if $d \geq 0.5$ km and $h_{Base}\leq h_{Roof}$\\
+    54-0.8 \cdot \frac{(h_{tx}[m]-h_{roof}[m])}{0.5}    & if $d < 0.5$ km and $h_{Base}\leq h_{Roof}$\\
   \end{cases*}
   \label{eq:walfish8}
 \end{equation}
@@ -289,7 +289,7 @@ results as in ref. \cite{j10.1.1}. The median of 0.67  $W/kg$ is used as $SAR^{m
           xlabel near ticks,
           height=8cm, width=\textwidth,
           ylabel={Percentage of mobile phones},
-          xlabel={maximum SAR able to transmit},
+          xlabel={Maximum SAR able to transmit},
           symbolic x coords={0.0--0.2,0.2--0.4,0.4--0.6,0.6--0.8,0.8--1.0,1.0--1.2,1.2--1.4,1.4--1.6,1.6--1.8,1.8--2.0},
           x tick label style={rotate=45, anchor=east, align=left},
           nodes near coords={\pgfmathprintnumber\pgfplotspointmeta\%},
@@ -370,11 +370,11 @@ This comes in handy since drones only have limited space available.
 \begin{tabular}{|l|c|l|}
 \hline
  Description            & Symbol          & Value         \\    \hline
- center frequency       & $f_0$           & 2600 Hz       \\ 
- \gls{dielectric constant}    & $\epsilon_r$    & 4.4         \\ 
- heigt of the substrate & $h$             & 0.00287 m    \\ \hline
+ Center frequency       & $f_0$           & 2600 Hz       \\ 
+ Dielectric constant    & $\epsilon_r$    & 4.4         \\ 
+ Height of the substrate & $h$             & 0.00287 m    \\ \hline
 \end{tabular}
-\caption{Overview of configuration parameters.}
+\caption{Overview of the configuration parameters.}
 \label{table:antennaparas}
 \end{table}
 
@@ -455,8 +455,10 @@ p = patchMicrostripInsetfed("Width",0.0351,"Length",0.02655,
     "FeedOffset",[-0.021885 0],"Substrate", d)
 
 pattern(p,2.6e9, "CoordinateSystem", 'polar', "Normalize",true)
-pattern(p,2.6e9, 90, "CoordinateSystem", 'polar', "Normalize",true)
-pattern(p,2.6e9, 0, "CoordinateSystem", 'polar', "Normalize",true)
+pattern(p,2.6e9, 90, 0:10:360, 
+        "CoordinateSystem", 'polar', "Normalize",true)
+pattern(p,2.6e9, 0, 0:10:360, 
+        "CoordinateSystem", 'polar', "Normalize",true)
 \end{minted}
 \caption{Matlab code to generate the radiation patterns for the microstrip patch antenna.}
 \label{c:mathlabradpattern}
@@ -479,7 +481,7 @@ found in appendix \ref{ch:radpattern}.
 \subfloat[]{\includegraphics[height=2in]{../images/pattern2/pattern.png}}
 \subfloat[]{\includegraphics[height=2in]{../images/pattern2/ep.png}}
 \subfloat[]{\includegraphics[height=2in]{../images/pattern2/hp.png}}
-\caption{Radiation pattern 1: a) a 3D model of the entire pattern with the configuration as described above. b) is a 2D radiation pattern of the E-plane and c) is a 2D model of the H-plane.}
+\caption{Radiation pattern 1 (in dBi): a) a 3D model of the entire pattern with the configuration as described above. b) is a 2D radiation pattern of the E-plane and c) is a 2D model of the H-plane.}
   \label{radpattern2}
 \end{figure}
 
@@ -487,7 +489,7 @@ found in appendix \ref{ch:radpattern}.
 \subfloat[]{\includegraphics[height=2in]{../images/pattern1/radiationPattern3D.png}}
 \subfloat[]{\includegraphics[height=2in]{../images/pattern1/ep.png}}
 \subfloat[]{\includegraphics[height=2in]{../images/pattern1/hp.png}}
-\caption{Radiation pattern 2: Generated with a groundplane of 0.06m by 0.06m. a) is the 3D model of the entire pattern plotted. b) is a 2D radiation pattern of the E-plane and c) is a 2D model of the H-plane.}
+\caption{Radiation pattern 2 (in dBi): Generated with a groundplane of 0.06m by 0.06m. a) is the 3D model of the entire pattern plotted. b) is a 2D radiation pattern of the E-plane and c) is a 2D model of the H-plane.}
  \label{radpattern1}
 \end{figure}
 
@@ -604,7 +606,10 @@ between the different users and thereafter between users and \gls{UABS}s.
 Thereafter, the tool iterates over each user and tries to connect that user to each \gls{UABS}. This connection is not always possible. A \gls{UABS} might be saturated with users and 
 will not be able to cover yet another one or maybe the user is so far away that in order to cover that user, the \gls{UABS} would have to exceed its maximum allowed input power.
 However, if a connection is possible, the user will be connected to that \gls{UABS} and the fitness function from section \ref{sec:methodology:optimizingTheNetwork} is applied. 
-This is repeated for each \gls{UABS}. Only the connection which results in the best fitness value for the entire network will be used. Thereafter, the tool shifts to the next user. 
+This is repeated for each \gls{UABS}. Only the connection which results in the best fitness value for the entire network will be used. 
+Doing so will make sure that, given the currently designed network, the user is optimized. In other words, each user is optimized and 
+not the entire network. It is however assumed that the average network will be optimized as well.
+Thereafter, the tool shifts to the next user. 
 When the last user has been processed, the network is fully designed for an unlimited number of drones and the result is returned to the main algorithm for further processing.
 The flowchart of this algorithm is given in figure \ref{fig:decisionAlgoFlowChart}.
 \end{minipage}
@@ -630,13 +635,19 @@ This parameter only supports positive values ranging from \ang{0} to \ang{360} (
 The second value, the north offset, defines the azimuth orientation of the drone. The value given to this parameter indicates the offset between the north
 and the horizontal direction to which the antenna should be pointing at. The value once again ranges from \ang{0} to \ang{360} with the upper boundary not included. The
 angle is calculated in counterclockwise orientation. For instance, a north offset of \ang{270} will let the \gls{UABS} point to the east.  
-An example is given in figure \ref{fig:droneOrientations}. The \gls{UAV} on the left performs a horizontal movement with a north offset of \ang{90}. 
-The antenna attached to the \gls{UAV} on the left performs a downtilt movement of \ang{90}.
+An example is given in figure \ref{fig:droneOrientations} where
+fig. \ref{fig:droneOrientations}.a shows a \gls{UAV} that performs a horizontal movement with a north offset of \ang{90}.
+The antenna attached to the \gls{UAV} in fig. \ref{fig:droneOrientations}.b performs a downtilt movement of \ang{90}.
 
-\begin{figure}[H]
-\centering
-  \includegraphics[width=\textwidth]{../images/droneOrientations.png}
-  \caption{Illustration of the two possible movements. The \gls{UAV} on the left is a top view while the \gls{UAV} on the right is a side view. }
+
+
+\begin{figure}[!htb]
+\subfloat[north offset of \ang{90}]{ \includegraphics[width=\textwidth*1/3]{../images/droneOrientations_no.png}}
+  \subfloat[downtilt of \ang{90}]{
+
+    \includegraphics[width=\textwidth*2/3]{../images/droneOrientations_dt.png}
+    }
+ \caption{Illustration of the two possible movements. The \gls{UAV} in fig. (a) is a top view while the \gls{UAV} in fig. (b) is a side view. }
   \label{fig:droneOrientations}
 \end{figure}
 
@@ -653,8 +664,9 @@ has an attenuation every \ang{10}. In other words, a slice consists of 19 values
 \end{figure}
 
 The number of required slices depends on the complexity of the radiation pattern. For symmetrical radiation patterns, like 
-in figure \ref{radpattern2} and \ref{radpattern1}, two azimuth cuts perpendicular to each other dividing the radiation pattern in 4 azimuth-slices 
-are definitely sufficient. However, this might not be the case for radiation patterns with a more complex structure containing several  
+in figure \ref{radpattern2} and \ref{radpattern1}, two azimuth cuts perpendicular to each other
+are definitely sufficient. This is also illustrated in figure \ref{fig:slicesOfPattern} where two azimuth planes are shown that, once cut, will result in four slices.
+However, this might not be the case for radiation patterns with a more complex structure containing several  
 side lobs. To tackle this issue, more azimuth-slices can be defined for increased precision. Each slice should however contain an equal amount 
 of elevation slices.  A concrete example of a configuration file can be found in appendix \ref{ch:radpatexampleconfig}.
  

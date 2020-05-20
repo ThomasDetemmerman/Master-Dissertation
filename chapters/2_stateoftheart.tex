@@ -52,9 +52,9 @@ An overview is given in table \ref{table:overviewSARValues}.
 Max $SAR^{wb}_{10g}$ (defined by \gls{ICNIRP})                           &  $4$ & $W/kg$              \\ \hline
 Max $SAR^{wb}_{10g}$ for transmission towers (defined by the Belgian government)                & $0.8$ & $W/kg$               \\ \hline
 Max $SAR_{10g}$ for \acs{UE} at head area (defined by the Belgian government)                  & $2$ & $W/kg$               \\ \hline
-Max $SAR_{1g}$ for \acs{UE} at head area (defined by the \gls{FCC})                  & $2$ & $W/kg$               \\ \hline
+Max $SAR_{1g}$ for \acs{UE} at head area (defined by the \gls{FCC})                  & $1.6$ & $W/kg$               \\ \hline
 \end{tabular}
-\caption{Overview of the different \gls{SAR} limitations.}
+\caption{Overview of the different \acs{SAR} limitations.}
 \label{table:overviewSARValues}
 \end{table}
 
@@ -69,31 +69,33 @@ The goal of this master dissertation is the investigation of electromagnetic exp
  the base station that is serving this user, 
 all devices from other users in the network and all 
 other active base stations that are not serving this user. This electromagnetic radiation is thereafter
-absorbed by the human body and will be expressed in SAR values. 
-Any other type or source of electromagnetic radiation like bluetooth, WiFi or backhaul connections will not be covered.
+absorbed by the human body and will be expressed in \gls{SAR} values. 
+Any other type or source of electromagnetic radiation like bluetooth, WiFi or backhaul connections will not be considered.
 
 Several papers calculate exposure originating from certain sources, but very  limited research has been done covering the whole picture.
 Plets et al. addresses in \cite{J6_originalExposureFormula} the problem that electromagnetic exposure is often a neglected 
-factor when desinging a network. Therefore, they propose a heuristic indoor network planner aiming to optimize
-exosure and coverage in a WiFi network. They conclude that higher allowed exposure limits and higher sepration between user and access point 
-has a possitive influence on the throughput.
+factor when designing a network. Therefore, they propose a heuristic indoor network planner aiming to optimize
+exposure and coverage in a WiFi network. They conclude that higher allowed exposure limits and more separation between the user and 
+the access point 
+have positive influence on the throughput.
 The authors of \cite{J1} used this knowledge 
 to investigate electromagnetic exposure originating from base stations in a more outdoor environment
-and propose a capacity based deployment tool capable of optimizing towards electromagnetic exposure and power consumption to support future green networks.
+and propose a capacity based deployment tool capable of optimizing towards electromagnetic exposure and power consumption 
+in order to support future green networks.
 Plets et al. later extended their indoor network planner in \cite{J10_RDP} and \cite{J10.1} so that also  
 \gls{UL} traffic from the user's device will be calculated. 
 They did not only consider the electromagnetic radiation for \gls{UMTS} and WiFi
-but also how much is absorbed by the body, which will be expressed as specific absorption rate. 
+but also how much is absorbed by the body, which will be expressed as specific absorption rates. 
 Since the authors only cover voice calls,
 uplink SAR is expressed in localized SAR values while the downlink traffic is expressed in whole body SAR.
  With the advent of 5G, paper \cite{J17_kuehn2019modelling} has been 
-published, describing a guidline on how the total exposure of in a hypothetical 5G network has to be modelled and applies it 
+published, describing a guideline on how the total exposure of in a hypothetical 5G network has to be modelled and applies it 
 to various scenarios.
 They discuss how localized SAR values are achieved from different sources including all mobile phones and all base stations.
 They conclude that the user's own device is the most important contributor to the total localized SAR. 
-The exposure from non-users is mainly originating from bystanders instead of base stations. The exposure 
+The exposure for unconnected users is mainly originating from bystanders instead of base stations. The exposure 
 from these bystanders will be four times higher than from base stations.
-The authors also conclude that reducing the cell size has a possitive influence on the exposure of active users by 
+The authors also conclude that reducing the cell size has a positive influence on the exposure of active users by 
 a factor 2 to 10.
 In short, they state that a network with a lower path
 loss, smaller cells and additional indoor coverage, helps to reduce total exposure.
@@ -104,25 +106,27 @@ They conclude that a dose reduction of 75\% can be achieved by increasing number
 Further, their optimization algorithm is able to reduce downlink doses for WiFi with more than
 95\%. The reduction for \gls{UMTS} will vary between 73\% and 83\% and 
  the dose reductions for  \gls{LTE}  will be at least 80\%.
-Thanks to power control, \gls{UMTS} and \gls{LTE} requirer an almost cotinuous uplink usage in order to 
+Thanks to power control, \gls{UMTS} and \gls{LTE} require an almost continuous uplink usage in order to 
 see a significant effect by the optimization algorithm.
 
-Various papers exist, investigating the localized \gls{SAR} induced by \gls{UE}.
-Mahfouz et al. performs an analysis on the total \gls{SAR} considering the fact that a mobile phone conatins multiple antennas and
-concluded that the local \gls{SAR} for the different configurations never exceeds the limit defined by the \gls{ICNIRP} \cite{P3}.
-The authors of \cite{P5} investigated the \gls{SAR} values for the head area when the mobile phone is possitioned in the near-field and 
-far-field and concluded that a difference was measured for both scenarios.  In \cite{P7} discuss standardization efforts  to predict
- localized and whole body \gls{SAR} of users in and around the car when an antenna is attached to the outside of the car.
+Research about \gls{SAR} values have not only been done in function of an entire network. Also various papers 
+exist considering other scenarios. In this way,
+Mahfouz et al. performs an analysis on the total \gls{SAR} from a mobile phone considering the fact that the device contains multiple antennas. They
+concluded that the localized \gls{SAR} for the different configurations never exceeds the limit defined by the \gls{ICNIRP} \cite{P3}.
+The authors of \cite{P5} performed a research on the \gls{SAR} values for the head area when the mobile phone is positioned in the near-field and 
+far-field and concluded that a difference in \gls{SAR}-values was measured between both scenarios.  In \cite{P7} are the standardization efforts discussed
+ to predict localized and whole body \gls{SAR} of users in and around the car when an antenna is attached to the outside of the car.
  Piuzzi et al. investigates in \cite{P8} the \gls{SAR} of numeric models. The model of the children is achieved by anatomically downscaling the adult.
  The results show that the whole body \gls{SAR} is higher for the children and therefore conclude that while the \gls{SAR} measured for an adult 
- might comply with restrictions enforced by the government, it is not necesairly the case for children. In \cite{P10} addressed the problem 
- that it costs time and money to develop a numeric model to investigate \gls{SAR} and therefore proposes an equation to 
- estimate whole body \gls{SAR} when using a half-wave dipole. \gls{UE} is not necesairly a mobile phone. The authors of \cite{P11} for example
- investigate the exposure of a user to a nearby smart meter and concluded that \gls{SAR} was well bellow the guidline resctrions. 
- As last, the authors from \gls{J10.1.1} explained the duality between \gls{UE} and base stations and concluded that the exposure 
- from \gls{UE} will decrease when the received signal improves. They further noticed that 
- exposure from \gls{UABS}s is lower that from \gls{UE} for a \gls{GSM} network. However, thanks to power control in an \gls{UMTS} network,
- exposure from \gls{UE} is drasticlly reduced and at some points even equal to radiation from the base station.
+ might comply with restrictions enforced by the government, it is not necessarily the case for children. In \cite{P10} is the problem raised 
+ that developing a numeric model, often used for \gls{SAR} analysis, is a timely and costly process. Therefore, an equation is proposed to 
+ estimate whole body \gls{SAR} when using a half-wave dipole. Further, it is important to note that 
+ \gls{UE} is not necessarily a mobile phone. For example, the authors of \cite{P11} 
+ investigate the exposure of a user to a nearby smart meter and concluded that \gls{SAR} was well bellow the guideline restrictions. 
+ As last, the authors from \cite{J10.1.1} explained the duality between \gls{UE} and base stations and concluded that the exposure 
+ from \gls{UE} will decrease when the received signal improves. They also noticed that the
+ exposure from \gls{UABS}s in a \gls{GSM} network is lower than from \gls{UE}. This is however not always the case an \gls{UMTS} network where , thanks to power control,
+ the exposure from \gls{UE} is drastically reduced and at some points even equal to radiation from the base station.
 
 In a realistic network, some users are calling while others are using other types of telecommunication services like browsing the web.
 Therefore, all absorbed electromagnetic exposure should be expressed in whole body SAR while still covering all sources.
@@ -211,13 +215,13 @@ Since it is assumed in this master dissertation that the user is continuously ex
   \centering
   \begin{minipage}[b]{0.45\textwidth}
       \includegraphics[width=\textwidth]{../images/FDDResourceAllocation.pdf}
-    \caption{Resource allocation scheme for \gls{FDD}.}
+    \caption{Resource allocation scheme for \acs{FDD}.}
     \label{fig:FDD}
   \end{minipage}
 \hspace*{\fill}
   \begin{minipage}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{../images/TDDResourceAllocation.pdf}
-    \caption{Resource allocation scheme for \gls{TDD}.}
+    \caption{Resource allocation scheme for \acs{TDD}.}
     \label{fig:TDD}
   \end{minipage}
 \end{figure}
@@ -309,3 +313,27 @@ Finding a good dielectric depends on how the antenna will used. A lower
 On the other hand, a larger \gls{dielectric constant} reduces de dimensions of the antenna \cite{J14_antennadesign}
 which is also useful when attaching the 
 antenna to a limited surface. Glass as a dielectric substrate with a constant of 4.4 will be used.
+
+Figure \ref{fig:exampleDrone} shows a microstrip patch antenna 
+constructed out of an aluminium patch and a teflon substrate. The microstrip patch 
+antenna is pointing towards the ground since the \gls{UAV} will be flying above the user.
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=0.8\textwidth]{../images/drone.png}
+  \caption{Image of a microstrip patch antenna attached to the bottom of a \gls{UAV}. }
+  \label{fig:exampleDrone}
+\end{figure}
+
+
+\section{Summary}
+In this chapter are related papers discussed that perform research in the same field as well
+as the restrictions and guidelines by different organizations.
+First is the legislations about electromagnetic exposure and specific absorption rates discussed followed 
+by giving an overview of related work. It turns out a lot of research has been performed about electromagnetic exposure
+but calculating whole body \gls{SAR} considering all \gls{UE} and all base stations is rather scarce.
+Secondly, related work about \gls{UAV}-aided networks is presented. Various optimization strategies 
+has been proposed in the past. Even optimizing towards electromagnetic radiation and power consumption has been investigated. However, 
+this one was for terrestrial networks. To the best of the author's knowledge, 
+ exposure and power consumption optimized \gls{UAV}-aided networks remains unknown.
+
