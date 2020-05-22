@@ -104,7 +104,7 @@ L_{p}=42.6+20\cdot\log(f [MHz])+26\cdot\log(d[km])
 \end{equation}
 
 where $f$ is the used frequency and $d$ the distance between the two radiators.
-The formula for \gls{NLOS} is more complex and translates as follows.
+The formula for \gls{NLOS} is more complex and translates as follows:
 
 \begin{equation}
 L_p=
@@ -114,13 +114,13 @@ L_{0}  [dB]                        &  if $L_{rts}[dB] + L_{msd}[dB] \leq 0[dB]$\
 \end{cases*}
 \label{eq:walfish2}
 \end{equation}
-With $L_0$ the path loss in free space, $L_{rts}$ the roof-top-to-street diffraction and scatter loss.
-Further, $L_{msd}$ stands for he multi-screen diffraction loss. The free space loss $L_0$ can be calculated as follows.
+with $L_0$ the path loss in free space, $L_{rts}$ the roof-top-to-street diffraction and scatter loss.
+Further, $L_{msd}$ stands for he multi-screen diffraction loss. The free space loss $L_0$ can be calculated as follows:
 
 \begin{equation}
 L_{0}=32.4+20\cdot\log(f [MHz])+20\cdot\log(d[km])
 \end{equation}
-Where $f$ is the used frequency in MHz and $d$ the radio-path length.
+where $f$ is the used frequency in MHz and $d$ the radio-path length.
 The second term in equation \ref{eq:walfish2} is the roof-top-to-street diffraction and scatter loss
 calculated with the following formulas.
 
@@ -129,7 +129,7 @@ L_{rts}=-16.9-10\log(w)+10\cdot\log(f [MHz]+20\cdot( h_{roof}[m] - h_{rx} [m]) +
 \end{equation}
 with $w$ representing the width of the roads and $h_{roof} - h_{rx}$ the difference in height between 
 the receiver and the roof. $L_{orientation}$ depends on the orientation of the road 
-and can be calculated as follows.
+and can be calculated as follows:
 
 \begin{equation}
 L_{orientation}=
@@ -141,13 +141,13 @@ L_{orientation}=
 \end{equation}
 where $\phi$ is the angle of incidence relative to the direction of the
 street. The final parameter required by equation \ref{eq:walfish2}
-is the multi-screen diffraction loss and can be defined as follows.
+is the multi-screen diffraction loss and can be defined as follows:
 
 \begin{equation}
 L_{msd}=L_{bsh}+k_{a}+k_{d}\cdot \log(d) +k_{f}\cdot \log(f)-9\cdot \log(b)
 \end{equation}
 
-$L_{bsh}$ and $k_a$ quantifies the increase of path loss caused by obstructing buildings. 
+$L_{bsh}$ and $k_a$ quantify the increase of path loss caused by obstructing buildings. 
 This is especially the case for lower positioned base stations. $b$ is the distance between buildings
 along the path where the signal travels. The factors $k_f$ and $k_d$
 control the dependence of $L_{msd}$ as a function of radio frequency and distance, respectively.
@@ -187,7 +187,7 @@ k_{d}=
 K_{f} = -4 + 
 \begin{cases*}
   0.7\left(\frac{f [MHz]}{925}-1\right)  & for medium sized and suburban areas\cr 
-  1.5\left(\frac{f [MHz]}{925}-1\right) & for metropolitan centers\cr 
+  1.5\left(\frac{f [MHz]}{925}-1\right) & for metropolitan centres\cr 
 \end{cases*}
 \label{eq:walfish10}
 \end{equation}
@@ -326,7 +326,7 @@ SAR^{wb,myUE}_{10g} \left[\frac{W}{kg}\right] = 0.0070 \left[\frac{W/kg}{W}\righ
 \label{eq:ulToSar}
 \end{equation}
 
-The power of the \gls{UE} can be calculated using formule \ref{eq:powerUE} \cite{J22_plets2015joint}.
+The power of the \gls{UE} can be calculated using equation \ref{eq:powerUE} \cite{J22_plets2015joint}.
 \begin{equation} 
 P_{tx}^{UE} = \big\{P_{max} [dBm] , P_{pusch} [dBm] + \alpha * PL [dB] + 10log(M) + \sigma \big\}
 \label{eq:powerUE}
@@ -478,18 +478,18 @@ found in appendix \ref{ch:radpattern}.
 
 
 \begin{figure}[!htb]
-\subfloat[]{\includegraphics[height=2in]{../images/pattern2/pattern.png}}
-\subfloat[]{\includegraphics[height=2in]{../images/pattern2/ep.png}}
-\subfloat[]{\includegraphics[height=2in]{../images/pattern2/hp.png}}
-\caption{Radiation pattern 1 (in dBi): a) a 3D model of the entire pattern with the configuration as described above. b) is a 2D radiation pattern of the E-plane and c) is a 2D model of the H-plane.}
+\subfloat[3D model of the entire pattern]{\includegraphics[height=2in]{../images/pattern2/pattern.png}}
+\subfloat[2D model of the E-plane]{\includegraphics[height=2in]{../images/pattern2/ep.png}}
+\subfloat[2D model of the H-plane]{\includegraphics[height=2in]{../images/pattern2/hp.png}}
+\caption{Radiation pattern 1 (in dBi) with the configuration as described above.}
   \label{radpattern2}
 \end{figure}
 
 \begin{figure}[!htb]
-\subfloat[]{\includegraphics[height=2in]{../images/pattern1/radiationPattern3D.png}}
-\subfloat[]{\includegraphics[height=2in]{../images/pattern1/ep.png}}
-\subfloat[]{\includegraphics[height=2in]{../images/pattern1/hp.png}}
-\caption{Radiation pattern 2 (in dBi): Generated with a groundplane of 0.06m by 0.06m. a) is the 3D model of the entire pattern plotted. b) is a 2D radiation pattern of the E-plane and c) is a 2D model of the H-plane.}
+\subfloat[3D model of the entire pattern]{\includegraphics[height=2in]{../images/pattern1/radiationPattern3D.png}}
+\subfloat[2D model of the E-plane]{\includegraphics[height=2in]{../images/pattern1/ep.png}}
+\subfloat[2D model of the H-plane]{\includegraphics[height=2in]{../images/pattern1/hp.png}}
+\caption{Radiation pattern 2 (in dBi) which is generated with a groundplane of 0.06m by 0.06m. }
  \label{radpattern1}
 \end{figure}
 
@@ -567,7 +567,7 @@ at hal the height of the building. The height \gls{UE} itself will be 1.5 metres
 \begin{figure}[h!]
 \centering
  \includegraphics[width=.85\textwidth]{../images/cityCenterGhentUserDistributionB.png}
-  \caption{Example of how users are randomly distributed over the city center of Ghent.}
+  \caption{Example of how users are randomly distributed over the city centre of Ghent.}
   \label{fig:userdistribution}
 \end{figure}
 
@@ -665,7 +665,7 @@ has an attenuation every \ang{10}. In other words, a slice consists of 19 values
 
 The number of required slices depends on the complexity of the radiation pattern. For symmetrical radiation patterns, like 
 in figure \ref{radpattern2} and \ref{radpattern1}, two azimuth cuts perpendicular to each other
-are definitely sufficient. This is also illustrated in figure \ref{fig:slicesOfPattern} where two azimuth planes are shown that, once cut, will result in four slices.
+are definitely sufficient. This is also illustrated in figure \ref{fig:slicesOfPattern} where two azimuth planes are shown and that, once cut, will result in four slices.
 However, this might not be the case for radiation patterns with a more complex structure containing several  
 side lobs. To tackle this issue, more azimuth-slices can be defined for increased precision. Each slice should however contain an equal amount 
 of elevation slices.  A concrete example of a configuration file can be found in appendix \ref{ch:radpatexampleconfig}.
@@ -732,11 +732,11 @@ The length of  the connections is investigated to define a proper cut-off radius
 The investigated network is a power consumption optimized network with an \gls{isotropicradiator} because this 
 configuration will result in the biggest cell sizes due to the absence of attenuation in the antenna. 
 Figure \ref{chart:distances} shows that for small networks with 50 users, 78\% of the connections
-is less then 100 metres. The other 22\% is situated between 100 and 400 metres and decreases logarithmically.
-For bigger networks with 600 users, 57\% of the connections is less then 100 metres. The remaining 43\%
-of the connections is situated between 100 and 500 metres. No significant percentage of connections longer then 500 metre
+are less than 100 metres. The other 22\% are situated between 100 and 400 metres and decrease logarithmically.
+For bigger networks with 600 users, 57\% of the connections is less than 100 metres. The remaining 43\%
+of the connections are situated between 100 and 500 metres. No significant percentage of connections longer than 500 metre
 were recorded for either cases.
-The percentage of  connections less then 100 metres will even be higher when using exposure optimized networks 
+The percentage of  connections less than 100 metres will even be higher when using exposure optimized networks 
 and/or microstrip patch antennae.
 In this case the choice was made to only consider \gls{UABS}s within a radius of half a kilometre which is believed 
 to have a sufficient safety margin. The rare connections that would have exceeded this radius would not contribute much to 
@@ -781,10 +781,10 @@ the average values.
 \end{figure}
 
 \section{Summary}
-This chapter discussed the several formulas that will be used by the tool and how to program or optimized
+This chapter discussed the different formulas that will be used by the tool and how to program or optimize
 some of the more complex problems like radiation patterns or path loss calculations.
 
-First, the formulas on how to calculate the electromagnetic exposure from different sources and how they 
+First, the formulas about calculating the electromagnetic exposure from different sources and how they 
 can be converted in \gls{SAR}-values are presented. The electromagnetic field radiation in the far-field 
 and near-field can be converted with the constants $0.0028 \frac{W/kg}{W/m^2}$ and  $0.0070 \frac{W/kg}{W}$, respectively.
 Secondly, a proper microstrip patch antenna 
@@ -796,10 +796,10 @@ antenna is achieved with the use of Matlab.
 Thirdly, a fitness function for the optimization strategy is introduced, explaining how this function will be able 
 to optimize the network towards either electromagnetic exposure or network power consumption.
 Eventually, the implementation itself is tackled  by discussing the main algorithm of the deployment tool and its embedded optimization 
-algorithm. This is followed with an explanation on how a program can provide support 
-for any possible radiation pattern.  As a last instance, some improvements towards the general performance are discussed
+algorithm. This is followed by an explanation on how a program can provide support 
+for any possible radiation pattern.  Finally, some improvements towards the general performance are discussed
 in order to reduce time complexity. The path loss calculations can be multithreaded, a proper data structure for neighbourhood search 
-is introduced and nonsensical computations are avoided by limiting the neighbourhood search to half a kilometre.
+is introduced and non-essential computations are avoided by limiting the neighbourhood search to half a kilometre.
 
-Once all these values and formulas have been implemented, the tool is ready to by applied on different scenarios which will 
-be discussed in chapter \ref{chap:scenarios}
+Once all these values and formulas have been implemented, the tool is ready to by applied to different scenarios which will 
+be discussed in chapter \ref{chap:scenarios}.

@@ -3,8 +3,8 @@
 The tool supports multiple configurations and the behaviour will be different for most of these configurations. Three main scenarios 
 will be investigated, ordered, based on the network complexity. Within each scenario, different parameters are evaluated.
 First, only one user with one drone will be present in the network. The network will thereafter be expanded
-for multiple users but with still only one drone available. Finally, the last restriction will be dropped meaning 
-that multiple users with unlimited number of drones are examined.
+for multiple users but with still only one drone available. Finally, the last restriction will be dropped, meaning 
+that a network with multiple users and an unlimited number of \gls{UABS}s is examined.
 It is important to note that 
 all considered values are strictly limited to the mentioned sources in chapter \ref{chap:methodology} and thus only cover data traffic 
 between \gls{UE} and \gls{UABS}s. Any other potential sources like backhaul links will not be covered.
@@ -17,7 +17,7 @@ Secondly, the details of the antenna
 used by the femtocell base station are presented. The antenna is attached under the \gls{UABS} and will be pointing downwards. 
 The antenna has a maximum transmission power of 33 dBm and 
 a gain of 4 dBm. Two types of antennae are considered, which is either an \gls{isotropicradiator}  generating an \gls{EIRP} 
-or a microstrip patch antenna with a slightly more complex radiation pattern. The design of this radiation pattern is show 
+or a microstrip patch antenna with a slightly more complex radiation pattern. The design of this radiation pattern is shown 
 in chapter \ref{chap:methodology}: fig. \ref{radpattern2}. By default, the \gls{UABS}s will fly at a fixed altitude of 100 metres.
 Thirdly, the specifications of the carrying \gls{UAV}s are summed up. 
 The authors from \cite{J2} investigated two types of \gls{UAV}s for their \gls{UAV}-aided emergency network 
@@ -27,11 +27,11 @@ Finally, the characteristics of the antenna belonging to \gls{UE} are listed. Th
 one and a half metre from the floor. Note that the floor does not necessarily mean the ground.
 For example, a user can be indoor at the third floor.
 The antenna will be an \gls{isotropicradiator}. By default, 224 users with each one device 
-will be distributed over the city center of Ghent. This city planning map is given in figure \ref{fig:ghent}
+will be distributed over the city centre of Ghent. This city planning map is given in figure \ref{fig:ghent}
 
 \begin{figure}[!h]
   \includegraphics[width=\textwidth]{../images/cityCenterGhent.png}
-\caption{The red area covers the city center of Ghent, Belgium.}
+\caption{The red area covers the city centre of Ghent, Belgium.}
   \label{fig:ghent}
 \end{figure}
 
@@ -263,13 +263,13 @@ will be exposed to all these \gls{UABS}s and to all the \gls{UE} that belong to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Overview of Configurations}
 Three different scenarios are considered. The first one with one user and one \gls{UABS}. The second one has 
-still only \gls{UABS} available but has much more users. The third one has an unlimited number of \gls{UABS}s 
+still only one \gls{UABS} available but has much more users. The third one has an unlimited number of \gls{UABS}s 
 available in order to cover as much users as possible.
 All three scenarios evaluate the influence of a varying flying height while only the second and third one 
 investigate different population sizes.
 Four possible configurations exist for each evaluated parameter within each scenario.
-The matrix in table \ref{fig:fourCasesMatrix} show that two types of antennae are investigated and how the optimization
-strategy can operate in two mode: exposure optimized en power consumption optimized.
+The matrix in table \ref{fig:fourCasesMatrix} shows that two types of antennae are investigated and how the optimization
+strategy can operate towards two goals: exposure optimized and power consumption optimized.
 
 \begin{table}[h!]
 \centering

@@ -320,6 +320,12 @@ SAR^{wb,nf}_{10g} \left[\frac{W}{kg}\right] = 0.0070 \left[\frac{W/kg}{W}\right]
 \label{eq:ulToSar}
 \end{equation}
 
+De energie die door het mobiele aparaat wordt gebruikt kan berekend worden met formule \ref{eq:powerUE} \cite{J22_plets2015joint}.
+\begin{equation} 
+P_{tx}^{UE} = \big\{P_{max} [dBm] , P_{pusch} [dBm] + \alpha * PL [dB] + 10log(M) + \sigma \big\}
+\label{eq:powerUE}
+\end{equation}
+
 \subsection{Microstrip Patch Antenne}
 Een microstrip patch antenne is gekozen vanwege zijn eenvoudige productieproces maar voornamelijk vanwege het
  lage gewicht en aerodynamica wat heel voordelig is wanneer het aan een drone gekoppeld wordt \cite{J13_microstripadvantages}.
@@ -514,7 +520,7 @@ between \gls{UE} and \gls{UABS}s. Any other potential sources like backhaul link
 An overview of the simulation configuration scenarios is presented in figure \ref{fig:fourCasesMatrix}
 
 \begin{figure}[h!]
-  \includegraphics[width=\linewidth]{fourCasesMatrix.pdf}
+  \includegraphics[width=\linewidth]{fourCasesMatrix.png}
   \caption{Matrix with the four possible configurations}
   \label{fig:fourCasesMatrix}
 \end{figure}
