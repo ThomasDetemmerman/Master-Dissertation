@@ -26,6 +26,7 @@
 \PassOptionsToPackage{hyphens}{url}
 \usepackage{url}
 \usepackage{subfig}
+\usepackage{placeins} %\FloatBarrier
 
 \usepackage[acronym,toc,shortcuts]{glossaries}
 \setglossarystyle{super}
@@ -579,59 +580,101 @@ around 80 metres.
 \subsection{Increased Population with one UABS}
 \subsubsection{Variable Flying Height}
 A \gls{PwrC Opt} network has higher exposure compared to an \gls{Exp Opt} network; a behaviour that was already proven by \cite{J1}. 
-However, for this scenario, a \gls{PwrC Opt} network will also result in a higher power consumption. 
+However, for this scenario, a \gls{PwrC Opt} network will not necessarily result in a lower power consumption. 
+For example, at 100 metres, an \gls{EIRP} \gls{Exp Opt} network exposes the average 
+user to $1.5\ mV/m$ less but requires $20\ mW$ more.
 To understand this, the behaviour of the deployment tool needs to be understood first. 
 A \gls{PwrC Opt} network will result in a few high powered \gls{UABS}s because increasing the input power of an antenna costs 
 less than activating a new  \gls{UAV}. Likewise, an \gls{Exp Opt} network 
 generates a lot of low powered \gls{UABS}s because the lower the power of the antenna, the lower the exposure. This has the consequence that the cover radius 
-is less and therefore more UAVs, which cost more energy, are required.
+is less and therefore requires more \gls{UAV}s which costs more energy.
 When only a limited amount of \gls{UABS}s are available, 
 like only one in this scenario, the tool will only keep \gls{UABS}s which cover the most users. 
-Therefore, the power consumption in a \gls{PwrC Opt} network is much more higher. 
+Therefore, the power consumption in a \gls{PwrC Opt} network is often higher. 
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{s2/fhvsdlAndPc.png}
+  \caption{Fig. (a) show how the flying height influences the downlink electromagnetic radiation of the average user and fig. (b) the
+  power consumption of the entire network for the only \acs{UABS} available in the network.}
+  \label{fig:s2a_dlAndPc}
+\end{figure}
 
-Further, the results also show that the exposure increases with higher flying altitudes
+Further, figure \ref{fig:s2a_dlAndPc} also show that the exposure increases with higher flying altitudes
 because there is a lower probability of having \gls{NLOS} links by obstructing buildings. This has as consequence that  
 more users become covered. 
+Increasing the flying height from 20 to 100 metres improves the coverage between 1\% and 2\% for all four configurations.
 The increasing electromagnetic radiation is however not unlimited.
-At even higher
-flying altitudes, the distance between a given \gls{UABS} and some users further away becomes too large causing the 
-coverage to decrease again. When this decrease occurs depends on the configuration. A \gls{PwrC Opt} 
-network tends to decline earlier than an \gls{Exp Opt} network.
+A microstrip \gls{PwrC Opt} network is at his highest point  
+around 162 metres and an \gls{EIRP} \gls{PwrC Opt} is at his highest at 195 metres.
+This decline starts later for exposure optimized networks and is situated outside the investigated flying range.
+The decreasing electromagnetic radiation at high flying altitudes is not caused by the obstructing buildings but by the 
+distance in general.
 
-When replacing the fictional \gls{EIRP} antenna by a microstrip patch antenna, the percentage of covered users drops for both 
-optimization strategies. This is because users, who have a higher horizontal distance between themselves and the \gls{UABS}, 
-experience a higher attenuation.
+Figure \ref{fig:s2shfourSourcesMatrix} shows the whole body $SAR_{10g}$ for the weighted average user, deducted from all electromagnetic sources. 
+When investigating the three different sources, we see 
+that the $SAR^{myUABS}$ shows the same curve as it did with the electromagnetic exposure 
+in figure \ref{fig:s2a_dlAndPc}.a. This is normal behaviour considering that equation \ref{eq:DLconversion} is able of 
+converting the \gls{DL} exposure to \gls{SAR} by simply multiplying with a constant.
+During the entire time is $SAR^{myUABS}$ the most dominant factor followed by 
+ the near-field radiation from the user's own device.
+The far-field radiation from other \gls{UE} barely has influence. 
+As an illustration, when the \gls{UABS} flies at 140 metres, the average user in an \gls{EIRP} \gls{PwrC Opt} network will 
+experience around  2.1 $nW/kg$ from the \gls{UABS} and around 0.2 $nW/kg$ from his own device.
+The exposure from other \gls{UE} can be neglected with 0.03 $pW/kg$. A low but plausible value considering that most 
+\gls{UE} are not radiating anything since they are uncovered.
 
-The results further show  
-that the radiation from the \gls{UABS} is the main factor followed by the near-field radiation from the user's own device.
-The far-field radiation from other \gls{UE} barely contributes anything.
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{s2/fhFourSources.png}
+  \caption{Each figure corresponds with a certain configuration and shows how the \acs{SAR} from 
+  different sources are influenced by an increasing flying height.}
+  \label{fig:s2shfourSourcesMatrix}
+\end{figure}
 
 \subsubsection{Variable Number of Users}
 
-Also the results from this case show how EIRP antennae designs are able to cover more users than microstrip patch antennae
-just like \gls{PwrC Opt} networks will reach more users than \gls{Exp Opt} networks.
-The contribution to the total \gls{SAR} from each individual source is identical to the previous scenario. 
+The number of covered users increases linearly compared to the number of users present in the network as shown in figure 
+\ref{fig:s2uvsnumcovusers}.b. It illustrates how an \gls{isotropicradiator} is able to reach more users 
+compared to a microstrip patch antenna. Just like an power consumption optimized network 
+is able to reach more users than an exposure optimized network.
+For example, with 600 users, 5 to 7 additional 
+people can be covered when replacing a microstrip patch antenna with an \gls{isotropicradiator}
+and changing an exposure optimized network with an power consumption optimized network will 
+cover one or two additional users.
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{s2/uvsnumdronesAndCov.png}
+  \caption{The influence of increasing traffic on the user coverage.}
+  \label{fig:s2uvsnumcovusers}
+\end{figure}
 
-There is still only one \gls{UABS} available. When population grows, more users become uncovered and 
-therefore the average electromagnetic exposure decreases.
-For example, an EIRP \gls{PwrC Opt} network
-will have the highest exposure and therefore covers the most users as opposed to a microstrip patch antenna in 
-an \gls{Exp Opt} network which will radiate the least and thus has the lowest number of covered users.
+Figure  \ref{fig:s2b_dlAndPc}.a  is influenced by  \ref{fig:s2uvsnumcovusers}.a. When less users are 
+covered, the exposure of the average user will decrease as well.
+For example, in an EIRP \gls{PwrC Opt} network, 50 users have a 6.75\% coverage which corresponds with a weighted average exposure of  18 $mV/m$
+while 600 users with 2.75\% coverage only have 9 $mV/m$.
+Further,  figure \ref{fig:s2b_dlAndPc}.b is directly influence by figure \ref{fig:s2uvsnumcovusers}.b. When the \gls{UABS} has to cover more users,
+the probability that some of these users have a worse path loss is higher. The \gls{UABS} solves this problem by increasing the 
+power consumption. Increasing the population from 50 to 600 will require between 0.05 and 0.1 $W$ more. 
+For this scenario, no clear difference in power consumption exists between the four configurations.
 
-While the population grows, more and more users become uncovered causing the average SAR to drop. 
-However, this does not conclude that by increasing the population, the SAR of a user who is directly beneath a \gls{UABS} would be less.
-To investigate this, a user is positioned in the middle of the city centre of Ghent and a \gls{UAV} is positioned above him. Initially, only 
-49 people are active around him. The \gls{SAR} of our central user is monitored while the population around him is growing.
-Figure \ref{fig:connectionMap} shows with the black lines which users are connected. The left map is for only 50 users and 
-shows that only one user is connected besides our central user. The map on the right considers 600 users and shows much more connected users.
-The results show that the \gls{UL} \gls{SAR} of the central user remains constant; a normal behaviour since the flying altitude does not change.
-The \gls{SAR} from the \gls{UABS} experiences a slight increase. When the population grows, more users become available 
-and some will spawn near the central user. The \gls{UABS} will likely decide to cover these users as well as visible in figure \ref{fig:connectionMap}.
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{../results/s2/uvsdlAndPc.png}
+  \caption{These two figures show how various sizes of population influence the downlink electromagnetic radiation of the average user (left) and 
+  power consumption of the entire network (rights) for one \acs{UABS} available in the network.}
+  \label{fig:s2b_dlAndPc}
+\end{figure}
+
+The \gls{SAR} comming from the 
+users own device is on average zero since most users are uncovered. 
+Figure \ref{fig:uvsulsarcentralUsers} shows the exposure for the covered user
+just below the \gls{UABS}. Scenario I already showed that the \gls{SAR} from the user's own device is only influenced by the flying height
+and is also confirmed by the results in fig. \ref{fig:uvsulsarcentralUsers} where constant $SAR^{myUE}$ is measured of 0.15 $\mu W/kg$.
+The \gls{SAR} from the \gls{UABS} experiences a slight increase of 0.005 $\mu W/kg$. When the population grows, more users
+will be near the \gls{UABS}. The \gls{UABS} will likely decide to cover these users as well as visible in figure \ref{fig:connectionMap}.
 These users might have a slightly 
-worse path loss because of obstructing buildings or a somewhat bigger distance. The \gls{UABS} reacts to this by increasing 
-its power consumption causing an increase in the \gls{DL} \gls{SAR} for the central user. The results further also show 
-that the \gls{SAR} from other \gls{UE} increases when the population increases. But as mentioned  before, it is much less 
-compared to the other sources.
+worse path loss because of obstructing buildings or somewhat bigger distance. The \gls{UABS} reacts to this by increasing 
+his power consumption causing an increase in the \gls{DL} \gls{SAR} for the central user.
+The far-field radiation from \gls{UE} is very low as mentioned before and therefore added separately in figure \ref{fig:connectionMap}.b.
+It shows that the \gls{SAR}  from other \gls{UE} increases from zero to $0.15\ pW/kg$. This is normal 
+behaviour considering that around the central user more and more people become available of which some will be connected to the \gls{UABS}
+and therefore also emitting radiation.
 
 \begin{figure}[!htb]
 \minipage{0.50\linewidth}
@@ -644,6 +687,14 @@ compared to the other sources.
   \label{fig:connectionMap}
 \end{figure}
 
+\begin{figure}[hb]
+\centering
+  \includegraphics[width=\linewidth]{../results/s2/uvsulsarcentralUser.png}
+  \caption{SAR-values for the user who is directly beneath the only \acs{UABS} available.}
+  \label{fig:uvsulsarcentralUsers}
+\end{figure}
+
+\FloatBarrier
 \subsection{Unlimited Number of UABSs}
 \subsubsection{Variable Flying Height}
 The same cases as in the previous scenario are investigated. Only now, an unlimited number of \gls{UABS}s is available.

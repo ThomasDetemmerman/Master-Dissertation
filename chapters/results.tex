@@ -158,7 +158,7 @@ A power consumption optimized network with an \gls{EIRP} antenna (green) has the
 entire experiment. At the default flying height of 100 metres, an electromagnetic field radiation 
 of 10 $mV/m$ is measured.
 This is logical when comparing to an EIRP antenna in an exposure optimized network (red) with only $8.5\ mV/m$. 
-However, when looking at figure \ref{fig:s2a_dlAndPc}.b, the power consumption in a power consumption optimized network is not necessarily better 
+However, when looking at figure \ref{fig:s2a_dlAndPc}.b, the power consumption in a power consumption optimized network is not necessarily less 
 than in an exposure optimized network. 
 For example, an \gls{EIRP} and microstrip antenna will require at the default flying height respectively
 20 $mW$ and 10 $mW$ more in a power consumption optimized network than in an exposure optimized network.
@@ -169,7 +169,7 @@ generates a lot of low powered \gls{UABS}s because the lower the power of the an
 is less and therefore requires more \gls{UAV}s which costs more energy.
 When only a limited amount of \gls{UABS}s are available, 
 like only one in this scenario, the tool will only keep those \gls{UABS}s that cover the most users. 
-Therefore, the power consumption in a power consumption optimized network is slightly higher. 
+Therefore, the power consumption in a power consumption optimized network is often higher. 
 
 Figure \ref{fig:s2a_dlAndPc} further also shows how the electromagnetic radiation from the \gls{UABS}
 starts  decreasing again at high altitude. A microstrip \gls{PwrC Opt} network is at his highest point  
@@ -280,13 +280,12 @@ only consists of uncovered users and the transmission power of an uncovered user
 
 The number of covered users increases linearly compared to the number of users present in the network as shown in figure 
 \ref{fig:s2uvsnumcovusers}.b. It illustrates how an \gls{isotropicradiator} is able to reach more users 
-compared to a microstrip patch antenna. For example, with the default number of 224 users, two to three additional 
-people can be covered when using the \gls{isotropicradiator}.
-Not only \gls{isotropicradiator}s are able to cover more users, so do power consumption optimized networks.
- However, this difference becomes more distinguished when applied to larger populations. For example, in a network
- with 600 users, the \gls{isotropicradiator}
- will on average cover one or two users more than it would do in an exposure optimized network. When using a microstrip patch 
- antenna, less than one additional user will be  covered.
+compared to a microstrip patch antenna. Just like an power consumption optimized network 
+is able to reach more users than an exposure optimized network.
+For example, with 600 users, 5 to 7 additional 
+people can be covered when replacing a microstrip patch antenna with an \gls{isotropicradiator}.
+An changing an exposure optimized network with an power consumption optimized network will 
+cover one or two additional users.
 %This is because power consumption optimized networks will result in few high powered base stations while an 
 %exposure optimized network results in a lot of low powered base stations. This behaviour will further be explained in section \ref{s3}
 
@@ -322,7 +321,7 @@ covered, the exposure of the average user will decrease as well.
 For example, in an EIRP \gls{PwrC Opt} network, 50 users have a 6.75\% coverage which corresponds with a weighted average exposure of  18 $mV/m$
 while 600 users with 2.75\% coverage only have 9 $mV/m$.
 Further,  figure \ref{fig:s2b_dlAndPc}.b is directly influence by figure \ref{fig:s2uvsnumcovusers}.b. When the \gls{UABS} has to cover more users,
-the probability that some of these users have a worst path loss is higher. The \gls{UABS} solves this problem by increasing the 
+the probability that some of these users have a worse path loss is higher. The \gls{UABS} solves this problem by increasing the 
 power consumption. Increasing the population from 50 to 600 will require between 0.05 and 0.1 $W$ more. 
 For this scenario, no clear difference in power consumption exists between the four configurations.
 
@@ -371,7 +370,7 @@ These users might have a slightly
 worse path loss because of obstructing buildings or somewhat bigger distance. The \gls{UABS} reacts to this by increasing 
 his power consumption causing an increase in the \gls{DL} \gls{SAR} for the central user.
 The far-field radiation from \gls{UE} is very low as mentioned before and therefore added separately in figure \ref{fig:connectionMap}.b.
-It shows that the \gls{SAR}  from other \gls{UE} increases from zero to $0.15 pW/kg$. This is normal 
+It shows that the \gls{SAR}  from other \gls{UE} increases from zero to $0.15\ pW/kg$. This is normal 
 behaviour considering that around the central user more and more people become available of which some will be connected to the \gls{UABS}
 and therefore also emitting radiation.
 
