@@ -97,6 +97,8 @@ used by the antenna is calculated with formula \ref{eq:powerUE}  and depends mai
 \gls{UE} will, similar to \gls{UABS}s, radiate just enough so the \gls{SNR} is high enough to be decoded by the receiver.
 The only difference with \gls{DL} radiation is that the distance between the radiator and the user remains unchanged. 
 Therefore, the \gls{UL} electromagnetic radiation experienced by the user will increase when the flying altitude of the \gls{UABS} increases.
+The \gls{UL} radiation starts very low with only $1\ nW/kg$ measured when the flying height is 20 metres. This increases fast to $66\ nW/kg$
+at 200 metres.
 %\begin{equation}
 %\vec{E} (V/m) = \frac{\Delta U (V) }{\Delta x (m)}
 %\label{eq:exposureBasicFormula}
@@ -336,8 +338,8 @@ Figure \ref{fig:s2fourSourcesMatrix} investigates the assets of each source cont
 configurations show that base stations are the main source of electromagnetic radiation which remains almost constant.
 The \gls{isotropicradiator} varies around 1 $nW/kg$ for both optimizations and the microstrip antenna around 0.16 $nW/kg$.
 Figure \ref{fig:s2uvsnumcovusers} already 
-showed that a sparsely populated network results in a higher coverage percentage which on his turn results in a higher \gls{UL} \gls{SAR}. 
-The \gls{UL} \gls{SAR} for 50 users is for an \gls{isotropicradiator} on average 1.7 $nW/kg$ for both optimizations and the microstrip antenna around 0.4 $nW/kg$.
+showed that a sparsely populated network results in a higher coverage percentage which on his turn results in a higher $SAR^{ownUE}$. 
+The  $SAR^{ownUE}$ for 50 users is for an \gls{isotropicradiator} on average 1.7 $nW/kg$ for both optimizations and the microstrip antenna around 0.4 $nW/kg$.
 The chart also proves once again that the far-field radiation from \gls{UE} can be neglected. The \gls{SAR} from 
 neighbouring devices is not zero as it looks like in figure \ref{fig:s2fourSourcesMatrix} but is just really low compared to the much higher
 \gls{SAR}-values from other sources.
@@ -438,7 +440,7 @@ Figure \ref{fig:s3a_numDronesAndCov}.b
  shows that the number of required \gls{UAV}s increases when the flying altitude becomes lower;
 a behaviour which was also determined in \cite{J2}.
 For example, an microstrip \gls{Exp Opt} network and an \gls{EIRP} \gls{PwrC Opt} network require respectively 84 and 64
-\gls{UABS}s at a flying altitude of $200\ m$ which increases respectively to \textcolor{red}{TODO: XX and YY} at a much lower flying altitude of $20\ m$.
+\gls{UABS}s at a flying altitude of $200\ m$ which increases respectively to 211 and 162 \gls{UABS}s at a much lower flying altitude of $20\ m$.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhvsnumdronesAndCov.png}
@@ -451,7 +453,7 @@ This changed around 80 metres where \gls{UL} electromagnetic radiation of the \g
 exceeds \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s. 
 When looking at the different individual sources of electromagnetic exposure presented in figure \ref{fig:s3a_fourSourcesMatrix}, 
 we notice the same behaviour where the 
- \gls{UL} \gls{SAR} indeed increases between 89 and 141 $nW/kg$ by raising the flying altitude from 
+ \gls{SAR} from the own device indeed increases between 89 and 141 $nW/kg$ by raising the flying altitude from 
  20 to 200 metres.
  % micro pc = 107 nw/kg (9 times more); micro exp = 124 nw/kg(15 times more); eirp exp = 141nw/kg (11 times more); eirp pc=89 nw/kg (2.5 times more)
   However, a more logarithmic increase is shown
@@ -552,15 +554,13 @@ guarantee a low electromagnetic exposure towards the users.
 We can conclude that an exposure optimized network will reduce the exposure of an individual 
 by deploying several low powered \gls{UABS}s.
 
-Figure \ref{fig:s3b_fourSourcesMatrix} represents the 
-\gls{SAR} from the weighted average user and shows how the \gls{SAR} coming from the user's own device and from the serving \gls{UABS} remains almost constant. The flying altitude is always the same so 
-also the required energy to cover that distance will remain the same. 
-For both optimization strategies, the $SAR^{myUE}$ for networks with \gls{isotropicradiator}s vary around $1\ \mu W/kg$  %between 1 $\mu W/kg$ and 1.2 $\mu W/kg$ 
- and around  0.7 $\mu W/kg$ for networks using microstrip patch antennae.
+Figure \ref{fig:s3b_fourSourcesMatrix} shows how the  $SAR^{ownUE}$  
+remains almost constant which is normal since the flying height remains the same and will 
+vary between  0.7 $\mu W/kg$ and 1.2 $\mu W/kg$
 The $SAR^{myUABS}$ barely increases in an exposure optimized network and is situated around 0.5 $\mu W/kg$ for both antennae.
 The power consumption optimized network also starts around 0.5 $\mu W/kg$ but increases when more users become online. 
 A normal behaviour when considering that these \gls{UABS}s try to cover much more users. Therefore, the $SAR^{myUABS}$ 
-with 600 users increases up to 1 $\mu W/kg$ for an \gls{isotropicradiator} and almost 2 $\mu W/kg$ for a microstrip patch antenna.
+with 600 users increases up to 2 $\mu W/kg$ depends on the configuration.
 The \gls{SAR} value that increases the most is $SAR^{otherUABS}$ which 
 starts really low with less than 0.1 $\mu W/kg$ for 50 users for all configurations. 
 The \gls{SAR} increases however very fast. The biggest increase is noticed in an \gls{EIRP} \gls{PwrC Opt} network 
