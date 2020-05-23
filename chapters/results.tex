@@ -334,12 +334,12 @@ For this scenario, no clear difference in power consumption exists between the f
 
 Figure \ref{fig:s2fourSourcesMatrix} investigates the assets of each source contributing to the total \gls{SAR}. All four 
 configurations show that base stations are the main source of electromagnetic radiation which remains almost constant.
-The \gls{isotropicradiator} varies around 1 $nW/kg$ for both optimizations and the microstrip antenna round 0.16 $nW/kg$.
+The \gls{isotropicradiator} varies around 1 $nW/kg$ for both optimizations and the microstrip antenna around 0.16 $nW/kg$.
 Figure \ref{fig:s2uvsnumcovusers} already 
-showed that a sparsely populated networks results in a higher coverage percentage which reflects on a higher \gls{UL} \gls{SAR}. 
-The \gls{UL} \gls{SAR} for 50 users is for an \gls{isotropicradiator} is on average 1.7 $nW/kg$ for both optimizations and the microstrip antenna round 0.4 $nW/kg$.
+showed that a sparsely populated network results in a higher coverage percentage which on his turn results in a higher \gls{UL} \gls{SAR}. 
+The \gls{UL} \gls{SAR} for 50 users is for an \gls{isotropicradiator} on average 1.7 $nW/kg$ for both optimizations and the microstrip antenna around 0.4 $nW/kg$.
 The chart also proves once again that the far-field radiation from \gls{UE} can be neglected. The \gls{SAR} from 
-neighbouring devices is not zero as it looks in figure \ref{fig:s2fourSourcesMatrix} but is just really low compared to the much higher
+neighbouring devices is not zero as it looks like in figure \ref{fig:s2fourSourcesMatrix} but is just really low compared to the much higher
 \gls{SAR}-values from other sources.
 \begin{figure}[h!]
 \centering
@@ -362,7 +362,7 @@ shows that only one user is connected besides our central user. Figure \ref{fig:
 \end{figure}
 
 Scenario I already showed that the \gls{SAR} from the user's own device is only influenced by the flying height. 
-The flying height for this experiment is fixed and the \gls{UL} \gls{SAR} from his device should therefore be also a constant. 
+The flying height for this experiment is fixed and the \gls{UL} \gls{SAR} from his device should therefore also be a constant. 
 A hypothesis that is confirmed by figure \ref{fig:uvsulsarcentralUsers} where $SAR^{myUE}$ is equal to 0.15 $\mu W/kg$.
 The \gls{SAR} from the \gls{UABS} experiences a slight increase of 0.005 $\mu W/kg$. When the population grows, more users become available 
 and some will spawn near the central user. The \gls{UABS} will likely decide to cover these users as well as visible in figure \ref{fig:connectionMap}.
@@ -408,10 +408,10 @@ Scenario II already explained that when only one \gls{UAV} is available, a power
 powered network. In this scenario, there is no limitation on the number of \gls{UAV}s and the network remains thus unaltered after the decision 
 algorithm is done. Figure \ref{fig:s3a_dlAndPc} clearly proves that the different optimization strategies work as intended.
 Power consumption optimized networks have indeed a lower power consumption but therefore result in higher electromagnetic radiation.
-On the other hand, an exposure optimized network will reduce the electromagnetic exposure by using more \gls{UAV}s and thence also increase the network's power consumption.
+On the other hand, an exposure optimized network will reduce the electromagnetic exposure by using more \gls{UAV}s and thence also increases the network's power consumption.
 A behaviour that was also concluded in \cite{J1}.
 For example, when comparing both optimization strategies for the same \gls{isotropicradiator} and the same default flying height, we see that
-the power consumption optimized network requires 51 $W$ and therefore exposes it's users
+the power consumption optimized network requires 51 $W$ and therefore exposes its users
 to $15\ mV/m$. When optimizing towards electromagnetic radiation, the exposure drops to $11.5\ mV/m$ but at a cost of a higher power consumption
 of $54\ W$.
 Further, figure  \ref{fig:s3a_dlAndPc}.a also shows that the exposure in an exposure optimized network increases logarithmically while in a power consumption optimized network the exposure has a concave relationship with the flying height, and has its lowest point at around 70 metres.
@@ -433,12 +433,12 @@ Further, figure  \ref{fig:s3a_dlAndPc}.a also shows that the exposure in an expo
 %than the power consumption optimized network for both antenna types.
 Figure \ref{fig:s3a_numDronesAndCov}.a shows that the optimal coverage is achieved at a low flying height of 
 40 metres with around 99\% coverage. 
-However, the there is a downside to this. 
+However, there is a downside to this. 
 Figure \ref{fig:s3a_numDronesAndCov}.b 
  shows that the number of required \gls{UAV}s increases when the flying altitude becomes lower;
 a behaviour which was also determined in \cite{J2}.
 For example, an microstrip \gls{Exp Opt} network and an \gls{EIRP} \gls{PwrC Opt} network require respectively 84 and 64
-\gls{UABS}s at a flying altitude of $200\ m$ which increases respectively to 84 and 64 at a much lower flying altitude of $20\ m$.
+\gls{UABS}s at a flying altitude of $200\ m$ which increases respectively to \textcolor{red}{TODO: XX and YY} at a much lower flying altitude of $20\ m$.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{../results/s3/fhvsnumdronesAndCov.png}
@@ -451,11 +451,11 @@ This changed around 80 metres where \gls{UL} electromagnetic radiation of the \g
 exceeds \gls{DL} radiation in order to still be able to reach the high flying \gls{UABS}s. 
 When looking at the different individual sources of electromagnetic exposure presented in figure \ref{fig:s3a_fourSourcesMatrix}, 
 we notice the same behaviour where the 
- \gls{UL} \gls{SAR} indeed increases between 89 and 141 $nW/kg$ when raising the flying altitude from 
+ \gls{UL} \gls{SAR} indeed increases between 89 and 141 $nW/kg$ by raising the flying altitude from 
  20 to 200 metres.
  % micro pc = 107 nw/kg (9 times more); micro exp = 124 nw/kg(15 times more); eirp exp = 141nw/kg (11 times more); eirp pc=89 nw/kg (2.5 times more)
   However, a more logarithmic increase is shown
-  despite the fact that figure \ref{fig:s1_fhsar} showed an exponentially increase.
+  despite the fact that figure \ref{fig:s1_fhsar} showed an exponential increase.
 This was however deducted with only one user present in the network as opposed to this scenario 
 where 224 users are present. 
 The electromagnetic radiation from the covered users will still behave like it did in scenario I.
@@ -476,8 +476,8 @@ The lower path loss from less obstructing buildings will be the reason.
 The figures from \ref{fig:s3a_fourSourcesMatrix} clearly show that this increase 
 in electromagnetic radiation will be less for a microstrip patch antenna. The reason behind this is that energy 
 will be more focused towards the ground and there is less sideways radiation because of attenuation.
-The results shows that by raising the flying altitude from 20 to 200 metres,
-the $SAR^{otherUABS}$ will increase between 115 and 140 $nW/kg$ for \gls{EIRP} antenna and between 54 and 74 $nW/kg$ for microstrip patch antennae.
+The results show that by raising the flying altitude from 20 to 200 metres,
+the $SAR^{otherUABS}$ will increase between 115 and 140 $nW/kg$ for \gls{EIRP} antennae and between 54 and 74 $nW/kg$ for microstrip patch antennae.
 
 \clearpage
 \begin{figure}[]
@@ -492,16 +492,17 @@ the $SAR^{otherUABS}$ will increase between 115 and 140 $nW/kg$ for \gls{EIRP} a
 \label{S3B}
 
 The second evaluated parameter of scenario III is a variable number of users while the flying height is fixed to 100 metres.  
-Figure \ref{fig:s3b_numdronesAndCov}.a show how the tool tries to reach a 100\% coverage. The percentage
+Figure \ref{fig:s3b_numdronesAndCov}.a shows how the tool tries to reach a 100\% coverage. The percentage
 of covered users is slightly less for smaller networks. For only 50 users, an average 
-coverage of around 93\% is achieved while a network with 600 users knows a coverage of around 97\%.
+coverage of around 93\% is achieved while a network with 600 users has a coverage of around 97\%.
 Figure \ref{fig:s3b_numdronesAndCov}.b shows how the tool requires more \gls{UAV}s for these large 
 populations. 
 The difference in optimization strategy is very little for a small amount of people but increases very quickly. 
-When the population increases from 50 to 600 users, a microstrip \gls{Exp Opt} network 
-requires 200 more \gls{UABS}s. The number of required \gls{UABS}s in an \gls{EIRP} \gls{Exp Opt} and a microstrip \gls{PwrC Opt} network 
-increases with around 130 and the \gls{EIRP} \gls{PwrC Opt} with 110.
-An expected behaviour  when looking at scenario II where, with only one \gls{UABS} available, 
+When the population increases from 50 to 600 users,
+ 200 more \gls{UABS}s are required by a microstrip \gls{Exp Opt} network 
+ around 130 more \gls{UABS}s for an \gls{EIRP} \gls{Exp Opt} network or a microstrip \gls{PwrC Opt} network
+ and 110 more \gls{UABS}s for an \gls{EIRP} \gls{PwrC Opt} network.
+This is an expected behaviour  when looking at scenario II where, with only one \gls{UABS} available, 
 the percentage of covered users decreases for these larger populations.
 \clearpage
 \begin{figure}[h]
@@ -510,20 +511,20 @@ the percentage of covered users decreases for these larger populations.
   \label{fig:s3b_numdronesAndCov}
 \end{figure}
 
-Figure \ref{fig:s3b_dlAndPC} shows that the electromagnetic radiation and power consumption increases for larger 
+Figure \ref{fig:s3b_dlAndPC} shows that the electromagnetic radiation and power consumption increase for larger 
 populations which is normal since more drones will be available.
 When the population increases from 50 to 600 users, the electromagnetic radiation increases 
 between 80 and 130 $mV/m$ depending on the configuration. The power consumption with 50 users is for all configurations around 
-20 $W$. Once the population is increased to 600 users, a microstrip \gls{Exp Opt} networks will require 130 $W$, 
+20 $W$. Once the population is increased to 600 users, a microstrip \gls{Exp Opt} network will require 130 $W$, 
  a microstrip \gls{PwrC Opt} network requires 117 $W$,
-\gls{EIRP} \gls{Exp Opt} networks requires 107 $W$ and \gls{EIRP} \gls{PwrC Opt} networks requires 92 $W$.
+\gls{EIRP} \gls{Exp Opt} networks require 107 $W$ and \gls{EIRP} \gls{PwrC Opt} network requires 92 $W$.
 
 The correct behaviour of the decision algorithm became already clear in the previous subsection \ref{S3A} but is also
 confirmed here. 
 When comparing both optimization strategies, a power consumption optimized network requires around 5 $W$ less but exposes its users between 27 $mV/m$ and 30 $mV/m$ more than
 exposure optimized networks. 
 Further, it is also noticed that \gls{isotropicradiator}s cause more electromagnetic radiation for less energy
-compared to microstrip patch antenna. 
+compared to microstrip patch antennae. 
 When comparing the two types of antennae for a default number of 224 users, 
 an \gls{isotropicradiator} will expose the average user 
 between 25 $mV/m$ and 27 $mV/m$ more while requiring around 12 $W$ less than when the network would be using a microstrip patch antennae.
@@ -551,18 +552,18 @@ guarantee a low electromagnetic exposure towards the users.
 We can conclude that an exposure optimized network will reduce the exposure of an individual 
 by deploying several low powered \gls{UABS}s.
 
-Figure \ref{fig:s3b_fourSourcesMatrix} shows that the 
-\gls{SAR} from the weighted average  user's own device and from the serving \gls{UABS} remains almost constant. The flying altitude is always the same so 
+Figure \ref{fig:s3b_fourSourcesMatrix} represents the 
+\gls{SAR} from the weighted average user and shows how the \gls{SAR} coming from the user's own device and from the serving \gls{UABS} remains almost constant. The flying altitude is always the same so 
 also the required energy to cover that distance will remain the same. 
 For both optimization strategies, the $SAR^{myUE}$ for networks with \gls{isotropicradiator}s vary around $1\ \mu W/kg$  %between 1 $\mu W/kg$ and 1.2 $\mu W/kg$ 
  and around  0.7 $\mu W/kg$ for networks using microstrip patch antennae.
 The $SAR^{myUABS}$ barely increases in an exposure optimized network and is situated around 0.5 $\mu W/kg$ for both antennae.
 The power consumption optimized network also starts around 0.5 $\mu W/kg$ but increases when more users become online. 
 A normal behaviour when considering that these \gls{UABS}s try to cover much more users. Therefore, the $SAR^{myUABS}$ 
-with 600 users increases up to 1 $\mu W/kg$ for a \gls{isotropicradiator} and almost 2 $\mu W/kg$ for a microstrip patch antenna.
-The \gls{SAR} values that increases the most is $SAR^{otherUABS}$ which 
+with 600 users increases up to 1 $\mu W/kg$ for an \gls{isotropicradiator} and almost 2 $\mu W/kg$ for a microstrip patch antenna.
+The \gls{SAR} value that increases the most is $SAR^{otherUABS}$ which 
 starts really low with less than 0.1 $\mu W/kg$ for 50 users for all configurations. 
-The \gls{SAR} increases however very fast. The biggest increase in noticed in an \gls{EIRP} \gls{PwrC Opt} network 
+The \gls{SAR} increases however very fast. The biggest increase is noticed in an \gls{EIRP} \gls{PwrC Opt} network 
 where 3 $\mu W/kg$ is measured for 600 users. The $SAR^{otherUE}$ increases the least for microstrip \gls{Exp Opt} with 
 only 1 $\mu W/kg$ for 600 users.
 \begin{figure}[h!]
@@ -575,7 +576,7 @@ only 1 $\mu W/kg$ for 600 users.
 
 \section{Summary}
 
-This chapter discuses the achieved results when the applying the tool to the different scenarios.
+This chapter discusses the achieved results when applying the tool to the different scenarios.
 Scenario I concludes that the required transmission power increases logarithmically with the flying height.
 The results show how the user's device is the main source of electromagnetic radiation 
 for all flying heights above 80 metres and grows exponentially along with the flying height. 
@@ -585,9 +586,9 @@ Scenario II shows that electromagnetic exposure  drops when the population size 
 and a lower user exposure corresponds with lower coverage. Users that are covered are, just like in scenario I, 
 mainly exposed to their own device, followed by the \gls{UABS} in second place. The results also show that 
 the power consumption slightly increases when the \gls{UABS} covers more users.
-The last scenario shows that less \gls{UABS} are required for higher flying altitudes and therefore 
-result in a decreased power consumption.  Exposure from the serving \gls{UABS} remain almost constant above 80 meters while 
-exposure from other \gls{UABS}s and \gls{UE} increases. Scenario III also shows that more \gls{UABS} are 
-required for larger populations and therefore increases power consumption and electromagnetic exposure.
-Finally, the results also confirms that the optimization algorithm works as intended 
+The last scenario shows that less \gls{UABS}s are required for higher flying altitudes and therefore 
+result in a decreased power consumption.  Exposure from the serving \gls{UABS} remains almost constant above 80 meters while 
+exposure from other \gls{UABS}s and \gls{UE} increases. Scenario III also shows that more \gls{UABS}s are 
+required for larger populations and therefore increase power consumption and electromagnetic exposure.
+Finally, the results also confirm that the optimization algorithm works as intended 
 and is able to optimize towards either electromagnetic exposure or overall power consumption.
