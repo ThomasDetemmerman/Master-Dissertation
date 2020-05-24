@@ -677,25 +677,20 @@ The \gls{SAR} comming from the
 users own device is on average zero since most users are uncovered. 
 Figure \ref{fig:uvsulsarcentralUsers} shows the exposure for the covered user
 just below the \gls{UABS}. Scenario I already showed that the \gls{SAR} from the user's own device is only influenced by the flying height
-and is also confirmed by the results in fig. \ref{fig:uvsulsarcentralUsers} where constant $SAR^{myUE}$ is measured of 0.15 $\mu W/kg$.
+and is also confirmed by the results in fig. \ref{fig:uvsulsarcentralUsers}.a where constant $SAR^{myUE}$ is measured of 0.15 $\mu W/kg$.
 The \gls{SAR} from the \gls{UABS} experiences a slight increase of 0.005 $\mu W/kg$. When the population grows, more users
 will be near the \gls{UABS}. The \gls{UABS} will likely decide to cover these users as well as visible in figure \ref{fig:connectionMap}.
 These users might have a slightly 
 worse path loss because of obstructing buildings or somewhat bigger distance. The \gls{UABS} reacts to this by increasing 
 his power consumption causing an increase in the \gls{DL} \gls{SAR} for the central user.
-The far-field radiation from \gls{UE} is very low as mentioned before and therefore added separately in figure \ref{fig:connectionMap}.b.
-It shows that the \gls{SAR}  from other \gls{UE} increases from zero to $0.15\ pW/kg$. This is normal 
-behaviour considering that around the central user more and more people become available of which some will be connected to the \gls{UABS}
-and therefore also emitting radiation.
+The far-field radiation from \gls{UE} is very low as mentioned before and therefore added separately in figure \ref{fig:uvsulsarcentralUsers}.b.
+It shows that the \gls{SAR}  from other \gls{UE} increases from zero to $0.15\ pW/kg$. 
 
-\begin{figure}[!htb]
-\minipage{0.50\linewidth}
-  \includegraphics[width=\linewidth]{../images/connectionsMap50Users.png}
-\endminipage\hfill
-\minipage{0.50\linewidth}%
-  \includegraphics[width=\linewidth]{../images/connectionsMap600Users.png}
-\endminipage
-  \caption{Overview of which users are connected to the \gls{UABS}. The map on the left is for 50 active users while the map on the right considers 600 active users.}
+\begin{figure}[h]
+\subfloat[50 users]{\includegraphics[width=0.49\textwidth]{../images/connectionsMap50Users.png}}
+\hfill
+\subfloat[600 users]{\includegraphics[width=0.49\textwidth]{../images/connectionsMap600Users.png}}
+\caption{Overview of which users are connected to the \acs{UABS}.}
   \label{fig:connectionMap}
 \end{figure}
 
