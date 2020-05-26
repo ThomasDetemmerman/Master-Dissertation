@@ -19,21 +19,26 @@ concerned about the potential health effects of the electromagnetic radiation ca
 Therefore, mobile devices and base stations have to comply to strict legislation enforced by the government.
 
 This research investigates how different scenarios influence power consumption, electromagnetic exposure and specific absorption rate.
-These different scenarios are defined by various flying heights, number of UAVs available and population densities. Further, also 
-an analysis on the difference
-between a realistic microstrip patch antenna and a fictional equivalent isotropic radiator is performed.
+These different scenarios are defined by various flying heights, number of UAVs available and population sizes. Further, also 
+the proper microstrip patch antenna is defined and attached to the UAV. 
+The antenna will be responsible for the communication between the UAV and the users it covers.
+Its performance is compared to  
+an equivalent isotropic radiator.
 Thereafter, the network will be optimized towards goals like electromagnetic exposure of the average user or 
 power consumption of the entire network; which results in conflicting requirements.
 
-To accomplish this goal, a capacity based deployment tool will be used which simulates an entire UAV-aided network.
-In this way, all important sources for electromagnetic radiation, like all user equipment and all flying base stations, 
-will be considered.
+To accomplish this goal, the capacity based deployment tool of the WAVES research group at Ghent University
+will be extended so it would be able to calculate electromagnetic exposure.
+Further, the tool now also provide support to optimize the networks towards electromagnetic exposure or power consumption.
 
-It looks from the results that a power consumption optimized network with a fixed flying height of 80 metres is the recommended approach
-for the city centre of Ghent.
-A microstrip patch 
-antenna with a sufficiently large aperture angle is a good starting point. However, different antenna array configurations still have to 
-be investigated.
+It looks from the results that 
+the microstrip patch antenna with an aperture angle of \ang{90} is a suitable starting point for an antenna. 
+This directional antenna focusses electromagnetic radiation where it is needed. Unwanted sideways radiation 
+is therefore reduced by design.
+The sufficiently large aperture angle covers enough users. The antenna is recommended to be deployed in a power consumption 
+optimized network since less drones are required and therefore also less expensive.
+The optimal flying height for the city centre of Ghent is believed to be situated at 80 metres since lower flying heights require much more UABSs and
+higher flying heights have a negative influence on the electromagnetic exposure.  
 
 \textsc{\textbf{\LARGE Keywords}}\\
 deployment tool,  electromagnetic exposure, LTE

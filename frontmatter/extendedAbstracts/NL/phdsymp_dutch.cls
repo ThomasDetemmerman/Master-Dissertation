@@ -407,7 +407,7 @@
 \def\fps@table{tbp}
 \def\ftype@table{2}
 \def\ext@table{lot}
-\def\fnum@table{TABLE~\thetable}
+\def\fnum@table{TABEL~\thetable}
 \def\table{\@float{table}}
 \let\endtable\end@float
 \@namedef{table*}{\@dblfloat{table}}
@@ -474,7 +474,7 @@ page \thepage \space undefined}}%
 \def\shortcite{\def\citename##1{}\@internalcite}
 \def\@biblabel#1{\def\citename##1{##1}[#1]\hfill}
 
-\def\thebibliography#1{\section*{References}\footnotesize\list
+\def\thebibliography#1{\section*{Referencies}\footnotesize\list
     {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
     \advance\leftmargin\labelsep \itemsep 0pt plus .5pt
     \usecounter{enumi}}
@@ -531,9 +531,9 @@ page \thepage \space undefined}}%
 
 \def\keywords{\vspace{-.3em}
     \if@twocolumn
-      \small\it Keywords\/\bf---$\!$%
+      \small\it Sleutelwoorden\/\bf---$\!$%
     \else
-      \begin{center}\small\bf Keywords\end{center}\quotation\small
+      \begin{center}\small\bf Sleutelwoorden\end{center}\quotation\small
     \fi}
 \def\endkeywords{\vspace{0.6em}\par\if@twocolumn\else\endquotation\fi
     \normalsize\rm}

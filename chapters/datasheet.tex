@@ -1,7 +1,8 @@
 \chapter{Radiation Patterns: Datasheet}
 \label{ch:radpattern}
 Table \ref{tab:datasheetRadiation} gives an overview of the attenuation in the E and H plane. The first radiation pattern 
- has a square groundplane with an edge of 0.060 meter while the second pattern is more of a rectangular shape with a width of 0.0524m and a length of 0.0438m.
+ has a square groundplane with an edge of 0.060 metre while the second pattern 
+ has more a rectangular shape with a width of 0.0524m and a length of 0.0438m.
 All other settings are equal as defined in \ref{sub:definingAntenna}
 \begin{table*}[!ht]
 \centering
@@ -59,7 +60,7 @@ angle & E & H & E & H \\ \hline
 
 In listing \ref{c:exampleRadiationConfig}, a possible configuration for a radiation pattern is described.
 It is important to notice that this example configuration does not represent the used configuration in this master dissertation.
-The \verb|radiatoinPattern|-tag consists of a \verb|slices|-tag. This tag can contain as much slices as desired.
+The \verb|radiationPattern|-tag consists of a \verb|slices|-tag. This tag can contain as much slices as desired.
 In this example, 3 slices are defined indicated with the \verb|attenuation|-tag. This tag contains a mandatory attribute \verb|az| 
 which defines the azimuth angle to which all underlying attenuation values belong.
 Inside the \verb|attenuation|-tag, all attenuation values are written in a \verb|value|-tag. Each \verb|attenuation|-tag must contain 

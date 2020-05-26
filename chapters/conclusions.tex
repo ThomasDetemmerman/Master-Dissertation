@@ -134,11 +134,11 @@ The microstrip patch antenna will generate less electromagnetic radiation by des
 %What is the contribution of each source towards the total electromagnetic exposure?
 Figure \ref{fig:pie} gives
 an overview of the contribution of \gls{SAR} in percentage to the total 
-exposure for a default network. The values have been averaged over all four possible configurations. 
+exposure for a default network. The values have been averaged over all four considered configurations. 
 The user's main source of exposure is clearly the user's own device which contributes 52\% of the total experienced exposure.
 A conclusion that was also made by the authors of \cite{J17_kuehn2019modelling}
 where a 5G network is simulated and by the authors from  \cite{J10.1.1} 
-where a \gls{GSM} and \gls{UMTS} network is simulated. However, in \cite{J10.1.1} is also concluded that,
+where a \gls{GSM} and \gls{UMTS} network is simulated. Further, in \cite{J10.1.1} is also concluded that,
 thanks to power control, the electromagnetic radiation from the mobile phone 
 comes really close to the exposure from the \gls{UABS}. 
 Also this is confirmed by the results. Figure \ref{fig:pie} shows that the electromagnetic exposure 
@@ -156,7 +156,7 @@ The electromagnetic
 \newcount\ind \ind=-1
 \begin{figure}
 \centering
- \resizebox {!} {6cm} {
+ \resizebox {!} {5.5cm} {
 \begin{tikzpicture}[nodes = {font=\sffamily}]
   \foreach \percent/\name in {
       52/ my UE,
@@ -192,26 +192,27 @@ considered configurations.}
 \end{figure}
 
 %How does the \gls{UABS} flying height and number of users influence electromagnetic exposure and power consumption?
-As last, the results confirm that the flying height and population size has a major influence on electromagnetic exposure and 
+As last, the results confirm that the flying height and population size have a major influence on electromagnetic exposure and 
 power consumption. It becomes clear that more \gls{UABS}s are required when the population size increases. 
-This comes with a higher power 
+This results in a higher power 
 consumption and electromagnetic exposure. When the population increases from 50 to 600 users, 
 the electromagnetic radiation increases between 80 and 130 $mV/m$ depending
 on the configuration. The power consumption increases with 110 $W$ for all configurations. 
 The main source that is influenced by the number of users is the \gls{SAR} from other UABSs with an increase between 1 and 3 $\mu W/kg$, depending on 
 the configuration.
-Further, increasing the flying altitude has a positive influence on the number of required drones which on his 
-turn has a positive influence on power consumption. Increasing the flying altitude from 50 m to 200 m, decreases the number 
+Further, increasing the flying altitude has a positive influence on the number of required drones which on their 
+turn have a positive influence on power consumption. Increasing the flying altitude from 50 m to 200 m, decreases the number 
 of required drones around 59\%. This decrease in number of \gls{UABS}s was also concluded in \cite{J2}.
 Also authors from \cite{J17_kuehn2019modelling} made the conclusion that reduced path loss decreases electromagnetic exposure.
-The electromagnetic radiation from the \gls{UABS}s does not change for flying altitudes between 80 and 200 metres. Most 
+The electromagnetic radiation from the \gls{UABS}s remains more or less the same for flying altitudes between 80 and 200 metres. Most 
 \gls{UABS}s are in \gls{LOS} and no more power will be used thanks to power control.
 However, the electromagnetic radiation from the user's own device does increase in order to reach the high flying drones.
 Around 80 metres, the exposure from the  user's device surpasses the exposure from the serving \gls{UABS}.
 When more \gls{UABS}s are available in the network, electromagnetic exposure from other \gls{UABS} will increase as well 
 because more \gls{UABS}s come into \gls{LOS}. Raising the flying altitude from 50 to 200 m will increase the \gls{SAR} from other 
-\gls{UABS}s between 49 and 46 times when using a \gls{EIRP} antenna and between 70 and 85 times when using a for microstrip patch antenna.
-It is therefore concluded that raising the flying height has a positive but is not unlimited.
+\gls{UABS}s between 46 and 49 times when using an \gls{EIRP} antenna and between 70 and 85 times when using a microstrip patch antenna.
+It is therefore concluded that raising the flying height has a positive influence on the number of 
+\gls{UABS}s but is not unlimited since the total \gls{SAR} will increase as well.
 When also considering the results from \cite{U1} where a flying altitude of  
 80 metres is suggested for an optimal access and backhaul connectivity, a flying height 
 of 80 metres is also here proposed for the city centre of Ghent.
@@ -220,25 +221,25 @@ of 80 metres is also here proposed for the city centre of Ghent.
 The microstrip patch antenna with an aperture angle of \ang{90} is a suitable starting point for an antenna. 
 This directional antenna focusses electromagnetic radiation where it is needed. Unwanted sideways radiation 
 is therefore reduced by design.
-The sufficiently large aperture angle covers enough users. The antenna is recommended the be deployed in a power consumption 
+The sufficiently large aperture angle covers enough users. The antenna is recommended to be deployed in a power consumption 
 optimized network since less drones are required and therefore also less expensive.
-The optimal flying height for the city center of Ghent is believed to be situated at 80 metres since lower flying heights require much more \gls{UABS} and
-higher flying heights has a negative influence on the electromagnetic exposure.  
+The optimal flying height for the city centre of Ghent is believed to be situated at 80 metres since lower flying heights require much more \gls{UABS}s and
+higher flying heights have a negative influence on the electromagnetic exposure.  
 
 \section{Future work}
 
-Despite the fact the many parameters has been examined, still some parameters require further investigations.
-The \gls{pusch} value defines the minimal required signal strength received by the \gls{UABS} and still need to be evaluated
+Despite the fact that many parameters have been examined, still some parameters require further investigations.
+The \gls{pusch} value defines the minimal required signal strength received by the \gls{UABS} and still needs to be evaluated
 for different values. Also, the exposure caused by backhaul links has not been evaluated yet.
 
 The chosen microstrip patch antenna is solely based on literature and performing an excessive research to various 
 types of radiation patterns is outside the scope of this master dissertation. It is expected that the radiation can 
 further be improved by using microstrip patch antennae in more complex array-configurations. 
 
-The tool provide support for any possible radiation pattern and applies this to any \gls{UABS}.
-However, despite some minor changes, each \gls{UABS} can has it's custom radiation pattern which makes 
+The tool provides support for any possible radiation pattern and applies this to any \gls{UABS}.
+However, despite some minor changes, each \gls{UABS} can has its custom radiation pattern which makes 
 3D beamforming possible. Therefore, electromagnetic exposure can be determined for base stations where MiMo
-and massive MiMo is in use.
+and massive MiMo are in use.
 
 Also, the tool makes use of an \gls{exact algorithm}. Despite the fact that several  
 tactics have been introduced to improve performance, large populations still cause long runtimes. It might be useful 
