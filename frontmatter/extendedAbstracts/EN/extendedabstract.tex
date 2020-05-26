@@ -147,6 +147,25 @@ subjected to limitations enforced by the government. This research is based in G
 a Flemish city in Belgium where the 2.6 GHz frequency band, an individual antenna cannot exceed 4.5 V/m and the cumulative sum of all 
 fixed sources has its maximum at 31 V/m \cite{J23,S13_normenBelgie}. The maximum whole body SAR-values for a mobile device 
 over a 10 g tissue ($SAR_{10g}$) is defined at $0.08 W/kg$ \cite{J30,J23,S20}. 
+%tekst te veel? verwijdere onderstaande paragraaf en tabel
+The \gls{FCC} of the \gls{USA} follows the recommendations of the \gls{IEEE} Std C95.1-1999 \cite{P1,P2} that defines 
+regulations based on 1 g tissue.
+The $SAR^{wb}_{1g}$ is therefore defined at 1.6 $W/kg$ despite the fact that this value has been reviewed and changed by the \gls{IEEE} to 8 $W/kg$ in Std C95.1-2005 \cite{P2}.
+An overview is given in table \ref{table:overviewSARValues}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Description} & \textbf{Value} & \textbf{Units} \\ \hline
+$SAR^{wb}_{10g}$ (\gls{ICNIRP})                           &  $4$ & $W/kg$              \\ \hline
+$SAR^{wb}_{10g}$ for base station(BE)                & $0.08$ & $W/kg$               \\ \hline
+$SAR_{10g}^{head}$ for \acs{UE} (BE)                  & $2$ & $W/kg$               \\ \hline
+$SAR_{1g}^{head}$ for \acs{UE} (\gls{USA})                  & $1.6$ & $W/kg$               \\ \hline
+\end{tabular}
+\caption{Overview of the different \acs{SAR} limitations.}
+\label{table:overviewSARValues}
+\end{table}
 
 Several papers calculate exposure originating from specific sources  \cite{J6_originalExposureFormula,J1,J10_RDP,J10.1} 
 where some convert the \gls{UL} radiation into localized \gls{SAR} for head and torso \cite{J10_RDP,J10.1}. 
@@ -221,13 +240,12 @@ and circular polarization while the printed dipole only supports linear polariza
 Further, the fabrication of a microstrip patch antenna is considered to be the easiest 
 of the considered patch antennae \cite{J13_microstripadvantages}. 
 
-Figure \ref{fig:exampleDrone} shows a microstrip patch antenna 
-constructed out of an aluminium patch and a teflon substrate. The microstrip patch 
-antenna is pointing towards the ground since the \gls{UAV} will be flying above the user.
+Figure \ref{fig:exampleDrone} shows a microstrip patch antenna made of Teflon and an 
+aluminium patch. The atenna is attached to a \gls{UAV} and is pointing towards the ground where the users are located.
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=0.8\linewidth]{drone.png}
+  \includegraphics[width=0.9\linewidth]{drone.png}
   \caption{Image of a microstrip patch antenna attached to the bottom of a \gls{UAV}. }
   \label{fig:exampleDrone}
 \end{figure}
@@ -330,6 +348,7 @@ Calculating \gls{SAR} from far-field radiation is done as follows:
 S [W/m^2]= \frac{(E_{tot} [V/m])^2}{337}
 \label{eq:flux}
 \end{equation}
+
 \begin{equation}
 SAR^{wb,ff}_{10g} [W/kg]= S [W/m^2]* 0.0028 \left[\frac{W/kg}{W/m^2}\right]
 \label{eq:DLconversion}
@@ -342,6 +361,7 @@ from formula \ref{eq:totalexposure} should first be converted to the  \gls{power
 
 The SAR caused by near-field radiation is calculated by multiplying the constant with the used transmission
 power $P_{tx}$ of the \gls{UE} which results in the following formula:
+
 \begin{equation} 
 SAR^{wb,nf}_{10g} \left[\frac{W}{kg}\right] = 0.0070 \left[\frac{W/kg}{W}\right] * P_{tx} [W]
 \label{eq:ulToSar}
@@ -378,7 +398,8 @@ is chosen because of the higher dielectric constant of $\epsilon_r = 4.4$ compar
 constant of $\epsilon_r = 2.2$ \cite{J14_antennadesign}. 
 Doing this in combination with an antenna height of 2.87 mm will decrease the dimensions of the entire antenna surface.
 This comes in handy since drones only have limited space available.
-
+\newline
+\newline
 \begin{table}[h!]
 \centering
 \begin{tabular}{|l|c|l|}
@@ -395,6 +416,7 @@ This comes in handy since drones only have limited space available.
 The dimensions of the radiating patch can be calculated with the formulas from \cite{J14_antennadesign,J15_antennadesign}.
 Doing so will result in a radiating patch of 35.09 mm by 26.55 mm and a groundplane of at least 52.40 mm by 43.80 mm.
 The microstrip patch antenna as illustrated in fig. \ref{fig:basicpatchantenna} will result in the radiation pattern of fig. \ref{fig:radpattern}.
+
 \begin{figure}[h!]
 \centering
   \includegraphics[width=\linewidth]{MicrostripAntenna.png}
@@ -456,12 +478,7 @@ the facility where the \gls{UABS}s are stored. If this is the case, the \gls{UAB
 will be removed.
 
 \subsubsection{Decision Algorithm}
-\begin{figure}[h!]
-\centering
-  \includegraphics[height=0.8\textheight]{decisionAlgoFlowChart.png}
-  \caption{Flowchart of the decision algorithm.}
-  \label{fig:decisionAlgoFlowChart}
-\end{figure}
+
 Solving the network is done by the decision algorithm and starts by calculating the path loss between all users and between users and \gls{UABS}s.
 Thereafter, the algorithm iterates over each user and tries to connect that user to each \gls{UABS}. This connection is not always possible. A \gls{UABS} might be saturated with users and 
 will not be able to cover yet another one or maybe the user is so far away that in order to cover that user, the \gls{UABS} would have to exceed its maximum allowed input power.
@@ -473,8 +490,15 @@ not the entire network. It is however assumed that the average network will be o
 When the last user has been processed, the network is fully designed for an unlimited number of drones and the result is returned to the main algorithm for further processing.
 The flowchart of this algorithm is given in figure \ref{fig:decisionAlgoFlowChart}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centering
+  \includegraphics[height=0.8\textheight]{decisionAlgoFlowChart.png}
+  \caption{Flowchart of the decision algorithm.}
+  \label{fig:decisionAlgoFlowChart}
+\end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FloatBarrier
 \section{Scenarios}
 The default configuration is given in table \ref{table:defaultconf} and is always applicable unless mentioned otherwise. 
 
