@@ -17,7 +17,7 @@
 \usepackage[english]{babel}       % Voor nederlandstalige hyphenatie (woordsplitsing)
 
 \usepackage{graphicx}			% Om figuren te verwerken.
-\graphicspath{{../../../images/}{../../../results/}}
+\graphicspath{{./}{../../../images/}{../../../results/}}
 \usepackage{booktabs}
 \usepackage{times}
 \usepackage{siunitx}
@@ -44,7 +44,7 @@
 \newtheorem{theorem}{Theorem}
 
 \begin{document}
-\title{Evaluating Human Electromagnetic Exposure in a \gls{UAV}-aided Network}
+\title{Evaluating Human Electromagnetic Exposure in a UAV-aided Network}
 
 \author{Thomas Detemmerman}
 
@@ -139,11 +139,14 @@ This planning tool describes a fully configured \gls{UAV}-network which is a sui
 \subsection{Electromagnetic exposure}
 
 Users in a telecommunication network are exposed to various sources of electromagnetic radiation, expressed in $V/m$. Once the exposure is absorbed by the human 
-body, we speak of the specific absorption rate (SAR) which is expressed in $W/kg$. All these values are 
+body, we speak of the specific absorption rate (SAR) which is expressed in $W/kg$. 
+The \gls{ICNIRP} has concluded that the threshold effect for $SAR^{wb}_{10g}$ is at 4 W/kg meaning that any higher absorption 
+rate would overwhelm the \gls{thermoregulatory capacity} of the human body  \cite{J23,J24}.
+All these values are 
 subjected to limitations enforced by the government. This research is based in Ghent, 
 a Flemish city in Belgium where the 2.6 GHz frequency band, an individual antenna cannot exceed 4.5 V/m and the cumulative sum of all 
 fixed sources has its maximum at 31 V/m \cite{J23,S13_normenBelgie}. The maximum whole body SAR-values for a mobile device 
-over a 10 g tissue ($SAR_{10g}$) is defined at $0.8 W/kg$ \cite{J30}. 
+over a 10 g tissue ($SAR_{10g}$) is defined at $0.08 W/kg$ \cite{J30,J23,S20}. 
 
 Several papers calculate exposure originating from specific sources  \cite{J6_originalExposureFormula,J1,J10_RDP,J10.1} 
 where some convert the \gls{UL} radiation into localized \gls{SAR} for head and torso \cite{J10_RDP,J10.1}. 
@@ -175,7 +178,6 @@ networks for large-scale disaster scenarios where an ideal flying height of 100 
 in \cite{U1} with a performance evaluation of the direct-link backhaul of this tool where a slightly lower 
 flying height of 80 metres is recommended.
 
-
 Mozaffari et al. provides in \cite{U3} guidelines on how to optimize and analyse \gls{UAV}s equipped for 
 wireless communication equipment.
 A research area that has been excessively studied is the location solution optimization problem where networks are 
@@ -187,7 +189,6 @@ Deruyck et al. discusses in \cite{J1} how a terrestrial network can be optimized
 However, to the best of the author knowledge, no research has been done where a \gls{UABS}-network has been optimized towards electromagnetic exposure.
 
 \subsection{Technologies}
-
 For the deployment of the network, the more robust \gls{UAV} from \cite{J2} will be used (details in table \ref{table:defaultconf}) and will be operating in the 2.6 GHz 
 bandwidth. Since the users are assumed to experience a constant electromagnetic exposure without interruptions, frequency division duplex is used.
 
@@ -195,7 +196,7 @@ bandwidth. Since the users are assumed to experience a constant electromagnetic 
 The onboard antenna of the \gls{UAV} will act as the gateway between the UE and the backhaul network.
 However, determining which antenna to use and how to position it, can be challenging.
 The radiation pattern from the antenna can be influenced by the \gls{UAV} \cite{A1}.
-Also the fact that the \gls{UAV} will hover above the user makes tradional 2D modelling insufficient.
+Also the fact that the \gls{UAV} will hover above the user makes traditional 2D modelling insufficient.
 A 3D-model which accounts for both elevation and azimuth directivity 
 will be required \cite{U12}.
 
@@ -226,11 +227,10 @@ antenna is pointing towards the ground since the \gls{UAV} will be flying above 
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=0.5\linewidth]{drone.png}
+  \includegraphics[width=0.8\linewidth]{drone.png}
   \caption{Image of a microstrip patch antenna attached to the bottom of a \gls{UAV}. }
   \label{fig:exampleDrone}
 \end{figure}
-
 
 \section{Methodology}
 \subsection{Electromagnetic Exposure}
@@ -311,7 +311,6 @@ E_{tot} [V/m] = \sqrt{\sum_{i=1}^{n} (E_i [V/m]) ^2}
 \end{equation}
 
 \subsubsection{Converting electromagnetic radiation into SAR-values}
-
 Formula \ref{eq:overallSARwb} expects that the radiation is expressed in whole body \gls{SAR}-values.
 To make this calculation possible, a distinction has to be made between near-field \gls{SAR}
 ($SAR^{wb,nf}$) and far-field \gls{SAR} ($SAR^{wb,ff}$). $SAR^{wb,myUE}_{10g}$ is a form of near-field radiation, 
@@ -412,7 +411,6 @@ The microstrip patch antenna as illustrated in fig. \ref{fig:basicpatchantenna} 
 \end{figure}
 
 \subsection{Optimizing the network}
-
 Deruyck et al. discusses in \cite{J1} how a terrestrial  telecommunication network either can be optimized towards electromagnetic 
 exposure of an individual or towards power consumption of the entire network. 
 However, an increasing transmission power of an antenna comes with an increasing electromagnetic exposure. This is not the case considering
@@ -445,12 +443,6 @@ E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 \label{eq:em}
 \end{equation}
 
-\begin{figure}[h!]
-\centering
-  \includegraphics[height=0.7\textheight]{decisionAlgoFlowChart.png}
-  \caption{Flowchart of the decision algorithm.}
-  \label{fig:decisionAlgoFlowChart}
-\end{figure}
 
 \subsection{Simulation Tool}
 
@@ -464,7 +456,12 @@ the facility where the \gls{UABS}s are stored. If this is the case, the \gls{UAB
 will be removed.
 
 \subsubsection{Decision Algorithm}
-
+\begin{figure}[h!]
+\centering
+  \includegraphics[height=0.8\textheight]{decisionAlgoFlowChart.png}
+  \caption{Flowchart of the decision algorithm.}
+  \label{fig:decisionAlgoFlowChart}
+\end{figure}
 Solving the network is done by the decision algorithm and starts by calculating the path loss between all users and between users and \gls{UABS}s.
 Thereafter, the algorithm iterates over each user and tries to connect that user to each \gls{UABS}. This connection is not always possible. A \gls{UABS} might be saturated with users and 
 will not be able to cover yet another one or maybe the user is so far away that in order to cover that user, the \gls{UABS} would have to exceed its maximum allowed input power.
@@ -526,7 +523,6 @@ The default configuration is given in table \ref{table:defaultconf} and is alway
 \label{table:defaultconf}
 \end{table}
  
-
 Three main scenarios will be investigated. 
 The first one has only one user and one \gls{UABS} present in the network. 
 SAR, electromagnetic exposure, power consumption 
@@ -553,13 +549,14 @@ It is important to note that
 all measured values are strictly limited to the sources mentioned in the previous section and thus only cover data traffic 
 between \gls{UE} and \gls{UABS}s. Any other potential sources like backhaul links will not be covered.
 
-
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=0.6\linewidth]{fourCasesMatrix.png}
+  \includegraphics[width=0.7\linewidth]{fourCasesMatrix.png}
   \caption{Matrix with the four possible configurations}
   \label{fig:fourCasesMatrix}
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% RESULTATEN %%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Results}
 Four configurations will be investigated while evaluating two parameter, being the population size and flying height.
@@ -569,7 +566,7 @@ The electromagnetic radiation and \gls{SAR} are
 measured for the weighted average user using 
 equation \ref{eq:em} with both $w_{1}$ and $w_{2}$ set to 50\%. Each result is averaged over 20 simulations. 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% S 1  %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{One User and One \gls{UABS}}
 The  results show that for a varying flying height, a logarithmic relationship exists between the $P_{tx}$ and the flying height. 
 This is mainly caused by the logarithmic 
@@ -598,10 +595,12 @@ around 80 metres.
 
 \begin{figure}[]
 \centering
-  \includegraphics[width=\linewidth]{s1/fhvssar.png}
+  \includegraphics[width=\linewidth]{fhvssar_extendedAbstract.png}
   \caption{This figure shows how SAR values from different sources are influenced by different flying altitudes.}
   \label{fig:s1_fhsar}
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%  S 2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Increased Population with one UABS}
 \subsubsection{Variable Flying Height}
@@ -618,7 +617,7 @@ When only a limited amount of \gls{UABS}s are available,
 like only one in this scenario, the tool will only keep \gls{UABS}s which cover the most users. 
 Therefore, the power consumption in a \gls{PwrC Opt} network is often higher. 
 \begin{figure}[h!]
-  \includegraphics[width=\linewidth]{s2/fhvsdlAndPc.png}
+  \includegraphics[width=\linewidth]{fhvsdlAndPc_extendedAbstract.png}
   \caption{Fig. (a) show how the flying height influences the downlink electromagnetic radiation of the average user and fig. (b) the
   power consumption of the entire network for the only \acs{UABS} available in the network.}
   \label{fig:s2a_dlAndPc}
@@ -649,27 +648,33 @@ The exposure from other \gls{UE} can be neglected with 0.03 $pW/kg$. A low but p
 \gls{UE} are not radiating anything since they are uncovered.
 
 \begin{figure}[h!]
+\centering
   \includegraphics[width=\linewidth]{s2/fhFourSources.png}
-  \caption{Each figure corresponds with a certain configuration and shows how the \acs{SAR} from 
-  different sources are influenced by an increasing flying height.}
+  \caption{Influence of the flying height for each considered configuration.
+  %Each figure shows how with a certain configuration and shows how the \acs{SAR} from   different sources are influenced by an increasing flying height.
+  }
   \label{fig:s2shfourSourcesMatrix}
 \end{figure}
 
+\FloatBarrier
 \subsubsection{Variable Number of Users}
 The number of covered users increases linearly compared to the number of users present in the network as shown in figure 
 \ref{fig:s2uvsnumcovusers}.b. It illustrates how an \gls{isotropicradiator} is able to reach more users 
 compared to a microstrip patch antenna. Just like an power consumption optimized network 
 is able to reach more users than an exposure optimized network.
-For example, with 600 users, 5 to 7 additional 
-people can be covered when replacing a microstrip patch antenna with an \gls{isotropicradiator}
-and changing an exposure optimized network with an power consumption optimized network will 
-cover one or two additional users.
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{s2/uvsnumdronesAndCov.png}
   \caption{The influence of increasing traffic on the user coverage.}
   \label{fig:s2uvsnumcovusers}
 \end{figure}
 
+For example, with 600 users, 5 to 7 additional 
+people can be covered when replacing a microstrip patch antenna with an \gls{isotropicradiator}
+and changing an exposure optimized network with an power consumption optimized network will 
+cover one or two additional users.
+
+
+\FloatBarrier
 Figure  \ref{fig:s2b_dlAndPc}.a  is influenced by  \ref{fig:s2uvsnumcovusers}.a. When less users are 
 covered, the exposure of the average user will decrease as well.
 For example, in an EIRP \gls{PwrC Opt} network, 50 users have a 6.75\% coverage which corresponds with a weighted average exposure of  18 $mV/m$
@@ -678,38 +683,36 @@ Further,  figure \ref{fig:s2b_dlAndPc}.b is directly influence by figure \ref{fi
 the probability that some of these users have a worse path loss is higher. The \gls{UABS} solves this problem by increasing the 
 power consumption. Increasing the population from 50 to 600 will require between 0.05 and 0.1 $W$ more. 
 For this scenario, no clear difference in power consumption exists between the four configurations.
-
 \begin{figure}[h!]
-  \includegraphics[width=\linewidth]{../results/s2/uvsdlAndPc.png}
+  \includegraphics[width=\linewidth]{s2/uvsdlAndPc.png}
   \caption{These two figures show how various sizes of population influence the downlink electromagnetic radiation of the average user (left) and 
   power consumption of the entire network (rights) for one \acs{UABS} available in the network.}
   \label{fig:s2b_dlAndPc}
 \end{figure}
 
-The \gls{SAR} comming from the 
+The \gls{SAR} coming from the 
 users own device is on average zero since most users are uncovered. 
 Figure \ref{fig:uvsulsarcentralUsers} shows the exposure for the covered user
 just below the \gls{UABS}. Scenario I already showed that the \gls{SAR} from the user's own device is only influenced by the flying height
 and is also confirmed by the results in fig. \ref{fig:uvsulsarcentralUsers}.a where constant $SAR^{myUE}$ is measured of 0.15 $\mu W/kg$.
 The \gls{SAR} from the \gls{UABS} experiences a slight increase of 0.005 $\mu W/kg$. When the population grows, more users
 will be near the \gls{UABS}. The \gls{UABS} will likely decide to cover these users as well as visible in figure \ref{fig:connectionMap}.
+\begin{figure}[h]
+\subfloat[50 users]{\includegraphics[width=0.49\linewidth]{connectionsMap50Users.png}}
+\hfill
+\subfloat[600 users]{\includegraphics[width=0.49\linewidth]{connectionsMap600Users.png}}
+\caption{Overview of which users are connected to the \acs{UABS}.}
+  \label{fig:connectionMap}
+\end{figure}
+\FloatBarrier
 These users might have a slightly 
 worse path loss because of obstructing buildings or somewhat bigger distance. The \gls{UABS} reacts to this by increasing 
 his power consumption causing an increase in the \gls{DL} \gls{SAR} for the central user.
 The far-field radiation from \gls{UE} is very low as mentioned before and therefore added separately in figure \ref{fig:uvsulsarcentralUsers}.b.
 It shows that the \gls{SAR}  from other \gls{UE} increases from zero to $0.15\ pW/kg$. 
-
-\begin{figure}[h]
-\subfloat[50 users]{\includegraphics[width=0.49\linewidth]{../images/connectionsMap50Users.png}}
-\hfill
-\subfloat[600 users]{\includegraphics[width=0.49\linewidth]{../images/connectionsMap600Users.png}}
-\caption{Overview of which users are connected to the \acs{UABS}.}
-  \label{fig:connectionMap}
-\end{figure}
-
 \begin{figure}[h]
 \centering
-  \includegraphics[width=0.9\linewidth]{../results/s2/uvsulsarcentralUser.png}
+  \includegraphics[width=\linewidth]{s2/uvsulsarcentralUser.png}
   \caption{SAR-values for the user who is directly beneath the only \acs{UABS} available.}
   \label{fig:uvsulsarcentralUsers}
 \end{figure}
@@ -775,6 +778,7 @@ for both optimization strategies.
   \label{fig:s3a_fourSourcesMatrix}
 \end{figure}
 
+\FloatBarrier
 \subsubsection{Variable Number of Users}
 
 The second evaluated parameter of this scenario is a variable number of users while the flying height is fixed to 100 metres.  
@@ -806,7 +810,7 @@ between 80 and 130 $mV/m$ depending on the configuration. The power consumption 
  a microstrip \gls{PwrC Opt} network requires 117 $W$,
 \gls{EIRP} \gls{Exp Opt} networks require 107 $W$ and \gls{EIRP} \gls{PwrC Opt} network requires 92 $W$.
 
-The correct behaviour of the decision algorithm became already clear in the previous subsection \ref{S3A} but is also
+The correct behaviour of the decision algorithm became already clear in the previous subsection but is also
 confirmed here. 
 When comparing both optimization strategies, a power consumption optimized network requires around 5 $W$ less but exposes its users between 27 $mV/m$ and 30 $mV/m$ more than
 exposure optimized networks. 
@@ -871,7 +875,7 @@ For a default network, a microstrip patch antenna can reduce between 30\% and 34
 from an \gls{isotropicradiator}. Doing so will increase the power consumption with 11 $W$.
 \begin{figure}[hb!]
 \centering
-  \includegraphics[width=0.9\linewidth]{../images/fourCasesMatrixSol.png}
+  \includegraphics[width=0.8\linewidth]{../images/fourCasesMatrixSol.png}
   \caption{Matrix with the four possible configurations, colour-coded based on the results.}
   \label{fig:resultIllustration}
 \end{figure}
@@ -880,10 +884,10 @@ Figure \ref{fig:resultIllustration} shows an overview based on the results from 
 Remarkable is that an \gls{EIRP} exposure optimized network behaves very similar to a microstrip power consumption optimized network.
 Therefore, the microstrip patch antenna in a power consumption optimized network is recommended. 
 The microstrip patch antenna will generate less electromagnetic radiation by design and
- the power consumption optimization reduces the number of required drones and power. A microstrip patch antenna with an aperture 
- angle of \ang{90} is considered as a good solution but if budget is more limited, an antenna with a larger aperture angle 
- would further reduce cost without interfering with the Flemish legislation regarding electromagnetic exposure  with more than one millionth of the maximal allowed whole body \gls{SAR}
-  with more than one millionth of the maximal allowed whole body \gls{SAR}. with more than one millionth of the maximal allowed whole body \gls{SAR}.
+the power consumption optimization reduces the number of required drones and power. A microstrip patch antenna with an aperture 
+angle of \ang{90} is considered as a good solution but if budget is more limited, an antenna with a larger aperture angle 
+would further reduce cost without interfering with the Flemish legislation regarding electromagnetic exposure  
+with more than hundred thousandth of the maximal allowed whole body \gls{SAR}.
 
 
 %What is the contribution of each source towards the total electromagnetic exposure?
@@ -915,7 +919,7 @@ The electromagnetic
 \newcount\ind \ind=-1
 \begin{figure}
 \centering
- \resizebox {!} {5.5cm} {
+ \resizebox {!} {4cm} {
 \begin{tikzpicture}[nodes = {font=\sffamily}]
   \foreach \percent/\name in {
       52/ my UE,

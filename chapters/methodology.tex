@@ -173,7 +173,6 @@ K_{a}=
   \end{cases*}
   \label{eq:walfish8}
 \end{equation}
-
 \begin{equation}
 k_{d}=
 \begin{cases*}
@@ -182,7 +181,6 @@ k_{d}=
   \end{cases*}
   \label{eq:walfish9}
 \end{equation}
-
 \begin{equation}
 K_{f} = -4 + 
 \begin{cases*}
@@ -191,8 +189,6 @@ K_{f} = -4 +
 \end{cases*}
 \label{eq:walfish10}
 \end{equation}
-
-
 
 \subsubsection{Combining Exposure}
 The total electromagnetic exposure $E_{tot}$ for a given location originating from different sources can be calculated with formula \ref{eq:totalexposure} (in V/m). $E_i$ stands for 
@@ -220,7 +216,6 @@ The constant in equation \ref{eq:DLconvertion} converts the \gls{power flux dens
 To make this possible, the electromagnetic radiation
 from formula \ref{eq:totalexposure} (expressed in  $V/m$) should first be converted to the  \gls{power flux density} with formula 
 \ref{eq:flux} before formula \ref{eq:DLconvertion} can be applied.
-
 \begin{equation}
 S [W/m^2]= \frac{(E_{tot} [V/m])^2}{337}
 \label{eq:flux}
@@ -232,14 +227,12 @@ SAR^{wb,ff}_{10g} [W/kg]= S [W/m^2]* 0.0028  \left[\frac{W/kg}{W/m^2}\right]
 
 \subsection{Electromagnetic Exposure Caused by Near-Field Radiation}
 \label{sub:Uplinkexposure}
-
 Up till now, only sources that cause far-field radiation have been considered.
 However, when a user is operating his device, a part of the \gls{UL} radiation will enter his body despite the fact 
 that the  data traffic is destined for the serving \gls{UABS}. This device is very close to the user and the emitted 
 radiation is therefore considered to be near-field radiation.
 
 \subsubsection{Localized Specific Absorption Rate}
-
 When assuming that all users hold their device next to their ear, a localized SAR-value for the head $SAR^{head}_{10g}$ can be calculated.
 Various governments have defined different legislations.
 The European Union uses the directions of the  \acs{IEC} who
@@ -266,20 +259,13 @@ stands for the receiver sensitivity and $PL$ the path loss between sender and re
 P_{tx} = P_{sens} [W] + PL [dB]
 \label{eq:ptx}
 \end{equation}
- 
 Despite the legal $SAR^{max}_{10g}$ for Belgium is set to 2 $W/kg$,  the actual  $SAR^{max}_{10g}$ value is usually lower and different for each mobile device. 
 An average is calculated based on 3516 different phones from various brands using a German database \cite{SARDatabase}. An overview can be 
 found in fig. \ref{chart:germanDatabase}.
 When the phone is positioned at the ear, an average $SAR^{max}_{10g}$  of 0.7 $W/kg$ is found with a standard deviation of 0.25 $W/kg$ which are very similar 
-results as in ref. \cite{j10.1.1}. The median of 0.67  $W/kg$ is used as $SAR^{max}_{10g}$ in formula \ref{eq:calculatesar}.
-
-%todo: schrijven dat het enigste verschil een std van 0.27 is?
-%todo: j10.1.1 schrijft door de std van 0.25 dat er een onzekerheid van 40% is.
-%todo: J10 en J10.1 rapoteert een sar max van 0.476. Update in het report is het een Nokia terwijl het bij ons voor de gemiddelde gsm is.
-
-
+results as in ref. \cite{J10.1.1}. The median of 0.67  $W/kg$ is used as $SAR^{max}_{10g}$ in formula \ref{eq:calculatesar}.
 \definecolor{hous}{HTML}{3065c1}
-\begin{figure}
+\begin{figure}[h!]
   \begin{tikzpicture}
   \begin{axis}[
           ybar=-1cm,
@@ -600,7 +586,7 @@ The flowchart of the main algorithm is given in figure \ref{fig:mainflow}.
   \captionof{figure}{Flowchart of the decision algorithm.}
   \label{fig:decisionAlgoFlowChart}
 \end{minipage}%
-\begin{minipage}{0.4\textwidth}\vspace{-120pt}%
+\begin{minipage}{0.4\textwidth}%\vspace{-120pt}%
 Solving the network is done by the decision algorithm and starts by calculating the path loss
 between the different users and thereafter between users and \gls{UABS}s.
 Thereafter, the tool iterates over each user and tries to connect that user to each \gls{UABS}. This connection is not always possible. A \gls{UABS} might be saturated with users and 
@@ -721,7 +707,7 @@ multiple keys.
 Each node in this tree is associated with a certain dimension and will split the hyperplane over exact one dimension.
 In this case, the x and y coordinate will be used in a 2D-tree (k=2) like in figure \ref{fig:exampleKDtree}.
 
-\begin{figure}[]
+\begin{figure}[h!]
   \centering
   \includegraphics[width=\textwidth/10*8]{../images/Example-of-a-2D-k-d-tree.png}
   \caption{Example of a KD-tree in two dimensions.}
