@@ -77,7 +77,7 @@
   This directional antenna focusses electromagnetic radiation where it is needed. Unwanted sideways radiation 
   is therefore reduced by design.
   The sufficiently large aperture angle covers enough users. The antenna is recommended to be deployed in a power consumption 
-  optimized network since less drones are required and therefore also less expensive.
+  optimized network since less \gls{UAV}s are required and therefore also less expensive.
   The optimal flying height for the city centre of Ghent is believed to be situated at 80 metres since lower flying heights require much more UABSs and
   higher flying heights have a negative influence on the electromagnetic exposure.  
 \end{abstract}
@@ -211,7 +211,7 @@ However, to the best of the author knowledge, no research has been done where a 
 For the deployment of the network, the more robust \gls{UAV} from \cite{J2} will be used (details in table \ref{table:defaultconf}) and will be operating in the 2.6 GHz 
 bandwidth. Since the users are assumed to experience a constant electromagnetic exposure without interruptions, frequency division duplex is used.
 
-% problem antennae on drones
+% problem antennae on \gls{UAV}s
 The onboard antenna of the \gls{UAV} will act as the gateway between the UE and the backhaul network.
 However, determining which antenna to use and how to position it, can be challenging.
 The radiation pattern from the antenna can be influenced by the \gls{UAV} \cite{A1}.
@@ -397,7 +397,7 @@ In this research, a substrate like glass
 is chosen because of the higher dielectric constant of $\epsilon_r = 4.4$ compared to materials like Teflon with only a dielectric 
 constant of $\epsilon_r = 2.2$ \cite{J14_antennadesign}. 
 Doing this in combination with an antenna height of 2.87 mm will decrease the dimensions of the entire antenna surface.
-This comes in handy since drones only have limited space available.
+This comes in handy since \gls{UAV}s only have limited space available.
 \newline
 \newline
 \begin{table}[h!]
@@ -452,7 +452,7 @@ exposure is not important. Such network will therefore be called a \gls{PwrC Opt
 Likewise, a $w$ set to 1 means that minimizing exposure is top priority and will result in an \gls{Exp Opt} network. $P_{max}$ is the power consumption of all UABSs, 
 both active and inactive, when radiating at the highest level possible 
 while $P$ is the effective power used by the current designed network. 
-This will be the power required for the flying drones themselves and their antennae.
+This will be the power required for the flying \gls{UAV}s themselves and their antennae.
 $E_m$ will be the weighted exposure of the average user for the current designed network and $E_{max}$ the weighted average of the electromagnetic exposure when all antennae 
 are at their highest power level.
 
@@ -487,7 +487,7 @@ This is repeated for each \gls{UABS}. Only the connection which results in the b
 Doing so will make sure that, given the currently designed network, the user is optimized. In other words, each user is optimized and 
 not the entire network. It is however assumed that the average network will be optimized as well.
  Thereafter, the tool shifts to the next user. 
-When the last user has been processed, the network is fully designed for an unlimited number of drones and the result is returned to the main algorithm for further processing.
+When the last user has been processed, the network is fully designed for an unlimited number of \gls{UAV}s and the result is returned to the main algorithm for further processing.
 The flowchart of this algorithm is given in figure \ref{fig:decisionAlgoFlowChart}.
 
 \begin{figure}[h!]
@@ -687,7 +687,7 @@ The number of covered users increases linearly compared to the number of users p
 compared to a microstrip patch antenna. Just like an power consumption optimized network 
 is able to reach more users than an exposure optimized network.
 \begin{figure}[h!]
-  \includegraphics[width=\linewidth]{s2/uvsnumdronesAndCov.png}
+  \includegraphics[width=\linewidth]{s2/uvsnum\gls{UAV}sAndCov.png}
   \caption{The influence of increasing traffic on the user coverage.}
   \label{fig:s2uvsnumcovusers}
 \end{figure}
@@ -756,26 +756,26 @@ of $54\ W$.
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s3/fhvsdlAndPc.png}
   \caption{These two figures show how the flying height influences the downlink electromagnetic radiation of the average user (left) and 
-  power consumption of the entire network (right) for an unlimited number of drones.}
+  power consumption of the entire network (right) for an unlimited number of \gls{UAV}s.}
   \label{fig:s3a_dlAndPc}
 \end{figure}
 
 The exposure in figure \ref{fig:s3a_dlAndPc} shows that an \gls{Exp Opt} network increases logarithmically while the \gls{PwrC Opt} network rather 
 has a concave relationship with the flying height, and has its lowest point at around 70 metres.
 
-Figure \ref{fig:s3a_numDronesAndCov}.a shows that the optimal coverage is achieved at a low flying height of 
+Figure \ref{fig:s3a_num\gls{UAV}sAndCov}.a shows that the optimal coverage is achieved at a low flying height of 
 40 metres with around 99\% coverage. 
 However, there is a downside to this. 
-Figure \ref{fig:s3a_numDronesAndCov}.b 
+Figure \ref{fig:s3a_num\gls{UAV}sAndCov}.b 
  shows that the number of required \gls{UAV}s increases when the flying altitude becomes lower;
 a behaviour which was also determined in \cite{J2}.
 For example, an microstrip \gls{Exp Opt} network and an \gls{EIRP} \gls{PwrC Opt} network require respectively 84 and 64
 \gls{UABS}s at a flying altitude of $200\ m$ which increases respectively to 211 and 162 \gls{UABS}s at a much lower flying altitude of $20\ m$.
 
 \begin{figure}[]
-  \includegraphics[width=\linewidth]{../results/s3/fhvsnumdronesAndCov.png}
+  \includegraphics[width=\linewidth]{../results/s3/fhvsnum\gls{UAV}sAndCov.png}
   \caption{This graph shows how much \acs{UAV}s are required at different flying heights while trying to achieve a 100\% coverage.}
-  \label{fig:s3a_numDronesAndCov}
+  \label{fig:s3a_num\gls{UAV}sAndCov}
 \end{figure}
 
 Figure \ref{fig:s3a_fourSourcesMatrix} shows how each source contributes to the total \gls{SAR}.
@@ -806,10 +806,10 @@ for both optimization strategies.
 \subsubsection{Variable Number of Users}
 
 The second evaluated parameter of this scenario is a variable number of users while the flying height is fixed to 100 metres.  
-Figure \ref{fig:s3b_numdronesAndCov}.a shows how the tool tries to reach a 100\% coverage. The percentage
+Figure \ref{fig:s3b_num\gls{UAV}sAndCov}.a shows how the tool tries to reach a 100\% coverage. The percentage
 of covered users is slightly less for smaller networks. For only 50 users, an average 
 coverage of around 93\% is achieved while a network with 600 users has a coverage of around 97\%.
-Figure \ref{fig:s3b_numdronesAndCov}.b prove that more \gls{UAV}s are required for these large 
+Figure \ref{fig:s3b_num\gls{UAV}sAndCov}.b prove that more \gls{UAV}s are required for these large 
 populations. 
 The difference in optimization strategy is very little for a small amount of people but increases very quickly. 
 When the population increases from 50 to 600 users,
@@ -820,9 +820,9 @@ This is an expected behaviour  when looking at the previous scenario where, with
 the percentage of covered users decreases for these larger populations.
 
 \begin{figure}[h]
-  \includegraphics[width=\linewidth]{../results/s3/uvsnumdronesAndCov.png}
+  \includegraphics[width=\linewidth]{../results/s3/uvsnum\gls{UAV}sAndCov.png}
   \caption{This graph shows how much \acs{UAV}s are required for different flying heights while trying to achieve a 100\% coverage.}
-  \label{fig:s3b_numdronesAndCov}
+  \label{fig:s3b_num\gls{UAV}sAndCov}
 \end{figure}
 
 
@@ -850,7 +850,7 @@ between 25 $mV/m$ and 27 $mV/m$ more while requiring around 12 $W$ less than whe
   \caption{The influence of the population size on the downlink electromagnetic radiation (a) and power consumption (b).}
   \label{fig:s3b_dlAndPC}
 %\bigbreak
- % \includegraphics[width=\linewidth]{../results/s3/u_numdronesvsdlAndPc.png}
+ % \includegraphics[width=\linewidth]{../results/s3/u_num\gls{UAV}svsdlAndPc.png}
   %\caption{The influence of the number of UABSs on the downlink electromagnetic radiation (a) and power consumption (b).}
   %\label{fig:s3b_dlAndPC2}
 \end{figure}
@@ -884,19 +884,20 @@ A capacity-based deployment tool has been used to identify the \gls{SAR} of a us
 towards \gls{DL} electromagnetic exposure and overall power consumption. This has been investigated for different flying heights,
 number of users and number of available \gls{UABS}s.
 The  results confirm that optimizing towards electromagnetic exposure and total power consumption indeed result in 
-conflicting requirements as it was already stated in  \cite{J1}. The proposed fitness function works as intended  
+conflicting requirements as it was already stated in  \cite{J1}. The proposed fitness function works as intended. 
 For default networks, the electromagnetic field radiation from a
 power consumption optimized network can be reduced up to 23\% for \gls{isotropicradiator}s and 30\% for microstrip patch antennae 
 by optimizing towards electromagnetic exposure. Doing so, decreases the range of the \gls{UABS} and much more \gls{UABS}s will be needed. 
-Therefore, exposure optimized networks will, on average, use 18 drones more than power consumption optimized networks
+Therefore, exposure optimized networks will, on average, use 18 \gls{UAV}s more than power consumption optimized networks
 and require therefore 5 $W$ more energy.
+
 %	How does the network behave differently after the introduction of a realistic antenna?
 A directional microstrip patch antenna is introduced because it gives several advantages compared to omnidirectional antennae.
 Directional antennae are able to focus their energy there where it is needed, namely towards the ground. Microstrip patch antennae 
 further benefit from their thin and lightweight design. 
-A microstrip patch antenna with an aperture  angle of \ang{90} has lower exposure and coverage and requires more power compared to an \gls{isotropicradiator}.
-For a default network, a microstrip patch antenna can reduce between 30\% and 34\% electromagnetic exposure 
-from an \gls{isotropicradiator}. Doing so will increase the power consumption with 11 $W$.
+A microstrip patch antenna with an aperture  angle of \ang{90} causes less electromagnetic exposure and coverage and requires more power compared to an \gls{isotropicradiator}.
+For a default network, a microstrip patch antenna can reduce between 30\% and 34\% of the electromagnetic exposure 
+emitted by an \gls{isotropicradiator}. This will increase the power consumption with 11 $W$.
 \begin{figure}[hb!]
 \centering
   \includegraphics[width=0.8\linewidth]{../images/fourCasesMatrixSol.png}
@@ -908,10 +909,10 @@ Figure \ref{fig:resultIllustration} shows an overview based on the results from 
 Remarkable is that an \gls{EIRP} exposure optimized network behaves very similar to a microstrip power consumption optimized network.
 Therefore, the microstrip patch antenna in a power consumption optimized network is recommended. 
 The microstrip patch antenna will generate less electromagnetic radiation by design and
-the power consumption optimization reduces the number of required drones and power. A microstrip patch antenna with an aperture 
+the power consumption optimization reduces the number of required \gls{UAV}s and power. A microstrip patch antenna with an aperture 
 angle of \ang{90} is considered as a good solution but if budget is more limited, an antenna with a larger aperture angle 
-would further reduce cost without interfering with the Flemish legislation regarding electromagnetic exposure  
-with more than hundred thousandth of the maximal allowed whole body \gls{SAR}.
+would further reduce cost without interfering with the Flemish legislation regarding electromagnetic exposure.
+The \gls{SAR} from the configuration with the most exposure is still a hundred thousandth of the maximal allowed whole body \gls{SAR}.
 
 
 %What is the contribution of each source towards the total electromagnetic exposure?
@@ -919,12 +920,12 @@ Figure \ref{fig:pie} gives
 an overview of the contribution of \gls{SAR} in percentage to the total 
 exposure for a default network. The values have been averaged over all four considered configurations. 
 The user's main source of exposure is clearly the user's own device which contributes 52\% of the total experienced exposure.
-A conclusion that was also made by the authors of \cite{J17_kuehn2019modelling} and  \cite{J10.1.1} 
+A conclusion that was also made by the authors of \cite{J17_kuehn2019modelling} and  \cite{J10.1.1}.
 Further, in \cite{J10.1.1} is also concluded that,
 thanks to power control, the electromagnetic radiation from the mobile phone 
 comes really close to the exposure from the \gls{UABS}. 
 Also this is confirmed by the results. Figure \ref{fig:pie} shows that the electromagnetic exposure 
-from all \gls{UABS}s together covers the remaining 48\% of which 15 \% is from the serving UABS. 
+from all \gls{UABS}s together covers the remaining 48\% of which 15\% is from the serving UABS. 
 The electromagnetic
  exposure from devices belonging to other people can be ignored compared to the much higher electromagnetic exposure from the other sources
  and contributes only 0.0001\%. It is important to notice that a rather low \gls{pusch} value is used in equation \ref{eq:powerUE} for determining the 
@@ -986,17 +987,17 @@ the electromagnetic radiation increases between 80 and 130 $mV/m$ depending
 on the configuration. The power consumption increases with 110 $W$ for all configurations. 
 The main source that is influenced by the number of users is the \gls{SAR} from other UABSs with an increase between 1 and 3 $\mu W/kg$, depending on 
 the configuration.
-Further, increasing the flying altitude has a positive influence on the number of required drones which on their 
+Further, increasing the flying altitude has a positive influence on the number of required \gls{UAV}s which on their 
 turn have a positive influence on power consumption. Increasing the flying altitude from 50 m to 200 m, decreases the number 
-of required drones around 59\% which was also concluded in \cite{J2}.
+of required \gls{UAV}s around 59\%. This decrease was also noticed in \cite{J2}.
 Also authors from \cite{J17_kuehn2019modelling} made the conclusion that reduced path loss decreases electromagnetic exposure.
 The electromagnetic radiation from the \gls{UABS}s remains more or less the same for flying altitudes between 80 and 200 metres. Most 
 \gls{UABS}s are in \gls{LOS} and no more power will be used thanks to power control.
-However, the electromagnetic radiation from the user's own device does increase in order to reach the high flying drones.
+However, the electromagnetic radiation from the user's own device does increase in order to reach the high flying \gls{UAV}s.
 Around 80 metres, the exposure from the  user's device surpasses the exposure from the serving \gls{UABS}.
-When more \gls{UABS}s are available in the network, electromagnetic exposure from other \gls{UABS} will increase as well 
-because more \gls{UABS}s come into \gls{LOS}. Raising the flying altitude from 50 to 200 m will increase the \gls{SAR} from other 
-\gls{UABS}s between 46 and 49 times when using an \gls{EIRP} antenna and between 70 and 85 times when using a microstrip patch antenna.
+When more \gls{UABS}s are available in the network, electromagnetic exposure from other \gls{UABS} will increase as well.
+This is because more \gls{UABS}s come into \gls{LOS} when the flying height becomes larger. Raising the flying altitude from 50 to 200 m will increase the \gls{SAR} from other 
+\gls{UABS}s between 46 and 49 times when using an \gls{isotropicradiator} and between 70 and 85 times when using a microstrip patch antenna.
 When also considering the results from \cite{U1} where a flying altitude of  
 80 metres is suggested for an optimal access and backhaul connectivity, a flying height 
 of 80 metres is also here proposed for the city centre of Ghent.
@@ -1005,7 +1006,7 @@ In conclusion, a microstrip patch antenna with an aperture angle of \ang{90} is 
 This directional antenna focusses electromagnetic radiation where it is needed and unwanted sideways radiation 
 is reduced by design.
 The sufficiently large aperture angle covers enough users. The antenna is recommended to be deployed in a power consumption 
-optimized network since less drones are required and therefore also less expensive.
+optimized network since less \gls{UAV}s are required and therefore also less expensive.
 The optimal flying height for the city centre of Ghent is believed to be situated at 80 metres since lower flying heights require much more \gls{UABS}s and
 higher flying heights have a negative influence on the electromagnetic exposure.  
 
