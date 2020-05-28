@@ -31,13 +31,14 @@ If the goal is to remain in the air for a longer period of time, an exposure opt
 an individual \gls{UABS} is lower.
 On the other hand, a power consumption optimized network is cheaper because less drones are involved.
 Moreover, the results show that the electromagnetic radiation in a power consumption optimized network (with high powered \gls{UABS}s)
-is far below the thresholds enforced by the Flemish government with more than one millionth of the maximal allowed whole body \gls{SAR}.
+is far below the thresholds enforced by the Flemish government with more than hundred thousandth of the maximal allowed whole body \gls{SAR}.
 
 \definecolor{c_myuabs}{HTML}{A9C6FC}
 \definecolor{c_otheruabs}{HTML}{7A4655}
 \definecolor{c_myue}{HTML}{90AF74}
 \definecolor{c_otherue}{HTML}{F4A259}
 
+\begin{figure}
 \begin{tikzpicture}
 \pgfplotsset{
         show sum on top/.style={
@@ -57,7 +58,7 @@ is far below the thresholds enforced by the Flemish government with more than on
     title={SAR for default configuration},
     ylabel={Whole body SAR (nW/kg)},
     xlabel={Configurations},
-    height=8cm, width=\textwidth,
+    height=7cm, width=\textwidth,
     legend cell align={left},
     ybar stacked, ymin=0,  
     bar width=10mm,
@@ -99,6 +100,10 @@ is far below the thresholds enforced by the Flemish government with more than on
   \legend{my UABS,other UABSs,my UE,other UE}
 \end{axis}
 \end{tikzpicture}
+\caption{The contribution of each source towards the total \acs{SAR} for each considered configuration. 
+The values are achieved with default values.}
+\label{fig:tabel}
+\end{figure}
 
 
 %	How does the network behave differently after the introduction of a realistic antenna?
@@ -117,7 +122,7 @@ causes less sideways radiation. So the exposure from other \gls{UABS}s will also
 
 \begin{figure}[hb!]
 \centering
-  \includegraphics[width=0.9\textwidth]{../images/fourCasesMatrixSol.png}
+  \includegraphics[width=0.8\textwidth]{../images/fourCasesMatrixSol.png}
   \caption{Matrix with the four possible configurations, colour-coded based on the results.}
   \label{fig:resultIllustration}
 \end{figure}

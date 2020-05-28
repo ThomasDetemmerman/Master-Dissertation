@@ -25,21 +25,21 @@ which state that in the 2.6 GHz frequency band, an individual antenna cannot exc
 fixed sources has its maximum at 31 V/m \cite{J23, S13_normenBelgie}.
 
 \subsection{Specific Absorption Rate}
-The Specific Absorption Rate (\gls{SAR}) represents the rate at which electromagnetic energy is 
+The \gls{SAR} represents the rate at which electromagnetic energy is 
 absorbed by human tissue with the thermal effect as its most important health consequence.
 The volume of this tissue is typically 1 g ($SAR_{1g}$) or 10 g ($SAR_{10g}$). 
-$SAR$ values can be categorized based on the covered area, as an example, 
-the whole body \gls{SAR} ($SAR^{wb}$) is defined as the average radiation over the entire body.
-Another  example are localized \gls{SAR}-values that only cover a certain part of the human body like the head.
+$SAR$ values can be categorized based on the covered area. As an example, 
+the whole body \gls{SAR} ($SAR^{wb}$) is defined as the average radiation over the entire body while
+localized \gls{SAR}-values only cover a certain part of the human body like the head.
 The \gls{ICNIRP} has concluded that the threshold effect for $SAR^{wb}_{10g}$ is at 4 W/kg meaning that any higher absorption 
-rate would overwhelm the \gls{thermoregulatory capacity} of the human body.
+rate would overwhelm the \gls{thermoregulatory capacity} of the human body \cite{J23,J24}.
 Whole body \gls{SAR}-values between 1 and 4 W/kg increase the temperature of the human body less than 1°C, which is proven not to be harmful 
 for a healthy human being \cite{J24,P2}.
-Thereafter, a safety margin is introduced to tackle unknown variables like experimental errors, increased sensitivity for certain population groups and so on. 
+Thereafter, a safety factor of 50 for the public \cite{J23} is used to tackle unknown variables like experimental errors, increased sensitivity for certain population groups and so on. 
 The \gls{EU} follows the recommendation from the \gls{ICNIRP} \cite{J23} and 
-suggests a whole body $SAR_{10g}$ of 0.8 $W/kg$ and 2 $W/kg$ for localized $SAR_{10g}$ at head and torso area \cite{J31_bioeffects,J30}. 
+suggests a whole body $SAR_{10g}$ of 0.08 $W/kg$ and 2 $W/kg$ for localized $SAR_{10g}$ at head and torso area \cite{J31_bioeffects,J30}. 
 The first metric is applicable for \gls{UE} and the second one for transmission towers \cite{S20}.
-Belgium follows this recommendation \cite{J23, S13_normenBelgie}.
+Belgium follows this recommendation \cite{J23,S13_normenBelgie}.
 The \gls{FCC} of the \gls{USA} follows the recommendations of the \gls{IEEE} Std C95.1-1999 \cite{P1,P2} that defines 
 regulations based on 1 g tissue.
 The $SAR^{wb}_{1g}$ is therefore defined at 1.6 $W/kg$ despite the fact that this value has been reviewed and changed by the \gls{IEEE} to 8 $W/kg$ in Std C95.1-2005 \cite{P2}.
@@ -50,7 +50,7 @@ An overview is given in table \ref{table:overviewSARValues}.
 \hline
 \textbf{Description} & \textbf{Value} & \textbf{Units} \\ \hline
 Max $SAR^{wb}_{10g}$ (defined by \gls{ICNIRP})                           &  $4$ & $W/kg$              \\ \hline
-Max $SAR^{wb}_{10g}$ for transmission towers (defined by the Belgian government)                & $0.8$ & $W/kg$               \\ \hline
+Max $SAR^{wb}_{10g}$ for transmission towers (defined by the Belgian government)                & $0.08$ & $W/kg$               \\ \hline
 Max $SAR_{10g}$ for \acs{UE} at head area (defined by the Belgian government)                  & $2$ & $W/kg$               \\ \hline
 Max $SAR_{1g}$ for \acs{UE} at head area (defined by the \gls{FCC})                  & $1.6$ & $W/kg$               \\ \hline
 \end{tabular}
@@ -60,8 +60,8 @@ Max $SAR_{1g}$ for \acs{UE} at head area (defined by the \gls{FCC})             
 
 The actual maximum \gls{SAR}-value of a phone is usually much lower. As an illustration, the 
 iPhone 11 pro has a maximum $SAR_{10g}^{head}$ of 0.99 $W/kg$ \cite{S21} and a Samsung Galaxy S20 (GT-I8530) a
- $SAR_{10g}^{head}$ of 0.516 $W/Kg$ \cite{S22,SARDatabase}. The phone with the highest recorded $SAR_{10g}^{head}$ value 
- according to \cite{SARDatabase} is the discontinued LG 510W with a maximum of 1,94 $W/kg$.
+ $SAR_{10g}^{head}$ of 0.516 $W/Kg$ \cite{S22,SARDatabase}. 
+ %The phone with the highest recorded $SAR_{10g}^{head}$ value according to \cite{SARDatabase} is the discontinued LG 510W with a maximum of 1,94 $W/kg$.
 
 \subsection{Related Work} % (fold)
 \label{sub:general}
@@ -178,7 +178,8 @@ Two types of
 drones are considered in \cite{J2}: an off-the-shelf drone affordable by the general public and a more robust one. The results in \cite{J2}
 show that the second type will require less drones to cover the same number of users and will last longer in the air. The research in this paper
 will therefore be done with the usage of the second type. A technical overview of this drone is given in table \ref{table:dronespecs}.
-
+\newline
+\newline
 \begin{table}[h!]
 \centering
 \begin{tabular}{|l|c|c|}
