@@ -9,20 +9,22 @@
 
 
 \documentclass[twocolumn]{phdsymp_dutch}
-\usepackage[dutch]{babel} 
-\hyphenation{mo-ge-lijk tij-de-lijk si-tu-a-tie ideale WAVES}
+\usepackage[dutch]{babel}   % anders werken de kleuren niet op de pi chart
+\hyphenation{mo-ge-lijk tij-de-lijk si-tu-a-tie ideale WAVES af-stand bij-voor-beeld}
 
 \usepackage{graphicx}			% Om figuren te verwerken.
-\graphicspath{{../../../images/}{../../../results/}}
+\graphicspath{{./}{../../../images/}{../../../results/}}
 \usepackage{booktabs}
 \usepackage{times}
 \usepackage{siunitx}
 \usepackage{xcolor}
 \usepackage{amsmath}
+\usepackage{graphicx}
 \PassOptionsToPackage{hyphens}{url}
-\usepackage{hyperref}
 \usepackage{url}
 \usepackage{subfig}
+\usepackage{placeins} %\FloatBarrier
+\usepackage{tikz}
 
 \usepackage[acronym,toc,shortcuts]{glossaries}
 \setglossarystyle{super}
@@ -263,7 +265,7 @@ pijlen straling in het verre veld voorstellen.
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=\linewidth]{netwerkIllustrationSARSources.png}
+  \includegraphics[width=\linewidth]{networkIllustrationSARSources.png}
   \caption{Deze illustratie toont hoe de gemiddelde gebruiker (hier getoond in het midden) be\"invloed wordt door verschillende bronnen van elektromagnetische straling.}
   \label{fig:netwerkIllustration}
 \end{figure}
@@ -557,7 +559,7 @@ is een varierende vlieghoogte gaande van 20 meter tot 200 meter. Hierbij zullen 
 uniform verdeerld worden over het centrum van Gent. Dit is de gemiddelde populatiegrootte op 
 een werkdag om 17 uur in Gent \cite{J2}.
 De tweede parameter is een varierende populatie lopend van 50 tot 600 gebruikers. Hierbij 
-zal de vlieghooghte vastgezet worden op 100 meter \cite{J2}.
+zal de vlieghoogte vastgezet worden op 100 meter \cite{J2}.
 Het energieverbruik, electromagnetische straling en \gls{SAR} zullen onderzocht worden.
 
 Een derde scenario is sterk gelijkend aan het vorige. Dezelfde twee parameters zullen onderzocht 
@@ -579,27 +581,27 @@ Andere bronnen zoals connecties naar het backhaul netwerk zullen niet overwogen 
   \label{fig:fourCasesMatrix}
 \end{figure}
 
-\section{Results}
-Vier configuraties zullen overwogen worden tijdens het evaluaren van twee parameters, zijnde 
-populatiegrootte en vlieghoogte. Deze parameters zullen onderzocht worden in drie scenarios 
+\section{Resultaten}
+Vier configuraties zullen overwogen worden tijdens het evalueren van twee parameters, zijnde 
+populatiegrootte en vlieghoogte. Deze parameters zullen onderzocht worden in drie scenario's 
 door het gedrag van het energieverbruik, electromagnetische straling en \gls{SAR}-waarden te monitoren.
-De electromagnetische straling en \gls{SAR} zullen genonmen worden van de gewogen gemiddelde gebruiker
-m.b.v. vergelijking \ref{eq:em} waarbij $w_{1}$ en $w_{2}$ gelijk gesteld zijn aan 50\%. 
-Elk resultaat wordt uitgemiddeld over 20 simmulaties.
+De electromagnetische straling en \gls{SAR} zullen genomen worden van de gewogen gemiddelde gebruiker
+met behulp van vergelijking \ref{eq:em} waarbij $w_{1}$ en $w_{2}$ gelijk gesteld zijn aan 50\%. 
+Elk resultaat wordt uitgemiddeld over 20 simulaties.
 
 
 \subsection{E\'en gebruiker en \'e\'en \gls{UABS}}
 De resultaten tonen aan dat voor een variabele vlieghoogte, een logaritmische relatie bestaat tussen de 
  $P_{tx}$ en de vlieghoogte.
  Dit komt door de logaritmische schaal waarin de decibels van de $P_{tx}$ in zijn uitgedrukt.
-Elke keer dat de vlieghoogte te hoog wordt neemt de $P_{tx}$ met \'e\'en dBm toe.
-Voor een stanaard configurartie met een maximum $P_{tx}$ van 33 dBm en een \gls{LOS} verbinding kan een 
+Elke keer dat de vlieghoogte te hoog wordt, neemt de $P_{tx}$ met \'e\'en dBm toe.
+Voor een standaard configuratie met een maximum $P_{tx}$ van 33 dBm en een \gls{LOS} verbinding kan een 
 \gls{UABS} tot 387 m hoogte vliegen zonder het verliezen van deze verbinding.
 
-Dit scenario is onderzocht voor een microstrip patch antenne die energieverbruik minimaliseerd.
+Dit scenario is onderzocht voor een microstrip patch antenne die energieverbruik minimaliseert.
 De gekozen optimalisatie maakt echter niet uit aangezien er uitsluitend \'e\'en \gls{UABS} beschikbaar is.
-Het beslissing's algoritme bepaalt welke gebruiker met welke \gls{UABS} verbonden wordt.
-Aangezien er maar een \gls{UABS} beschikbaar is is zullen beide optimalisatie technieken gelijkaardig werken.
+Het beslissingsalgoritme bepaalt welke gebruiker met welke \gls{UABS} verbonden wordt.
+Aangezien er maar een \gls{UABS} beschikbaar is, zullen beide optimalisatie technieken gelijkaardig werken.
 Verder zal de gebruikte antenne ook geen verschil maken. 
 De gebruiker zal zich namelijk boor beide antennes in de hoofdstraal van het stralingspatroon 
 bevinden waar voor beide antennes geen verzwakking van het signaal is.
@@ -614,12 +616,13 @@ De \gls{UL} straling start laag met 1 $nW/kg$ maar steekt de \gls{DL} straling v
 \begin{figure}[]
 \centering
   \includegraphics[width=\linewidth]{s1/fhvssar.png}
-  \caption{This figure shows how SAR values from different sources are influenced by different flying altitudes.}
+  \caption{
+    Deze figuur toont hoe SAT-waarden van verschillende bronnen be\"invloed worden door een variabele vlieghoogte.}
   \label{fig:s1_fhsar}
 \end{figure}
 
 \subsection{Toenemende populatie met \'e\'en UABS}
-\subsubsection{Variabele vlieghoogte}
+\subsubsection{Variabel vlieghoogte}
 Een \gls{PwrC Opt} heeft een hogere elektromagnetische blootstelling in vergelijking met een
  \gls{Exp Opt} netwerk; een fenomeen dat reeds werd vastgesteld bij \cite{J1}. 
 Uit de resultaten van dit scenario blijkt echter dat een
@@ -631,20 +634,20 @@ Om dit te verstaan dient het algoritme eerst uitgelegd te worden.
 Een  \gls{PwrC Opt} netwerk zal resulteren in enkele \gls{UABS}'s met een hoog energieverbruik 
 omdat het toenemen van de $P_{tx}$ van de antenne minder energie kost dan het activeren van een nieuwe \gls{UABS}.
 Op dezelfde manier zal een \gls{Exp Opt} netwerk meer \gls{UABS}'s gebruiken met een laag energie verbruik waardoor ook de elektromagnetische straling minder zal zijn.
-Wanneer slecths een beperkt aantal \gls{UABS}'s beschikbaar is, zoals maar \'e\'en in dit netwerk, 
+Wanneer slechts een beperkt aantal \gls{UABS}'s beschikbaar is, zoals maar \'e\'en in dit netwerk, 
 zullen enkel de \gls{UABS}'s gebruikt worden die de meeste mensen behandelen.
 Daardoor is het energieverbruik en een \gls{PwrC Opt} netwerk vaak hoger.
 
 
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{s2/fhvsdlAndPc.png}
-  \caption{Fig. (a) toont hoe de vlieghooghte be\"invloedt wordt door \acs{DL} electromagnetische straking van de 
+  \caption{Fig. (a) toont hoe de vlieghooghte be\"invloed wordt door \acs{DL} electromagnetische straling van de 
   gewogen gemiddelde gebruiker en fig. (b) toont het En energieverbruik van het volledige netwerk wanneer een enkele drone beschikbaar is.}
   \label{fig:s2a_dlAndPc}
 \end{figure}
 
 Verder toont fig.  \ref{fig:s2a_dlAndPc} hoe de elektromagnetische blootstelling toeneemt wanneer de vlieghoogte hoger wordt. 
-Dit komt omdat de waarschijnlijk op een \gls{NLOS} afneemt.
+Dit komt omdat de waarschijnlijkheid op een \gls{NLOS} afneemt.
 Dit leidt eveneens ook tot een hogere dekkingsgraad.
 Wanneer de vlieghoogte toeneemt van 20 tot 100 m zal de dekkingsgraad met 1\% tot 2\% voor alle configuraties toenemen.
 Deze toename in elektromagnetische straling is echter niet ongelimiteerd. Een microstrip \gls{PwrC Opt}
@@ -663,7 +666,7 @@ zal de gewogen gemiddelde gebruiker een \gls{SAR} van
 2.1 $nW/kg$ ondervinden van de  \gls{UABS} en rond
  0.2 $nW/kg$ van zijn eigen apparaat.
 De blootstelling van andere mobiele apparaten kan verwaarloosd worden met een elektromagnetische straling van slecht
- 0.03 $pW/kg$. Dit is een laag maar plausibele waarde aangezien de meeste mensen niet gedekt zijn 
+ 0.03 $pW/kg$. Dit is een lage maar plausibele waarde aangezien de meeste mensen niet gedekt zijn 
 en daardoor zelf geen straling veroorzaken.
 
 
@@ -674,13 +677,13 @@ en daardoor zelf geen straling veroorzaken.
   \label{fig:s2shfourSourcesMatrix}
 \end{figure}
 
-\subsubsection{Variabele aantal gebruikers}
-Het aantal gedekte gebruikers neemt lineair toe met het aantal personen aanwezig in het netwerk zoals getoond wordt op fig.
-\ref{fig:s2uvsnumcovusers}.b. Het toont hoe een \gls{isotropicradiator} in staat is om meer personen te behandelen in vergelijking met een eenvoudige
- microstrip patch antenne. Eveneens is een energiezuinig netwerk in staat om meer mensen te behandelen dan een netwerk die electromagnetische straling minimaliseert.
+\subsubsection{Variabel aantal gebruikers}
+Het aantal gedekte gebruikers neemt lineair toe met het aantal personen aanwezig in het netwerk zoals getoond wordt in fig.
+\ref{fig:s2uvsnumcovusers}.b. Het toont hoe een \gls{isotropicradiator} in staat is om meer personen te behandelen in vergelijking tot een eenvoudige
+ microstrip patch antenne. Eveneens is een energiezuinig netwerk in staat om meer mensen te behandelen dan een netwerk dat electromagnetische straling minimaliseert.
  Bijvoorbeeld met 600 gebruikers zullen 5 tot 7 personen extra behandeld kunnen worden wanneer 
  een microstrip patch antenne vervangen wordt door een  \gls{isotropicradiator}.
-Door van een \gls{Exp Opt} netwerk naar een \gls{PwrC Opt} netwerk te gaan kan er \'e\'en extra persoon 
+Door van een \gls{Exp Opt} netwerk naar een \gls{PwrC Opt} netwerk te gaan, kan er \'e\'en extra persoon 
 behandeld worden.
 
 \begin{figure}[h!]
@@ -690,33 +693,33 @@ behandeld worden.
 \end{figure}
 
 Fig. \ref{fig:s2b_dlAndPc}.a  is be\"invloed door fig. \ref{fig:s2uvsnumcovusers}.a. 
-De ektromagnetische straling neemt af wanneer minder gebruikers behandeld worden.
+De electromagnetische straling neemt af wanneer minder gebruikers behandeld worden.
 Bijvoorbeeld, in een EIRP \gls{PwrC Opt} netwerk met 50 gebruikers heeft 6,75\%
 dekking wat overeenkomt met een gewogen gemiddelde blootstelling van 18 $mV/m$. Dit terwijl
- 600 gebruikers met een dekking van 2,75\% maar 9 $mV/m$ geeft.
+ 600 gebruikers met een dekking van 2,75\% maar 9 $mV/m$ heeft.
 Verder is fig. \ref{fig:s2b_dlAndPc}.b rechtstreeks be\"invloed door fig.  \ref{fig:s2uvsnumcovusers}.b.
-Wanneer de \gls{UABS} meer mensen behandeld, neemt de kans op gebruikers met een ietwat slechter padverlies toe.
+Wanneer de \gls{UABS} meer mensen behandelt, neemt de kans op gebruikers met een ietwat slechter padverlies toe.
 De  \gls{UABS} zal dit probleem oplossen door het energieverbruik toe te laten nemen.
 Een toenemende populatie van 50 naar 600 gebruikers zal het energieverbruik tussen 0,05 en 0,1 $W$ verhogen.
 Voor dit scenario is geen duidelijk verschil te merken tussen energieverbruik van de vier verschillende configuraties.
 
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s2/uvsdlAndPc.png}
-  \caption{Deze twee figuren tonen hoe de verschillende populatiegrootte's invloed hebben op de \acs{DL} elektromagnetische straling (fig. a) en het energieverbruik (fig. b).}
+  \caption{Deze twee figuren tonen hoe de verschillende populatiegroottes invloed hebben op de \acs{DL} elektromagnetische straling (fig. a) en het energieverbruik (fig. b).}
   \label{fig:s2b_dlAndPc}
 \end{figure}
 
 De \gls{SAR} komende van de gebruiker zijn eigen apparaat is gemiddeld nul aangezien de meeste gebruikers niet behandeld worden.
-Fig. \ref{fig:uvsulsarcentralUsers} toont de elektromagnetische blootstelling van de gedekte gebruiker die zich onmiddelijk onder de \gls{UABS} bevindt.
-Het eerste scenario toon hoe de \gls{SAR} van de gebruiker zijn eigen mobiel apparaat enkel be\"invloed wordt door de vlieghoogte.
+Fig. \ref{fig:uvsulsarcentralUsers} toont de elektromagnetische blootstelling van de gedekte gebruiker die zich onmiddellijk onder de \gls{UABS} bevindt.
+Het eerste scenario toont hoe de \gls{SAR} van de gebruiker zijn eigen mobiel apparaat enkel be\"invloed wordt door de vlieghoogte.
 Dit wordt ook bevestigd door de resultaten in fig. \ref{fig:uvsulsarcentralUsers} waar een constante 
 $SAR^{myUE}$ van 0.15 $\mu W/kg$ gemeten wordt.
 De \gls{SAR} van de  \gls{UABS} ondervindt een kleine toename van 0,005  $\mu W/kg$.
-Wanneer de populatie toeneemt zullen meer gebruikers dichtbij de \gls{UABS} terechtkomen.
-De \gls{UABS} zal waarschijnlijk beslissen om deze gebruiker ook te behandelen zoals zichtbaar is op fig. \ref{fig:connectionMap}.
-Het is mogelijk dat deze gebruiker een slechter padverlies geeft door gebouwen of een ietwat grotere afstand. Hierdoor zal de
+Wanneer de populatie toeneemt, zullen meer gebruikers dichtbij de \gls{UABS} terechtkomen.
+De \gls{UABS} zal waarschijnlijk beslissen om deze gebruiker ook te behandelen zoals zichtbaar is in fig. \ref{fig:connectionMap}.
+Het is mogelijk dat deze gebruiker een slechter padverlies heeft door gebouwen of een ietwat grotere afstand. Hierdoor zal de
 \gls{DL} \gls{SAR} van de gebruiker onder de drone toenemen.
-De elektromagnetische straling's van andere personen hun mobiel apparaat is heel laag zoals 
+De elektromagnetische straling van andere personen hun mobiel apparaat is heel laag zoals 
 reeds vermeld en is daarom apart toegevoegd in fig.  \ref{fig:uvsulsarcentralUsers}.b.
 De figuur toont hoe de \gls{SAR} van andere mobiele apparaten toeneemt van nul tot $0,15\ pW/kg$.
 
@@ -737,7 +740,7 @@ De figuur toont hoe de \gls{SAR} van andere mobiele apparaten toeneemt van nul t
 \end{figure}
 
 \subsection{Ongelimiteerd aantal \gls{UABS}'s}
-\subsubsection{Variabele vlieghoogte}
+\subsubsection{Variabel vlieghoogte}
 Hetzelfde scenario als in de voorgaande sectie wordt hier onderzocht. Enkel is er hier een ongelimiteerd aantal 
 \gls{UABS}'s beschikbaar. De resultaten bewijzen dat de verschillende optimalisatiestrategie\"en werken zoals bedoeld.
 Een \gls{PwrC Opt} netwerk heeft inderdaad een lager energieverbruik maar dit komt ten koste van een hogere elektromagnetische straling.
@@ -746,7 +749,7 @@ het energieverbruik zal toenemen. Deze conclusie werd reeds gemaakt in \cite{J1}
 Bijvoorbeeld bij het vergelijken van beide optimalisatiestrategieën zal, voor dezelfde
 \gls{isotropicradiator} en dezelfde standaard vlieghoogte, een energiezuinig netwerk 51 $W$ verbruiken
 en de gebruikers blootstellen aan $15\ mV/m$.
-Terwijl optimaliseren naar elektromagnetische straling's de blootstelling zal laten zakken naar 
+Terwijl optimaliseren naar elektromagnetische straling de blootstelling zal laten zakken naar 
 $11.5\ mV/m$ ten koste van een hoger energieverbruik van $54\ W$.
 
 \begin{figure}[h!]
@@ -756,7 +759,7 @@ $11.5\ mV/m$ ten koste van een hoger energieverbruik van $54\ W$.
 \end{figure}
 
 De elektromagnetische blootstelling in fig. \ref{fig:s3a_dlAndPc} toont een logaritmische toename bij een 
-\gls{Exp Opt} netwerk terwijl een \gls{PwrC Opt} netwerk eerder een concaaf verband met de vlieghooghte weergeeft 
+\gls{Exp Opt} netwerk terwijl een \gls{PwrC Opt} netwerk eerder een concaaf verband met de vlieghoogte weergeeft 
 waarbij het laagste punt zich op 70 meter bevindt.
 
 Fig. \ref{fig:s3a_numDronesAndCov}.a toont aan dat een optimale dekking van 90\% bereikt wordt bij een lagere vlieghoogte van 40 m.
@@ -776,18 +779,18 @@ vereisen respectievelijk 84 en 64 drones op een vlieghoogte van 200 m wat respec
 
 Fig. \ref{fig:s3a_fourSourcesMatrix} toont de bijdrage van elke bron aan de totale \gls{SAR}.
 Het eerste  gevolg van de vlieghoogte te laten toenemen van 20 naar 200 m is de 
-  \gls{SAR}  van de gebruiker zijn eigen apparaat dewelke toeneemt tussen 89 en 141 $nW/kg$;
-een gedraag dat reeds geconstateerd werd in het eerste scenario.
+  \gls{SAR}  van de gebruiker zijn eigen apparaat die toeneemt tussen 89 en 141 $nW/kg$;
+een gedrag dat reeds geconstateerd werd in het eerste scenario.
 Fig. \ref{fig:s3a_fourSourcesMatrix} toont aan dat de vlieghoogte hoger wordt dan de \gls{NLOS} van de gebouwen 
 rond 70 tot 80 meter. Hierna blijft de $SAR^{myUABS}$ min of meer gelijk voor alle configuraties.
 De $SAR^{myUABS}$ varieert voor deze hogere vlieghoogtes tussen
- $160\ nW/kg$ voor een microstrip \gls{PwrC Opt} netwerks en rond $98\ nW/kg$ voor een microstrip \gls{Exp Opt} en \gls{EIRP} \gls{PwrC Opt} netwerken.
+ $160\ nW/kg$ voor een microstrip \gls{PwrC Opt} netwerk en rond $98\ nW/kg$ voor een microstrip \gls{Exp Opt} en \gls{EIRP} \gls{PwrC Opt} netwerk.
 De \gls{EIRP} \gls{Exp Opt} netwerk bevindt zich rond $47\ nW/kg$.
-Deze hogere vlieghoogtes zullen tevens resulteren in een toegenomen elektromagnetische straling's van andere
+Deze hogere vlieghoogtes zullen tevens resulteren in een toegenomen elektromagnetische straling van andere
 \gls{UABS}'s.
 Wanneer de vlieghoogte toeneemt van 20 tot 200 m zal de $SAR^{otherUABS}$ tussen 115 en 140
 $nW/kg$ voor \gls{EIRP} antennes bedragen en tussen 54 en 74 $nW/kg$ voor microstrip patch antennes.
-Dit voor beide de optimalisatiestrategie\"en.
+Dit voor beide optimalisatiestrategie\"en.
 
 
 \begin{figure}[h!]
@@ -797,12 +800,12 @@ Dit voor beide de optimalisatiestrategie\"en.
   \label{fig:s3a_fourSourcesMatrix}
 \end{figure}
 
-\subsubsection{Variabele aantal gebruikers}
-De tweede onderzochte parameter van dit scenario is een vari\"erende populatiegrote
+\subsubsection{Variabel aantal gebruikers}
+De tweede onderzochte parameter van dit scenario is een vari\"erende populatiegrootte
 terwijl de vlieghoogte zich op 100 m zal bevinden.
 Fig.  \ref{fig:s3b_numdronesAndCov}.a toont hoe de tool tracht 100\% dekking te bereiken.
 Voor slechts 50 personen zal de gemiddelde dekking
- rond 93\% bevinden terwijl een netwerk van 600 personen en dekking van 97\% heeft.
+ rond 93\% bevinden terwijl een netwerk van 600 personen een dekking van 97\% heeft.
 Fig. \ref{fig:s3b_numdronesAndCov}.b toont aan dat meer \gls{UABS}'s  vereist zijn voor grotere populaties.
 Het verschil in optimalisatiestrategie is miniem voor kleine netwerken maar neemt snel toe. 
 Wanneer de populatie groeit van 50 tot 600 gebruikers zullen 200 \gls{UABS}'s extra vereist zijn bij een
@@ -816,11 +819,11 @@ Dit is een verwacht gedrag wanneer er gekeken wordt naar het voorgaande scenario
 
 \begin{figure}[h]
   \includegraphics[width=\linewidth]{../results/s3/uvsnumdronesAndCov.png}
-  \caption{Deze grafiek toont hoeveel drones vereist zijn op verschillende vlieghoogtes terwijl er getracht wordt een 100\% bereikt te hebben.}
+  \caption{Deze grafiek toont hoeveel drones vereist zijn op verschillende vlieghoogtes terwijl er getracht wordt een een dekking van 100\% te hebben.}
   \label{fig:s3b_numdronesAndCov}
 \end{figure}
 
-Fig. \ref{fig:s3b_dlAndPC} toont aan dat de elektromagnetische straling's en het energieverbruik toeneemt voor grotere populaties wat normaal is aangezien meer \gls{UABS}'s
+Fig. \ref{fig:s3b_dlAndPC} toont aan dat de elektromagnetische straling en het energieverbruik toenemen voor grotere populaties wat normaal is aangezien meer \gls{UABS}'s
 gebruikt worden. Wanneer de populatie toeneemt van 50 naar 600 gebruikers zal 
 de elektromagnetische straling toenemen tussen 80 en 130 $mV/m$, afhankelijk van de configuratie. 
 Het energieverbruik bij 50 gebruikers is voor alle configuraties rond 20 $W$.
@@ -859,13 +862,13 @@ De vlieghoogte is namelijk altijd dezelfde waardoor ook de energie die nodig is 
 Voor beide optimalisatiestrategie\"en zal de
  $SAR^{myUE}$ voor netwerken met  \gls{isotropicradiator}s vari\"eren rond $1.1\ \mu W/kg$  %between 1 $\mu W/kg$en1.2 $\mu W/kg$ 
  en rond 0.7 $\mu W/kg$ voor netwerken met een microstrip patch antenne.
-De $SAR^{myUABS}$ neemt nauwelijks toe in een \gls{Exp Opt} netwerk een bevindt zich rond 0.5 $\mu W/kg$ voor beide antennes.
+De $SAR^{myUABS}$ neemt nauwelijks toe in een \gls{Exp Opt} netwerk en bevindt zich rond 0.5 $\mu W/kg$ voor beide antennes.
 Een energiezuinig netwerk start ook rond
  0.5 $\mu W/kg$ maar neemt toe wanneer meer mensen online komen.
 Dit is normaal aangezien deze \gls{UABS}'s trachten om meer mensen te behandelen.
 Hierdoor zal de $SAR^{myUABS}$ 
-voor 600 users toenemen tot 1 $\mu W/kg$ voor een \gls{isotropicradiator} en tot wel 2 $\mu W/kg$ voor een microstrip patch antenne.
-De \gls{SAR}-waarde neemt het meeste toe bij $SAR^{otherUABS}$ dewelke heel laag start rond minder  dan  
+voor 600 gebruikers toenemen tot 1 $\mu W/kg$ voor een \gls{isotropicradiator} en tot wel 2 $\mu W/kg$ voor een microstrip patch antenne.
+De \gls{SAR}-waarde neemt het meeste toe bij $SAR^{otherUABS}$ die heel laag start rond minder  dan  
 0.1 $\mu W/kg$ voor 50 gebruikers in alle configuraties. 
 Deze \gls{SAR} neemt echter snel toe. De grootste toename wordt waargenomen in een 
 \gls{EIRP} \gls{PwrC Opt} netwerk 
@@ -880,20 +883,20 @@ slecths 1 $\mu W/kg$ voor 600 gebruikers.
   \label{fig:s3b_fourSourcesMatrix}
 \end{figure}
 
-\section{Conclusion}
+\section{Conclusie}
 
 Een capacity-based deployment tool is gebruikt voor het onderzoeken van de 
 \gls{SAR} van gebruikers die geoptimaliseerd zijn naar 
  \gls{DL} electromagnetische straling en totaal energieverbruik.
  Dit is onderzocht voor verschillende vlieghoogtes, populatiegroottes en aantal beschikbare \gls{UABS}'s.
 De resultaten bevestigen de vaststellingen uit \cite{J1}  waarbij electromagnetische straling en totaal energieverbruik
-leidt tot tegenstrijdige vereisten. De voorgestelde fitness functie werkt zoals bedoeld.
-Voor een netwerk met standaard configuratie zal de electromagnetische straling in een 
+leiden tot tegenstrijdige vereisten. De voorgestelde fitness functie werkt zoals bedoeld.
+Voor een netwerk met standaard configuratie kan de electromagnetische straling in een 
 energiezuinig netwerk kan gereduceerd worden tot wel 
 23\% voor \gls{isotropicradiator}s en 30\% voor microstrip patch antennes
-door het optimaliseren naar electromagnetische straling. Hierdoor zal het bereik van de 
- \gls{UABS} afnemen en zullen meer \gls{UABS}s nodig zijn.
-Gemiddeld gaat het om 18 extra drones die voor 5 $W$  extra energieconsumptie leiden.
+door te optimaliseren naar electromagnetische straling. Hierdoor zal het bereik van de 
+ \gls{UABS} afnemen en zullen meer \gls{UABS}'s nodig zijn.
+Gemiddeld gaat het om 18 extra drones die tot 5 $W$  extra energieconsumptie leiden.
 
 %	How does the netwerk behave differently after the introduction of a realistic antenna?
 Een directionele microstrip patch antenne wordt geïntroduceerd omdat het verschillende voordelen biedt 
@@ -909,75 +912,36 @@ straling van een \gls{isotropicradiator} tussen 30\% en 34\% reduceren. Dit zal 
   \label{fig:resultIllustration}
 \end{figure}
 
-Figuur \ref{fig:resultIllustration}  Toont een overzicht gepasseerd op de resultaten van de twee optimalisatiestrategieën en de twee soorten om antennes.
-Opmerkelijk is dat de \gls{EIRP} \gls{Exp Opt} netwerk zich gelijkend gedraagd als een microstrip patch antenne in een \gls{PwrC Opt} netwerk.
+Figuur \ref{fig:resultIllustration} toont een overzicht gebasseerd op de resultaten van de twee optimalisatiestrategieën en de twee soorten antennes.
+Opmerkelijk is dat de \gls{EIRP} \gls{Exp Opt} netwerk zich gelijkaardig gedraagd als een microstrip patch antenne in een \gls{PwrC Opt} netwerk.
 Hierdoor wordt een microstrip patch antenne in een energiezuinig netwerk aangeraden. De microstrip patch antenne zal minder elektromagnetische straling veroorzaken dankzij het design.
-en optimaliseren zodoende dat energieverbruik minimaal wordt, zorgt ervoor dat er minder drones nodig zullen zijn.
-Een microstrip patch antenne met een openingshoek van \ang{90} is veronderstelt een goede oplossing te zijn
- maar als het budget meer gelimiteerd is kan een antenne met een grotere openingshoek een geschikt alternatief vormen
+Verder zal het optimaliseren naar energieverbruik ervoor zorgen dat minder drones nodig zullen zijn.
+Een microstrip patch antenne met een openingshoek van \ang{90} is verondersteld een goede oplossing te zijn
+ maar als het budget beperkt is, kan een antenne met een grotere openingshoek een geschikt alternatief vormen
  om kosten verder te reduceren zonder de limieten opgelegd door de Vlaamse overheid te overschreiden.
-De \gls{SAR} van de configuratie met de meeste blootstelling in nog steeds een honderduizenste van de maximale toegestane \gls{SAR} voor het volledige lichaam.
+De \gls{SAR} van de configuratie met de meeste blootstelling is nog steeds een honderdduizendste van de maximale toegestane \gls{SAR} voor het volledige lichaam.
 
 %What is the contribution of each source towards the total electromagnetic exposure?
 Figuur \ref{fig:pie} geeft een overzicht van de \gls{SAR}-bijdrage in percentages ten opzichte van de totale \gls{SAR}.
 De waarden zijn uitgemiddeld over de vier overwogen configuraties.
-De gebruiker wordt voornamelijk bloodgesteld aan zijn eigen mobiel apparaat met 
+De gebruiker wordt voornamelijk blootgesteld aan zijn eigen mobiel apparaat met 
 52\% van de totale electromagnetische blootstelling.
 Deze conclusie werd reeds gemaakt door de auteurs van 
 \cite{J17_kuehn2019modelling} en  \cite{J10.1.1}.
-Verder wordt er in \cite{J10.1.1} oook geconcludeerd dat, dankzij power control, 
+Verder wordt er in \cite{J10.1.1} ook geconcludeerd dat, dankzij power control, 
 de electromagnetische straling van het mobiele apparaat heel dicht komt bij de blootstelling van de \gls{UABS}.
 Dit wordt ook bevestigd door deze resultaten. Figuur \ref{fig:pie} toont aan dat de electromagnetische straling van 
-alle andere \gls{UABS}s  gezamelijk de 48\% omvat waarvan 15\% komt van de \gls{UABS} die deze gebruiker aan het behandelen is.
+alle andere \gls{UABS}'s  gezamelijk de 48\% omvat waarvan 15\% komt van de \gls{UABS} die deze gebruiker aan het behandelen is.
 De electromagnetische blootstelling van mobiele apparaten die tot andere mensen behoren 
-is verwaarloosbaar in tegenstelling tot de veel grotere blootstelling komende van alle andere bronnen.
+is verwaarloosbaar in tegenstelling tot de veel grotere blootstelling komende van alle andere bronnen
 en draagt slechts 0.0001\% bij aan de totale blootstelling. Het is echter belangrijk om op te merken dat 
-een lage \gls{pusch}-waarde gebruikt wordt in vergelijk \ref{eq:powerUE} voor het bepalen van de
+een lage \gls{pusch}-waarde gebruikt wordt in vergelijking \ref{eq:powerUE} voor het bepalen van de
  \gls{UL} straling en het wordt verondersteld dat een hogere waarde een grote impact zal hebben op de \gls{SAR} van het mobiele apparaat.
-
-\definecolor{c_myuabs}{HTML}{A9C6FC}
-\definecolor{c_otheruabs}{HTML}{7A4655}
-\definecolor{c_myue}{HTML}{90AF74}
-\definecolor{c_otherue}{HTML}{F4A259}
-
-\def\angle{0}
-\def\radius{3}
-\def\cyclelist{{"c_myue","c_otheruabs","c_myuabs","c_otherue"}}
-\newcount\cyclecount \cyclecount=-1
-\newcount\ind \ind=-1
-\begin{figure}
+\begin{figure}[hb!]
 \centering
- \resizebox {!} {4cm} {
-\begin{tikzpicture}[nodes = {font=\sffamily}]
-  \foreach \percent/\name in {
-      52/ my UE,
-      33/ other UABSs,
-      15/ my UABS,
-      0/ Other UE
-    } {
-      \ifx\percent\empty\else               % If \percent is empty, do nothing
-        \global\advance\cyclecount by 1     % Advance cyclecount
-        \global\advance\ind by 1            % Advance list index
-        \ifnum3<\cyclecount                 % If cyclecount is larger than list
-          \global\cyclecount=0              %   reset cyclecount and
-          \global\ind=0                     %   reset list index
-        \fi
-        \pgfmathparse{\cyclelist[\the\ind]} % Get color from cycle list
-        \edef\color{\pgfmathresult}         %   and store as \color
-        % Draw angle and set labels
-        \draw[fill={\color!50},draw={\color}] (0,0) -- (\angle:\radius)
-          arc (\angle:\angle+\percent*3.6:\radius) -- cycle;
-        \node at (\angle+0.5*\percent*3.6:0.7*\radius) {\percent\,\%};
-        \node[pin=\angle+0.5*\percent*3.6:\name]
-          at (\angle+0.5*\percent*3.6:\radius) {};
-        \pgfmathparse{\angle+\percent*3.6}  % Advance angle
-        \xdef\angle{\pgfmathresult}         %   and store in \angle
-      \fi
-    };
-\end{tikzpicture}
- }
+  \includegraphics[width=\linewidth]{pie.png}
 \caption{
-  Bijdrage van elke bron aan de totale SAR waaraan de gemiddelde gebruiker bloodgesteld is. 
+  Bijdrage van elke bron aan de totale SAR waaraan de gemiddelde gebruiker blootgesteld is. 
   De percentages zijn uitgemiddeld over de vier overwogen configuraties.}
 \label{fig:pie}
 \end{figure}
@@ -987,28 +951,28 @@ De resultaten tonen verder aan dat energieverbruik en electromagnetische stralin
 meer mensen aanwezig zijn in het netwerk. Wanneer de populatie toeneemt van 50 naar 600 gebruikers 
 zal de electromagnetische straling tussen 80 en 130 $mV/m$ toenemen afhankelijk van de configuratie.
 Het energieverbruik neemt toe met 110 $W$ voor alle configuraties.
-De bron dat het meest be\"invloed wordt  door het aantal gebruikers is de \gls{SAR} van andere \gls{UABS}'s 
+De bron die het meest be\"invloed wordt  door het aantal gebruikers is de \gls{SAR} van andere \gls{UABS}'s 
 en neemt toe tussen de 1en3 $\mu W/kg$. 
-Verder heeft de vlieghoogte een positief effect op het aantal nodige drones dewelke op hun beurt een positief 
-effect heeft op het energieverbruik. Wanneer de vlieghoogte toeneemt van 50 m naar 200 m, neemt het aantal 
-drones af met 59\%. Dit afname werd ook vastgesteld in \cite{J2}.
-Ook de auteurs van \cite{J17_kuehn2019modelling} vormden de conclusie dat electromagnetische straling afneemt wanneer 
+Verder heeft de vlieghoogte een positief effect op het aantal nodige drones die op hun beurt een positief 
+effect hebben op het energieverbruik. Wanneer de vlieghoogte toeneemt van 20 m naar 200 m, neemt het aantal 
+drones af met 59\%. Deze afname werd ook vastgesteld in \cite{J2}.
+Ook de auteurs van \cite{J17_kuehn2019modelling} concludeerden dat electromagnetische straling afneemt wanneer 
 het padverlies minder wordt.
-De electromagnetische straling van de  \gls{UABS}s blijven min of meer gelijk voor alle vlieghoogtes tussen 80 en 200 meter. 
-Meeste \gls{UABS}s zijn in \gls{LOS} en dankzij power control zullen deze niet meer energie verbruiken dan strikt noodzakelijk.
+De electromagnetische straling van de  \gls{UABS}'s blijven min of meer gelijk voor alle vlieghoogtes tussen 80 en 200 meter. 
+Meeste \gls{UABS}'s zijn in \gls{LOS} en dankzij power control zullen deze niet meer energie verbruiken dan strikt noodzakelijk.
 De electromagnetische straling van de gebruiker zijn eigen apparaten neemt echter wel toe om de hoog vliegende drones te kunnen bereiken.
 Rond 80 meter zal de straling van de gebruiker zijn eigen apparaat de straling van de behandelde \gls{UABS} voorbijsteken.
-Wanneer meerdere \gls{UABS} beschikbaar zijn in het netwerk zal de blootstelling van andere \gls{UABS}'s toenemen 
+Wanneer meerdere \gls{UABS} beschikbaar zijn in het netwerk, zal de blootstelling van andere \gls{UABS}'s toenemen 
 naarmate de vlieghoogte toeneemt. Dit komt omdat bij hogere vlieghoogtes steeds meer \gls{UABS}'s in \gls{LOS} komen.
-De vlieghoogte laten toenemen van 50 naar 200 gebruikers zal de 
- \gls{SAR} van andere \gls{UABS}'s tussen 46 en 49 keer groter zijn voor een \gls{isotropicradiator} en  tussen
-  70 en 85 keer meer voor een microstrip patch antenne.
+De vlieghoogte laten toenemen van 20 naar 200 m zal de 
+ \gls{SAR} van andere \gls{UABS}'s tussen 46 en 49 keer groter maken voor een \gls{isotropicradiator} en tussen
+70 en 85 keer groter voor een microstrip patch antenne.
 Wanneer ook de resultaten van \cite{U1} overwogen worden waarbij een vlieghoogte van 80 meter voorgesteld wordt als optimale 
 vlieghoogte  voor optimaal bereik en bachaul verbindingen zal ook hier de vlieghoogte van 80 meter voorgesteld worden 
-voor het standscentrum van Gent.
+voor het stadscentrum van Gent.
 
-In conclusie wordt een microstrip patch antenne
-met een openingshoek van \ang{90} een geschikt startpunt is voor een antenne.
+Tot besluit wordt een microstrip patch antenne
+met een openingshoek van \ang{90} als geschikt startpunt beschouwd.
 Deze directionele  antenne focust de electromagnetische straling daar waar het nodig is.
 Ongewenste zijwaardse straling wordt gereduceerd door het design.
 Het wordt aangeraden om de antenne toe te passen in een netwerk dat energieverbruik minimaliseert
@@ -1023,7 +987,7 @@ Voor toekomstig onderzoek kunnen nog extra parameters onderzocht worden. Verschi
 backhaul verbindingen moeten nog overwogen worden.
 Verder is de tool klaar om MiMo en massive MiMo te ondersteunen aangezien 
 de tool eenvoudig uitgebreid kan worden om meer complexe stralingspatronen zoals beamforming te ondersteunen.
-Als laatste is er ook nog ruimte om de tijdscomplexiteit van het programma te verbetern door het exacte algoritme 
+Als laatste is er ook nog ruimte om de tijdscomplexiteit van het programma te verbeteren door het exacte algoritme 
 te vervangen door heuristische methodes. 
 
 

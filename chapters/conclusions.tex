@@ -114,7 +114,7 @@ of this directional microstrip patch antenna has been compared to a
 fictional \gls{isotropicradiator}.
 This \gls{isotropicradiator} has higher exposure and coverage for less power compared to a microstrip patch antenna.
 For a default network, a microstrip patch antenna can reduce between 30\% and 34\% electromagnetic exposure 
-from an \gls{isotropicradiator}. Doing so will increase the power consumption with 11 $W$.
+from an \gls{isotropicradiator}. Doing so will require around 24 drones extra and therefore increasing the power consumption with 11 $W$.
 The fact that an \gls{isotropicradiator} has higher electromagnetic exposure for less power  is due to the absence of 
 attenuation and can hypothetically be compared to an antenna with a very big aperture angle.
 A microstrip patch antenna with a more limited aperture angle of \ang{90} requires more resources but 
@@ -159,7 +159,7 @@ The electromagnetic
 \def\cyclelist{{"c_myue","c_otheruabs","c_myuabs","c_otherue"}}
 \newcount\cyclecount \cyclecount=-1
 \newcount\ind \ind=-1
-\begin{figure}
+\begin{figure}[h!]
 \centering
  \resizebox {!} {5.5cm} {
 \begin{tikzpicture}[nodes = {font=\sffamily}]
@@ -206,7 +206,7 @@ on the configuration. The power consumption increases with 110 $W$ for all confi
 The main source that is influenced by the number of users is the \gls{SAR} from other UABSs with an increase between 1 and 3 $\mu W/kg$, depending on 
 the configuration.
 Further, increasing the flying altitude has a positive influence on the number of required drones which on their 
-turn have a positive influence on power consumption. Increasing the flying altitude from 50 m to 200 m, decreases the number 
+turn have a positive influence on power consumption. Increasing the flying altitude from 20 m to 200 m, decreases the number 
 of required drones around 59\%. This decrease in number of \gls{UABS}s was also concluded in \cite{J2}.
 Also authors from \cite{J17_kuehn2019modelling} made the conclusion that reduced path loss decreases electromagnetic exposure.
 The electromagnetic radiation from the \gls{UABS}s remains more or less the same for flying altitudes between 80 and 200 metres. Most 
@@ -214,7 +214,7 @@ The electromagnetic radiation from the \gls{UABS}s remains more or less the same
 However, the electromagnetic radiation from the user's own device does increase in order to reach the high flying drones.
 Around 80 metres, the exposure from the  user's device surpasses the exposure from the serving \gls{UABS}.
 When more \gls{UABS}s are available in the network, electromagnetic exposure from other \gls{UABS} will increase as well 
-because more \gls{UABS}s come into \gls{LOS}. Raising the flying altitude from 50 to 200 m will increase the \gls{SAR} from other 
+because more \gls{UABS}s come into \gls{LOS}. Raising the flying altitude from 20 to 200 m will increase the \gls{SAR} from other 
 \gls{UABS}s between 46 and 49 times when using an \gls{EIRP} antenna and between 70 and 85 times when using a microstrip patch antenna.
 It is therefore concluded that raising the flying height has a positive influence on the number of 
 \gls{UABS}s but is not unlimited since the total \gls{SAR} will increase as well.
