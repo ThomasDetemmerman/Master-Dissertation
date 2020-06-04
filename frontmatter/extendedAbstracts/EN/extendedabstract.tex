@@ -610,11 +610,11 @@ no attenuation experienced for both antennae.
 
 When investigating this scenario at different flying heights, it is noticed
 that the \gls{UL} radiation increases exponentially while 
-the \gls{DL} radiation remains constant at 10 $nW/kg$ during the entire time as shown in fig. \ref{fig:s1_fhsar}. The reason that the \gls{DL} radiation
+the \gls{DL} radiation remains constant at $10\ nW/kg$ during the entire time as shown in fig. \ref{fig:s1_fhsar}. The reason that the \gls{DL} radiation
 remains constant is because of power control which makes sure that no more power is used than strictly necessary. 
 %So at lower flying altitudes, there is less path loss and the \gls{UABS} will therefore reduce the $P_{tx}$. 
 We can therefore confirm that the electromagnetic exposure is a constant fraction of power and distance.
-The \gls{UL} radiation starts very low at 1 $nW/kg$ but surpasses the \gls{DL} radiation 
+The \gls{UL} radiation starts very low at $1\ nW/kg$ but surpasses the \gls{DL} radiation 
 around 80 metres.
 
 \begin{figure}[]
@@ -687,7 +687,7 @@ The number of covered users increases linearly compared to the number of users p
 compared to a microstrip patch antenna. Just like an power consumption optimized network 
 is able to reach more users than an exposure optimized network.
 \begin{figure}[h!]
-  \includegraphics[width=\linewidth]{s2/uvsnum\gls{UAV}sAndCov.png}
+  \includegraphics[width=\linewidth]{s2/uvsnumdronesAndCov.png}
   \caption{The influence of increasing traffic on the user coverage.}
   \label{fig:s2uvsnumcovusers}
 \end{figure}
@@ -763,19 +763,19 @@ of $54\ W$.
 The exposure in figure \ref{fig:s3a_dlAndPc} shows that an \gls{Exp Opt} network increases logarithmically while the \gls{PwrC Opt} network rather 
 has a concave relationship with the flying height, and has its lowest point at around 70 metres.
 
-Figure \ref{fig:s3a_num\gls{UAV}sAndCov}.a shows that the optimal coverage is achieved at a low flying height of 
+Figure \ref{fig:s3a_numdronesAndCov}.a shows that the optimal coverage is achieved at a low flying height of 
 40 metres with around 99\% coverage. 
 However, there is a downside to this. 
-Figure \ref{fig:s3a_num\gls{UAV}sAndCov}.b 
+Figure \ref{fig:s3a_numdronesAndCov}.b 
  shows that the number of required \gls{UAV}s increases when the flying altitude becomes lower;
 a behaviour which was also determined in \cite{J2}.
 For example, an microstrip \gls{Exp Opt} network and an \gls{EIRP} \gls{PwrC Opt} network require respectively 84 and 64
 \gls{UABS}s at a flying altitude of $200\ m$ which increases respectively to 211 and 162 \gls{UABS}s at a much lower flying altitude of $20\ m$.
 
 \begin{figure}[]
-  \includegraphics[width=\linewidth]{../results/s3/fhvsnum\gls{UAV}sAndCov.png}
+  \includegraphics[width=\linewidth]{../results/s3/fhvsnumdronesAndCov.png}
   \caption{This graph shows how much \acs{UAV}s are required at different flying heights while trying to achieve a 100\% coverage.}
-  \label{fig:s3a_num\gls{UAV}sAndCov}
+  \label{fig:s3a_numdronesAndCov}
 \end{figure}
 
 Figure \ref{fig:s3a_fourSourcesMatrix} shows how each source contributes to the total \gls{SAR}.
@@ -806,10 +806,10 @@ for both optimization strategies.
 \subsubsection{Variable Number of Users}
 
 The second evaluated parameter of this scenario is a variable number of users while the flying height is fixed to 100 metres.  
-Figure \ref{fig:s3b_num\gls{UAV}sAndCov}.a shows how the tool tries to reach a 100\% coverage. The percentage
+Figure \ref{fig:s3b_numdronesAndCov}.a shows how the tool tries to reach a 100\% coverage. The percentage
 of covered users is slightly less for smaller networks. For only 50 users, an average 
 coverage of around 93\% is achieved while a network with 600 users has a coverage of around 97\%.
-Figure \ref{fig:s3b_num\gls{UAV}sAndCov}.b prove that more \gls{UAV}s are required for these large 
+Figure \ref{fig:s3b_numdronesAndCov}.b prove that more \gls{UAV}s are required for these large 
 populations. 
 The difference in optimization strategy is very little for a small amount of people but increases very quickly. 
 When the population increases from 50 to 600 users,
@@ -820,9 +820,9 @@ This is an expected behaviour  when looking at the previous scenario where, with
 the percentage of covered users decreases for these larger populations.
 
 \begin{figure}[h]
-  \includegraphics[width=\linewidth]{../results/s3/uvsnum\gls{UAV}sAndCov.png}
+  \includegraphics[width=\linewidth]{../results/s3/uvsnumdronesAndCov.png}
   \caption{This graph shows how much \acs{UAV}s are required for different flying heights while trying to achieve a 100\% coverage.}
-  \label{fig:s3b_num\gls{UAV}sAndCov}
+  \label{fig:s3b_numdronesAndCov}
 \end{figure}
 
 
@@ -850,7 +850,7 @@ between 25 $mV/m$ and 27 $mV/m$ more while requiring around 12 $W$ less than whe
   \caption{The influence of the population size on the downlink electromagnetic radiation (a) and power consumption (b).}
   \label{fig:s3b_dlAndPC}
 %\bigbreak
- % \includegraphics[width=\linewidth]{../results/s3/u_num\gls{UAV}svsdlAndPc.png}
+ % \includegraphics[width=\linewidth]{../results/s3/u_numdronesvsdlAndPc.png}
   %\caption{The influence of the number of UABSs on the downlink electromagnetic radiation (a) and power consumption (b).}
   %\label{fig:s3b_dlAndPC2}
 \end{figure}
@@ -988,7 +988,7 @@ on the configuration. The power consumption increases with 110 $W$ for all confi
 The main source that is influenced by the number of users is the \gls{SAR} from other UABSs with an increase between 1 and 3 $\mu W/kg$, depending on 
 the configuration.
 Further, increasing the flying altitude has a positive influence on the number of required \gls{UAV}s which on their 
-turn have a positive influence on power consumption. Increasing the flying altitude from 50 m to 200 m, decreases the number 
+turn have a positive influence on power consumption. Increasing the flying altitude from 20 m to 200 m, decreases the number 
 of required \gls{UAV}s around 59\%. This decrease was also noticed in \cite{J2}.
 Also authors from \cite{J17_kuehn2019modelling} made the conclusion that reduced path loss decreases electromagnetic exposure.
 The electromagnetic radiation from the \gls{UABS}s remains more or less the same for flying altitudes between 80 and 200 metres. Most 
@@ -996,8 +996,8 @@ The electromagnetic radiation from the \gls{UABS}s remains more or less the same
 However, the electromagnetic radiation from the user's own device does increase in order to reach the high flying \gls{UAV}s.
 Around 80 metres, the exposure from the  user's device surpasses the exposure from the serving \gls{UABS}.
 When more \gls{UABS}s are available in the network, electromagnetic exposure from other \gls{UABS} will increase as well.
-This is because more \gls{UABS}s come into \gls{LOS} when the flying height becomes larger. Raising the flying altitude from 50 to 200 m will increase the \gls{SAR} from other 
-\gls{UABS}s between 46 and 49 times when using an \gls{isotropicradiator} and between 70 and 85 times when using a microstrip patch antenna.
+This is because more \gls{UABS}s come into \gls{LOS} when the flying height becomes larger. Raising the flying altitude from 20 to 200 m will increase the \gls{SAR} from other 
+\gls{UABS}s between 46 and 49 times when using an \gls{isotropicradiator} antenna and between 70 and 85 times when using a microstrip patch antenna.
 When also considering the results from \cite{U1} where a flying altitude of  
 80 metres is suggested for an optimal access and backhaul connectivity, a flying height 
 of 80 metres is also here proposed for the city centre of Ghent.

@@ -474,7 +474,7 @@ page \thepage \space undefined}}%
 \def\shortcite{\def\citename##1{}\@internalcite}
 \def\@biblabel#1{\def\citename##1{##1}[#1]\hfill}
 
-\def\thebibliography#1{\section*{Referencies}\footnotesize\list
+\def\thebibliography#1{\section*{Referenties}\footnotesize\list
     {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
     \advance\leftmargin\labelsep \itemsep 0pt plus .5pt
     \usecounter{enumi}}
