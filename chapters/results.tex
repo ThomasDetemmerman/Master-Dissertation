@@ -589,17 +589,21 @@ and is able to optimize towards either electromagnetic exposure or overall power
 
 \begin{table}[]
 \begin{tabular}{|l|l|l|l|l|}
-\hline
-\textbf{Scenario}                      & \textbf{Configuration}                   & \textbf{Network power consumption (W)} & \textbf{DL Exposure (V/m)} & \textbf{WB SAR (W/kg)} \\ \hline
-\multirow{2}{*}{\textbf{Scenario I}}   & \textbf{\acs{Exp Opt}}                   &                                    &                   &                \\ \cline{2-5} 
-                                       & \textbf{\acs{PwrC Opt}}                  &                                    &                   &                 \\ \hline
-\multirow{4}{*}{\textbf{Scenario II}}  & \textbf{EIRP \acs{Exp Opt}}              &                                    &                   &                 \\ \cline{2-5} 
-                                       & \textbf{EIRP \acs{PwrC Opt}}             &                                    &                   &                 \\ \cline{2-5} 
-                                       & \textbf{microstrip \acs{Exp Opt}}        &                                    &                   &                 \\ \cline{2-5} 
-                                       & \textbf{microstrip \acs{PwrC Opt}}       &                                    &                   &                 \\ \hline
-\multirow{4}{*}{\textbf{Scenario III}} & \textbf{EIRP \acs{Exp Opt}}              &                                    &                   &                 \\ \cline{2-5} 
-                                       & \textbf{EIRP \acs{PwrC Opt}}             &                                    &                   &                 \\ \cline{2-5} 
-                                       & \textbf{microstrip \acs{Exp Opt}}        &                                    &                   &                 \\ \cline{2-5} 
-                                       & \textbf{microstrip \acs{PwrC Opt}}       &                                    &                   &                 \\ \hline
+\hline                                                                                             %0.1 W = 100 mW                                                            %1e-08 W/kg = 10 nW/kg 
+\textbf{Scenario}                      & \textbf{Configuration}                   & \textbf{Network power consumption (mW)} & \textbf{DL Exposure (mV/m)} & \textbf{WB SAR (nW/kg)} \\ \hline
+\multirow{4}{*}{\textbf{Scenario I}}   & \textbf{EIRP \acs{Exp Opt}}              &    464                                  &      364                    &     27                  \\ \cline{2-5}
+                                       & \textbf{EIRP \acs{PwrC Opt}}             &    464                                  &      364                    &     27                  \\ \cline{2-5} 
+                                       & \textbf{microstrip \acs{Exp Opt}}        &    464                                  &      364                    &     27                  \\ \cline{2-5} 
+                                       & \textbf{microstrip \acs{PwrC Opt}}       &    464                                  &      364                    &     27                  \\ \hline
+\multirow{4}{*}{\textbf{Scenario II}}  & \textbf{EIRP \acs{Exp Opt}}              &    742                                  &      8.5                    &     1.15                \\ \cline{2-5} 
+                                       & \textbf{EIRP \acs{PwrC Opt}}             &    725                                  &      10                     &     1.45                \\ \cline{2-5} 
+                                       & \textbf{microstrip \acs{Exp Opt}}        &    710                                  &      3.7                    &     0.25                \\ \cline{2-5} 
+                                       & \textbf{microstrip \acs{PwrC Opt}}       &    720                                  &      7.2                    &     0.83                \\ \hline
+\multirow{4}{*}{\textbf{Scenario III}} & \textbf{EIRP \acs{Exp Opt}}              &    56200                                &      113                    &     240                 \\ \cline{2-5} 
+                                       & \textbf{EIRP \acs{PwrC Opt}}             &    52900                                &      148                    &     330                 \\ \cline{2-5} 
+                                       & \textbf{microstrip \acs{Exp Opt}}        &    68900                                &      92                     &     160                 \\ \cline{2-5} 
+                                       & \textbf{microstrip \acs{PwrC Opt}}       &    64900                                &      113                    &     222                 \\ \hline
 \end{tabular}
+\caption{Datasheet for the various scenarios and configurations. The values are measured at a 100 metre flying height for 224 users except for the first scenario where only one user is present.}
+\label{table:resultOverview}
 \end{table}
