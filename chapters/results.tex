@@ -121,7 +121,11 @@ Section \ref{s1a} already explained the reason behind the stepped function. The 
 is an important parameter when calculating the used power and is the cause that we see the same stepped behaviour in 
 figure \ref{fig:fhvspc}. All individual results (indicated with dots) can once again be simplified 
 with a connected line that clearly shows an exponentially behaviour. The grey shadow 
-behind the line represented the confidence interval.
+surrounding the line represents the 95\% confidence interval meaning that there is 
+a certainty of 95\% that the average of each simulation is within this grey area. 
+This area is really small 
+in figure \ref{fig:fhvspc} and indicates a high certainty of where this average is located.
+However, this will not be the case for all figures.
 
 \begin{figure}[t]
   \centering
@@ -407,11 +411,11 @@ Scenario II already explained that when only one \gls{UAV} is available, a power
 powered network. In this scenario, there is no limitation on the number of \gls{UAV}s and the network remains thus unaltered after the decision 
 algorithm is done. Figure \ref{fig:s3a_dlAndPc} proves that the different optimization strategies work as intended.
 Power consumption optimized networks have indeed a lower power consumption but therefore result in higher electromagnetic radiation.
-On the other hand, an exposure optimized network will reduce the electromagnetic exposure by using more \gls{UAV}s and thence also increases the network's power consumption.
+On the other hand, an exposure optimized network will reduce the electromagnetic exposure by using more \gls{UAV}s and hence also increases the network's power consumption.
 A behaviour that was also concluded in \cite{J1}.
 For example, when comparing both optimization strategies for the same \gls{isotropicradiator} and the same default flying height, we see that
-the power consumption optimized network requires 51 $W$ and therefore exposes its users
-to $15\ mV/m$. When optimizing towards electromagnetic radiation, the exposure drops to $11.5\ mV/m$ but at a cost of a higher power consumption
+the power consumption optimized network requires in total 51 $W$ and therefore exposes its users
+to $15\ mV/m$. When optimizing towards electromagnetic radiation, the exposure drops to $11.5\ mV/m$ but at a cost of a higher total power consumption
 of $54\ W$.
 \begin{figure}[h!]
 \centering
@@ -563,7 +567,7 @@ where 3 $\mu W/kg$ is measured for 600 users. The $SAR^{otherUE}$ increases the 
 only 1 $\mu W/kg$ for 600 users.
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=0.9\textwidth]{../results/s3/uFourSources.png}
+  \includegraphics[width=\textwidth]{../results/s3/uFourSources.png}
   \caption{Each figure shows the \acs{SAR} from different sources for an increasing population size. 
 }
   \label{fig:s3b_fourSourcesMatrix}
@@ -586,24 +590,26 @@ exposure from other \gls{UABS}s and \gls{UE} increases. Scenario III also shows 
 required for larger populations and therefore increase power consumption and electromagnetic exposure.
 Finally, the results also confirm that the optimization algorithm works as intended 
 and is able to optimize towards either electromagnetic exposure or overall power consumption.
+An overview of all values measured in a default configuration is presented in table \ref{table:resultOverview}.
 
-\begin{table}[]
-\begin{tabular}{|l|l|l|l|l|}
+\begin{table}[h!]
+\begin{tabular}{|l|l|c|c|c|}
 \hline                                                                                             %0.1 W = 100 mW                                                            %1e-08 W/kg = 10 nW/kg 
-\textbf{Scenario}                      & \textbf{Configuration}                   & \textbf{Network power consumption (mW)} & \textbf{DL Exposure (mV/m)} & \textbf{WB SAR (nW/kg)} \\ \hline
+\multicolumn{1}{|c|}{\textbf{Scenario}}&\multicolumn{1}{c|}{\textbf{Configuration}}& \textbf{Network power}                  & \textbf{DL Exposure}        & \textbf{WB SAR}         \\ 
+                                       &                                          & \textbf{consumption (mW)}               & \textbf{(mV/m)}             & \textbf{(nW/kg)}        \\ \hline
 \multirow{4}{*}{\textbf{Scenario I}}   & \textbf{EIRP \acs{Exp Opt}}              &    464                                  &      364                    &     27                  \\ \cline{2-5}
                                        & \textbf{EIRP \acs{PwrC Opt}}             &    464                                  &      364                    &     27                  \\ \cline{2-5} 
-                                       & \textbf{microstrip \acs{Exp Opt}}        &    464                                  &      364                    &     27                  \\ \cline{2-5} 
-                                       & \textbf{microstrip \acs{PwrC Opt}}       &    464                                  &      364                    &     27                  \\ \hline
+                                       & \textbf{Microstrip \acs{Exp Opt}}        &    464                                  &      364                    &     27                  \\ \cline{2-5} 
+                                       & \textbf{Microstrip \acs{PwrC Opt}}       &    464                                  &      364                    &     27                  \\ \hline
 \multirow{4}{*}{\textbf{Scenario II}}  & \textbf{EIRP \acs{Exp Opt}}              &    742                                  &      8.5                    &     1.15                \\ \cline{2-5} 
                                        & \textbf{EIRP \acs{PwrC Opt}}             &    725                                  &      10                     &     1.45                \\ \cline{2-5} 
-                                       & \textbf{microstrip \acs{Exp Opt}}        &    710                                  &      3.7                    &     0.25                \\ \cline{2-5} 
-                                       & \textbf{microstrip \acs{PwrC Opt}}       &    720                                  &      7.2                    &     0.83                \\ \hline
+                                       & \textbf{Microstrip \acs{Exp Opt}}        &    710                                  &      3.7                    &     0.25                \\ \cline{2-5} 
+                                       & \textbf{Microstrip \acs{PwrC Opt}}       &    720                                  &      7.2                    &     0.83                \\ \hline
 \multirow{4}{*}{\textbf{Scenario III}} & \textbf{EIRP \acs{Exp Opt}}              &    56200                                &      113                    &     240                 \\ \cline{2-5} 
                                        & \textbf{EIRP \acs{PwrC Opt}}             &    52900                                &      148                    &     330                 \\ \cline{2-5} 
-                                       & \textbf{microstrip \acs{Exp Opt}}        &    68900                                &      92                     &     160                 \\ \cline{2-5} 
-                                       & \textbf{microstrip \acs{PwrC Opt}}       &    64900                                &      113                    &     222                 \\ \hline
+                                       & \textbf{Microstrip \acs{Exp Opt}}        &    68900                                &      92                     &     160                 \\ \cline{2-5} 
+                                       & \textbf{Microstrip \acs{PwrC Opt}}       &    64900                                &      113                    &     222                 \\ \hline
 \end{tabular}
-\caption{Datasheet for the various scenarios and configurations. The values are measured at a 100 metre flying height for 224 users except for the first scenario where only one user is present.}
+\caption{Overview of the results from the various scenarios and configurations. The values are measured at a 100 metre flying height for 224 users except for the first scenario where only one user is present.}
 \label{table:resultOverview}
 \end{table}

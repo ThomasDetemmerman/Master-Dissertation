@@ -25,7 +25,7 @@
 \usepackage{subfig}
 \usepackage{placeins} %\FloatBarrier
 \usepackage{tikz}
-\usepackage{stackengine} %used by custom renew command  in table
+
 
 \usepackage[acronym,toc,shortcuts]{glossaries}
 \setglossarystyle{super}
@@ -53,36 +53,40 @@
 
 \begin{abstract}
 
-  De hedendaagse samenleving vertrouwt meer dan ooit op de aanwezigheid van draadloze netwerken. 
-  Dankzij de mobiliteit van  drones kan een drone-gestuurd netwerk de nodige mobiele data voorzien 
-  indien het bestaande netwerk beschadigd is.
-  Er is echter een groeinde vrees voor mogelijke gezondheidseffecten veroorzaakt door deze
-  mobiele netwerken. De overheid stelt strikte wetgevingen op waaraan deze mobiele netwerken dienen te voldoen.
-  
-  Dit onderzoek bekijkt hoe veschillende scenario's het energieverbruik, electromagnetische blootstelling en 
-  specifieke absorptietempo kunnen be\"invloeden.
-  Drie verschillende scenario's zijn gedefinieerd waarbij verschillende vlieghoogtes, aantal drones en 
-  populatiegroottes onderzocht worden.
-  Verder is er ook een microstrip patch antenne gedefinieerd en bevestigd op een drone. 
-  De antenne zal de communicatie tussen de drone en de gebruikers verzorgen.
-  De performantie van deze antenne zal vergeleken worden met een istorope antenne.
-  Vervolgens zal het netwerk geoptimaliseerd worden naar electromagnetische straling van het individu of 
-  naar het energieverbruik van het gehele netwerk. Deze twee doelstellingen resulteren in 
-  tegenstrijdige vereisten. 
-  
-  Om dit doel te bereiken is de capacity based deployment tool van de onderzoekgsgroep WAVES op de 
-  Universiteit Gent verder uitgebreid zodoende dat electromagnetische straling berekend kan worden.
-  Verder is de tool nu ook in staat om te opimaliseren naar electromagnetische straling of energieverbruik. 
-  
-  Uit de resultaten blijkt dat een microstrip patch antenne
-  met een openingshoek van \ang{90} een geschikt startpunt is voor een antenne.
-  Deze directionele  antenne focust de electromagnetische straling daar waar het nodig is.
-  Ongewenste zijwaardse straling wordt gereduceerd door het design.
-  Het wordt aangeraden om de antenne toe te passen in een netwerk dat energieverbruik minimaliseert
-  omdat hierbij minder drones nodig zijn en daardoor goedkoper is.
-  De optimale vlieghoogte voor het stadscentrum in Gent bevindt zich rond 80  meter.
-  Lagere vlieghoogtes vereisen veel meer drones terwijl hogere vlieghoogtes de 
-  electromagnetische straling laten toenemen.
+De hedendaagse samenleving vertrouwt meer dan ooit op de aanwezigheid van draadloze netwerken. 
+Dankzij de mobiliteit van  drones kan een drone-gestuurd netwerk de nodige mobiele data voorzien 
+indien het bestaande netwerk beschadigd is.
+Er is echter een groeinde vrees voor mogelijke gezondheidseffecten veroorzaakt door deze
+mobiele netwerken. De overheid stelt strikte wetgevingen op waaraan deze mobiele netwerken dienen te voldoen.
+
+Dit onderzoek bekijkt hoe veschillende scenario's het energieverbruik, electromagnetische blootstelling en 
+specifieke absorptietempo kunnen be\"invloeden.
+Drie verschillende scenario's zijn gedefinieerd waarbij verschillende vlieghoogtes, aantal drones en 
+populatiegroottes onderzocht worden.
+Verder is er ook een microstrip patch antenne gedefinieerd en bevestigd op een drone. 
+De antenne zal de communicatie tussen de drone en de gebruikers verzorgen.
+De performantie van deze antenne zal vergeleken worden met een istorope antenne.
+Vervolgens zal het netwerk geoptimaliseerd worden naar electromagnetische straling van het individu of 
+naar het energieverbruik van het gehele netwerk. Deze twee doelstellingen resulteren in 
+tegenstrijdige vereisten. 
+
+Om dit doel te bereiken is de capacity based deployment tool van de onderzoekgsgroep WAVES op de 
+Universiteit Gent verder uitgebreid zodoende dat electromagnetische straling berekend kan worden.
+Verder is de tool nu ook in staat om te opimaliseren naar electromagnetische straling of energieverbruik. 
+
+Uit de resultaten blijkt dat een microstrip patch antenne
+met een openingshoek van \ang{90} een geschikt startpunt is voor een antenne.
+Deze directionele  antenne focust de electromagnetische straling daar waar het nodig is.
+Ongewenste zijwaardse straling wordt gereduceerd door het design.
+Het wordt aangeraden om de antenne toe te passen in een netwerk dat energieverbruik minimaliseert
+omdat hierbij minder drones nodig zijn en daardoor goedkoper is.
+De optimale vlieghoogte voor het stadscentrum in Gent bevindt zich rond 80  meter.
+Lagere vlieghoogtes vereisen veel meer drones terwijl hogere vlieghoogtes de 
+electromagnetische straling laten toenemen.
+Wanneer deze configuratie toegepast wordt op een netwerk met 224 zal de gewogen gemiddelde gebruiker 
+een SAR ondervinden van  $0.2\ \mu W/kg$ en een downlink electromagnetische straling van 
+$114\ mV/m$. Het netwerk zal hiervoor gemiddeld 96 UABSs vereisen met een totaal energieverbruik 
+van $69.5\ W$. Dat is $7.24\ W$ per UABS.
   
 \end{abstract}
 
@@ -153,19 +157,17 @@ De maximale \gls{SAR} voor het volledige lichaam komende van een mobiel apparaat
 De \gls{FCC} bepaalt de limieten voor de \gls{USA} en zijn gebasseerd op de 
 \gls{IEEE} Std C95.1-1999 \cite{P1,P2} dewelke gebruik maken van een 1 g tissue.
 De $SAR^{wb}_{1g}$ van het mobiele apparaat mag de 
-1.6 $W/kg$ niet overschreiden. Dit ondanks het feit dat deze waarde inmiddels herzien is door 
-de  \gls{IEEE} en gedefinieerd wordt op 8 $W/kg$ in Std C95.1-2005 \cite{P2}.
+1.6 $W/kg$ niet overschreiden. 
+%Dit ondanks het feit dat deze waarde inmiddels herzien is door de  \gls{IEEE} en gedefinieerd wordt op 8 $W/kg$ in Std C95.1-2005 \cite{P2}.
 Een overzicht wordt gegeven in tabel \ref{table:overviewSARValues}.
-
-\newcommand\xrowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|l|c|c|}
 \hline
-\textbf{Instelling}  & \textbf{Description}                  & \textbf{Value}  & \textbf{Units} \\ \hline\xrowht{10pt}
-\gls{ICNIRP}          & $SAR^{wb}_{10g}$                      &  $4$            & $W/kg$              \\  \hline\xrowht{10pt}
-BE                    & $SAR^{wb}_{10g}$ van base stations     & $0.08$          & $W/kg$               \\ \hline\xrowht{10pt}
-BE                    & $SAR_{10g}^{hoofd}$ for \acs{UE}       & $2$             & $W/kg$               \\ \hline\xrowht{10pt}
+\textbf{Instelling}  & \textbf{Description}                  & \textbf{Value}  & \textbf{Units} \\ \hline
+\gls{ICNIRP}          & $SAR^{wb}_{10g}$                      &  $4$            & $W/kg$              \\  \hline
+BE                    & $SAR^{wb}_{10g}$ van base stations     & $0.08$          & $W/kg$               \\ \hline
+BE                    & $SAR_{10g}^{hoofd}$ for \acs{UE}       & $2$             & $W/kg$               \\ \hline
 \gls{USA}             & $SAR_{1g}^{hoofd}$ for \acs{UE}        & $1.6$           & $W/kg$               \\ \hline
 \end{tabular}
 \caption{Overview of the different \acs{SAR} limitations.}
@@ -253,7 +255,7 @@ van de andere overwogen antennes \cite{J13_microstripadvantages}. Een voorbeeld 
   \caption{Afbeelding van een microstrip patch antenne bevestigd aan de onderkant van een drone. }
   \label{fig:exampleDrone}
 \end{figure}
-
+\vspace{10 mm}
 Deze foto toont een microstrip patch antenne die bestaat 
 uit aluminium en bevestigd is op een substraat van Teflon. De microstrip patch antenna 
 wijst naar de grond aangezien de drone boven de mensen zal vliegen.
@@ -653,7 +655,7 @@ dat niet meer energie gebruikt wordt dan strikt noodzakelijk.
 Daardoor kan bevestigd worden dat de elektromagnetische straling een constante fractie is van energie en afstand.
 De \gls{UL} straling start laag met 1 $nW/kg$ maar steekt de \gls{DL} straling voorbij rond de 80 meter.
 
-\begin{figure}[]
+\begin{figure}[h!]
 \centering
   \includegraphics[width=\linewidth]{s1/fhvssar.png}
   \caption{
@@ -799,12 +801,6 @@ en de gebruikers blootstellen aan $15\ mV/m$.
 Terwijl optimaliseren naar elektromagnetische straling de blootstelling zal laten zakken naar 
 $11.5\ mV/m$ ten koste van een hoger energieverbruik van $54\ W$.
 
-\begin{figure}[h!]
-  \includegraphics[width=\linewidth]{../results/s3/fhvsdlAndPc.png}
-  \caption{Deze twee figuren tonen hoe de vlieghoogte invloed heeft op de \acs{DL} elektromagnetische straling (fig. a) en het energieverbruik (fig. b).}
-  \label{fig:s3a_dlAndPc}
-\end{figure}
-
 De elektromagnetische blootstelling in fig. \ref{fig:s3a_dlAndPc} toont een logaritmische toename bij een 
 \gls{Exp Opt} netwerk terwijl een \gls{PwrC Opt} netwerk eerder een concaaf verband met de vlieghoogte weergeeft 
 waarbij het laagste punt zich op 70 meter bevindt.
@@ -818,7 +814,14 @@ Bijvoorbeeld, een microstrip \gls{Exp Opt} netwerk en een \gls{EIRP} \gls{PwrC O
 vereisen respectievelijk 84 en 64 drones op een vlieghoogte van 200 m wat respectievelijk toeneemt naar 
 211 en 162 drones bij een lagere vlieghoogte van 20 m.
 
-\begin{figure}[]
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{../results/s3/fhvsdlAndPc.png}
+  \caption{Deze twee figuren tonen hoe de vlieghoogte invloed heeft op de \acs{DL} elektromagnetische straling (fig. a) en het energieverbruik (fig. b).}
+  \label{fig:s3a_dlAndPc}
+\end{figure}
+\vspace{2mm}
+\begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s3/fhvsnumdronesAndCov.png}
   \caption{Deze grafiek toont hoeveel drones vereist zijn op verschillende vlieghoogtes terwijl er getracht wordt om 100\% dekking te bereiken.}
   \label{fig:s3a_numDronesAndCov}
