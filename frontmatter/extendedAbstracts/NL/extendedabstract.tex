@@ -25,6 +25,7 @@
 \usepackage{subfig}
 \usepackage{placeins} %\FloatBarrier
 \usepackage{tikz}
+\usepackage{stackengine} %used by custom renew command  in table
 
 \usepackage[acronym,toc,shortcuts]{glossaries}
 \setglossarystyle{super}
@@ -149,6 +150,27 @@ Dit onderzoek vindt plaats in Gent, een Vlaamse stad in Belgi\"e, waarbij voor h
 is gelimiteerd tot 4.5 V/m en de totale elektrische veldsterkte voor elk punt niet meer dan 31 V/m mag bedragen.  \cite{J23,S13_normenBelgie}. 
 De maximale \gls{SAR} voor het volledige lichaam komende van een mobiel apparaat verspreid over een 
 10 g tissue ($SAR_{10g}$) is beperkt tot $0.08 W/kg$ \cite{J30,J23,S20}. 
+De \gls{FCC} bepaalt de limieten voor de \gls{USA} en zijn gebasseerd op de 
+\gls{IEEE} Std C95.1-1999 \cite{P1,P2} dewelke gebruik maken van een 1 g tissue.
+De $SAR^{wb}_{1g}$ van het mobiele apparaat mag de 
+1.6 $W/kg$ niet overschreiden. Dit ondanks het feit dat deze waarde inmiddels herzien is door 
+de  \gls{IEEE} en gedefinieerd wordt op 8 $W/kg$ in Std C95.1-2005 \cite{P2}.
+Een overzicht wordt gegeven in tabel \ref{table:overviewSARValues}.
+
+\newcommand\xrowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|l|c|c|}
+\hline
+\textbf{Instelling}  & \textbf{Description}                  & \textbf{Value}  & \textbf{Units} \\ \hline\xrowht{10pt}
+\gls{ICNIRP}          & $SAR^{wb}_{10g}$                      &  $4$            & $W/kg$              \\  \hline\xrowht{10pt}
+BE                    & $SAR^{wb}_{10g}$ van base stations     & $0.08$          & $W/kg$               \\ \hline\xrowht{10pt}
+BE                    & $SAR_{10g}^{hoofd}$ for \acs{UE}       & $2$             & $W/kg$               \\ \hline\xrowht{10pt}
+\gls{USA}             & $SAR_{1g}^{hoofd}$ for \acs{UE}        & $1.6$           & $W/kg$               \\ \hline
+\end{tabular}
+\caption{Overview of the different \acs{SAR} limitations.}
+\label{table:overviewSARValues}
+\end{table}
 
 Verschillende onderzoeken berekenen de elektromagnetische veldsterkte van verschillende bronnen \cite{J6_originalExposureFormula,J1,J10_RDP,J10.1} 
 waarbij sommigen de \gls{UL} elektromagnetische veldsterkte converteren naar lokale \gls{SAR} voor het hoofd en torso \cite{J10_RDP,J10.1}. 
@@ -223,18 +245,18 @@ Ze zijn allemaal dun, ondersteunen dubbele frequentiesenhebben allemaal het nade
 ze interferentie kunnen veroorzaken op frequenties buiten het bedoelde spectrum. 
 De microstrip patch en slot antenne ondersteunen beiden circulaire en lineaire polarisatie terwijl de geprinte dipool antenne enkel 
 lineaire polarisatie ondersteunt. Verder is de microstrip patch antenne het eenvoudigste te produceren ten opzichte 
-van de andere overwogen antennes \cite{J13_microstripadvantages}. 
-
-Fig. \ref{fig:exampleDrone} toont een microstrip patch antenne die bestaat 
-uit aluminium en bevestigd is op een substraat van Teflon. De microstrip patch antenna 
-wijst naar de grond aangezien de drone boven de mensen zal vliegen.
+van de andere overwogen antennes \cite{J13_microstripadvantages}. Een voorbeeld wordt gegeven in fig. \ref{fig:exampleDrone}.
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=0.5\linewidth]{drone.png}
+  \includegraphics[width=\linewidth]{drone.png}
   \caption{Afbeelding van een microstrip patch antenne bevestigd aan de onderkant van een drone. }
   \label{fig:exampleDrone}
 \end{figure}
+
+Deze foto toont een microstrip patch antenne die bestaat 
+uit aluminium en bevestigd is op een substraat van Teflon. De microstrip patch antenna 
+wijst naar de grond aangezien de drone boven de mensen zal vliegen.
 
 \section{Methodologie}
 
@@ -286,7 +308,9 @@ Om de totale elektromagnetische straling te vinden waaraan de gebruiker is bloot
 de straling van elke individuele bron berekend te worden.
 Dit wordt gedaan met formule  \ref{eq:singleexposure} en is van toepassing voor alle bronnen in het verre veld.
 Dit houdt in: alle  \gls{UABS}'s en alle mobiele apparaten die niet tot de gebruiker behoren.
-De elektromagnetische veldsterkte $E$ voor het individu $u$ komende van een bron $i$ wordt als volgt berekend:
+De elektromagnetische veldsterkte $E$ voor het individu $u$ komende van een bron $i$ wordt berekend 
+met formule \ref{eq:singleexposure}. 
+
 
 \begin{equation}
 E_i(u) [V/m] = 10^{\frac{ES(u)[dBm] - 43.15 + 20*\log(f [MHz])- PL(u) [dB]}{20}}
@@ -417,24 +441,22 @@ De dimensies van de stralingsplaat kunnen berekend worden met de formules uit \c
 Dit leidt tot een stralingsplaat van 35.09 mm bij 26.55 mm en  een grondplaat van minstens 52.40 mm bij 43.80 mm.
 De resulterende microstrip patch antenne is ge\"illustreerd in fig. \ref{fig:basicpatchantenna} en zal resulteren 
 in het stralingspatroon getekend in fig. \ref{fig:radpattern}.
+\vspace{ 6.4 mm}
 \begin{figure}[h!]
 \centering
   \includegraphics[width=\linewidth]{MicrostripAntenna.png}
-  \caption{Schema van een microstrip patch antenne.}
+  \caption{Schema van de microstrip patch antenne.}
   \label{fig:basicpatchantenna}
 \end{figure}
 
-
 \begin{figure}[!htb]
-\minipage{0.50\linewidth}
-  \includegraphics[width=\linewidth]{pattern2/ep.png} 
-\endminipage\hfill
-\minipage{0.50\linewidth}%
-  \includegraphics[width=\linewidth]{pattern2/hp.png}
-\endminipage
-  \caption{Links is het stralingspatroon voor het E-vlak en rechts voor het H-vlak.}
+\subfloat[E-vlak]{\includegraphics[width=0.49\linewidth]{pattern2/ep.png}}
+\hfill
+\subfloat[H-vlak]{\includegraphics[width=0.49\linewidth]{pattern2/hp.png}}
+  \caption{Stralingspatroon gegenereerd door de microstrip patch antenna.}
 \label{fig:radpattern}
 \end{figure}
+
 
 \subsection{Optimaliseren van het netwerk}
 
@@ -450,7 +472,7 @@ in vergelijking \ref{eq:fitnessfunction} en is gebaseerd op \cite{J1}.
 f = w * \left(1 - \frac{E_m}{E_{max}}\right) + (1 - w)*\left(1 - \frac{P}{P_{max}}\right) * 100
 \label{eq:fitnessfunction}
 \end{equation}
-
+\newline
 Formule \ref{eq:fitnessfunction} geeft een score terug dat aanduidt hoe goed het netwerk preseteert.
 $w$ is de belangrijkheidsfactor die loopt van 0 tot 1, grenzen inbegrepen. Een $w$ gelijk aan 0 betekent
 dat elektromagnetische straling niet belangrijk is. Een dergelijk netwerk wordt een \gls{PwrC Opt} netwerk genoemd.
@@ -473,13 +495,7 @@ met het 95\textsuperscript{ste} percentiel. Dit leidt tot formule \ref{eq:em} wa
 E_m = \frac{w_1 * E_{50} + w_2 * E_{95}}{w_1 + w_2}
 \label{eq:em}
 \end{equation}
-
-\begin{figure}[h!]
-  \includegraphics[height=0.7\textheight]{decisionAlgoFlowChart.png}
-  \caption{Flowchart of the decision algorithm.}
-  \label{fig:decisionAlgoFlowChart}
-\end{figure}
-
+\newline
 \subsection{Simulatie Tool}
 
 \subsubsection{Hoofdalgoritme}
@@ -508,6 +524,12 @@ Wanneer de laatste gebruiker behandeld is geweest, bekomen we een volledig netwe
 Het netwerk wordt vervolgens terug aan het hoofdalgoritme gegeven voor eventuele verdere afhandeling.
 Een stroomdiagram van dit algoritme is gegeven in fig. \ref{fig:decisionAlgoFlowChart}.
 
+\begin{figure}[h!]
+\centering
+  \includegraphics[height=0.92\textheight]{decisionAlgoFlowChart.png}
+  \caption{Flowchart of the decision algorithm.}
+  \label{fig:decisionAlgoFlowChart}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Scenario's}
@@ -587,7 +609,7 @@ Andere bronnen zoals connecties naar het backhaul netwerk of andere technologie\
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=0.6\linewidth]{fourCasesMatrix.png}
+  \includegraphics[width=0.9\linewidth]{fourCasesMatrix.png}
   \caption{Matrix met de vier mogelijke configuraties.}
   \label{fig:fourCasesMatrix}
 \end{figure}
@@ -602,12 +624,19 @@ Elk resultaat wordt uitgemiddeld over 20 simulaties.
 
 
 \subsection{E\'en gebruiker en \'e\'en \gls{UABS}}
-De resultaten tonen aan dat voor een variabele vlieghoogte, een logaritmische relatie bestaat tussen de 
+Fig. \ref{fig:ptx} toont aan dat voor een variabele vlieghoogte, een logaritmische relatie bestaat tussen de 
  $P_{tx}$ en de vlieghoogte.
  Dit komt door de logaritmische schaal waarin de decibels van de $P_{tx}$ in zijn uitgedrukt.
 Elke keer dat de vlieghoogte te hoog wordt, neemt de $P_{tx}$ met \'e\'en dBm toe.
 Voor een standaard configuratie met een maximum $P_{tx}$ van 33 dBm en een \gls{LOS} verbinding kan een 
 \gls{UABS} tot $387\ m$ hoogte vliegen zonder het verliezen van deze verbinding.
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=\linewidth]{s1/ptx.png}
+  \caption{Het vereiste zendvermogen om de gebruiker op de grond te bereiken. Gemeten op verschillende vlieghoogtes.}
+  \label{fig:ptx}
+\end{figure}
 
 Dit scenario is onderzocht voor een microstrip patch antenne die energieverbruik minimaliseert.
 De gekozen optimalisatie maakt echter niet uit aangezien er uitsluitend \'e\'en \gls{UABS} beschikbaar is.
@@ -632,6 +661,7 @@ De \gls{UL} straling start laag met 1 $nW/kg$ maar steekt de \gls{DL} straling v
   \label{fig:s1_fhsar}
 \end{figure}
 
+\FloatBarrier
 \subsection{Toenemende populatie met \'e\'en UABS}
 \subsubsection{Variabel vlieghoogte}
 Een \gls{PwrC Opt} heeft een hogere elektromagnetische blootstelling in vergelijking met een
@@ -683,12 +713,14 @@ en daardoor zelf geen straling veroorzaken.
 
 
 \begin{figure}[h!]
+\centering
   \includegraphics[width=\linewidth]{s2/fhFourSources.png}
   \caption{Elke grafiek komt overeen met een specifieke configuratie en toont hoe de 
      \acs{SAR} van verschillende bronnen be\"invloed wordt door een toenemende vlieghoogte.}
   \label{fig:s2shfourSourcesMatrix}
 \end{figure}
 
+\FloatBarrier
 \subsubsection{Variabel aantal gebruikers}
 Het aantal gedekte gebruikers neemt lineair toe met het aantal personen aanwezig in het netwerk zoals getoond wordt in fig.
 \ref{fig:s2uvsnumcovusers}.b. Het toont hoe een \gls{isotropicradiator} in staat is om meer personen te behandelen in vergelijking tot een eenvoudige
@@ -719,11 +751,12 @@ Een toenemende populatie van 50 naar 600 gebruikers zal het energieverbruik tuss
 Voor dit scenario is geen duidelijk verschil te merken tussen energieverbruik van de vier verschillende configuraties.
 
 \begin{figure}[h!]
-  \includegraphics[width=\linewidth]{../results/s2/uvsdlAndPc.png}
+  \includegraphics[width=\linewidth]{../results/s2/uvsdlAndPc.png} %0.85
   \caption{Deze twee figuren tonen hoe de verschillende populatiegroottes invloed hebben op de \acs{DL} elektromagnetische straling (fig. a) en het energieverbruik (fig. b).}
   \label{fig:s2b_dlAndPc}
 \end{figure}
 
+\FloatBarrier
 De \gls{SAR} komende van de gebruiker zijn eigen apparaat is gemiddeld nul aangezien de meeste gebruikers niet behandeld worden.
 Fig. \ref{fig:uvsulsarcentralUsers} toont de elektromagnetische blootstelling van de gedekte gebruiker die zich onmiddellijk onder de \gls{UABS} bevindt.
 Het eerste scenario toont hoe de \gls{SAR} van de gebruiker zijn eigen mobiel apparaat enkel be\"invloed wordt door de vlieghoogte.
@@ -732,7 +765,7 @@ $SAR^{myUE}$ van 0.15 $\mu W/kg$ gemeten wordt.
 De \gls{SAR} van de  \gls{UABS} ondervindt een kleine toename van 0,005  $\mu W/kg$.
 \begin{figure}[h]
 \centering
-  \includegraphics[width=0.9\linewidth]{../results/s2/uvsulsarcentralUser.png}
+  \includegraphics[width=\linewidth]{../results/s2/uvsulsarcentralUser.png}
   \caption{SAR-waarden voor de gebruiker die zich onder de \acs{UABS} bevindt.}
   \label{fig:uvsulsarcentralUsers}
 \end{figure}
@@ -752,6 +785,7 @@ De figuur toont hoe de \gls{SAR} van andere mobiele apparaten toeneemt van nul t
   \label{fig:connectionMap}
 \end{figure}
 
+\FloatBarrier
 \subsection{Ongelimiteerd aantal \gls{UABS}'s}
 \subsubsection{Variabel vlieghoogte}
 Hetzelfde scenario als in de voorgaande sectie wordt hier onderzocht. Enkel is er hier een ongelimiteerd aantal 
@@ -813,6 +847,7 @@ Dit voor beide optimalisatiestrategie\"en.
   \label{fig:s3a_fourSourcesMatrix}
 \end{figure}
 
+\FloatBarrier
 \subsubsection{Variabel aantal gebruikers}
 De tweede onderzochte parameter van dit scenario is een vari\"erende populatiegrootte
 terwijl de vlieghoogte zich op 100 m zal bevinden.
@@ -895,6 +930,7 @@ slecths 1 $\mu W/kg$ voor 600 gebruikers.
   \label{fig:s3b_fourSourcesMatrix}
 \end{figure}
 
+\FloatBarrier
 \section{Conclusie}
 
 Een capacity-based deployment tool is gebruikt voor het onderzoeken van de 
@@ -906,9 +942,13 @@ leiden tot tegenstrijdige vereisten. De voorgestelde fitness functie werkt zoals
 Voor een netwerk met standaard configuratie kan de electromagnetische straling in een 
 energiezuinig netwerk kan gereduceerd worden tot wel 
 23\% voor \gls{isotropicradiator}s en 30\% voor microstrip patch antennes
-door te optimaliseren naar electromagnetische straling. Hierdoor zal het bereik van de 
- \gls{UABS} afnemen en zullen meer \gls{UABS}'s nodig zijn.
-Gemiddeld gaat het om 18 extra drones die tot 5 $W$  extra energieconsumptie leiden.
+door te optimaliseren naar electromagnetische straling. 
+Doing so, decreases the range of the \gls{UABS}  since the power of an individual \gls{UABS} will 
+drop between 0.07 and 0.12 $W$. Therefore, much more \gls{UABS}s will be needed. 
+Hierdoor zal het bereik van de 
+ \gls{UABS} afnemen aangezien het energieverbruik van een individuele \gls{UABS} zakt tussen de 
+ 0.07 en 0.12 $W$. Hierdoor zullen 
+gemiddeld 18 extra drones nodig zijn die in totaal tot 4 $W$  extra energieconsumptie zullen leiden.
 
 %	How does the netwerk behave differently after the introduction of a realistic antenna?
 Een directionele microstrip patch antenne wordt geïntroduceerd omdat het verschillende voordelen biedt 
@@ -916,7 +956,9 @@ in vergelijking met een omnidirectionele antenne. Directionele antennes zijn in 
 Een micrrostrip patch antenne is verder dun en heeft een licht gewicht. Deze antenne, met een openingshoek van \ang{90}, veroorzaakt 
 minder electromagnetische blootstelling, een lager bereik en vereist meer energie.
 Voor een netwerk met standaard configuratie kan de microstrip patch atenne de electromagnetische
-straling van een \gls{isotropicradiator} tussen 30\% en 34\% reduceren. Dit zal het energieverbruik met 11 $W$ doen toenemen.
+straling van een \gls{isotropicradiator} tussen 30\% en 34\% reduceren. Dit zal het energieverbruik met 12 $W$ doen toenemen.
+De vereiste energie per \gls{UABS} zal  toenemen met $0.022\ W$ voor een \gls{PwrC Opt} netwerk en met 
+$0.007\ W$ voor een \gls{Exp Opt} netwerk.
 \begin{figure}[hb!]
 \centering
   \includegraphics[width=0.8\linewidth]{../images/fourCasesMatrixSol.png}
@@ -931,7 +973,7 @@ Verder zal het optimaliseren naar energieverbruik ervoor zorgen dat minder drone
 Een microstrip patch antenne met een openingshoek van \ang{90} is verondersteld een goede oplossing te zijn
  maar als het budget beperkt is, kan een antenne met een grotere openingshoek een geschikt alternatief vormen
  om kosten verder te reduceren zonder de limieten opgelegd door de Vlaamse overheid te overschreiden.
-De \gls{SAR} van de configuratie met de meeste blootstelling is nog steeds een honderdduizendste van de maximale toegestane \gls{SAR} voor het volledige lichaam.
+De \gls{SAR} van de configuratie met de meeste blootstelling is nog steeds een honderdduizendste van de maximale toegestane \gls{SAR} voor het volledige lichaam  ($0.08\ W/kg$).
 
 %What is the contribution of each source towards the total electromagnetic exposure?
 Figuur \ref{fig:pie} geeft een overzicht van de \gls{SAR}-bijdrage in percentages ten opzichte van de totale \gls{SAR}.
@@ -991,6 +1033,11 @@ omdat hierbij minder drones nodig zijn en daardoor goedkoper is.
 De optimale vlieghoogte voor het stadscentrum in Gent bevindt zich rond 80  meter.
 Lagere vlieghoogtes vereisen veel meer drones terwijl hogere vlieghoogtes de 
 electromagnetische straling laten toenemen.
+Wanneer deze configuratie wordt toegepast op een netwerk met 224 gebruikers zal 
+de gemiddelde gebruiker een \gls{SAR} ondervinden  van ongeveer $0.2\ \mu W/kg$ en een
+ \gls{DL} electromagnetische blootstelling van $69.5\ W$. 
+ Het netwerk vereist gemiddeld 96 \gls{UABS}'s met een totaal energieverbruik van
+ $114\ V/m$. Dat is $1.19\ W$ per \gls{UABS}.
 
 Voor toekomstig onderzoek kunnen nog extra parameters onderzocht worden. Verschillende 
  \gls{pusch}-waarden worden verondersteld om een grote invloed te hebben op de 
