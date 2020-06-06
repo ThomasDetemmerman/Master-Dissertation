@@ -40,6 +40,7 @@ is far below the thresholds enforced by the Flemish government with more than a 
 \definecolor{c_otherue}{HTML}{F4A259}
 
 \begin{figure}
+\centering
 \begin{tikzpicture}
 \pgfplotsset{
         show sum on top/.style={
@@ -59,12 +60,12 @@ is far below the thresholds enforced by the Flemish government with more than a 
     title={SAR for default configuration},
     ylabel={Whole body SAR (nW/kg)},
     xlabel={Configurations},
-    height=7cm, width=\textwidth,
+    height=7cm, width=0.95\textwidth,
     legend cell align={left},
     ybar stacked, ymin=0,  
     bar width=10mm,
     %symbolic x coords={a,b,c,d},
-    symbolic x coords={EIRP PwrC Opt, EIRP Exp Opt, Microstrip PwrC Opt, Microstrip Exp Opt},
+    symbolic x coords={EIRP PwrC. Opt., EIRP Exp. Opt., Microstrip PwrC. Opt., Microstrip Exp. Opt.},
     xtick=data,
     nodes near coords, 
     nodes near coords align={anchor=center},%Move values in bar
@@ -73,30 +74,30 @@ is far below the thresholds enforced by the Flemish government with more than a 
   ]
   %myUABS
   \addplot [fill=c_myuabs!50] coordinates {
-({EIRP PwrC Opt},73)
-({EIRP Exp Opt},50)
-({Microstrip PwrC Opt},98)
-({Microstrip Exp Opt},45)};
+({EIRP PwrC. Opt.},73)
+({EIRP Exp. Opt.},50)
+({Microstrip PwrC. Opt.},98)
+({Microstrip Exp. Opt.},45)};
   %other uabs
   \addplot [fill=c_otheruabs!50,text=black] coordinates {
-({EIRP PwrC Opt},105)
-({EIRP Exp Opt},70)
-({Microstrip PwrC Opt},30)
-({Microstrip Exp Opt},25)
+({EIRP PwrC. Opt.},105)
+({EIRP Exp. Opt.},70)
+({Microstrip PwrC. Opt.},30)
+({Microstrip Exp. Opt.},25)
 };
 %myue
   \addplot [fill=c_myue!50,show sum on top] coordinates {
-({EIRP PwrC Opt},127)
-({EIRP Exp Opt},115)
-({Microstrip PwrC Opt},87)
-({Microstrip Exp Opt},85)
+({EIRP PwrC. Opt.},127)
+({EIRP Exp. Opt.},115)
+({Microstrip PwrC. Opt.},87)
+({Microstrip Exp. Opt.},85)
 };
 %other ue
   \addplot [fill=c_otherue!50,show sum on top] coordinates {
-({EIRP PwrC Opt},0)
-({EIRP Exp Opt},0)
-({Microstrip PwrC Opt},0)
-({Microstrip Exp Opt},0)
+({EIRP PwrC. Opt.},0)
+({EIRP Exp. Opt.},0)
+({Microstrip PwrC. Opt.},0)
+({Microstrip Exp. Opt.},0)
 };
   \legend{my UABS,other UABSs,my UE,other UE}
 \end{axis}

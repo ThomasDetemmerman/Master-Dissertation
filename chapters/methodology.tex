@@ -261,9 +261,10 @@ P_{tx} = P_{sens} [W] + PL [dB]
 \end{equation}
 Despite the legal $SAR^{max}_{10g}$ for Belgium is set to 2 $W/kg$,  the actual  $SAR^{max}_{10g}$ value is usually lower and different for each mobile device. 
 An average is calculated based on 3516 different phones from various brands using a German database \cite{SARDatabase}. An overview can be 
-found in fig. \ref{chart:germanDatabase}.
+found in figure \ref{chart:germanDatabase}.
 When the phone is positioned at the ear, an average $SAR^{max}_{10g}$  of 0.7 $W/kg$ is found with a standard deviation of 0.25 $W/kg$ which are very similar 
 results as in ref. \cite{J10.1.1}. The median of 0.67  $W/kg$ is used as $SAR^{max}_{10g}$ in formula \ref{eq:calculatesar}.
+\newline
 \definecolor{hous}{HTML}{3065c1}
 \begin{figure}[h!]
   \begin{tikzpicture}
@@ -273,7 +274,7 @@ results as in ref. \cite{J10.1.1}. The median of 0.67  $W/kg$ is used as $SAR^{m
           axis y line*=left,
           bar width=1cm,
           xlabel near ticks,
-          height=8cm, width=\textwidth,
+          height=10cm, width=\textwidth,
           ylabel={Percentage of mobile phones},
           xlabel={Maximum SAR able to transmit},
           symbolic x coords={0.0--0.2,0.2--0.4,0.4--0.6,0.6--0.8,0.8--1.0,1.0--1.2,1.2--1.4,1.4--1.6,1.6--1.8,1.8--2.0},
@@ -349,8 +350,8 @@ In this document, a substrate like glass
 is chosen because of the higher \gls{dielectric constant} of $\epsilon_r = 4.4$ compared to materials like Teflon with only a dielectric 
 constant of $\epsilon_r = 2.2$ \cite{J14_antennadesign}. 
 Doing this in combination with an antenna height of 2.87 mm will decrease the dimensions of the entire antenna surface.
-This comes in handy since drones only have limited space available.
-
+This comes in handy since drones only have limited space available. An overview 
+of these values is given in table \ref{table:antennaparas}.
 \begin{table}[h!]
 \centering
 \begin{tabular}{|l|c|l|}
@@ -458,7 +459,7 @@ the radiation pattern of figure \ref{radpattern1}. If it is assumed that drones 
 However, for the continuation of this master dissertation, the radiation pattern from figure \ref{radpattern2} 
 will be used since this antenna is the smallest
 and therefore most suitable to attach to the limited space available under a drone. 
-An more extensive comparison between different radiation patterns is out of the scope of this master dissertation. 
+A more extensive comparison between different radiation patterns is out of the scope of this master dissertation. 
 A data sheet of the exact values from both radiation patterns can be
 found in appendix \ref{ch:radpattern}.
 

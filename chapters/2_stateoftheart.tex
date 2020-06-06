@@ -44,7 +44,7 @@ The \gls{FCC} of the \gls{USA} follows the recommendations of the \gls{IEEE} Std
 regulations based on 1 g tissue.
 The $SAR^{wb}_{1g}$ is therefore defined at 1.6 $W/kg$ despite the fact that this value has been reviewed and changed by the \gls{IEEE} to 8 $W/kg$ in Std C95.1-2005 \cite{P2}.
 An overview is given in table \ref{table:overviewSARValues}.
-
+\newline
 %\begin{table}[h!]
 %\begin{tabular}{|l|c|c|l|}
 %\hline
@@ -58,7 +58,9 @@ An overview is given in table \ref{table:overviewSARValues}.
 %\label{table:overviewSARValues}
 %\end{table}
 
+
 \begin{table}[h!]
+\renewcommand{\arraystretch}{1.4}
 \centering
 \begin{tabular}{|>{\centering}m{3cm} |m{8cm}|c|c|}
 \hline
@@ -193,16 +195,17 @@ drones are considered in \cite{J2}: an off-the-shelf drone affordable by the gen
 show that the second type will require less drones to cover the same number of users and will last longer in the air. The research in this paper
 will therefore be done with the usage of the second type. A technical overview of this drone is given in table \ref{table:dronespecs}.
 \newline
-\newline
+
 \begin{table}[h!]
+\renewcommand{\arraystretch}{1.2}
 \centering
-\begin{tabular}{|l|c|c|}
+\begin{tabular}{|m{7cm}|c|c|}
 \hline
- Parameter          & Value      & Units   \\    \hline
- Carrier power      & 13.0 &A \\
- Average carrier speed           & 12.0 &m/s       \\ 
- Average carrier power usage    & 17.33& Ah      \\ 
- Carrier battery voltage        & 22.2 &V \\ \hline
+ \textbf{Parameter}             & \textbf{Value}      & \textbf{Units}   \\    \hline
+ Carrier power                  & 13.0                &A                 \\
+ Average carrier speed          & 12.0                &m/s               \\
+ Average carrier power usage    & 17.33               & Ah               \\
+ Carrier battery voltage        & 22.2                &V                 \\\hline
 \end{tabular}
 \caption{Specifications of the used drone.}
 \label{table:dronespecs}
@@ -298,8 +301,8 @@ Further, the fabrication of a microstrip patch antenna is considered to be
 the easiest of the considered patch antennae \cite{J13_microstripadvantages}. 
 
 \begin{figure}[H]
-\centering
-  \includegraphics[width=\textwidth/2]{../images/patchantenna.png}
+\hspace{4cm}
+  \includegraphics[width=\textwidth/3*2]{../images/patchantenna.png}
   \caption{General design of a microstrip antenna.}
   \label{fig:basicpatchantenna}
 \end{figure}
@@ -336,7 +339,7 @@ antenna is pointing towards the ground since the \gls{UAV} will be flying above 
 
 \begin{figure}[H]
 \centering
-  \includegraphics[width=0.8\textwidth]{../images/drone.png}
+  \includegraphics[width=0.62\textwidth]{../images/drone.png}
   \caption{Image of a microstrip patch antenna attached to the bottom of a \gls{UAV}. }
   \label{fig:exampleDrone}
 \end{figure}

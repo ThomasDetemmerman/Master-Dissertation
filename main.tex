@@ -154,7 +154,7 @@
 %
 \begin{document}
 
-
+\frontmatter                                            % latin page numbers (front matter only starts here so extended abstracs would not be counted (prevents realy big page numbers like XXiii))
 \pagestyle{plain}                                       % page numbers in center of footer
 \includepdf{frontmatter/voorblad.pdf}                   % Front matter
 \newpage\thispagestyle{empty}\mbox{}                    % White page
@@ -162,8 +162,7 @@
 \include{frontmatter/summary.EN}  
 \include{frontmatter/summary.NL} 
 \includepdf[pages=-]{frontmatter/extendedAbstracts/EN/extendedabstract.pdf}   % Extended Abstract
-\includepdf[pages=-]{frontmatter/extendedAbstracts/NL/extendedabstract.pdf}   % Extended Abstract
-\frontmatter                                            % latin page numbers (front matter only starts here so extended abstracs would not be counted (prevents realy big page numbers like XXiii))
+\includepdf[pages=-]{frontmatter/extendedAbstracts/NL/extendedabstract.pdf}   % Extended Abstract    
 \tableofcontents                                        % Table of Contents
 \listoffigures                                          % List of figures
 \addcontentsline{toc}{chapter}{List of Figures}         %list "list of figures" in 'table of contents"
@@ -171,9 +170,10 @@
 \addcontentsline{toc}{chapter}{List of Tables}          %list "list of tables" in "table of contents"
 \listoflistings                                         % List of listings (code fragments)
 \addcontentsline{toc}{chapter}{List of Listings}        %list "list of listings" in "table of contents"
-%\include{woordenlijst}
-%\printglossaries
-%\glsaddallunused
+\include{woordenlijst}
+\printglossaries
+
+
 
 %
 % Include the main chapters of the thesis below
