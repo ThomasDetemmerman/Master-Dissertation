@@ -194,7 +194,7 @@ distance in general.
 
 \FloatBarrier
 \begin{wrapfigure}{r}{0.45\textwidth}
-\vspace{-0.7cm}
+\vspace{-1cm}
   \begin{center}
     \includegraphics[width=0.45\textwidth]{../results/s2/proveScenario.png}
   \end{center}
@@ -209,6 +209,7 @@ The two users, who will be referred to by `red' and `blue', are 90 metres separa
 Scenario I already explained that the charts can be simplified and the blue line from fig. \ref{fig:prove} remains in fact constant between zero and 130 metres.
 The chart shows that the \gls{UABS} is positioned above the blue user. The red user is in \gls{NLOS} as long as the \gls{UABS} remains below 20 metres.
 
+\clearpage
 Once the \gls{UABS} increases its flying altitude, the red user comes into \gls{LOS} but still remains uncovered. This is because the tool initially locates a possible 
 \gls{UABS} above each user and thereafter performs the  fitness function. The applied fitness function must have decided that it is better to connect 
 each user to the \gls{UABS} above him. In a final stage, the tool checks whether the number of online \gls{UAV}s does not exceed the capacity of the facility
@@ -228,13 +229,14 @@ one user behaves like the blue one.
 The red line therefore dominates the average exposure in figure \ref{fig:s2a_dlAndPc}.
 
 \begin{figure}[h!]
-  \includegraphics[width=\textwidth]{../results/s2/prove.png}
+\centering
+  \includegraphics[width=0.95\textwidth]{../results/s2/prove.png}
   \caption{Scenario II with only 2 users. The coloured areas are only applicable for the red user. 
   The blue user is connected during the entire time.}
   \label{fig:prove}
 \end{figure}
 
-
+\FloatBarrier
 Figure \ref{fig:s2a_dlAndPc} showed that the electromagnetic exposure of the average user increases along with the flying height
 which reflects itself on better coverage as visible in figure  \ref{fig:s2fhvscov}.
 Increasing the flying height from 20 to 100 metres improves the coverage between 1\% and 2\% for all four configurations.
@@ -251,6 +253,7 @@ since the angle between the user and the \gls{UABS}'s main lob decreases. The us
   \label{fig:s2fhvscov}
 \end{figure}
 
+\FloatBarrier
 Eventually, figure \ref{fig:s2shfourSourcesMatrix} shows the whole body $SAR_{10g}$ for the weighted average user, deducted from all electromagnetic sources. 
 This combines the exposure 
 of the only \gls{UABS} available in the network, 
@@ -306,10 +309,10 @@ The linear regression lines from figure \ref{fig:s2uvsnumcovusers} can be predic
 \begin{equation}
 \text{number of users =}
     \begin{cases}
-      y = 0,0233x + 2,3553 & \text{if EIRP and PwrC Opt}\\
-      y = 0,0197x + 2,6144  & \text{if EIRP and Exp Opt}\\
-      y = 0,0131x + 2,4371  & \text{if microstrip and PwrC Opt}\\
-      y = 0,0119x + 2,4652  & \text{if microstrip and Exp Opt}
+      y = 0,0233x + 2,3553 & \text{if EIRP and PwrC. Opt.}\\
+      y = 0,0197x + 2,6144  & \text{if EIRP and Exp. Opt.}\\
+      y = 0,0131x + 2,4371  & \text{if microstrip and PwrC. Opt.}\\
+      y = 0,0119x + 2,4652  & \text{if microstrip and Exp. Opt.}
     \end{cases} 
     \label{eq:numcovusers}      
 \end{equation}
@@ -457,13 +460,13 @@ we notice the same behaviour where the
  \gls{SAR} from the own device indeed increases between 89 and 141 $nW/kg$ by raising the flying altitude from 
  20 to 200 metres.
  % micro pc = 107 nw/kg (9 times more); micro exp = 124 nw/kg(15 times more); eirp exp = 141nw/kg (11 times more); eirp pc=89 nw/kg (2.5 times more)
-  However, a more logarithmic increase is shown
-  despite the fact that figure \ref{fig:s1_fhsar} showed an exponential increase.
+ However, a more logarithmic increase is shown
+despite the fact that figure \ref{fig:s1_fhsar} showed an exponential increase.
 This was however deducted with only one user present in the network as opposed to this scenario 
 where 224 users are present. 
 The electromagnetic radiation from the covered users will still behave like it did in Scenario I.
-Moreover, the \gls{SAR} shown in figure  \ref{fig:s1_fhsar} is averaged  over covered and uncovered users.
-In conclusion, the average  \gls{UL} \gls{SAR} in  figure \ref{fig:s1_fhsar} will not increase as fast as it did
+Moreover, the \gls{SAR} shown in figure  \ref{fig:s3a_fourSourcesMatrix} is averaged  over covered and uncovered users.
+In conclusion, the average  \gls{UL} \gls{SAR} in  figure \ref{fig:s3a_fourSourcesMatrix} will not increase as fast as it did
 in Scenario I (fig. \ref{fig:s1_fhsar}).
 
 We can see from figure \ref{fig:s3a_fourSourcesMatrix} that once the flying altitude surpasses the \gls{NLOS} of the buildings, 
@@ -481,8 +484,8 @@ in electromagnetic radiation will be less for a microstrip patch antenna. The re
 will be more focused towards the ground and there is less sideways radiation because of attenuation.
 The results show that by raising the flying altitude from 20 to 200 metres,
 the $SAR^{otherUABS}$ will increase between 115 and 140 $nW/kg$ for \gls{EIRP} antennae and between 54 and 74 $nW/kg$ for microstrip patch antennae.
-\clearpage
-\begin{figure}[]
+
+\begin{figure}[h!]
 \centering
   \includegraphics[width=\textwidth]{../results/s3/fhFourSources.png}
   \caption{
@@ -507,7 +510,7 @@ When the population increases from 50 to 600 users,
  and 110 more \gls{UABS}s for an \gls{EIRP} \gls{PwrC Opt} network.
 This is an expected behaviour  when looking at Scenario II where, with only one \gls{UABS} available, 
 the percentage of covered users decreases for these larger populations.
-\clearpage
+
 \begin{figure}[h]
   \includegraphics[width=\textwidth]{../results/s3/uvsnumdronesAndCov.png}
   \caption{This graph shows how much \acs{UAV}s are required for different flying heights while trying to achieve a 100\% coverage.}
@@ -593,22 +596,22 @@ and is able to optimize towards either electromagnetic exposure or overall power
 An overview of all values measured in a default configuration is presented in table \ref{table:resultOverview}.
 
 \begin{table}[h!]
-\begin{tabular}{|l|l|c|c|c|}
+\begin{tabular}{|c|l|c|c|c|}
 \hline                                                                                             %0.1 W = 100 mW                                                            %1e-08 W/kg = 10 nW/kg 
-\multicolumn{1}{|c|}{\textbf{Scenario}}&\multicolumn{1}{c|}{\textbf{Configuration}}& \textbf{Network power}                  & \textbf{DL Exposure}        & \textbf{WB SAR}         \\ 
-                                       &                                          & \textbf{consumption (mW)}               & \textbf{(mV/m)}             & \textbf{(nW/kg)}        \\ \hline
-\multirow{4}{*}{\textbf{Scenario I}}   & \textbf{EIRP \acs{Exp Opt}}              &    464                                  &      364                    &     27                  \\ \cline{2-5}
-                                       & \textbf{EIRP \acs{PwrC Opt}}             &    464                                  &      364                    &     27                  \\ \cline{2-5} 
-                                       & \textbf{Microstrip \acs{Exp Opt}}        &    464                                  &      364                    &     27                  \\ \cline{2-5} 
-                                       & \textbf{Microstrip \acs{PwrC Opt}}       &    464                                  &      364                    &     27                  \\ \hline
-\multirow{4}{*}{\textbf{Scenario II}}  & \textbf{EIRP \acs{Exp Opt}}              &    742                                  &      8.5                    &     1.15                \\ \cline{2-5} 
-                                       & \textbf{EIRP \acs{PwrC Opt}}             &    725                                  &      10                     &     1.45                \\ \cline{2-5} 
-                                       & \textbf{Microstrip \acs{Exp Opt}}        &    710                                  &      3.7                    &     0.25                \\ \cline{2-5} 
-                                       & \textbf{Microstrip \acs{PwrC Opt}}       &    720                                  &      7.2                    &     0.83                \\ \hline
-\multirow{4}{*}{\textbf{Scenario III}} & \textbf{EIRP \acs{Exp Opt}}              &    56200                                &      113                    &     240                 \\ \cline{2-5} 
-                                       & \textbf{EIRP \acs{PwrC Opt}}             &    52900                                &      148                    &     330                 \\ \cline{2-5} 
-                                       & \textbf{Microstrip \acs{Exp Opt}}        &    68900                                &      92                     &     160                 \\ \cline{2-5} 
-                                       & \textbf{Microstrip \acs{PwrC Opt}}       &    64900                                &      113                    &     222                 \\ \hline
+\multicolumn{1}{|c|}{\textbf{Scenario}}                           &\multicolumn{1}{c|}{\textbf{Configuration}}& \textbf{Network power}                  & \textbf{DL Exposure}        & \textbf{WB SAR}         \\ 
+                                                                  &                                          & \textbf{consumption (mW)}               & \textbf{(mV/m)}             & \textbf{(nW/kg)}        \\ \hline
+                                                                  & \textbf{EIRP \acs{Exp Opt}}              &    464                                  &      364                    &     27                  \\ \cline{2-5}
+\textbf{Scenario}                                                 & \textbf{EIRP \acs{PwrC Opt}}             &    464                                  &      364                    &     27                  \\ \cline{2-5} 
+\textbf{I}                                                        & \textbf{Microstrip \acs{Exp Opt}}        &    464                                  &      364                    &     27                  \\ \cline{2-5} 
+                                                                  & \textbf{Microstrip \acs{PwrC Opt}}       &    464                                  &      364                    &     27                  \\ \hline
+                                                                  & \textbf{EIRP \acs{Exp Opt}}              &    742                                  &      8.5                    &     1.15                \\ \cline{2-5} 
+ \textbf{Scenario}                                                & \textbf{EIRP \acs{PwrC Opt}}             &    725                                  &      10                     &     1.45                \\ \cline{2-5} 
+ \textbf{II}                                                      & \textbf{Microstrip \acs{Exp Opt}}        &    710                                  &      3.7                    &     0.25                \\ \cline{2-5} 
+                                                                  & \textbf{Microstrip \acs{PwrC Opt}}       &    720                                  &      7.2                    &     0.83                \\ \hline
+                                                                  & \textbf{EIRP \acs{Exp Opt}}                 &    56200                                &      113                    &     240                 \\ \cline{2-5} 
+\textbf{Scenario}                                                 & \textbf{EIRP \acs{PwrC Opt}}             &    52900                                &      148                    &     330                 \\ \cline{2-5} 
+\textbf{III}                                                      & \textbf{Microstrip \acs{Exp Opt}}        &    68900                                &      92                     &     160                 \\ \cline{2-5} 
+                                                                  & \textbf{Microstrip \acs{PwrC Opt}}       &    64900                                &      113                    &     222                 \\ \hline
 \end{tabular}
 \caption{Overview of the results from the various scenarios and configurations. The values are measured at a 100 metre flying height for 224 users except for the first scenario where only one user is present.}
 \label{table:resultOverview}
