@@ -1,6 +1,6 @@
 # build subPDF
-#(cd ./frontmatter/extendedAbstracts/EN && ./build.sh)
-#(cd ./frontmatter/extendedAbstracts/NL && ./build.sh)
+(cd ./frontmatter/extendedAbstracts/EN && ./build.sh)
+(cd ./frontmatter/extendedAbstracts/NL && ./build.sh)
 
 # init build
 xelatex -shell-escape main
