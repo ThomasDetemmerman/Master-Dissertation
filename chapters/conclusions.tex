@@ -5,7 +5,7 @@ The following section presents the conclusion where the impact of the flying hei
 is investigated by examining electromagnetic exposure and power consumption. Also, optimization techniques towards both evaluation 
 parameters have been applied and two different antenna types have been considered.
 All conclusions are based on the default configuration with a flying height of 100 metres and 224 active users to cover.
-The other parameters are described in table \ref{table:defaultconf}.
+The other parameters are described in table \ref{table:defaultconf} and the resulting values are presented in table \ref{table:resultOverview}.
 
 \section{Conclusion}
 
@@ -20,7 +20,7 @@ the transmission towers from \cite{J1} who have a predetermined position.
 For default configurations, the electromagnetic field radiation from a
 power consumption optimized network can be reduced up to 23\% for \gls{isotropicradiator}s and 30\% for microstrip patch antennae 
 by optimizing towards electromagnetic exposure. Doing so, decreases the range of the \gls{UABS}  since the power of an individual \gls{UABS} will 
-drop between 0.07 and 0.12 $W$. Therefore, much more \gls{UABS}s will be needed. 
+drop between 0.07 and $0.12\ W$. Therefore, much more \gls{UABS}s will be needed. 
 The exposure optimized networks will, on average, use 18 \gls{UAV}s more than power consumption optimized networks
 and require therefore 4 $W$ more energy in total.
 A power consumption optimized network on the other hand will try to limit the number of \gls{UABS}s 
@@ -115,8 +115,8 @@ further benefit from their thin and lightweight design. The performance
 of this directional microstrip patch antenna has been compared to a 
 fictional \gls{isotropicradiator}.
 This \gls{isotropicradiator} has higher exposure and coverage for less power compared to a microstrip patch antenna.
-For a default network, a microstrip patch antenna can reduce between 30\% and 34\% electromagnetic exposure 
-from an \gls{isotropicradiator}. Doing so will require around 24 drones extra and therefore increasing the power consumption with 12 $W$.
+For a default network, a microstrip patch antenna can reduce between 30\% and 34\% of the electromagnetic exposure 
+from an \gls{isotropicradiator}. Doing so will require around 24 extra \gls{UABS}s and therefore increasing the power consumption with 12 $W$.
 The required power per \gls{UABS} will increase with $0.022\ W$ 
 in a power consumption optimized network and with $0.007\ W$ in an exposure optimized network.
 The fact that an \gls{isotropicradiator} has higher electromagnetic exposure for less power  is due to the absence of 
@@ -131,7 +131,7 @@ causes less sideways radiation. So the exposure from other \gls{UABS}s will also
   \label{fig:resultIllustration}
 \end{figure}
 
-Figure \ref{fig:resultIllustration} shows an overview based on the results from the two optimization strategies and the two types of antenna.
+Figure \ref{fig:resultIllustration} shows an overview based on the results from the two optimization strategies and the two antenna types.
 Remarkable is that an \gls{EIRP} exposure optimized network behaves very similar to a microstrip power consumption optimized network.
 Therefore, the microstrip patch antenna in a power consumption optimized network is recommended. 
 The microstrip patch antenna will generate less electromagnetic radiation by design and
@@ -213,7 +213,7 @@ the configuration.
 Further, increasing the flying altitude has a positive influence on the number of required drones which on their 
 turn have a positive influence on power consumption. Increasing the flying altitude from 20 m to 200 m, decreases the number 
 of required drones around 59\%. This decrease in number of \gls{UABS}s was also concluded in \cite{J2}.
-Also authors from \cite{J17_kuehn2019modelling} made the conclusion that reduced path loss decreases electromagnetic exposure.
+Also, the authors from \cite{J17_kuehn2019modelling} made the conclusion that reduced path loss decreases electromagnetic exposure.
 The electromagnetic radiation from the \gls{UABS}s remains more or less the same for flying altitudes between 80 and 200 metres. Most 
 \gls{UABS}s are in \gls{LOS} and no more power will be used thanks to power control.
 However, the electromagnetic radiation from the user's own device does increase in order to reach the high flying drones.
@@ -222,7 +222,7 @@ When more \gls{UABS}s are available in the network, electromagnetic exposure fro
 because more \gls{UABS}s come into \gls{LOS}. Raising the flying altitude from 20 to 200 m will increase the \gls{SAR} from other 
 \gls{UABS}s between 46 and 49 times when using an \gls{EIRP} antenna and between 70 and 85 times when using a microstrip patch antenna.
 It is therefore concluded that raising the flying height has a positive influence on the number of 
-\gls{UABS}s but is not unlimited since the total \gls{SAR} will increase as well.
+\gls{UABS}s but the advantages are not unlimited since the total \gls{SAR} will increase as well.
 When also considering the results from \cite{U1} where a flying altitude of  
 80 metres is suggested for an optimal access and backhaul connectivity, a flying height 
 of 80 metres is also here proposed for the city centre of Ghent.
@@ -230,13 +230,13 @@ of 80 metres is also here proposed for the city centre of Ghent.
 \section{Summary}
 The microstrip patch antenna with an aperture angle of \ang{90} is a suitable starting point for an antenna. 
 This directional antenna focusses electromagnetic radiation where it is needed. Unwanted sideways radiation 
-is therefore reduced by design.
+is reduced by the directional nature of this type of antenna.
 The sufficiently large aperture angle covers enough users. The antenna is recommended to be deployed in a power consumption 
 optimized network since less drones are required and therefore also less expensive.
 The optimal flying height for the city centre of Ghent is believed to be situated at 80 metres since lower flying heights require much more \gls{UABS}s and
 higher flying heights have a negative influence on the electromagnetic exposure.  
 When this configuration is applied to a network with 224 users, the average user will 
-experience a SAR of around $0.2\ \mu W/kg$ and
+experience a total SAR of around $0.2\ \mu W/kg$ and
  a downlink electromagnetic exposure of $114\ mV/m$. The network will require on average 96 UABSs with a total
 power consumption of $69.5\ W$. That is $7.24\ W$ per UABS.
 
