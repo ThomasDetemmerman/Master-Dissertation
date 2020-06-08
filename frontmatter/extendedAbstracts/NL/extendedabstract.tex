@@ -43,11 +43,11 @@
 
 \begin{document}
 
-\title{	Evaluatie van de elektromagnetische blootstelling van de mens in een netwerk van drones}
+\title{Evaluatie van de elektromagnetische blootstelling van de mens in een netwerk van drones}
 
 \author{Thomas Detemmerman}
 
-\supervisor{Wout Joseph, Luc Martens}
+\supervisor{Prof. dr. ir. Wout Joseph, Prof. dr. ir. Luc Martens}
 
 \maketitle
 
@@ -56,44 +56,45 @@
 De hedendaagse samenleving vertrouwt meer dan ooit op de aanwezigheid van draadloze netwerken. 
 Dankzij de mobiliteit van  drones kan een drone-gestuurd netwerk de nodige mobiele data voorzien 
 indien het bestaande netwerk beschadigd is.
-Er is echter een groeinde vrees voor mogelijke gezondheidseffecten veroorzaakt door deze
+Elke drone wordt daarom uitgerust met een femtocell base station.
+Er is echter een groeiende vrees voor mogelijke gezondheidseffecten veroorzaakt door deze
 mobiele netwerken. De overheid stelt strikte wetgevingen op waaraan deze mobiele netwerken dienen te voldoen.
 
-Dit onderzoek bekijkt hoe veschillende scenario's het energieverbruik, electromagnetische blootstelling en 
+Dit onderzoek bekijkt hoe verschillende scenario's het energieverbruik, elektromagnetische blootstelling en 
 specifieke absorptietempo kunnen be\"invloeden.
 Drie verschillende scenario's zijn gedefinieerd waarbij verschillende vlieghoogtes, aantal drones en 
 populatiegroottes onderzocht worden.
 Verder is er ook een microstrip patch antenne gedefinieerd en bevestigd op een drone. 
 De antenne zal de communicatie tussen de drone en de gebruikers verzorgen.
-De performantie van deze antenne zal vergeleken worden met een istorope antenne.
-Vervolgens zal het netwerk geoptimaliseerd worden naar electromagnetische straling van het individu of 
+De performantie van deze antenne zal vergeleken worden met een isotrope antenne.
+Vervolgens zal het netwerk geoptimaliseerd worden naar elektromagnetische straling van het individu of 
 naar het energieverbruik van het gehele netwerk. Deze twee doelstellingen resulteren in 
 tegenstrijdige vereisten. 
 
-Om dit doel te bereiken is de capacity based deployment tool van de onderzoekgsgroep WAVES op de 
-Universiteit Gent verder uitgebreid zodoende dat electromagnetische straling berekend kan worden.
-Verder is de tool nu ook in staat om te opimaliseren naar electromagnetische straling of energieverbruik. 
+Om dit doel te bereiken is de capacity based deployment tool van de onderzoeksgroep WAVES op de 
+Universiteit Gent verder uitgebreid zodoende dat elektromagnetische straling berekend kan worden.
+Verder is de tool nu ook in staat om te optimaliseren naar elektromagnetische straling of energieverbruik. 
 
 Uit de resultaten blijkt dat een microstrip patch antenne
 met een openingshoek van \ang{90} een geschikt startpunt is voor een antenne.
-Deze directionele  antenne focust de electromagnetische straling daar waar het nodig is.
-Ongewenste zijwaardse straling wordt gereduceerd door het design.
+Deze directionele  antenne focust de elektromagnetische straling daar waar het nodig is.
+Ongewenste zijwaartse straling wordt gereduceerd door het design.
 Het wordt aangeraden om de antenne toe te passen in een netwerk dat energieverbruik minimaliseert
 omdat hierbij minder drones nodig zijn en daardoor goedkoper is.
 De optimale vlieghoogte voor het stadscentrum in Gent bevindt zich rond 80  meter.
 Lagere vlieghoogtes vereisen veel meer drones terwijl hogere vlieghoogtes de 
-electromagnetische straling laten toenemen.
+elektromagnetische straling laten toenemen.
 Wanneer deze configuratie toegepast wordt op een netwerk met 224 gebruikers zal de gewogen gemiddelde gebruiker 
-een SAR ondervinden van  $0.2\ \mu W/kg$ en een downlink electromagnetische straling van 
-$114\ mV/m$. Het netwerk zal hiervoor gemiddeld 96 UABSs vereisen met een totaal energieverbruik 
-van $69.5\ W$. Dat is $7.24\ W$ per UABS.
+een SAR ondervinden van  $0.2\ \mu W/kg$ en een downlink elektromagnetische straling van 
+$114\ mV/m$. Het netwerk zal hiervoor gemiddeld 96 drones vereisen met een totaal energieverbruik 
+van $69.5\ W$. Dat is $7.24\ W$ per drone.
   
 \end{abstract}
 
 \begin{keywords}
-LTE, Electromagnetische blootstelling, 
+LTE, elektromagnetische blootstelling, 
 Energieverbruik, Drone,
-Femtocell, Microstrip patch antenna, Stralingspatronen, Specific absorption rate (SAR).
+Femtocell, Microstrip patch antenne, Stralingspatronen, Specifiek absorptietempo (SAT).
 \end{keywords}
 
 \section{Introductie}
@@ -251,25 +252,25 @@ van de andere overwogen antennes \cite{J13_microstripadvantages}. Een voorbeeld 
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=\linewidth]{drone.png}
+  \includegraphics[width=0.8\linewidth]{drone.png}
   \caption{Afbeelding van een microstrip patch antenne bevestigd aan de onderkant van een drone. }
   \label{fig:exampleDrone}
 \end{figure}
 \vspace{10 mm}
 Deze foto toont een microstrip patch antenne die bestaat 
-uit aluminium en bevestigd is op een substraat van Teflon. De microstrip patch antenna 
+uit aluminium en bevestigd is op een substraat van Teflon. De microstrip patch antenne 
 wijst naar de grond aangezien de drone boven de mensen zal vliegen.
 
 \section{Methodologie}
 
-De eerste subsectie legt uit hoe electromagnetische straling berekend kan worden voor elke bron 
+De eerste subsectie legt uit hoe elektromagnetische straling berekend kan worden voor elke bron 
 en hoe deze om te zetten naar \gls{SAR}.
 De tweede subsectie geeft een overzicht van hoe een microstrip patch antenne ontwikkeld kan worden. 
-De derde subsectie bespreekt hoe het network geoptimaliseerd kan worden en als laatste wordt het algorithme
+De derde subsectie bespreekt hoe het network geoptimaliseerd kan worden en als laatste wordt het algoritme
 uitgelegd.
 
 \subsection{Elektromagnetische Straling}
-\subsubsection{Totale Electromagnetische Straling}
+\subsubsection{Totale elektromagnetische Straling}
 De totale \gls{SAR} voor het volledige lichaam ($SAT^{wb,totaal}_{10g}$) van een individu 
 kan berekend worden als een eenvoudige som van de \gls{SAR}-waarden van de individuele bronnen. 
 Dit is gebaseerd op de formule uit \cite{J17_kuehn2019modelling} die aanneemt dat het mobiele apparaat 
@@ -303,7 +304,7 @@ pijlen straling in het verre veld voorstellen.
   \label{fig:netwerkIllustration}
 \end{figure}
 
-\subsubsection{Electromagnetische straling van een indivuele bron}
+\subsubsection{elektromagnetische straling van een indivuele bron}
 \label{sec:calculatingexposure}
 
 Om de totale elektromagnetische straling te vinden waaraan de gebruiker is blootgesteld, dient eerst
@@ -392,7 +393,7 @@ SAR^{wb,nf}_{10g} [W/kg] = 0.0070 \left[\frac{W/kg}{W}\right] * P_{tx} [W]
 \label{eq:ulToSar}
 \end{equation}
 
-De energie die door het mobiele aparaat wordt gebruikt kan berekend worden met formule \ref{eq:powerUE} \cite{J22_plets2015joint}.
+De energie die door het mobiele apparaat wordt gebruikt kan berekend worden met formule \ref{eq:powerUE} \cite{J22_plets2015joint}.
 \begin{multline} 
 P_{tx}^{UE} = min \big\{P_{max} [dBm] , \\
  P_{pusch} [dBm] + \alpha * PL [dB] + 10log(M) + \sigma \big\}
@@ -455,7 +456,7 @@ in het stralingspatroon getekend in fig. \ref{fig:radpattern}.
 \subfloat[E-vlak]{\includegraphics[width=0.49\linewidth]{pattern2/ep.png}}
 \hfill
 \subfloat[H-vlak]{\includegraphics[width=0.49\linewidth]{pattern2/hp.png}}
-  \caption{Stralingspatroon gegenereerd door de microstrip patch antenna.}
+  \caption{Stralingspatroon gegenereerd door de microstrip patch antenne.}
 \label{fig:radpattern}
 \end{figure}
 
@@ -545,10 +546,10 @@ in elk scenario tenzij anders vermeld door de restricties van dat specifieke sce
         \toprule
         \multicolumn{2}{l}{\textbf{Mobiel netwerk}} \\
         \hline
-        \hspace{3mm}  technologie        & LTE     \\
-        \hspace{3mm}  frequentie         & 2.6 GHz \\
+        \hspace{3mm}  Technologie        & LTE     \\
+        \hspace{3mm}  Frequentie         & 2.6 GHz \\
         \hspace{3mm}  Power offset ($P_{pusch}$)            & -120 dBm  \\
-        \hspace{3mm}  Compenstatie voor padverlies ($\alpha$)   & 1  \\
+        \hspace{3mm}  Compensatie voor padverlies ($\alpha$)   & 1  \\
         \hspace{3mm}  Correctie waarde                    & 0 dBm  \\
         \hspace{3mm}  Aantal resource blokken      & 100  \\
         \hline
@@ -591,11 +592,11 @@ het nodige zendvermogen van de antenne zullen onderzocht worden voor verschillen
 Bij het tweede scenario zal het netwerk uitgebreid worden met meerdere gebruikers maar 
 er zal nog steeds uitsluitend  \'e\'en drone aanwezig zijn. De eerste onderzochte parameter 
 is een varierende vlieghoogte gaande van 20 meter tot 200 meter. Hierbij zullen 224 gebruikers 
-uniform verdeerld worden over het centrum van Gent. Dit is de gemiddelde populatiegrootte op 
+uniform verdeeld worden over het centrum van Gent. Dit is de gemiddelde populatiegrootte op 
 een werkdag om 17 uur in Gent \cite{J2}.
 De tweede parameter is een varierende populatie lopend van 50 tot 600 gebruikers. Hierbij 
 zal de vlieghoogte vastgezet worden op 100 meter \cite{J2}.
-Het energieverbruik, electromagnetische straling en \gls{SAR} zullen onderzocht worden.
+Het energieverbruik, elektromagnetische straling en \gls{SAR} zullen onderzocht worden.
 
 Een derde scenario is sterk gelijkend aan het vorige. Dezelfde twee parameters zullen onderzocht 
 worden maar nu voor een onbeperkt aantal \gls{UABS}'s.
@@ -605,7 +606,7 @@ Er zijn namelijk twee antennes, een \gls{isotropicradiator} en een microstrip pa
 beide kunnen opereren in een \gls{PwrC Opt} netwerk en een \gls{Exp Opt} netwerk. Dit maakt een totaal van 4 configuraties.
 Een overzicht is gegeven in fig. \ref{fig:fourCasesMatrix}.
 
-Het is belangrijk om op te merken dat alle meetwaarden strikt gelimiteerd zijn tot de hiervoor vermoende bronnen en 
+Het is belangrijk om op te merken dat alle meetwaarden strikt gelimiteerd zijn tot de hiervoor vernoemde bronnen en 
 bijgevolg enkel dataverkeer overwegen tussen de gebruiker zijn apparaat en de \gls{UABS}. 
 Andere bronnen zoals connecties naar het backhaul netwerk of andere technologie\"en zullen niet overwogen worden.
 
@@ -619,8 +620,8 @@ Andere bronnen zoals connecties naar het backhaul netwerk of andere technologie\
 \section{Resultaten}
 Vier configuraties zullen overwogen worden tijdens het evalueren van twee parameters, zijnde 
 populatiegrootte en vlieghoogte. Deze parameters zullen onderzocht worden in drie scenario's 
-door het gedrag van het energieverbruik, electromagnetische straling en \gls{SAR}-waarden te monitoren.
-De electromagnetische straling en \gls{SAR} zullen genomen worden van de gewogen gemiddelde gebruiker
+door het gedrag van het energieverbruik, elektromagnetische straling en \gls{SAR}-waarden te monitoren.
+De elektromagnetische straling en \gls{SAR} zullen genomen worden van de gewogen gemiddelde gebruiker
 met behulp van vergelijking \ref{eq:em} waarbij $w_{1}$ en $w_{2}$ gelijk gesteld zijn aan 50\%. 
 Elk resultaat wordt uitgemiddeld over 20 simulaties.
 
@@ -685,7 +686,7 @@ Aangezien het energieverbruik van een individuele \gls{UABS} hoger is in een \gl
 
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{s2/fhvsdlAndPc.png}
-  \caption{Fig. (a) toont hoe de vlieghooghte be\"invloed wordt door \acs{DL} electromagnetische straling van de 
+  \caption{Fig. (a) toont hoe de vlieghoogte be\"invloed wordt door \acs{DL} elektromagnetische straling van de 
   gewogen gemiddelde gebruiker en fig. (b) toont het En energieverbruik van het volledige netwerk wanneer een enkele drone beschikbaar is.}
   \label{fig:s2a_dlAndPc}
 \end{figure}
@@ -701,7 +702,7 @@ en bevindt zich buiten de onderzochte vlieghoogtes.
 Deze wederafname is niet veroorzaakt door gebouwen maar door de grotere afstand in het algemeen.
 
 Fig. \ref{fig:s2shfourSourcesMatrix} toont de $SAR^{wb}_{10g}$ van de gewogen gemiddelde gebruiker voor elke individuele bron.
-De resultaten stellen vast dat de $SAR^{myUABS}$ dezelfde curve toont als deze van de elektromagnetische straling in fig. \ref{fig:s2a_dlAndPc}.a. Dit komt omdat vergelijking \ref{eq:DLconversion} de electromagnetische straling converteert naar \gls{SAR}
+De resultaten stellen vast dat de $SAR^{myUABS}$ dezelfde curve toont als deze van de elektromagnetische straling in fig. \ref{fig:s2a_dlAndPc}.a. Dit komt omdat vergelijking \ref{eq:DLconversion} de elektromagnetische straling converteert naar \gls{SAR}
 door het te vermenigvuldigen met een constante. Gedurende de gehele tijd is de $SAR^{myUABS}$
 de meest dominante factor gevolgd door de straling van de gebruiker zijn eigen mobiel apparaat.
 Straling komende van andere personen hun mobiel apparaat heeft amper invloed.
@@ -727,7 +728,7 @@ en daardoor zelf geen straling veroorzaken.
 Het onderzochte bereik loopt van 50 tot 600 gebruikers.
 Het blijkt dat het aantal gedekte gebruikers lineair toeneemt met het aantal personen aanwezig in het netwerk zoals getoond wordt in fig.
 \ref{fig:s2uvsnumcovusers}.b. Het toont hoe een \gls{isotropicradiator} in staat is om meer personen te behandelen in vergelijking tot een eenvoudige
- microstrip patch antenne. Eveneens is een energiezuinig netwerk in staat om meer mensen te behandelen dan een netwerk dat electromagnetische straling minimaliseert.
+ microstrip patch antenne. Eveneens is een energiezuinig netwerk in staat om meer mensen te behandelen dan een netwerk dat elektromagnetische straling minimaliseert.
  Bijvoorbeeld met 600 gebruikers zullen 5 tot 7 personen extra behandeld kunnen worden wanneer 
  een microstrip patch antenne vervangen wordt door een  \gls{isotropicradiator}.
 Door van een \gls{Exp Opt} netwerk naar een \gls{PwrC Opt} netwerk te gaan, kan er \'e\'en extra persoon 
@@ -739,11 +740,11 @@ behandeld worden.
   \label{fig:s2uvsnumcovusers}
 \end{figure}
 
-Fig. \ref{fig:s2b_dlAndPc}.a geeft de electromagnetische blootstelling van de gewogen gemiddelde gebruiker weer 
-bij berschillende populatiegroottes terwijl 
+Fig. \ref{fig:s2b_dlAndPc}.a geeft de elektromagnetische blootstelling van de gewogen gemiddelde gebruiker weer 
+bij verschillende populatiegroottes terwijl 
 \ref{fig:s2b_dlAndPc}.b het energieverbruik weergeeft voor al deze populatiegroottes.
 Fig. \ref{fig:s2b_dlAndPc}.a  is be\"invloed door fig. \ref{fig:s2uvsnumcovusers}.a. 
-De electromagnetische straling neemt af wanneer minder gebruikers behandeld worden.
+De elektromagnetische straling neemt af wanneer minder gebruikers behandeld worden.
 Bijvoorbeeld, in een EIRP \gls{PwrC Opt} netwerk met 50 gebruikers heeft 6,75\%
 dekking wat overeenkomt met een gewogen gemiddelde blootstelling van 18 $mV/m$. Dit terwijl
  600 gebruikers met een dekking van 2,75\% maar 9 $mV/m$ heeft.
@@ -755,7 +756,7 @@ Voor dit scenario is geen duidelijk verschil te merken tussen energieverbruik va
 
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s2/uvsdlAndPc.png} %0.85
-  \caption{Deze twee figuren tonen hoe de verschillende populatiegroottes invloed hebben op de \acs{DL} elektromagnetische straling (fig. a) en het energieverbruik (fig. b).}
+  \caption{Deze twee figuren tonen hoe de verschillende populatiegroottes invloed hebben op de \acs{DL} elektromagnetische straling (fig. a) en het energieverbruik \mbox{(fig. b)}.}
   \label{fig:s2b_dlAndPc}
 \end{figure}
 
@@ -820,7 +821,7 @@ vereisen respectievelijk 84 en 64 drones op een vlieghoogte van 200 m wat respec
 
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s3/fhvsdlAndPc.png}
-  \caption{Deze twee figuren tonen hoe de vlieghoogte invloed heeft op de \acs{DL} elektromagnetische straling (fig. a) en het energieverbruik (fig. b).}
+  \caption{Deze twee figuren tonen hoe de vlieghoogte invloed heeft op de \acs{DL} elektromagnetische straling (fig. a) en het energieverbruik \mbox{(fig. b)}.}
   \label{fig:s3a_dlAndPc}
 \end{figure}
 \vspace{2mm}
@@ -926,7 +927,7 @@ De \gls{SAR}-waarde neemt het meeste toe bij $SAR^{otherUABS}$ die heel laag sta
 Deze \gls{SAR} neemt echter snel toe. De grootste toename wordt waargenomen in een 
 \gls{EIRP} \gls{PwrC Opt} netwerk 
 waarbij 3 $\mu W/kg$ gemeten wordt voor 600 gebruikers. De $SAR^{otherUE}$ neemt het minste toe in een microstrip \gls{Exp Opt} met 
-slecths 1 $\mu W/kg$ voor 600 gebruikers.
+slechts 1 $\mu W/kg$ voor 600 gebruikers.
 \begin{figure}[h!]
 \centering
   \includegraphics[width=0.9\linewidth]{../results/s3/uFourSources.png}
@@ -941,16 +942,14 @@ slecths 1 $\mu W/kg$ voor 600 gebruikers.
 
 Een capacity-based deployment tool is gebruikt voor het onderzoeken van de 
 \gls{SAR} van gebruikers die geoptimaliseerd zijn naar 
- \gls{DL} electromagnetische straling en totaal energieverbruik.
+ \gls{DL} elektromagnetische straling en totaal energieverbruik.
  Dit is onderzocht voor verschillende vlieghoogtes, populatiegroottes en aantal beschikbare \gls{UABS}'s.
-De resultaten bevestigen de vaststellingen uit \cite{J1}  waarbij electromagnetische straling en totaal energieverbruik
+De resultaten bevestigen de vaststellingen uit \cite{J1}  waarbij elektromagnetische straling en totaal energieverbruik
 leiden tot tegenstrijdige vereisten. De voorgestelde fitness functie werkt zoals bedoeld.
-Voor een netwerk met standaard configuratie kan de electromagnetische straling in een 
+Voor een netwerk met standaard configuratie kan de elektromagnetische straling in een 
 energiezuinig netwerk kan gereduceerd worden tot wel 
 23\% voor \gls{isotropicradiator}s en 30\% voor microstrip patch antennes
-door te optimaliseren naar electromagnetische straling. 
-Doing so, decreases the range of the \gls{UABS}  since the power of an individual \gls{UABS} will 
-drop between 0.07 and 0.12 $W$. Therefore, much more \gls{UABS}s will be needed. 
+door te optimaliseren naar elektromagnetische straling. 
 Hierdoor zal het bereik van de 
  \gls{UABS} afnemen aangezien het energieverbruik van een individuele \gls{UABS} zakt tussen de 
  0.07 en 0.12 $W$. Hierdoor zullen 
@@ -959,21 +958,21 @@ gemiddeld 18 extra drones nodig zijn die in totaal tot 4 $W$  extra energieconsu
 %	How does the netwerk behave differently after the introduction of a realistic antenna?
 Een directionele microstrip patch antenne wordt geïntroduceerd omdat het verschillende voordelen biedt 
 in vergelijking met een omnidirectionele antenne. Directionele antennes zijn in staat om hun energie te richten waar het nodig is, namelijk de grond.
-Een micrrostrip patch antenne is verder dun en heeft een licht gewicht. Deze antenne, met een openingshoek van \ang{90}, veroorzaakt 
-minder electromagnetische blootstelling, een lager bereik en vereist meer energie.
-Voor een netwerk met standaard configuratie kan de microstrip patch atenne de electromagnetische
+Een microstrip patch antenne is verder dun en heeft een licht gewicht. Deze antenne, met een openingshoek van \ang{90}, veroorzaakt 
+minder elektromagnetische blootstelling, een lager bereik en vereist meer energie.
+Voor een netwerk met standaard configuratie kan de microstrip patch antenne de elektromagnetische
 straling van een \gls{isotropicradiator} tussen 30\% en 34\% reduceren. Dit zal het energieverbruik met 12 $W$ doen toenemen.
 De vereiste energie per \gls{UABS} zal  toenemen met $0.022\ W$ voor een \gls{PwrC Opt} netwerk en met 
 $0.007\ W$ voor een \gls{Exp Opt} netwerk.
 \begin{figure}[hb!]
 \centering
-  \includegraphics[width=0.8\linewidth]{../images/fourCasesMatrixSol.png}
+  \includegraphics[width=\linewidth]{../images/fourCasesMatrixSol.png}
   \caption{Matrix met de vier mogelijke configuraties. Gekleurd op basis van de resultaten.}
   \label{fig:resultIllustration}
 \end{figure}
 
 Figuur \ref{fig:resultIllustration} toont een overzicht gebaseerd op de resultaten van de twee optimalisatiestrategieën en de twee soorten antennes.
-Opmerkelijk is dat de \gls{EIRP} \gls{Exp Opt} netwerk zich gelijkaardig gedraagd als een microstrip patch antenne in een \gls{PwrC Opt} netwerk.
+Opmerkelijk is dat de \gls{EIRP} \gls{Exp Opt} netwerk zich gelijkaardig gedraagt als een microstrip patch antenne in een \gls{PwrC Opt} netwerk.
 Hierdoor wordt een microstrip patch antenne in een energiezuinig netwerk aangeraden. De microstrip patch antenne zal minder elektromagnetische straling veroorzaken dankzij het design.
 Verder zal het optimaliseren naar energieverbruik ervoor zorgen dat minder drones nodig zullen zijn.
 Een microstrip patch antenne met een openingshoek van \ang{90} is verondersteld een goede oplossing te zijn
@@ -985,14 +984,14 @@ De \gls{SAR} van de configuratie met de meeste blootstelling is nog steeds een h
 Figuur \ref{fig:pie} geeft een overzicht van de \gls{SAR}-bijdrage in percentages ten opzichte van de totale \gls{SAR}.
 De waarden zijn uitgemiddeld over de vier overwogen configuraties.
 De gebruiker wordt voornamelijk blootgesteld aan zijn eigen mobiel apparaat met 
-52\% van de totale electromagnetische blootstelling.
+52\% van de totale elektromagnetische blootstelling.
 Deze conclusie werd reeds gemaakt door de auteurs van 
 \cite{J17_kuehn2019modelling} en  \cite{J10.1.1}.
 Verder wordt er in \cite{J10.1.1} ook geconcludeerd dat, dankzij power control, 
-de electromagnetische straling van het mobiele apparaat heel dicht komt bij de blootstelling van de \gls{UABS}.
-Dit wordt ook bevestigd door deze resultaten. Figuur \ref{fig:pie} toont aan dat de electromagnetische straling van 
-alle andere \gls{UABS}'s  gezamelijk de 48\% omvat waarvan 15\% komt van de \gls{UABS} die deze gebruiker aan het behandelen is.
-De electromagnetische blootstelling van mobiele apparaten die tot andere mensen behoren 
+de elektromagnetische straling van het mobiele apparaat heel dicht komt bij de blootstelling van de \gls{UABS}.
+Dit wordt ook bevestigd door deze resultaten. Figuur \ref{fig:pie} toont aan dat de elektromagnetische straling van 
+alle andere \gls{UABS}'s gezamenlijk de 48\% omvat waarvan 15\% komt van de \gls{UABS} die deze gebruiker aan het behandelen is.
+De elektromagnetische blootstelling van mobiele apparaten die tot andere mensen behoren 
 is verwaarloosbaar in tegenstelling tot de veel grotere blootstelling komende van alle andere bronnen
 en draagt slechts 0.0001\% bij aan de totale blootstelling.
 
@@ -1006,20 +1005,20 @@ en draagt slechts 0.0001\% bij aan de totale blootstelling.
 \end{figure}
 
 %How does the \gls{UABS} flying height and number of users influence electromagnetic exposure and power consumption?
-De resultaten tonen verder aan dat energieverbruik en electromagnetische straling toenemen wanneer 
+De resultaten tonen verder aan dat energieverbruik en elektromagnetische straling toenemen wanneer 
 meer mensen aanwezig zijn in het netwerk. Wanneer de populatie toeneemt van 50 naar 600 gebruikers 
-zal de electromagnetische straling tussen 80 en 130 $mV/m$ toenemen afhankelijk van de configuratie.
+zal de elektromagnetische straling tussen 80 en 130 $mV/m$ toenemen afhankelijk van de configuratie.
 Het energieverbruik neemt toe met 110 $W$ voor alle configuraties.
 De bron die het meest be\"invloed wordt  door het aantal gebruikers is de \gls{SAR} van andere \gls{UABS}'s 
 en neemt toe tussen de 1en3 $\mu W/kg$. 
 Verder heeft de vlieghoogte een positief effect op het aantal nodige drones die op hun beurt een positief 
 effect hebben op het energieverbruik. Wanneer de vlieghoogte toeneemt van 20 m naar 200 m, neemt het aantal 
 drones af met 59\%. Deze afname werd ook vastgesteld in \cite{J2}.
-Ook de auteurs van \cite{J17_kuehn2019modelling} concludeerden dat electromagnetische straling afneemt wanneer 
+Ook de auteurs van \cite{J17_kuehn2019modelling} concludeerden dat elektromagnetische straling afneemt wanneer 
 het padverlies minder wordt.
-De electromagnetische straling van de  \gls{UABS}'s blijven min of meer gelijk voor alle vlieghoogtes tussen 80 en 200 meter. 
+De elektromagnetische straling van de  \gls{UABS}'s blijven min of meer gelijk voor alle vlieghoogtes tussen 80 en 200 meter. 
 Meeste \gls{UABS}'s zijn in \gls{LOS} en dankzij power control zullen deze niet meer energie verbruiken dan strikt noodzakelijk.
-De electromagnetische straling van de gebruiker zijn eigen apparaten neemt echter wel toe om de hoog vliegende drones te kunnen bereiken.
+De elektromagnetische straling van de gebruiker zijn eigen apparaten neemt echter wel toe om de hoog vliegende drones te kunnen bereiken.
 Rond 80 meter zal de straling van de gebruiker zijn eigen apparaat de straling van de behandelde \gls{UABS} voorbijsteken.
 Wanneer meerdere \gls{UABS} beschikbaar zijn in het netwerk, zal de blootstelling van andere \gls{UABS}'s toenemen 
 naarmate de vlieghoogte toeneemt. Dit komt omdat bij hogere vlieghoogtes steeds meer \gls{UABS}'s in \gls{LOS} komen.
@@ -1032,16 +1031,16 @@ voor het stadscentrum van Gent.
 
 Tot besluit wordt een microstrip patch antenne
 met een openingshoek van \ang{90} als geschikt startpunt beschouwd.
-Deze directionele  antenne focust de electromagnetische straling daar waar het nodig is.
-en reduceerd hierdoor ongewenste zijwaardse straling.
+Deze directionele  antenne focust de elektromagnetische straling daar waar het nodig is.
+en reduceert hierdoor ongewenste zijwaartse straling.
 Het wordt aangeraden om de antenne toe te passen in een netwerk dat energieverbruik minimaliseert
 omdat hierbij minder drones nodig zijn en daardoor goedkoper is.
 De optimale vlieghoogte voor het stadscentrum in Gent bevindt zich rond 80  meter.
 Lagere vlieghoogtes vereisen veel meer drones terwijl hogere vlieghoogtes de 
-electromagnetische straling laten toenemen.
+elektromagnetische straling laten toenemen.
 Wanneer deze configuratie wordt toegepast op een netwerk met 224 gebruikers zal 
 de gemiddelde gebruiker een \gls{SAR} ondervinden  van ongeveer $0.2\ \mu W/kg$ en een
- \gls{DL} electromagnetische blootstelling van $69.5\ W$. 
+ \gls{DL} elektromagnetische blootstelling van $69.5\ W$. 
  Het netwerk vereist gemiddeld 96 \gls{UABS}'s met een totaal energieverbruik van
  $114\ V/m$. Dat is $1.19\ W$ per \gls{UABS}.
 

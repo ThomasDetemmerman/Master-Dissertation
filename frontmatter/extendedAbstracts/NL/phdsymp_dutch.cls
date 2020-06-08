@@ -512,11 +512,11 @@ page \thepage \space undefined}}%
 \def\@maketitle{\newpage\if@draftversion\mbox{}\vfil\fi\begin{center}
     \if@technote
       {\bf\@title\par}\vskip 1.3em{\lineskip .5em \@author \par
-        \vskip .5em Supervisor(s): \@supervisor\par}
+        \vskip .5em Promotoren: \@supervisor\par}
     \else
       \vskip0.2em{\Huge\@title\par}\vskip1.0em%
       \if@draftversion\vfil\fi%
-      {\lineskip .5em\large\@author\par \vskip .5em Supervisor(s): \@supervisor\par}
+      {\lineskip .5em\large\@author\par \vskip .5em Promotoren: \@supervisor\par}
     \fi
     \end{center}\par\vskip 1.4em}
 

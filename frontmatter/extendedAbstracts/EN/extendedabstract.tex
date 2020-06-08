@@ -55,6 +55,7 @@
 \begin{abstract}
 Society relies more than ever on the availability of wireless networks.
 Due to the mobility of a UAV, a UAV-aided network is able to provide this necessary access in case the existing terrestrial network gets damaged.
+Therefore, each UAV will be equipped with a femtocell base station.
 However,  the public is 
 concerned about the potential health effects of the electromagnetic radiation caused by these networks.
 Therefore, mobile devices and base stations have to comply to strict legislation enforced by the government.
@@ -76,14 +77,15 @@ It looks from the results that
 the microstrip patch antenna with an aperture angle of \ang{90} is a suitable starting point for an antenna. 
 This directional antenna focusses electromagnetic radiation where it is needed. Unwanted sideways radiation 
 is therefore reduced by design.
-The sufficiently large aperture angle covers enough users. The antenna is recommended to be deployed in a power consumption 
+The sufficiently large aperture angle covers enough users. 
+The antenna is recommended to be deployed in a power consumption 
 optimized network since less UAVs are required and therefore also less expensive.
-The optimal flying height for the city centre of Ghent is believed to be situated at 80 metres since lower flying heights require much more UABSs and
+The optimal flying height for the city centre of Ghent is believed to be situated at 80 metres since lower flying heights require much more UAVs and
 higher flying heights have a negative influence on the electromagnetic exposure. 
 When this configuration is applied to a network with 224 users, the average user will 
 experience a SAR of around $0.2\ \mu W/kg$ and
- a downlink electromagnetic exposure of $114\ mV/m$. The network will require on average 96 UABSs with a total
-power consumption of $69.5\ W$, which is $7.24\ W$ per UABS.
+ a downlink electromagnetic exposure of $114\ mV/m$. The network will require on average 96 UAVs with a total
+power consumption of $69.5\ W$, which is $7.24\ W$ per UAV.
 \end{abstract}
 
 \begin{keywords}
@@ -532,12 +534,12 @@ applicable in all scenarios unless mentioned otherwise in the restrictions of th
         \multicolumn{2}{l}{\textbf{Femtocell antenna}} \\
         \hline  
         \hspace{3mm}  Maximum $P_{tx}$                    & 33 dBm   \\
-        \hspace{3mm}  antenna  direction                  & downwards   \\ 
+        \hspace{3mm}  Antenna  direction                  & downwards   \\ 
         \hspace{3mm}                                      & (az: \ang{0}; el: \ang{90})    \\
         \hspace{3mm}  Gain                                & 4 dBm   \\ 
         \hspace{3mm}  Feeder loss                         & 2 dBm   \\ 
         \hspace{3mm}  Implementation loss                 & 0 dBm   \\
-        \hspace{3mm}  radiation pattern                   & EIRP or\\
+        \hspace{3mm}  Radiation pattern                   & EIRP or\\
          \hspace{3mm}                                     & microstrip patch\\
         \hspace{3mm}  Flying altitude                     & 100 m  \\
         \hline
@@ -589,7 +591,7 @@ between \gls{UE} and \gls{UABS}s. Any other potential sources like backhaul link
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=0.7\linewidth]{fourCasesMatrix.png}
+  \includegraphics[width=\linewidth]{fourCasesMatrix.png}
   \caption{Matrix with the four possible configurations}
   \label{fig:fourCasesMatrix}
 \end{figure}
@@ -673,6 +675,7 @@ This decline starts later for exposure optimized networks and is situated outsid
 The decreasing electromagnetic radiation at high flying altitudes is not caused by the obstructing buildings but by the 
 distance in general.
 
+\FloatBarrier
 Fig. \ref{fig:s2shfourSourcesMatrix} shows the whole body $SAR_{10g}$ for the weighted average user, deducted from all electromagnetic sources. 
 When investigating the three different sources, we see 
 that the $SAR^{myUABS}$ shows the same curve as it did with the electromagnetic exposure 
@@ -727,8 +730,8 @@ power consumption. Increasing the population from 50 to 600 will require between
 For this scenario, no clear difference in power consumption exists between the four configurations.
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{s2/uvsdlAndPc.png}
-  \caption{These two figures show how various sizes of population influence the downlink electromagnetic radiation of the average user (left) and 
-  power consumption of the entire network (rights) for one \acs{UABS} available in the network.}
+  \caption{These figures show how various sizes of population influence the downlink electromagnetic radiation of the average user (fig. a) and 
+  total power consumption (fig. b).}
   \label{fig:s2b_dlAndPc}
 \end{figure}
 
@@ -777,8 +780,8 @@ to $15\ mV/m$. When optimizing towards electromagnetic radiation, the exposure d
 of $54\ W$.
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{../results/s3/fhvsdlAndPc.png}
-  \caption{These two figures show how the flying height influences the downlink electromagnetic radiation of the average user (left) and 
-  power consumption of the entire network (right) for an unlimited number of \gls{UAV}s.}
+  \caption{These two figures show how the flying height influences the downlink electromagnetic radiation of the average user (fig. a) and 
+  power consumption of the entire network (fig. b) for an unlimited number of \gls{UAV}s.}
   \label{fig:s3a_dlAndPc}
 \end{figure}
 
@@ -892,13 +895,15 @@ The \gls{SAR} increases however very fast. The biggest increase is noticed in an
 where 3 $\mu W/kg$ is measured for 600 users. The $SAR^{otherUE}$ increases the least for microstrip \gls{Exp Opt} with 
 only 1 $\mu W/kg$ for 600 users.
 \begin{figure}[h!]
-  \includegraphics[width=\linewidth]{../results/s3/uFourSources.png}
+\centering
+  \includegraphics[width=0.96\linewidth]{../results/s3/uFourSources.png}
   \caption{Each figure corresponds with a certain configuration and shows how the \acs{SAR} 
-  from different sources are influenced by an increasing population size. An unlimited number of \acs{UABS}s is available.
+  from different sources are influenced by an increasing population size.% An unlimited number of \acs{UABS}s is available.
 }
   \label{fig:s3b_fourSourcesMatrix}
 \end{figure}
 
+\FloatBarrier
 \section{Conclusion}
 
 A capacity-based deployment tool has been used to identify the \gls{SAR} of a user and how a network can be optimized 
@@ -925,7 +930,7 @@ which increase the total power consumption with 12 $W$. The required power per \
 in a \gls{PwrC Opt} network and with $0.007\ W$ in an \gls{Exp Opt} network.
 \begin{figure}[hb!]
 \centering
-  \includegraphics[width=0.8\linewidth]{../images/fourCasesMatrixSol.png}
+  \includegraphics[width=0.9\linewidth]{../images/fourCasesMatrixSol.png}
   \caption{Matrix with the four possible configurations, colour-coded based on the results.}
   \label{fig:resultIllustration}
 \end{figure}
@@ -965,10 +970,10 @@ The electromagnetic
 \def\cyclelist{{"c_myue","c_otheruabs","c_myuabs","c_otherue"}}
 \newcount\cyclecount \cyclecount=-1
 \newcount\ind \ind=-1
-\begin{figure}
+\begin{figure}[h!]
 \centering
- \resizebox {!} {4cm} {
-\begin{tikzpicture}[nodes = {font=\sffamily}]
+ \resizebox {!} {3.5cm} {
+\begin{tikzpicture}[nodes = {scale=2}]
   \foreach \percent/\name in {
       52/ my UE,
       33/ other UABSs,
@@ -1028,7 +1033,8 @@ of 80 metres is also here proposed for the city centre of Ghent.
 In conclusion, a microstrip patch antenna with an aperture angle of \ang{90} is a suitable starting point for an antenna. 
 This directional antenna focusses electromagnetic radiation where it is needed and unwanted sideways radiation 
 is reduced.
-The sufficiently large aperture angle covers enough users. The antenna is recommended to be deployed in a power consumption 
+%The sufficiently large aperture angle covers enough users. 
+The antenna is recommended to be deployed in a power consumption 
 optimized network since less \gls{UAV}s are required and therefore also less expensive.
 The optimal flying height for the city centre of Ghent is believed to be situated at 80 metres since lower flying heights require much more \gls{UABS}s and
 higher flying heights have a negative influence on the electromagnetic exposure.  
@@ -1036,7 +1042,7 @@ When this configuration is applied to a network with 224 users, the average user
  a \gls{DL} electromagnetic exposure of $69.5\ W$. The network will require on average 96 \gls{UABS}s with a total
 power consumption of $114\ V/m$, which is $1.19\ W$ per \gls{UABS}.
 
-As a future work, still some parameters require further evaluation. Different \gls{pusch} values
+As a future work, still some parameters require further evaluation. Different \acs{pusch} values
 are expected to have a big influence on \gls{UL} radiation and exposure from 
 backhaul connections still have to be considered. Further, MiMo and massive MiMo are ready to be supported since 
 the tool can easily be extended with some more complex radiation patters 
