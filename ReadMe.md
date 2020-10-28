@@ -1,4 +1,4 @@
-# Evaluating Human ElectromagneticExposure in a UAV-aided Network
+# Evaluating Human Electromagnetic Exposure in a UAV-aided Network
 
 Master's dissertation submitted in order to obtain the academic degree of Master of Science in Information Engineering Technology  
 Academic year: 2019-2020
